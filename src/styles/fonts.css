@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "TT Norms Pro Trial";
+  src: url("../../assets/fonts/tt-norms-pro-450.woff2") format("woff2");
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TT Norms Pro Trial";
+  src: url("../../assets/fonts/tt-norms-pro-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

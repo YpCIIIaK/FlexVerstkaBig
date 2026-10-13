@@ -1,0 +1,51 @@
+:root {
+  --width-base:       1440;
+  --width-current:    100vw;
+  --width-multiplier: calc(var(--width-current) / var(--width-base));
+  --wm:               var(--width-multiplier);
+
+  --white: #ffffff;
+  --black: #02010d;
+  --white-2: #fffdfb;
+  --red-500: #d84949;
+  --red-10:  rgba(216, 73, 73, 0.1);
+  --purple-accent: #a05dda;
+
+  --w-80: rgba(255, 255, 255, 0.8);
+  --w-70: rgba(255, 255, 255, 0.7);
+  --w-50: rgba(255, 255, 255, 0.5);
+  --w-40: rgba(255, 255, 255, 0.4);
+  --w-30: rgba(255, 255, 255, 0.3);
+  --w-25: rgba(255, 255, 255, 0.25);
+  --w-20: rgba(255, 255, 255, 0.2);
+  --w-18: rgba(255, 255, 255, 0.18);
+  --w-10: rgba(255, 255, 255, 0.1);
+  --w-08: rgba(255, 255, 255, 0.08);
+  --w-06: rgba(255, 255, 255, 0.06);
+  --w-05: rgba(255, 255, 255, 0.05);
+  --w-03: rgba(255, 255, 255, 0.03);
+
+  --purple-700: #220d33;
+  --purple-700-2: #4f1973;
+  --purple-700-3: #6f289e;
+  --purple-500: #a568ce;
+  --purple-300: #c6add2;
+
+  --blue-700: #0d0e33;
+  --blue-700-2: #111360;
+  --blue-700-3: #21248c;
+  --blue-500: #3639b3;
+  --blue-500-2: #7e83ab;
+
+  --overlay: rgba(0, 0, 0, 0.55);
+
+  --font-main: "TT Norms Pro Trial", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+@media (max-width: 1024px) {
+  :root { --width-base: 768; --width-current: 100vmin; }
+}
+
+@media (max-width: 767px) {
+  :root { --width-base: 390; --width-current: 100vmin; }
+}

@@ -1,0 +1,25 @@
+# системный мусор
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# редакторы
+.vscode/
+.idea/
+*.swp
+
+# временные файлы
+*.log
+*.tmp
+
+# исходные PNG: в вёрстке используются .webp,
+# оригиналы держим только локально
+assets/images/*.png
+assets/logo/*.png
+.secrets/
+
+# исходники шрифтов и тесты: в вёрстке только woff2
+assets/fonts/*.zip
+assets/fonts/tt-norms-pro/
+assets/fonts/test/
+font-test.html

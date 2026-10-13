@@ -1,0 +1,125 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: calc(80 * var(--wm));
+  padding: 0 calc(40 * var(--wm));
+  background-color: var(--black);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: calc(16 * var(--wm));
+}
+
+.header__link {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  gap: calc(4 * var(--wm));
+  padding: calc(10 * var(--wm));
+  font-size: calc(16 * var(--wm));
+  line-height: calc(20 * var(--wm));
+  white-space: nowrap;
+  color: var(--white);
+}
+
+.header__cloud {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  width: calc(58 * var(--wm));
+  height: calc(32 * var(--wm));
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.63);
+  transition:
+    transform 1667ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 1667ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.header__link:hover .header__cloud,
+.header__link:focus-visible .header__cloud,
+.header__link[aria-expanded="true"] .header__cloud {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.header__arrow {
+  flex: none;
+  width: calc(24 * var(--wm));
+  height: calc(24 * var(--wm));
+  transition: transform 0.3s ease;
+}
+
+.header__link[aria-expanded="true"] .header__arrow { transform: rotate(180deg); }
+
+.header__logo img {
+  width: calc(115 * var(--wm));
+  height: calc(26 * var(--wm));
+}
+
+.header__actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: calc(24 * var(--wm));
+}
+
+.header__icons {
+  display: flex;
+  align-items: center;
+  gap: calc(16 * var(--wm));
+}
+
+.header__icon {
+  display: flex;
+  transition: opacity 0.2s ease;
+}
+
+.header__icon:hover { opacity: 0.7; }
+
+.header__icon img,
+.header__lang img {
+  width: calc(20 * var(--wm));
+  height: calc(20 * var(--wm));
+}
+
+.header__lang {
+  display: flex;
+  align-items: center;
+  gap: calc(4 * var(--wm));
+  border-radius: calc(10 * var(--wm));
+  font-size: calc(16 * var(--wm));
+  line-height: calc(20 * var(--wm));
+  transition: opacity 0.2s ease;
+}
+
+.header__lang:hover { opacity: 0.7; }
+
+@media (prefers-reduced-motion: reduce) {
+  .header__cloud { transition-duration: 1ms; }
+}
+
+.header__link--catalog {
+  --cloud-a: url(#cloud-blue);
+  --cloud-b: url(#cloud-purple);
+}
+
+.header__link--programs {
+  --cloud-a: url(#cloud-blue);
+  --cloud-b: url(#cloud-mint);
+}
+
+.header__link--help {
+  --cloud-a: url(#cloud-violet);
+  --cloud-b: url(#cloud-sand);
+}

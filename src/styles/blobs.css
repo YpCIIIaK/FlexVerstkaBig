@@ -90,3 +90,8 @@ body.is-locked .blob {
 @media (prefers-reduced-motion: reduce) {
   .blob { animation: none; }
 }
+
+.blobs--fixed {
+  position: fixed;
+  z-index: -1;
+}

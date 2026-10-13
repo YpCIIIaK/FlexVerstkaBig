@@ -25,6 +25,17 @@
   --w-05: rgba(255, 255, 255, 0.05);
   --w-03: rgba(255, 255, 255, 0.03);
 
+  --cloud-gold-start:  #e5c873;
+  --cloud-gold-end:    #d5caaa;
+  --cloud-green-start: #82e6b1;
+  --cloud-green-end:   #9fd485;
+  --cloud-blue-start:  #2fb2d8;
+  --cloud-blue-end:    #69a3c8;
+  --cloud-purple-start: #cdb6f6;
+  --cloud-purple-end:  #984fd5;
+  --cloud-mint-start:  #9fd485;
+  --cloud-mint-end:    #82e6b1;
+
   --purple-700: #220d33;
   --purple-700-2: #4f1973;
   --purple-700-3: #6f289e;

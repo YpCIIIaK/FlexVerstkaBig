@@ -1,0 +1,175 @@
+.account {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: calc(40 * var(--wm));
+  padding: 0 calc(40 * var(--wm)) calc(120 * var(--wm));
+}
+
+.account .breadcrumbs {
+  padding: calc(20 * var(--wm)) 0 0;
+}
+
+.account__title {
+  font-size: calc(40 * var(--wm));
+  font-weight: 700;
+  line-height: calc(48 * var(--wm));
+}
+
+.account__body {
+  display: flex;
+  align-items: stretch;
+  gap: calc(40 * var(--wm));
+}
+
+.account__aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: calc(24 * var(--wm));
+  flex: 0 0 calc(322 * var(--wm));
+}
+
+.account__nav {
+  display: flex;
+  flex-direction: column;
+  gap: calc(8 * var(--wm));
+}
+
+.account__nav-link,
+.account__logout-link {
+  display: flex;
+  align-items: center;
+  gap: calc(12 * var(--wm));
+  padding: calc(14 * var(--wm));
+  border-radius: calc(12 * var(--wm));
+  font-size: calc(16 * var(--wm));
+  line-height: calc(20 * var(--wm));
+  transition: background-color 0.2s ease;
+}
+
+.account__nav-link img,
+.account__logout-link img {
+  flex: none;
+  width: calc(18 * var(--wm));
+  height: calc(18 * var(--wm));
+}
+
+.account__nav-link:hover { background-color: var(--w-03); }
+.account__nav-link.is-active { background-color: var(--w-05); }
+
+.account__logout {
+  display: flex;
+  flex-direction: column;
+  gap: calc(16 * var(--wm));
+  padding-top: calc(16 * var(--wm));
+  border-top: 1px solid var(--w-10);
+}
+
+.account__logout-link {
+  padding: calc(20 * var(--wm)) 0;
+  color: var(--red-500);
+  transition: opacity 0.2s ease;
+}
+
+.account__logout-link:hover { opacity: 0.8; }
+
+.account__main {
+  display: flex;
+  flex-direction: column;
+  gap: calc(40 * var(--wm));
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.account-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(24 * var(--wm));
+  padding: calc(32 * var(--wm));
+  border-radius: calc(20 * var(--wm));
+  background-color: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.account-card__title {
+  font-size: calc(20 * var(--wm));
+  font-weight: 700;
+  line-height: calc(26 * var(--wm));
+}
+
+.account-card__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(12 * var(--wm));
+}
+
+.account-card__note {
+  display: flex;
+  align-items: center;
+  gap: calc(10 * var(--wm));
+  font-size: calc(14 * var(--wm));
+  line-height: calc(20 * var(--wm));
+  color: var(--w-30);
+}
+
+.account-card__note img {
+  flex: none;
+  width: calc(16 * var(--wm));
+  height: calc(16 * var(--wm));
+}
+
+.field__input--static {
+  height: calc(52 * var(--wm));
+  background-color: transparent;
+}
+
+.field__input--static[readonly] { cursor: default; }
+.field__input--static[readonly]:hover,
+.field__input--static[readonly]:focus { outline-color: var(--w-10); }
+
+.field__box {
+  position: relative;
+}
+
+.field__box .field__input { padding-right: calc(120 * var(--wm)); }
+
+.field__box.is-editing .field__input { outline-color: var(--white); }
+
+.field.is-error .field__box .field__input { outline: 2px solid var(--red-500); }
+
+.field__action {
+  position: absolute;
+  top: 50%;
+  right: calc(20 * var(--wm));
+  transform: translateY(-50%);
+  font-size: calc(16 * var(--wm));
+  line-height: calc(20 * var(--wm));
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.field__action:hover { opacity: 0.7; }
+
+.account__head {
+  display: flex;
+  flex-direction: column;
+  gap: calc(12 * var(--wm));
+}
+
+.account__lead {
+  font-size: calc(16 * var(--wm));
+  line-height: calc(24 * var(--wm));
+  color: var(--w-80);
+}
+
+.select--plain {
+  flex: none;
+  align-self: flex-start;
+  width: calc(220 * var(--wm));
+}
+
+.select--plain .select__trigger { background-color: transparent; }

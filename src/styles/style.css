@@ -364,3 +364,17 @@
   align-items: center;
   gap: calc(64 * var(--wm));
 }
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: calc(8 * var(--wm));
+  padding: calc(20 * var(--wm)) calc(40 * var(--wm)) calc(40 * var(--wm));
+  font-size: calc(12 * var(--wm));
+  line-height: calc(16 * var(--wm));
+  color: var(--w-30);
+}
+
+.breadcrumbs__link { transition: color 0.2s ease; }
+.breadcrumbs__link:hover { color: var(--w-80); }
+.breadcrumbs__current { color: var(--white); }

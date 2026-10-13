@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Стартовый набор FLEX — Flex</title>
+  <meta name="description" content="Стартовый набор FLEX: устройство FLEX и пять пачек стиков FAIIM для первой покупки." />
+
+  <link rel="stylesheet" href="src/styles/main.css?v=25" />
+  <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="assets/vendor/fancybox/fancybox.css" />
+</head>
+<body>
+  <svg class="visually-hidden" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="cloud-gold" x1="54.2873" y1="5.07195" x2="26.9609" y2="25.2305" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-gold-start)" />
+        <stop offset="1" style="stop-color: var(--cloud-gold-end)" stop-opacity="0.4" />
+      </linearGradient>
+      <linearGradient id="cloud-green" x1="24.1852" y1="1.89462" x2="15.8294" y2="31.4495" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-green-start)" stop-opacity="0.4" />
+        <stop offset="1" style="stop-color: var(--cloud-green-end)" />
+      </linearGradient>
+      <linearGradient id="cloud-blue" x1="54.2873" y1="5.07195" x2="26.9609" y2="25.2305" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-blue-start)" />
+        <stop offset="1" style="stop-color: var(--cloud-blue-end)" stop-opacity="0.4" />
+      </linearGradient>
+      <linearGradient id="cloud-purple" x1="24.1852" y1="1.89462" x2="15.8294" y2="31.4495" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-purple-start)" stop-opacity="0.4" />
+        <stop offset="1" style="stop-color: var(--cloud-purple-end)" />
+      </linearGradient>
+      <linearGradient id="cloud-mint" x1="24.1852" y1="1.89462" x2="15.8294" y2="31.4495" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-mint-start)" />
+        <stop offset="1" style="stop-color: var(--cloud-mint-end)" stop-opacity="0.5" />
+      </linearGradient>
+      <linearGradient id="cloud-violet" x1="54.2873" y1="5.07195" x2="26.9609" y2="25.2305" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-purple-end)" />
+        <stop offset="1" style="stop-color: var(--cloud-purple-start)" stop-opacity="0.4" />
+      </linearGradient>
+      <linearGradient id="cloud-sand" x1="24.1852" y1="1.89462" x2="15.8294" y2="31.4495" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-gold-end)" stop-opacity="0.4" />
+        <stop offset="1" style="stop-color: var(--cloud-gold-start)" />
+      </linearGradient>
+      <symbol id="clouds" viewBox="0 0 58 32">
+        <g opacity="0.8">
+          <path d="M45.6102 27.384C38.9079 30.0171 33.2429 25.2896 31.2481 22.5967C29.7521 20.0035 27.6576 13.5605 31.2481 8.53372C35.7363 2.2503 39.007 0.455029 47.7047 0.455078C55.7834 0.455124 58.7957 5.82264 56.5546 8.0794C54.0344 10.6171 53.8617 11.0715 53.9881 13.6203C54.2325 18.5457 53.9881 24.0927 45.6102 27.384Z" style="fill: var(--cloud-a, url(#cloud-gold))" />
+          <path d="M5.51217 8.83254C-3.34446 21.0403 0.425589 28.6802 3.41769 30.9741C9.70127 33.3679 17.4804 31.5725 27.6536 25.5883C37.8268 19.604 36.6288 12.8701 33.937 7.9349C30.3465 1.352 16.583 -6.4272 5.51217 8.83254Z" style="fill: var(--cloud-b, url(#cloud-green))" />
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="blobs blobs--fixed" aria-hidden="true">
+    <div class="blob blob--purple"></div>
+    <div class="blob blob--blue"></div>
+  </div>
+
+  <header class="header">
+    <nav class="header__nav" aria-label="Основное меню">
+      <button class="header__link" type="button" aria-expanded="false">
+        <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+        О Бренде
+        <img class="header__arrow" src="assets/images/arrow-drop-up.svg" alt="" width="24" height="24" />
+      </button>
+      <a class="header__link header__link--catalog" href="#">
+        <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+        Каталог
+      </a>
+      <button class="header__link header__link--programs" type="button" aria-expanded="false">
+        <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+        Программы
+        <img class="header__arrow" src="assets/images/arrow-drop-up.svg" alt="" width="24" height="24" />
+      </button>
+      <a class="header__link header__link--help" href="help.html">
+        <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+        Помощь
+      </a>
+    </nav>
+
+    <a class="header__logo" href="index.html" aria-label="FLEX — на главную">
+      <img src="assets/logo/logo.svg" alt="FLEX" width="115" height="26" />
+    </a>
+
+    <div class="header__actions">
+      <div class="header__icons">
+        <a class="header__icon" href="#" aria-label="Поиск"><img src="assets/images/search.svg" alt="" width="20" height="20" /></a>
+        <a class="header__icon" href="favorites.html" aria-label="Избранное"><img src="assets/images/heart.svg" alt="" width="20" height="20" /></a>
+        <a class="header__icon" href="account.html" aria-label="Личный кабинет"><img src="assets/images/user.svg" alt="" width="20" height="20" /></a>
+      </div>
+      <button class="header__lang" type="button" aria-label="Язык: русский">
+        <img src="assets/images/globe.svg" alt="" width="20" height="20" />
+        RU
+      </button>
+    </div>
+  </header>
+
+  <main class="starter">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+      <span class="breadcrumbs__current" aria-current="page">Стартовый набор FLEX</span>
+    </nav>
+
+    <section class="starter-hero">
+      <div class="starter-hero__info">
+        <div class="starter-hero__head">
+          <h1 class="starter-hero__title">Стартовый набор FLEX</h1>
+          <p class="starter-hero__lead">Всё, что нужно для знакомства с FLEX, в одном наборе.</p>
+          <p class="starter-hero__price">31 000 ₸</p>
+        </div>
+        <p class="starter-hero__note">*Изображения представлены в ознакомительных целях. Комплектация, ассортимент и стоимость могут отличаться. Уточняйте актуальные условия приобретения.</p>
+      </div>
+      <img class="starter-hero__image" src="assets/images/starter-kit.webp" alt="Стартовый набор FLEX: устройство и стики FAIIM" width="668" height="420" fetchpriority="high" />
+    </section>
+
+    <section class="starter-terms">
+      <div class="starter-terms__head">
+        <h2 class="starter-terms__title">Стартовый набор для знакомства с FLEX</h2>
+        <p class="starter-terms__text">Набор включает в себя устройство FLEX и пять пачек стиков FAIIM.<br />Доступен только для первой покупки устройства.</p>
+      </div>
+      <a class="button button--ghost" href="#">Полные условия программы</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="footer__logo" href="index.html" aria-label="FLEX — на главную">
+      <img src="assets/logo/logo.svg" alt="FLEX" width="265" height="60" loading="lazy" />
+    </a>
+
+    <nav class="footer__nav" aria-label="Карта сайта">
+      <div class="footer__col">
+        <h2 class="footer__title">Каталог</h2>
+        <ul class="footer__list">
+          <li><a class="footer__link" href="#">Стики</a></li>
+          <li><a class="footer__link" href="#">Устройства</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h2 class="footer__title">Программы</h2>
+        <ul class="footer__list">
+          <li><a class="footer__link" href="starter-kit.html">Стартовый набор</a></li>
+          <li><a class="footer__link" href="#">Реферальная программа</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h2 class="footer__title">О бренде</h2>
+        <ul class="footer__list">
+          <li><a class="footer__link footer__link--upper" href="#">Flex</a></li>
+          <li><a class="footer__link footer__link--upper" href="#">Faiim</a></li>
+          <li><a class="footer__link" href="#">Новости</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__col--contacts">
+        <div class="footer__group">
+          <h2 class="footer__title">Контакты</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="tel:7707">7707</a></li>
+            <li><span class="footer__text">Достык, 192/2</span></li>
+            <li><span class="footer__text">Почта</span></li>
+          </ul>
+        </div>
+
+        <div class="footer__social">
+          <a class="footer__social-link" href="#" aria-label="Instagram"><img src="assets/images/social-user.svg" alt="" width="20" height="20" loading="lazy" /></a>
+          <a class="footer__social-link" href="#" aria-label="WhatsApp"><img src="assets/images/whatsapp.svg" alt="" width="20" height="20" loading="lazy" /></a>
+          <a class="footer__social-link" href="#" aria-label="Telegram"><img src="assets/images/telegram.svg" alt="" width="20" height="20" loading="lazy" /></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="footer__bottom">
+      <a class="footer__link" href="#">Условия использования сайта</a>
+      <a class="footer__link" href="#">Политика конфиденциальности</a>
+      <a class="footer__link" href="#">Политика файлов Cookie</a>
+      <a class="footer__link" href="#">Документы</a>
+      <a class="footer__link" href="#">Согласие на сбор, обработку и хранение перс.данных</a>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/lenis.min.js" defer></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
+  <script src="assets/vendor/fancybox/fancybox.umd.js" defer></script>
+  <script src="src/lib/main.js?v=15" defer></script>
+</body>
+</html>

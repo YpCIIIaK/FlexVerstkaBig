@@ -1,7 +1,13 @@
-@import url("vars.css?v=6");
+@import url("vars.css?v=7");
 @import url("fonts.css?v=2");
 @import url("global.css?v=2");
 @import url("header.css?v=6");
-@import url("footer.css?v=2");
+@import url("footer.css?v=3");
 @import url("blobs.css?v=2");
-@import url("style.css?v=9");
+@import url("style.css?v=10");
+@import url("help.css?v=3");
+@import url("error.css?v=1");
+@import url("account.css?v=4");
+@import url("product-card.css?v=3");
+@import url("modal.css?v=1");
+@import url("starter.css?v=1");

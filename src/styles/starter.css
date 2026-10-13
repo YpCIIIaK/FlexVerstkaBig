@@ -1,0 +1,85 @@
+.starter {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: calc(40 * var(--wm));
+  padding: 0 calc(40 * var(--wm)) calc(120 * var(--wm));
+}
+
+.starter .breadcrumbs { padding: calc(20 * var(--wm)) 0 0; }
+
+.starter-hero {
+  display: flex;
+  align-items: center;
+  gap: calc(24 * var(--wm));
+}
+
+.starter-hero__info {
+  display: flex;
+  flex-direction: column;
+  gap: calc(40 * var(--wm));
+  flex: 0 0 calc(668 * var(--wm));
+}
+
+.starter-hero__head {
+  display: flex;
+  flex-direction: column;
+  gap: calc(8 * var(--wm));
+}
+
+.starter-hero__title,
+.starter-terms__title {
+  font-size: calc(40 * var(--wm));
+  font-weight: 700;
+  line-height: calc(48 * var(--wm));
+}
+
+.starter-hero__lead {
+  font-size: calc(16 * var(--wm));
+  line-height: calc(24 * var(--wm));
+  color: var(--w-80);
+}
+
+.starter-hero__price {
+  font-size: calc(44 * var(--wm));
+  font-weight: 700;
+  line-height: calc(48 * var(--wm));
+  white-space: nowrap;
+}
+
+.starter-hero__note {
+  max-width: calc(397 * var(--wm));
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  font-size: calc(12 * var(--wm));
+  font-weight: 400;
+  line-height: calc(16 * var(--wm));
+  color: var(--w-80);
+}
+
+.starter-hero__image {
+  flex: 0 0 calc(668 * var(--wm));
+  width: calc(668 * var(--wm));
+  height: calc(420 * var(--wm));
+  object-fit: cover;
+}
+
+.starter-terms {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(40 * var(--wm));
+  padding-top: calc(80 * var(--wm));
+}
+
+.starter-terms__head {
+  display: flex;
+  flex-direction: column;
+  gap: calc(16 * var(--wm));
+}
+
+.starter-terms__text {
+  font-size: calc(18 * var(--wm));
+  line-height: calc(28 * var(--wm));
+  color: var(--w-80);
+}

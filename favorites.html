@@ -6,7 +6,7 @@
   <title>Избранное — Flex</title>
   <meta name="robots" content="noindex" />
 
-  <link rel="stylesheet" href="src/styles/main.css?v=25" />
+  <link rel="stylesheet" href="src/styles/main.css?v=82" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="assets/vendor/fancybox/fancybox.css" />
 </head>
@@ -56,13 +56,22 @@
   </div>
 
   <header class="header">
+    <button class="header__burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu" data-burger>
+      <span></span><span></span><span></span>
+    </button>
     <nav class="header__nav" aria-label="Основное меню">
-      <button class="header__link" type="button" aria-expanded="false">
-        <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
-        О Бренде
-        <img class="header__arrow" src="assets/images/arrow-drop-up.svg" alt="" width="24" height="24" />
-      </button>
-      <a class="header__link header__link--catalog" href="#">
+      <div class="header__item" data-menu>
+        <button class="header__link" type="button" aria-expanded="false" aria-controls="menu-brand" data-menu-trigger>
+          <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+          О Бренде
+          <img class="header__arrow" src="assets/images/arrow-drop-up.svg" alt="" width="24" height="24" />
+        </button>
+        <ul class="header__menu" id="menu-brand" data-menu-list hidden>
+          <li><a class="header__menu-link" href="about.html">О FLEX</a></li>
+          <li><a class="header__menu-link" href="faiim.html">О FAIIM</a></li>
+        </ul>
+      </div>
+      <a class="header__link header__link--catalog" href="catalog.html">
         <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
         Каталог
       </a>
@@ -94,6 +103,36 @@
     </div>
   </header>
 
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Мобильное меню" data-mobile-menu hidden>
+    <div class="mobile-menu__top">
+      <ul class="mobile-menu__list">
+      <li><a class="mobile-menu__link" href="catalog.html">Каталог<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="favorites.html">Избранное<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="starter-kit.html">Программы<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="about.html">О бренде<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="help.html">Помощь<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      </ul>
+
+      <div class="mobile-menu__lang">
+        <p class="mobile-menu__caption">Язык</p>
+        <div class="lang-switch" role="radiogroup" aria-label="Язык">
+          <button class="lang-switch__btn is-active" type="button" role="radio" aria-checked="true">RU</button>
+          <button class="lang-switch__btn" type="button" role="radio" aria-checked="false">KZ</button>
+          <button class="lang-switch__btn" type="button" role="radio" aria-checked="false">EN</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-menu__social">
+      <p class="mobile-menu__caption">Свяжитесь с нами</p>
+  <div class="mobile-menu__social-list">
+      <a class="footer__social-link" href="#" aria-label="Instagram"><img src="assets/images/social-user.svg" alt="" width="20" height="20" loading="lazy" /></a>
+      <a class="footer__social-link" href="#" aria-label="WhatsApp"><img src="assets/images/whatsapp.svg" alt="" width="20" height="20" loading="lazy" /></a>
+      <a class="footer__social-link" href="#" aria-label="Telegram"><img src="assets/images/telegram.svg" alt="" width="20" height="20" loading="lazy" /></a>
+    </div>
+    </div>
+  </nav>
+
   <main class="account">
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
       <a class="breadcrumbs__link" href="index.html">Главная</a>
@@ -104,9 +143,15 @@
     </nav>
 
     <header class="account__head">
-      <h1 class="account__title">Избранное</h1>
+      <h1 class="account__title"><span class="t-desk">Избранное</span><span class="t-mob">Личный кабинет</span></h1>
       <p class="account__lead">Управляйте личными и контактными данными, а также настройками аккаунта.</p>
     </header>
+
+    <nav class="account-tabs tabs m-only" aria-label="Разделы кабинета">
+      <a class="tabs__btn" href="account.html">Профиль</a>
+      <a class="tabs__btn is-active" href="favorites.html" aria-current="page">Избранное</a>
+      <a class="tabs__btn" href="settings.html">Настройки</a>
+    </nav>
 
     <div class="account__body">
       <aside class="account__aside">
@@ -134,7 +179,7 @@
       </aside>
 
       <section class="account__main">
-        <section class="account-card">
+        <section class="account-card account-card--fav">
           <h2 class="account-card__title">Сохранённые товары</h2>
           <div class="products-row swiper" data-products-swiper data-fav-list>
             <div class="swiper-wrapper">
@@ -143,8 +188,8 @@
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
                 </button>
                 <div class="product-card__gallery">
-                  <img class="product-card__img is-active" src="assets/images/product-1.webp" alt="Purple Mix" width="320" height="260" loading="lazy" />
-                  <img class="product-card__img" src="assets/images/product-2.webp" alt="Purple Mix" width="320" height="260" loading="lazy" />
+                  <img class="product-card__img is-active" src="assets/images/product-2.webp" alt="Purple Mix" width="320" height="260" loading="lazy" />
+                  <img class="product-card__img" src="assets/images/product-1.webp" alt="Purple Mix" width="320" height="260" loading="lazy" />
                   <img class="product-card__img" src="assets/images/product-3.webp" alt="Purple Mix" width="320" height="260" loading="lazy" />
                 </div>
                 <div class="product-card__dots">
@@ -162,7 +207,7 @@
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
                 </button>
                 <div class="product-card__gallery">
-                  <img class="product-card__img is-active" src="assets/images/product-2.webp" alt="Yellow Mix" width="320" height="260" loading="lazy" />
+                  <img class="product-card__img is-active" src="assets/images/product-1.webp" alt="Yellow Mix" width="320" height="260" loading="lazy" />
                   <img class="product-card__img" src="assets/images/product-3.webp" alt="Yellow Mix" width="320" height="260" loading="lazy" />
                   <img class="product-card__img" src="assets/images/product-4.webp" alt="Yellow Mix" width="320" height="260" loading="lazy" />
                 </div>
@@ -181,8 +226,8 @@
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
                 </button>
                 <div class="product-card__gallery">
-                  <img class="product-card__img is-active" src="assets/images/product-3.webp" alt="Skygreen" width="320" height="260" loading="lazy" />
-                  <img class="product-card__img" src="assets/images/product-4.webp" alt="Skygreen" width="320" height="260" loading="lazy" />
+                  <img class="product-card__img is-active" src="assets/images/product-4.webp" alt="Skygreen" width="320" height="260" loading="lazy" />
+                  <img class="product-card__img" src="assets/images/product-2.webp" alt="Skygreen" width="320" height="260" loading="lazy" />
                   <img class="product-card__img" src="assets/images/product-1.webp" alt="Skygreen" width="320" height="260" loading="lazy" />
                 </div>
                 <div class="product-card__dots">
@@ -200,8 +245,8 @@
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
                 </button>
                 <div class="product-card__gallery">
-                  <img class="product-card__img is-active" src="assets/images/product-4.webp" alt="Sunshine Mix" width="320" height="260" loading="lazy" />
-                  <img class="product-card__img" src="assets/images/product-1.webp" alt="Sunshine Mix" width="320" height="260" loading="lazy" />
+                  <img class="product-card__img is-active" src="assets/images/product-3.webp" alt="Sunshine Mix" width="320" height="260" loading="lazy" />
+                  <img class="product-card__img" src="assets/images/product-4.webp" alt="Sunshine Mix" width="320" height="260" loading="lazy" />
                   <img class="product-card__img" src="assets/images/product-2.webp" alt="Sunshine Mix" width="320" height="260" loading="lazy" />
                 </div>
                 <div class="product-card__dots">
@@ -217,7 +262,8 @@
             </div>
           </div>
           <p class="products-empty" data-fav-empty hidden>В избранном пока ничего нет.</p>
-        </section>
+          <a class="account-logout m-only" href="login.html"><img src="assets/images/log-out.svg" alt="" width="20" height="20" />Выйти из аккаунта</a>
+      </section>
       </section>
     </div>
   </main>
@@ -227,12 +273,28 @@
       <img src="assets/logo/logo.svg" alt="FLEX" width="265" height="60" loading="lazy" />
     </a>
 
+    <p class="footer__desc">Устройства, стики и аксессуары для современного опыта.</p>
+
+    <div class="footer__social footer__social--mobile">
+      <a class="footer__social-link" href="#" aria-label="Instagram"><img src="assets/images/social-user.svg" alt="" width="20" height="20" loading="lazy" /></a>
+      <a class="footer__social-link" href="#" aria-label="WhatsApp"><img src="assets/images/whatsapp.svg" alt="" width="20" height="20" loading="lazy" /></a>
+      <a class="footer__social-link" href="#" aria-label="Telegram"><img src="assets/images/telegram.svg" alt="" width="20" height="20" loading="lazy" /></a>
+    </div>
+
+    <ul class="footer__mnav" aria-label="Разделы">
+      <li><a class="footer__mnav-link" href="catalog.html">Каталог<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="footer__mnav-link" href="favorites.html">Избранное<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="footer__mnav-link" href="starter-kit.html">Программы<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="footer__mnav-link" href="about.html">О бренде<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="footer__mnav-link" href="help.html">Помощь<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+    </ul>
+
     <nav class="footer__nav" aria-label="Карта сайта">
       <div class="footer__col">
         <h2 class="footer__title">Каталог</h2>
         <ul class="footer__list">
-          <li><a class="footer__link" href="#">Стики</a></li>
-          <li><a class="footer__link" href="#">Устройства</a></li>
+          <li><a class="footer__link" href="stick.html">Стики</a></li>
+          <li><a class="footer__link" href="device.html">Устройства</a></li>
         </ul>
       </div>
 
@@ -240,15 +302,15 @@
         <h2 class="footer__title">Программы</h2>
         <ul class="footer__list">
           <li><a class="footer__link" href="starter-kit.html">Стартовый набор</a></li>
-          <li><a class="footer__link" href="#">Реферальная программа</a></li>
+          <li><a class="footer__link" href="referral.html">Реферальная программа</a></li>
         </ul>
       </div>
 
       <div class="footer__col">
         <h2 class="footer__title">О бренде</h2>
         <ul class="footer__list">
-          <li><a class="footer__link footer__link--upper" href="#">Flex</a></li>
-          <li><a class="footer__link footer__link--upper" href="#">Faiim</a></li>
+          <li><a class="footer__link footer__link--upper" href="about.html">Flex</a></li>
+          <li><a class="footer__link footer__link--upper" href="faiim.html">Faiim</a></li>
           <li><a class="footer__link" href="#">Новости</a></li>
         </ul>
       </div>
@@ -278,11 +340,13 @@
       <a class="footer__link" href="#">Документы</a>
       <a class="footer__link" href="#">Согласие на сбор, обработку и хранение перс.данных</a>
     </div>
+
+    <p class="footer__copy">© 2026 FLEX. Все права защищены.</p>
   </footer>
 
   <script src="assets/vendor/lenis.min.js" defer></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
   <script src="assets/vendor/fancybox/fancybox.umd.js" defer></script>
-  <script src="src/lib/main.js?v=15" defer></script>
+  <script src="src/lib/main.js?v=37" defer></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
   <title>Страница не найдена — Flex</title>
   <meta name="robots" content="noindex" />
 
-  <link rel="stylesheet" href="src/styles/main.css?v=25" />
+  <link rel="stylesheet" href="src/styles/main.css?v=82" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="assets/vendor/fancybox/fancybox.css" />
 </head>
@@ -56,13 +56,22 @@
   </div>
 
   <header class="header">
+    <button class="header__burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu" data-burger>
+      <span></span><span></span><span></span>
+    </button>
     <nav class="header__nav" aria-label="Основное меню">
-      <button class="header__link" type="button" aria-expanded="false">
-        <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
-        О Бренде
-        <img class="header__arrow" src="assets/images/arrow-drop-up.svg" alt="" width="24" height="24" />
-      </button>
-      <a class="header__link header__link--catalog" href="#">
+      <div class="header__item" data-menu>
+        <button class="header__link" type="button" aria-expanded="false" aria-controls="menu-brand" data-menu-trigger>
+          <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+          О Бренде
+          <img class="header__arrow" src="assets/images/arrow-drop-up.svg" alt="" width="24" height="24" />
+        </button>
+        <ul class="header__menu" id="menu-brand" data-menu-list hidden>
+          <li><a class="header__menu-link" href="about.html">О FLEX</a></li>
+          <li><a class="header__menu-link" href="faiim.html">О FAIIM</a></li>
+        </ul>
+      </div>
+      <a class="header__link header__link--catalog" href="catalog.html">
         <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
         Каталог
       </a>
@@ -94,6 +103,36 @@
     </div>
   </header>
 
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Мобильное меню" data-mobile-menu hidden>
+    <div class="mobile-menu__top">
+      <ul class="mobile-menu__list">
+      <li><a class="mobile-menu__link" href="catalog.html">Каталог<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="favorites.html">Избранное<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="starter-kit.html">Программы<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="about.html">О бренде<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="help.html">Помощь<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      </ul>
+
+      <div class="mobile-menu__lang">
+        <p class="mobile-menu__caption">Язык</p>
+        <div class="lang-switch" role="radiogroup" aria-label="Язык">
+          <button class="lang-switch__btn is-active" type="button" role="radio" aria-checked="true">RU</button>
+          <button class="lang-switch__btn" type="button" role="radio" aria-checked="false">KZ</button>
+          <button class="lang-switch__btn" type="button" role="radio" aria-checked="false">EN</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-menu__social">
+      <p class="mobile-menu__caption">Свяжитесь с нами</p>
+  <div class="mobile-menu__social-list">
+      <a class="footer__social-link" href="#" aria-label="Instagram"><img src="assets/images/social-user.svg" alt="" width="20" height="20" loading="lazy" /></a>
+      <a class="footer__social-link" href="#" aria-label="WhatsApp"><img src="assets/images/whatsapp.svg" alt="" width="20" height="20" loading="lazy" /></a>
+      <a class="footer__social-link" href="#" aria-label="Telegram"><img src="assets/images/telegram.svg" alt="" width="20" height="20" loading="lazy" /></a>
+    </div>
+    </div>
+  </nav>
+
   <main class="error-page">
     <div class="error-page__art" aria-hidden="true">
       <img src="assets/images/404.svg" alt="" width="591" height="234" />
@@ -104,7 +143,7 @@
       <p class="error-page__text">Похоже, такой страницы не существует или она была перемещена. Вернитесь на главную или продолжите знакомство с FLEX.</p>
       <div class="error-page__actions">
         <a class="button button--auto" href="index.html">На главную</a>
-        <a class="button button--ghost" href="#">Перейти в каталог</a>
+        <a class="button button--ghost" href="catalog.html">Перейти в каталог</a>
       </div>
     </div>
   </main>
@@ -114,12 +153,28 @@
       <img src="assets/logo/logo.svg" alt="FLEX" width="265" height="60" loading="lazy" />
     </a>
 
+    <p class="footer__desc">Устройства, стики и аксессуары для современного опыта.</p>
+
+    <div class="footer__social footer__social--mobile">
+      <a class="footer__social-link" href="#" aria-label="Instagram"><img src="assets/images/social-user.svg" alt="" width="20" height="20" loading="lazy" /></a>
+      <a class="footer__social-link" href="#" aria-label="WhatsApp"><img src="assets/images/whatsapp.svg" alt="" width="20" height="20" loading="lazy" /></a>
+      <a class="footer__social-link" href="#" aria-label="Telegram"><img src="assets/images/telegram.svg" alt="" width="20" height="20" loading="lazy" /></a>
+    </div>
+
+    <ul class="footer__mnav" aria-label="Разделы">
+      <li><a class="footer__mnav-link" href="catalog.html">Каталог<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="footer__mnav-link" href="favorites.html">Избранное<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="footer__mnav-link" href="starter-kit.html">Программы<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="footer__mnav-link" href="about.html">О бренде<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="footer__mnav-link" href="help.html">Помощь<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+    </ul>
+
     <nav class="footer__nav" aria-label="Карта сайта">
       <div class="footer__col">
         <h2 class="footer__title">Каталог</h2>
         <ul class="footer__list">
-          <li><a class="footer__link" href="#">Стики</a></li>
-          <li><a class="footer__link" href="#">Устройства</a></li>
+          <li><a class="footer__link" href="stick.html">Стики</a></li>
+          <li><a class="footer__link" href="device.html">Устройства</a></li>
         </ul>
       </div>
 
@@ -127,15 +182,15 @@
         <h2 class="footer__title">Программы</h2>
         <ul class="footer__list">
           <li><a class="footer__link" href="starter-kit.html">Стартовый набор</a></li>
-          <li><a class="footer__link" href="#">Реферальная программа</a></li>
+          <li><a class="footer__link" href="referral.html">Реферальная программа</a></li>
         </ul>
       </div>
 
       <div class="footer__col">
         <h2 class="footer__title">О бренде</h2>
         <ul class="footer__list">
-          <li><a class="footer__link footer__link--upper" href="#">Flex</a></li>
-          <li><a class="footer__link footer__link--upper" href="#">Faiim</a></li>
+          <li><a class="footer__link footer__link--upper" href="about.html">Flex</a></li>
+          <li><a class="footer__link footer__link--upper" href="faiim.html">Faiim</a></li>
           <li><a class="footer__link" href="#">Новости</a></li>
         </ul>
       </div>
@@ -165,11 +220,13 @@
       <a class="footer__link" href="#">Документы</a>
       <a class="footer__link" href="#">Согласие на сбор, обработку и хранение перс.данных</a>
     </div>
+
+    <p class="footer__copy">© 2026 FLEX. Все права защищены.</p>
   </footer>
 
   <script src="assets/vendor/lenis.min.js" defer></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
   <script src="assets/vendor/fancybox/fancybox.umd.js" defer></script>
-  <script src="src/lib/main.js?v=15" defer></script>
+  <script src="src/lib/main.js?v=37" defer></script>
 </body>
 </html>

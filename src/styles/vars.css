@@ -54,10 +54,6 @@
   --font-main: "TT Norms Pro Trial", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
-@media (max-width: 1024px) {
-  :root { --width-base: 768; --width-current: 100vmin; }
-}
-
 @media (max-width: 767px) {
-  :root { --width-base: 390; --width-current: 100vmin; }
+  :root { --width-base: 390; --width-current: 100vw; }
 }

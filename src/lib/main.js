@@ -328,16 +328,15 @@
   };
 
   const initFaq = () => {
-    const list = document.querySelector("[data-faq]");
-    if (!list) return;
-
-    list.addEventListener("click", (e) => {
-      const toggle = e.target.closest(".faq__toggle");
-      if (!toggle) return;
-      const item = toggle.closest(".faq__item");
-      const open = !item.classList.contains("is-open");
-      item.classList.toggle("is-open", open);
-      toggle.setAttribute("aria-expanded", String(open));
+    document.querySelectorAll("[data-faq]").forEach((list) => {
+      list.addEventListener("click", (e) => {
+        const toggle = e.target.closest(".faq__toggle");
+        if (!toggle) return;
+        const item = toggle.closest(".faq__item");
+        const open = !item.classList.contains("is-open");
+        item.classList.toggle("is-open", open);
+        toggle.setAttribute("aria-expanded", String(open));
+      });
     });
   };
 
@@ -353,6 +352,7 @@
     };
 
     trigger.addEventListener("click", () => setOpen(menu.hidden));
+    menu.querySelectorAll("[data-select-close]").forEach((b) => b.addEventListener("click", () => { setOpen(false); trigger.focus(); }));
 
     options.forEach((option) => {
       option.addEventListener("click", () => {
@@ -390,12 +390,24 @@
     const tipAddress = tooltip.querySelector("[data-tooltip-address]");
     const tipMeta = tooltip.querySelector("[data-tooltip-meta]");
 
+    const openStatus = (hours) => {
+      const m = hours.match(/(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/);
+      if (!m) return hours;
+      const now = new Date();
+      const mins = now.getHours() * 60 + now.getMinutes();
+      const from = +m[1] * 60 + +m[2];
+      const to = +m[3] * 60 + +m[4];
+      return mins >= from && mins < to ? "Открыто" : "Закрыто";
+    };
+
     const pinFor = (id) => pins.find((p) => p.dataset.pin.split(",").includes(id));
 
     const placeTooltip = (pin) => {
       const gap = pin.offsetWidth + 6;
       let left = pin.offsetLeft + gap;
-      if (left + tooltip.offsetWidth > pin.offsetParent.clientWidth) left = pin.offsetLeft - tooltip.offsetWidth - 6;
+      const box = pin.offsetParent.clientWidth;
+      if (left + tooltip.offsetWidth > box) left = pin.offsetLeft - tooltip.offsetWidth - 6;
+      left = Math.max(8, Math.min(left, box - tooltip.offsetWidth - 8));
       tooltip.style.left = left + "px";
       tooltip.style.top = Math.max(0, pin.offsetTop - 28) + "px";
     };
@@ -413,7 +425,7 @@
 
       tipName.textContent = card.querySelector(".store__name").textContent;
       tipAddress.textContent = card.querySelector(".store__address").textContent;
-      tipMeta.textContent = card.querySelector(".store__distance").textContent + " • " + card.querySelector(".store__hours").textContent;
+      tipMeta.textContent = card.querySelector(".store__distance").textContent + " • " + openStatus(card.querySelector(".store__hours").textContent);
       if (pin) placeTooltip(pin);
 
       if (scroll) card.scrollIntoView({ block: "nearest", behavior: "smooth" });
@@ -578,14 +590,29 @@
       const dots = [...card.querySelectorAll(".product-card__dot")];
       if (imgs.length < 2) return;
 
+      let current = 0;
+      let timer = 0;
+
       const show = (index) => {
+        current = index;
         imgs.forEach((img, i) => img.classList.toggle("is-active", i === index));
         dots.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
       };
 
-      card.addEventListener("mouseenter", () => show(1));
-      card.addEventListener("mouseleave", () => show(0));
-      dots.forEach((dot, i) => dot.addEventListener("click", () => show(i)));
+      const stop = () => { clearInterval(timer); timer = 0; };
+
+      card.addEventListener("mouseenter", () => {
+        stop();
+        show(1);
+        timer = setInterval(() => show((current + 1) % imgs.length), 1200);
+      });
+
+      card.addEventListener("mouseleave", () => {
+        stop();
+        show(0);
+      });
+
+      dots.forEach((dot, i) => dot.addEventListener("click", () => { stop(); show(i); }));
     });
 
     document.querySelectorAll("[data-fav]").forEach((btn) => {
@@ -602,6 +629,7 @@
   const initProductSwipers = () => {
     if (!window.Swiper) return;
     document.querySelectorAll("[data-products-swiper]").forEach((el) => {
+      if (el.hasAttribute("data-fav-list") && window.matchMedia("(max-width: 767px)").matches) return;
       new Swiper(el, {
         slidesPerView: "auto",
         spaceBetween: 24 * (window.innerWidth / 1440),
@@ -616,11 +644,506 @@
     });
   };
 
+  const initTabs = () => {
+    document.querySelectorAll("[data-tabs]").forEach((list) => {
+      const tabs = [...list.querySelectorAll('[role="tab"]')];
+
+      const select = (tab) => {
+        tabs.forEach((t) => {
+          const on = t === tab;
+          t.classList.toggle("is-active", on);
+          t.setAttribute("aria-selected", String(on));
+          t.tabIndex = on ? 0 : -1;
+          const panel = document.getElementById(t.getAttribute("aria-controls"));
+          if (panel) panel.hidden = !on;
+        });
+      };
+
+      tabs.forEach((tab, i) => {
+        tab.addEventListener("click", () => select(tab));
+        tab.addEventListener("keydown", (e) => {
+          const step = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+          if (!step) return;
+          e.preventDefault();
+          const next = tabs[(i + step + tabs.length) % tabs.length];
+          select(next);
+          next.focus();
+        });
+      });
+    });
+  };
+
+  const initShades = () => {
+    const el = document.querySelector("[data-shades]");
+    if (!el) return;
+    if (!("IntersectionObserver" in window)) { el.classList.add("is-active"); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        el.classList.add("is-active");
+        io.disconnect();
+      });
+    }, { threshold: 0.35 });
+    io.observe(el);
+  };
+
+  const initHeaderMenus = () => {
+    const menus = [...document.querySelectorAll("[data-menu]")];
+    if (!menus.length) return;
+    const canHover = window.matchMedia("(hover: hover)").matches;
+
+    const setOpen = (menu, open) => {
+      const trigger = menu.querySelector("[data-menu-trigger]");
+      const list = menu.querySelector("[data-menu-list]");
+      clearTimeout(menu.closeTimer);
+      list.hidden = !open;
+      trigger.setAttribute("aria-expanded", String(open));
+    };
+
+    menus.forEach((menu) => {
+      const trigger = menu.querySelector("[data-menu-trigger]");
+
+      trigger.addEventListener("click", () => {
+        const open = trigger.getAttribute("aria-expanded") !== "true";
+        menus.forEach((m) => { if (m !== menu) setOpen(m, false); });
+        setOpen(menu, open);
+      });
+
+      if (canHover) {
+        menu.addEventListener("mouseenter", () => setOpen(menu, true));
+        menu.addEventListener("mouseleave", () => {
+          menu.closeTimer = setTimeout(() => setOpen(menu, false), 150);
+        });
+      }
+
+      menu.addEventListener("keydown", (e) => {
+        if (e.key !== "Escape") return;
+        setOpen(menu, false);
+        trigger.focus();
+      });
+
+      menu.addEventListener("focusout", (e) => {
+        if (!menu.contains(e.relatedTarget)) setOpen(menu, false);
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      menus.forEach((m) => { if (!m.contains(e.target)) setOpen(m, false); });
+    });
+  };
+
+  const initStick = () => {
+    const root = document.querySelector("[data-stick]");
+    const dataEl = document.getElementById("stick-data");
+    if (!root || !dataEl) return;
+
+    const flavours = JSON.parse(dataEl.textContent);
+    const swatches = [...root.querySelectorAll("[data-flavour]")];
+    const text = root.querySelector("[data-stick-text]");
+    const metrics = [...root.querySelectorAll("[data-metric]")];
+    const labels = ["Насыщенность", "Ментол"];
+
+    const heading = root.querySelector("[data-stick-heading]");
+    const param = root.dataset.param || "flavour";
+    const titleTpl = root.dataset.title || "{name}";
+
+    const apply = (key, push) => {
+      const f = flavours[key];
+      if (!f) return;
+      root.querySelectorAll("[data-stick-name]").forEach((el) => { el.textContent = f.name; });
+      if (text && f.text) text.textContent = f.text;
+      if (heading && f.heading) heading.textContent = f.heading;
+      if (f.metrics) {
+        metrics.forEach((m, i) => {
+          [...m.children].forEach((dot, k) => dot.classList.toggle("is-on", k < f.metrics[i]));
+          m.setAttribute("aria-label", labels[i] + ": " + f.metrics[i] + " из 5");
+        });
+      }
+      swatches.forEach((s) => {
+        const on = s.dataset.flavour === key;
+        s.classList.toggle("is-active", on);
+        s.setAttribute("aria-checked", String(on));
+      });
+      document.title = titleTpl.replace("{name}", f.name);
+      if (push) history.replaceState(null, "", "?" + param + "=" + key);
+    };
+
+    const slideIndex = (key) => {
+      const el = root.querySelector('[data-slide-flavour="' + key + '"]');
+      if (!el) return 0;
+      const real = el.getAttribute("data-swiper-slide-index");
+      return real !== null ? Number(real) : [...root.querySelectorAll("[data-slide-flavour]")].indexOf(el);
+    };
+
+    swatches.forEach((s) => s.addEventListener("click", () => {
+      apply(s.dataset.flavour, true);
+      if (gallery) gallery.slideToLoop(slideIndex(s.dataset.flavour));
+    }));
+
+    const initial = new URLSearchParams(location.search).get(param);
+    if (initial && flavours[initial]) apply(initial, false);
+
+    const el = root.querySelector("[data-stick-gallery]");
+    const dotsBox = root.querySelector("[data-stick-dots]");
+    let gallery = null;
+    if (!el || !window.Swiper) return;
+
+    gallery = new Swiper(el, {
+      loop: true,
+      speed: 500,
+      grabCursor: true,
+      navigation: {
+        prevEl: root.querySelector("[data-stick-prev]"),
+        nextEl: root.querySelector("[data-stick-next]"),
+      },
+      pagination: {
+        el: dotsBox,
+        clickable: true,
+        bulletClass: "stick-gallery__dot",
+        bulletActiveClass: "is-active",
+        bulletElement: "button",
+      },
+      on: {
+        slideChange(sw) {
+          const slide = sw.slides[sw.activeIndex];
+          if (slide && slide.dataset.slideFlavour) apply(slide.dataset.slideFlavour, true);
+        },
+      },
+    });
+
+    if (initial && flavours[initial]) gallery.slideToLoop(slideIndex(initial), 0);
+  };
+
+  const initCatalog = () => {
+    const root = document.querySelector("[data-catalog]");
+    if (!root) return;
+
+    const grid = root.querySelector("[data-catalog-grid]");
+    const cards = [...grid.querySelectorAll("[data-category]")];
+    const tabs = [...root.querySelectorAll("[data-filter]")];
+    const more = root.querySelector("[data-catalog-more]");
+    const empty = root.querySelector("[data-catalog-empty]");
+    const promoCard = root.querySelector("[data-catalog-promo]");
+    const PAGE = 8;
+    let filter = "all";
+    let limit = PAGE;
+
+    const render = () => {
+      const matching = [...grid.querySelectorAll("[data-category]")]
+        .filter((c) => (filter === "all" || c.dataset.category === filter) && matchesFilters(c, applied));
+      cards.forEach((c) => { c.hidden = true; });
+      matching.forEach((c, i) => { c.hidden = i >= limit; });
+      more.hidden = matching.length <= limit;
+      empty.hidden = matching.length > 0;
+      if (promoCard) {
+        const plain = filter === "all" && !applied.notes.length && !applied.menthol && !applied.capsule;
+        promoCard.hidden = !plain;
+      }
+    };
+
+    const filterRoot = root.querySelector("[data-filter-root]");
+    const filterPanel = root.querySelector("[data-filter-panel]");
+    const filterTrigger = root.querySelector("[data-filter-trigger]");
+    const filterBadge = root.querySelector("[data-filter-badge]");
+    const filterApply = root.querySelector("[data-filter-apply]");
+
+    const readFilters = () => {
+      const data = new FormData(filterPanel);
+      return { notes: data.getAll("notes"), menthol: data.get("menthol"), capsule: data.get("capsule") };
+    };
+
+    const matchesFilters = (card, f) => {
+      if (!f.notes.length && !f.menthol && !f.capsule) return true;
+      if (!("menthol" in card.dataset)) return false;
+      if (f.notes.length && !f.notes.some((n) => card.dataset.notes.split(" ").includes(n))) return false;
+      if (f.menthol && card.dataset.menthol !== f.menthol) return false;
+      if (f.capsule && card.dataset.capsule !== f.capsule) return false;
+      return true;
+    };
+
+    let applied = readFilters();
+
+    const countFor = (f) => cards.filter((c) => (filter === "all" || c.dataset.category === filter) && matchesFilters(c, f)).length;
+
+    const plural = (n) => {
+      const m10 = n % 10;
+      const m100 = n % 100;
+      if (m10 === 1 && m100 !== 11) return "товар";
+      if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return "товара";
+      return "товаров";
+    };
+
+    const filterCount = root.querySelector("[data-filter-count]");
+    const filterBackdrop = root.querySelector("[data-filter-backdrop]");
+
+    const updatePreview = () => {
+      const f = readFilters();
+      const n = countFor(f);
+      filterApply.textContent = "Показать " + n + " " + plural(n);
+      const selected = f.notes.length + (f.menthol ? 1 : 0) + (f.capsule ? 1 : 0);
+      filterCount.textContent = selected;
+      filterCount.hidden = selected === 0;
+    };
+
+    const updateBadge = () => {
+      const n = applied.notes.length + (applied.menthol ? 1 : 0) + (applied.capsule ? 1 : 0);
+      filterBadge.textContent = n;
+      filterBadge.hidden = n === 0;
+    };
+
+    const isSheet = () => window.matchMedia("(max-width: 767px)").matches;
+
+    const setFilterOpen = (open) => {
+      filterPanel.hidden = !open;
+      filterBackdrop.hidden = !(open && isSheet());
+      document.documentElement.style.overflow = open && isSheet() ? "hidden" : "";
+      filterTrigger.setAttribute("aria-expanded", String(open));
+      if (open) updatePreview();
+    };
+
+    filterBackdrop.addEventListener("click", () => setFilterOpen(false));
+
+    filterTrigger.addEventListener("click", () => setFilterOpen(filterPanel.hidden));
+    filterPanel.querySelectorAll('input[type="radio"]').forEach((radio) => {
+      const label = radio.closest("label");
+      label.addEventListener("pointerdown", () => { radio.dataset.wasChecked = radio.checked ? "1" : ""; });
+      radio.addEventListener("click", () => {
+        if (radio.dataset.wasChecked !== "1") return;
+        radio.checked = false;
+        radio.dataset.wasChecked = "";
+        updatePreview();
+      });
+    });
+
+    filterPanel.addEventListener("change", updatePreview);
+    filterPanel.addEventListener("reset", () => setTimeout(updatePreview));
+
+    filterPanel.addEventListener("submit", (e) => {
+      e.preventDefault();
+      applied = readFilters();
+      limit = PAGE;
+      updateBadge();
+      render();
+      setFilterOpen(false);
+      filterTrigger.focus();
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!filterPanel.hidden && !filterRoot.contains(e.target)) setFilterOpen(false);
+    });
+
+    filterRoot.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !filterPanel.hidden) { setFilterOpen(false); filterTrigger.focus(); }
+    });
+
+    tabs.forEach((tab) => tab.addEventListener("click", () => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.classList.toggle("is-active", on);
+        t.setAttribute("aria-selected", String(on));
+      });
+      filter = tab.dataset.filter;
+      limit = PAGE;
+      render();
+    }));
+
+    more.addEventListener("click", () => {
+      limit += PAGE;
+      render();
+    });
+
+    root.querySelectorAll("[data-sort]").forEach((opt) => opt.addEventListener("click", () => {
+      const sorted = opt.dataset.sort === "alpha"
+        ? [...cards].sort((a, b) => a.dataset.name.localeCompare(b.dataset.name, "ru"))
+        : cards;
+      sorted.forEach((c) => grid.appendChild(c));
+      render();
+    }));
+
+    render();
+
+    const promo = root.querySelector("[data-promo]");
+    if (promo && window.Swiper) {
+      new Swiper(promo, {
+        loop: true,
+        speed: 600,
+        grabCursor: true,
+        autoplay: { delay: 6000, disableOnInteraction: false, pauseOnMouseEnter: true },
+        pagination: {
+          el: root.querySelector("[data-promo-dots]"),
+          clickable: true,
+          bulletClass: "stick-gallery__dot",
+          bulletActiveClass: "is-active",
+          bulletElement: "button",
+        },
+      });
+    }
+  };
+
+  const initCopy = () => {
+    document.querySelectorAll("[data-copy]").forEach((root) => {
+      const input = root.querySelector("[data-copy-value]");
+      const btn = root.querySelector("[data-copy-btn]");
+      const status = root.querySelector("[data-copy-status]");
+      let timer = 0;
+
+      const done = (text) => {
+        status.textContent = text;
+        status.classList.add("is-visible");
+        clearTimeout(timer);
+        timer = setTimeout(() => status.classList.remove("is-visible"), 2000);
+      };
+
+      btn.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(input.value);
+          done("Скопировано");
+        } catch (e) {
+          input.select();
+          done("Нажмите Ctrl+C, чтобы скопировать");
+        }
+      });
+
+      input.addEventListener("focus", () => input.select());
+    });
+  };
+
+  const initHome = () => {
+    const reveal = (el, threshold) => {
+      if (!("IntersectionObserver" in window)) { el.classList.add("is-active"); return; }
+      const io = new IntersectionObserver((entries) => {
+        if (!entries[0].isIntersecting) return;
+        el.classList.add("is-active");
+        io.disconnect();
+      }, { threshold });
+      io.observe(el);
+    };
+
+    document.querySelectorAll("[data-lineup]").forEach((el) => {
+      reveal(el, 0.3);
+      const last = el.querySelector(".lineup__item:last-child");
+      last.addEventListener("transitionend", (e) => {
+        if (e.target === last && e.propertyName === "transform") el.classList.add("is-ready");
+      });
+    });
+
+    document.querySelectorAll("[data-cycle]").forEach((el) => {
+      const items = [...el.querySelectorAll("[data-cycle-item]")];
+      if (items.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      let i = 0;
+      setInterval(() => {
+        items[i].classList.remove("is-active");
+        i = (i + 1) % items.length;
+        items[i].classList.add("is-active");
+      }, 4000);
+    });
+  };
+
+  const initLangSwitch = () => {
+    document.querySelectorAll(".lang-switch").forEach((group) => {
+      const btns = [...group.querySelectorAll(".lang-switch__btn")];
+      btns.forEach((b) => b.addEventListener("click", () => {
+        btns.forEach((x) => {
+          const on = x === b;
+          x.classList.toggle("is-active", on);
+          x.setAttribute("aria-checked", String(on));
+        });
+      }));
+    });
+  };
+
+  const initMobileMenu = () => {
+    const burger = document.querySelector("[data-burger]");
+    const menu = document.querySelector("[data-mobile-menu]");
+    if (!burger || !menu) return;
+
+    const setOpen = (open) => {
+      menu.hidden = !open;
+      burger.setAttribute("aria-expanded", String(open));
+      burger.setAttribute("aria-label", open ? "Закрыть меню" : "Меню");
+      document.documentElement.style.overflow = open ? "hidden" : "";
+    };
+
+    burger.addEventListener("click", () => setOpen(menu.hidden));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !menu.hidden) setOpen(false); });
+    window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => { if (e.matches) setOpen(false); });
+  };
+
+  const initMobileHome = () => {
+    const features = document.querySelector("[data-features]");
+    if (features && window.Swiper) {
+      new Swiper(features, {
+        slidesPerView: 1,
+        spaceBetween: 12,
+        autoHeight: true,
+        grabCursor: true,
+        autoplay: { delay: 5000, disableOnInteraction: true },
+      });
+    }
+
+    const picker = document.querySelector("[data-picker]");
+    if (!picker) return;
+    const devices = [...picker.querySelectorAll("[data-picker-device]")];
+    const buttons = [...picker.querySelectorAll("[data-picker-color]")];
+
+    const select = (key) => {
+      let slot = 1;
+      devices.forEach((d) => {
+        const on = d.dataset.pickerDevice === key;
+        d.classList.toggle("is-active", on);
+        if (on) d.removeAttribute("data-slot");
+        else d.dataset.slot = String(slot++);
+      });
+      buttons.forEach((b) => {
+        const on = b.dataset.pickerColor === key;
+        b.classList.toggle("is-active", on);
+        b.setAttribute("aria-checked", String(on));
+      });
+    };
+
+    buttons.forEach((b) => b.addEventListener("click", () => select(b.dataset.pickerColor)));
+    select(buttons[0].dataset.pickerColor);
+  };
+
+  const initReadMore = () => {
+    document.querySelectorAll("[data-read-more]").forEach((box) => {
+      const text = box.querySelector(".read-more__text");
+      const btn = box.querySelector("[data-read-more-btn]");
+      const label = btn.firstChild;
+
+      const check = () => {
+        if (box.classList.contains("is-open")) return;
+        btn.hidden = text.scrollHeight <= text.clientHeight + 1;
+      };
+
+      btn.addEventListener("click", () => {
+        const open = !box.classList.contains("is-open");
+        box.classList.toggle("is-open", open);
+        btn.setAttribute("aria-expanded", String(open));
+        label.textContent = open ? "Свернуть " : "Показать полностью ";
+      });
+
+      check();
+      window.addEventListener("resize", check);
+    });
+  };
+
   initAuth();
   initFaq();
   initStores();
   initProfile();
   initProductCards();
   initProductSwipers();
+  initTabs();
+  initShades();
+  initHeaderMenus();
+  initStick();
+  initCatalog();
+  initCopy();
+  initHome();
+  initMobileMenu();
+  initLangSwitch();
+  initReadMore();
+  initMobileHome();
   document.querySelectorAll("[data-select]").forEach((el) => initSelect(el));
 })();

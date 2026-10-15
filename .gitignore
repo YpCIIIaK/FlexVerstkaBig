@@ -23,3 +23,6 @@ assets/fonts/*.zip
 assets/fonts/tt-norms-pro/
 assets/fonts/test/
 font-test.html
+
+# исходные видео: в вёрстке используются пережатые из assets/video
+assets/images/*.mp4

@@ -108,3 +108,91 @@
   width: calc(100% + 160 * var(--wm));
   padding: calc(20 * var(--wm)) 0;
 }
+
+.footer__desc,
+.footer__social--mobile,
+.footer__mnav,
+.footer__copy { display: none; }
+
+@media (max-width: 767px) {
+  .footer {
+    align-items: stretch;
+    gap: calc(24 * var(--wm));
+    padding: calc(64 * var(--wm)) calc(16 * var(--wm)) calc(24 * var(--wm));
+    border-top: 1px solid var(--w-10);
+  }
+
+  .footer__logo { align-self: center; }
+
+  .footer__logo img {
+    width: calc(106 * var(--wm));
+    height: calc(24 * var(--wm));
+  }
+
+  .footer__desc {
+    display: block;
+    margin-top: calc(-8 * var(--wm));
+    font-size: calc(14 * var(--wm));
+    line-height: calc(20 * var(--wm));
+    text-align: center;
+    color: var(--w-80);
+  }
+
+  .footer__social--mobile {
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer__nav { display: none; }
+
+  .footer__mnav {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--w-10);
+  }
+
+  .footer__mnav-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(52 * var(--wm));
+    border-bottom: 1px solid var(--w-10);
+    font-size: calc(16 * var(--wm));
+    font-weight: 700;
+    line-height: calc(20 * var(--wm));
+  }
+
+  .footer__mnav-arrow {
+    width: calc(16 * var(--wm));
+    height: calc(16 * var(--wm));
+    fill: none;
+    stroke: var(--w-80);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: calc(8 * var(--wm));
+    width: 100%;
+    padding: 0;
+    text-align: left;
+  }
+
+  .footer__bottom .footer__link {
+    font-size: calc(12 * var(--wm));
+    line-height: calc(16 * var(--wm));
+    white-space: normal;
+    color: var(--w-50);
+  }
+
+  .footer__bottom .footer__link:last-child { display: none; }
+
+  .footer__copy {
+    display: block;
+    font-size: calc(12 * var(--wm));
+    line-height: calc(16 * var(--wm));
+    color: var(--w-50);
+  }
+}

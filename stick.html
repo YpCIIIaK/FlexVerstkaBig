@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Purple Mix — стики FAIIM — Flex</title>
+  <meta name="description" content="Стики FAIIM для устройств FLEX: вкусы, насыщенность и ментол." />
+
+  <link rel="stylesheet" href="src/styles/main.css?v=82" />
+  <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="assets/vendor/fancybox/fancybox.css" />
+</head>
+<body>
+  <svg class="visually-hidden" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="cloud-gold" x1="54.2873" y1="5.07195" x2="26.9609" y2="25.2305" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-gold-start)" />
+        <stop offset="1" style="stop-color: var(--cloud-gold-end)" stop-opacity="0.4" />
+      </linearGradient>
+      <linearGradient id="cloud-green" x1="24.1852" y1="1.89462" x2="15.8294" y2="31.4495" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-green-start)" stop-opacity="0.4" />
+        <stop offset="1" style="stop-color: var(--cloud-green-end)" />
+      </linearGradient>
+      <linearGradient id="cloud-blue" x1="54.2873" y1="5.07195" x2="26.9609" y2="25.2305" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-blue-start)" />
+        <stop offset="1" style="stop-color: var(--cloud-blue-end)" stop-opacity="0.4" />
+      </linearGradient>
+      <linearGradient id="cloud-purple" x1="24.1852" y1="1.89462" x2="15.8294" y2="31.4495" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-purple-start)" stop-opacity="0.4" />
+        <stop offset="1" style="stop-color: var(--cloud-purple-end)" />
+      </linearGradient>
+      <linearGradient id="cloud-mint" x1="24.1852" y1="1.89462" x2="15.8294" y2="31.4495" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-mint-start)" />
+        <stop offset="1" style="stop-color: var(--cloud-mint-end)" stop-opacity="0.5" />
+      </linearGradient>
+      <linearGradient id="cloud-violet" x1="54.2873" y1="5.07195" x2="26.9609" y2="25.2305" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-purple-end)" />
+        <stop offset="1" style="stop-color: var(--cloud-purple-start)" stop-opacity="0.4" />
+      </linearGradient>
+      <linearGradient id="cloud-sand" x1="24.1852" y1="1.89462" x2="15.8294" y2="31.4495" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-gold-end)" stop-opacity="0.4" />
+        <stop offset="1" style="stop-color: var(--cloud-gold-start)" />
+      </linearGradient>
+      <symbol id="clouds" viewBox="0 0 58 32">
+        <g opacity="0.8">
+          <path d="M45.6102 27.384C38.9079 30.0171 33.2429 25.2896 31.2481 22.5967C29.7521 20.0035 27.6576 13.5605 31.2481 8.53372C35.7363 2.2503 39.007 0.455029 47.7047 0.455078C55.7834 0.455124 58.7957 5.82264 56.5546 8.0794C54.0344 10.6171 53.8617 11.0715 53.9881 13.6203C54.2325 18.5457 53.9881 24.0927 45.6102 27.384Z" style="fill: var(--cloud-a, url(#cloud-gold))" />
+          <path d="M5.51217 8.83254C-3.34446 21.0403 0.425589 28.6802 3.41769 30.9741C9.70127 33.3679 17.4804 31.5725 27.6536 25.5883C37.8268 19.604 36.6288 12.8701 33.937 7.9349C30.3465 1.352 16.583 -6.4272 5.51217 8.83254Z" style="fill: var(--cloud-b, url(#cloud-green))" />
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="blobs blobs--fixed" aria-hidden="true">
+    <div class="blob blob--purple"></div>
+    <div class="blob blob--blue"></div>
+  </div>
+
+  <header class="header">
+    <button class="header__burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu" data-burger>
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="header__nav" aria-label="Основное меню">
+      <div class="header__item" data-menu>
+        <button class="header__link" type="button" aria-expanded="false" aria-controls="menu-brand" data-menu-trigger>
+          <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+          О Бренде
+          <img class="header__arrow" src="assets/images/arrow-drop-up.svg" alt="" width="24" height="24" />
+        </button>
+        <ul class="header__menu" id="menu-brand" data-menu-list hidden>
+          <li><a class="header__menu-link" href="about.html">О FLEX</a></li>
+          <li><a class="header__menu-link" href="faiim.html">О FAIIM</a></li>
+        </ul>
+      </div>
+      <a class="header__link header__link--catalog" href="catalog.html">
+        <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+        Каталог
+      </a>
+      <button class="header__link header__link--programs" type="button" aria-expanded="false">
+        <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+        Программы
+        <img class="header__arrow" src="assets/images/arrow-drop-up.svg" alt="" width="24" height="24" />
+      </button>
+      <a class="header__link header__link--help" href="help.html">
+        <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+        Помощь
+      </a>
+    </nav>
+
+    <a class="header__logo" href="index.html" aria-label="FLEX — на главную">
+      <img src="assets/logo/logo.svg" alt="FLEX" width="115" height="26" />
+    </a>
+
+    <div class="header__actions">
+      <div class="header__icons">
+        <a class="header__icon" href="#" aria-label="Поиск"><img src="assets/images/search.svg" alt="" width="20" height="20" /></a>
+        <a class="header__icon" href="favorites.html" aria-label="Избранное"><img src="assets/images/heart.svg" alt="" width="20" height="20" /></a>
+        <a class="header__icon" href="account.html" aria-label="Личный кабинет"><img src="assets/images/user.svg" alt="" width="20" height="20" /></a>
+      </div>
+      <button class="header__lang" type="button" aria-label="Язык: русский">
+        <img src="assets/images/globe.svg" alt="" width="20" height="20" />
+        RU
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Мобильное меню" data-mobile-menu hidden>
+    <div class="mobile-menu__top">
+      <ul class="mobile-menu__list">
+      <li><a class="mobile-menu__link" href="catalog.html">Каталог<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="favorites.html">Избранное<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="starter-kit.html">Программы<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="about.html">О бренде<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="help.html">Помощь<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      </ul>
+
+      <div class="mobile-menu__lang">
+        <p class="mobile-menu__caption">Язык</p>
+        <div class="lang-switch" role="radiogroup" aria-label="Язык">
+          <button class="lang-switch__btn is-active" type="button" role="radio" aria-checked="true">RU</button>
+          <button class="lang-switch__btn" type="button" role="radio" aria-checked="false">KZ</button>
+          <button class="lang-switch__btn" type="button" role="radio" aria-checked="false">EN</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-menu__social">
+      <p class="mobile-menu__caption">Свяжитесь с нами</p>
+  <div class="mobile-menu__social-list">
+      <a class="footer__social-link" href="#" aria-label="Instagram"><img src="assets/images/social-user.svg" alt="" width="20" height="20" loading="lazy" /></a>
+      <a class="footer__social-link" href="#" aria-label="WhatsApp"><img src="assets/images/whatsapp.svg" alt="" width="20" height="20" loading="lazy" /></a>
+      <a class="footer__social-link" href="#" aria-label="Telegram"><img src="assets/images/telegram.svg" alt="" width="20" height="20" loading="lazy" /></a>
+    </div>
+    </div>
+  </nav>
+
+  <main class="stick" data-stick data-param="flavour" data-title="{name} — стики FAIIM — Flex">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+      <a class="breadcrumbs__link" href="catalog.html">Каталог</a>
+      <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+      <a class="breadcrumbs__link" href="faiim.html">Стики</a>
+      <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+      <span class="breadcrumbs__current" aria-current="page" data-stick-name>Purple Mix</span>
+    </nav>
+
+    <section class="stick-hero">
+      <div class="stick-gallery">
+        <div class="stick-gallery__frame">
+          <div class="swiper stick-gallery__swiper" data-stick-gallery>
+            <div class="swiper-wrapper">
+              <div class="swiper-slide stick-gallery__slide stick-gallery__slide--pack" style="--glow-from: #fde6f3; --glow-to: #691996" data-slide-flavour="purple">
+                <img src="assets/images/product-2.webp" alt="Пачка FAIIM Purple Mix" width="640" height="520" fetchpriority="high" />
+              </div>
+              <div class="swiper-slide stick-gallery__slide stick-gallery__slide--pack" style="--glow-from: #fff5b2; --glow-to: #973d0a" data-slide-flavour="yellow">
+                <img src="assets/images/product-1.webp" alt="Пачка FAIIM Yellow Mix" width="640" height="520" loading="lazy" />
+              </div>
+              <div class="swiper-slide stick-gallery__slide stick-gallery__slide--pack" style="--glow-from: #eefbfb; --glow-to: #036b9a" data-slide-flavour="skygreen">
+                <img src="assets/images/product-4.webp" alt="Пачка FAIIM Skygreen" width="640" height="520" loading="lazy" />
+              </div>
+              <div class="swiper-slide stick-gallery__slide stick-gallery__slide--pack" style="--glow-from: #ffeb55; --glow-to: #e44f16" data-slide-flavour="sunshine">
+                <img src="assets/images/product-3.webp" alt="Пачка FAIIM Sunshine Mix" width="640" height="520" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <button class="stick-gallery__arrow stick-gallery__arrow--prev" type="button" aria-label="Предыдущее фото" data-stick-prev><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 15L7.5 10L12.5 5" /></svg></button>
+          <button class="stick-gallery__arrow stick-gallery__arrow--next" type="button" aria-label="Следующее фото" data-stick-next><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 15L12.5 10L7.5 5" /></svg></button>
+        </div>
+        <div class="stick-gallery__dots" data-stick-dots></div>
+      </div>
+
+      <div class="stick-info">
+        <div class="stick-info__head">
+          <h1 class="stick-info__title" data-stick-name>Purple Mix</h1>
+          <div class="read-more" data-read-more>
+            <p class="stick-info__text read-more__text" data-stick-text>Табачный бленд с ягодными нотами и капсулой с ментолом</p>
+            <button class="read-more__btn" type="button" aria-expanded="false" data-read-more-btn>Показать полностью <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" /></svg></button>
+          </div>
+          <div class="stick-info__metrics d-only">
+            <div class="flavour__metric stick-info__metric"><span class="flavour__metric-label">Насыщенность</span><span class="flavour__dots" role="img" aria-label="Насыщенность: 2 из 5" data-metric><span class="flavour__dot is-on"></span><span class="flavour__dot is-on"></span><span class="flavour__dot"></span><span class="flavour__dot"></span><span class="flavour__dot"></span></span></div>
+            <div class="flavour__metric stick-info__metric"><span class="flavour__metric-label">Ментол</span><span class="flavour__dots" role="img" aria-label="Ментол: 2 из 5" data-metric><span class="flavour__dot is-on"></span><span class="flavour__dot is-on"></span><span class="flavour__dot"></span><span class="flavour__dot"></span><span class="flavour__dot"></span></span></div>
+          </div>
+        </div>
+
+        <div class="stick-info__bottom">
+          <div class="stick-info__flavours">
+            <p class="stick-info__label">Вкус: <span data-stick-name>Purple Mix</span></p>
+            <div class="swatches" role="radiogroup" aria-label="Вкус">
+                <button class="swatch is-active" type="button" role="radio" aria-checked="true" aria-label="Purple Mix" data-flavour="purple" style="--swatch: linear-gradient(180deg, #e734bb 0%, #5377d8 100%); --ring: linear-gradient(180deg, #c63aa4 0%, #486ed4 100%)"><span></span></button>
+                <button class="swatch" type="button" role="radio" aria-checked="false" aria-label="Yellow Mix" data-flavour="yellow" style="--swatch: linear-gradient(180deg, #fa3918 0%, #fcd617 100%); --ring: linear-gradient(180deg, #fa3918 0%, #fcd617 100%)"><span></span></button>
+                <button class="swatch" type="button" role="radio" aria-checked="false" aria-label="Skygreen" data-flavour="skygreen" style="--swatch: linear-gradient(180deg, #50dfec 0%, #0167ab 100%); --ring: linear-gradient(180deg, #50dfec 0%, #0167ab 100%)"><span></span></button>
+                <button class="swatch" type="button" role="radio" aria-checked="false" aria-label="Sunshine Mix" data-flavour="sunshine" style="--swatch: linear-gradient(180deg, #adcd0e 0%, #df5b06 100%); --ring: linear-gradient(180deg, #adcd0e 0%, #df5b06 100%)"><span></span></button>
+            </div>
+          </div>
+          <a class="button button--ghost stick-info__cta" href="starter-kit.html">Стартовый набор</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="m-benefits m-only" aria-labelledby="m-about-title">
+      <h2 class="section-title" id="m-about-title">Стики FLEX</h2>
+      <p class="m-text">Линейка стиков FLEX объединяет классические и фруктовые вкусы. Выберите подходящий вариант по настроению. Упаковка помогает сохранить аромат, а формат стиков совместим с устройствами FLEX.</p>
+      <div class="kit">
+        <h3 class="kit__title">В упаковке:</h3>
+        <ul class="bullets">
+          <li class="bullets__item">Стики выбранного вкуса</li>
+          <li class="bullets__item">Герметичная внутренняя упаковка</li>
+          <li class="bullets__item">Информация о составе</li>
+          <li class="bullets__item">Информация о совместимости</li>
+          <li class="bullets__item">Рекомендации по хранению</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="m-benefits m-only" aria-labelledby="m-benefits-title">
+      <h2 class="section-title" id="m-benefits-title">Преимущества</h2>
+      <ul class="checklist">
+        <li class="checklist__item"><span class="checklist__icon" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 4.1 7.2 8 3" /></svg></span>Разнообразие вкусов</li>
+        <li class="checklist__item"><span class="checklist__icon" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 4.1 7.2 8 3" /></svg></span>Упаковка сохраняет аромат</li>
+        <li class="checklist__item"><span class="checklist__icon" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 4.1 7.2 8 3" /></svg></span>Стабильный вкус</li>
+        <li class="checklist__item"><span class="checklist__icon" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 4.1 7.2 8 3" /></svg></span>Совместимость с устройствами FLEX</li>
+        <li class="checklist__item"><span class="checklist__icon" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 4.1 7.2 8 3" /></svg></span>Контроль качества каждой партии</li>
+        <li class="checklist__item"><span class="checklist__icon" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 4.1 7.2 8 3" /></svg></span>Разработаны для устройств FLEX</li>
+      </ul>
+    </section>
+
+    <section class="stick-benefits d-only" aria-labelledby="benefits-title">
+      <h2 class="section-title" id="benefits-title">FAIIM</h2>
+      <div class="stick-benefits__row">
+        <article class="benefit">
+          <img class="benefit__img" src="assets/images/faiim-benefit-1.webp" alt="" width="101" height="101" loading="lazy" />
+          <h3 class="benefit__title">Разнообразие вкусов</h3>
+          <p class="benefit__text">Сбалансированные аутентичный вкус табака и ароматические оттенки капсул для разных предпочтений пользователя</p>
+        </article>
+        <article class="benefit">
+          <img class="benefit__img" src="assets/images/faiim-benefit-2.webp" alt="" width="101" height="101" loading="lazy" />
+          <h3 class="benefit__title">Два уникальных опыта использования</h3>
+          <p class="benefit__text">Табачные стики FAIIM представленные в двух технологиях предлагающих различные опыты использования</p>
+        </article>
+        <article class="benefit">
+          <img class="benefit__img" src="assets/images/faiim-benefit-3.webp" alt="" width="101" height="101" loading="lazy" />
+          <h3 class="benefit__title">Увеличенный объем аэрозоля</h3>
+          <p class="benefit__text">Усовершенствованная технология табачных стиков раскрывающая опыт использования</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="stick-devices" aria-labelledby="devices-title">
+      <h2 class="section-title" id="devices-title"><span class="t-desk">Линейка устройств FLEX</span><span class="t-mob">Выберите свой вкус</span></h2>
+      <div class="about-flavours__track d-only">
+        <article class="product-card product-card--device" data-product>
+          <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
+          </button>
+          <div class="product-card__gallery">
+            <img class="product-card__img is-active" src="assets/images/shade-righttop.webp" alt="FLEX Фиолетовый Песок" width="221" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/shade-leftbottom.webp" alt="FLEX Фиолетовый Песок" width="221" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/shade-rightbottom.webp" alt="FLEX Фиолетовый Песок" width="221" height="260" loading="lazy" />
+          </div>
+          <div class="product-card__dots">
+            <button class="product-card__dot is-active" type="button" aria-label="Фото 1"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 2"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 3"></button>
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title product-card__title--plain"><a href="about.html">Фиолетовый Песок</a></h3>
+          </div>
+        </article>
+        <article class="product-card product-card--device" data-product>
+          <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
+          </button>
+          <div class="product-card__gallery">
+            <img class="product-card__img is-active" src="assets/images/shade-leftbottom.webp" alt="FLEX Серый Металлик" width="221" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/shade-rightbottom.webp" alt="FLEX Серый Металлик" width="221" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/shade-lefttop.webp" alt="FLEX Серый Металлик" width="221" height="260" loading="lazy" />
+          </div>
+          <div class="product-card__dots">
+            <button class="product-card__dot is-active" type="button" aria-label="Фото 1"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 2"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 3"></button>
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title product-card__title--plain"><a href="about.html">Серый Металлик</a></h3>
+          </div>
+        </article>
+        <article class="product-card product-card--device" data-product>
+          <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
+          </button>
+          <div class="product-card__gallery">
+            <img class="product-card__img is-active" src="assets/images/shade-rightbottom.webp" alt="FLEX Синий Металлик" width="221" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/shade-lefttop.webp" alt="FLEX Синий Металлик" width="221" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/shade-righttop.webp" alt="FLEX Синий Металлик" width="221" height="260" loading="lazy" />
+          </div>
+          <div class="product-card__dots">
+            <button class="product-card__dot is-active" type="button" aria-label="Фото 1"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 2"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 3"></button>
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title product-card__title--plain"><a href="about.html">Синий Металлик</a></h3>
+          </div>
+        </article>
+        <article class="product-card product-card--device" data-product>
+          <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
+          </button>
+          <div class="product-card__gallery">
+            <img class="product-card__img is-active" src="assets/images/shade-lefttop.webp" alt="FLEX Бежевый Песок" width="221" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/shade-righttop.webp" alt="FLEX Бежевый Песок" width="221" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/shade-leftbottom.webp" alt="FLEX Бежевый Песок" width="221" height="260" loading="lazy" />
+          </div>
+          <div class="product-card__dots">
+            <button class="product-card__dot is-active" type="button" aria-label="Фото 1"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 2"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 3"></button>
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title product-card__title--plain"><a href="about.html">Бежевый Песок</a></h3>
+          </div>
+        </article>
+      </div>
+      <div class="about-flavours__track m-only">
+        <article class="product-card" data-product>
+          <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
+          </button>
+          <div class="product-card__gallery">
+            <img class="product-card__img is-active" src="assets/images/product-4.webp" alt="Skygreen" width="320" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/product-2.webp" alt="Skygreen" width="320" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/product-1.webp" alt="Skygreen" width="320" height="260" loading="lazy" />
+          </div>
+          <div class="product-card__dots">
+            <button class="product-card__dot is-active" type="button" aria-label="Фото 1"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 2"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 3"></button>
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title"><a href="#">Skygreen</a></h3>
+            <p class="product-card__text">Свежий мятный вкус с лёгкой ментоловой прохладой.</p>
+          </div>
+        </article>
+        <article class="product-card" data-product>
+          <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
+          </button>
+          <div class="product-card__gallery">
+            <img class="product-card__img is-active" src="assets/images/product-2.webp" alt="Purple Mix" width="320" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/product-1.webp" alt="Purple Mix" width="320" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/product-3.webp" alt="Purple Mix" width="320" height="260" loading="lazy" />
+          </div>
+          <div class="product-card__dots">
+            <button class="product-card__dot is-active" type="button" aria-label="Фото 1"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 2"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 3"></button>
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title"><a href="#">Purple Mix</a></h3>
+            <p class="product-card__text">Глубокий ягодный вкус с прохладным финишем.</p>
+          </div>
+        </article>
+        <article class="product-card" data-product>
+          <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
+          </button>
+          <div class="product-card__gallery">
+            <img class="product-card__img is-active" src="assets/images/product-1.webp" alt="Yellow Mix" width="320" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/product-3.webp" alt="Yellow Mix" width="320" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/product-4.webp" alt="Yellow Mix" width="320" height="260" loading="lazy" />
+          </div>
+          <div class="product-card__dots">
+            <button class="product-card__dot is-active" type="button" aria-label="Фото 1"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 2"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 3"></button>
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title"><a href="#">Yellow Mix</a></h3>
+            <p class="product-card__text">Яркий цитрусовый микс с тропическими нотами.</p>
+          </div>
+        </article>
+        <article class="product-card" data-product>
+          <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
+          </button>
+          <div class="product-card__gallery">
+            <img class="product-card__img is-active" src="assets/images/product-3.webp" alt="Sunshine Mix" width="320" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/product-4.webp" alt="Sunshine Mix" width="320" height="260" loading="lazy" />
+            <img class="product-card__img" src="assets/images/product-2.webp" alt="Sunshine Mix" width="320" height="260" loading="lazy" />
+          </div>
+          <div class="product-card__dots">
+            <button class="product-card__dot is-active" type="button" aria-label="Фото 1"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 2"></button>
+            <button class="product-card__dot" type="button" aria-label="Фото 3"></button>
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title"><a href="#">Sunshine Mix</a></h3>
+            <p class="product-card__text">Солнечный фруктовый микс с медовым послевкусием.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="faq stick-faq" aria-labelledby="stick-faq-title">
+      <div class="faq__head">
+        <h2 class="faq__title" id="stick-faq-title">Часто задаваемые вопросы</h2>
+        <a class="button button--ghost d-only" href="help.html">Помощь</a>
+      </div>
+      <div class="faq__list d-only" data-faq>
+        <div class="faq__item is-open">
+          <h3 class="faq__question">
+            <button class="faq__toggle" type="button" aria-expanded="true" aria-controls="sfaq-1" id="sfaq-1-q">
+              <span class="faq__num">01</span>
+              <span class="faq__text">Где купить FLEX?</span>
+              <span class="faq__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.33 8h9.34" /><path class="faq__icon-v" d="M8 3.33v9.34" /></svg></span>
+            </button>
+          </h3>
+          <div class="faq__answer" id="sfaq-1" role="region" aria-labelledby="sfaq-1-q">
+            <div class="faq__answer-inner">
+              <p>Список магазинов FLEX: <a href="help.html#stores">открыть карту</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__question">
+            <button class="faq__toggle" type="button" aria-expanded="false" aria-controls="sfaq-2" id="sfaq-2-q">
+              <span class="faq__num">02</span>
+              <span class="faq__text">Какие стики совместимы с устройством FLEX?</span>
+              <span class="faq__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.33 8h9.34" /><path class="faq__icon-v" d="M8 3.33v9.34" /></svg></span>
+            </button>
+          </h3>
+          <div class="faq__answer" id="sfaq-2" role="region" aria-labelledby="sfaq-2-q">
+            <div class="faq__answer-inner">
+              <p>Текст ответа будет добавлен.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__question">
+            <button class="faq__toggle" type="button" aria-expanded="false" aria-controls="sfaq-3" id="sfaq-3-q">
+              <span class="faq__num">03</span>
+              <span class="faq__text">Что делать, если устройство работает некорректно?</span>
+              <span class="faq__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.33 8h9.34" /><path class="faq__icon-v" d="M8 3.33v9.34" /></svg></span>
+            </button>
+          </h3>
+          <div class="faq__answer" id="sfaq-3" role="region" aria-labelledby="sfaq-3-q">
+            <div class="faq__answer-inner">
+              <p>Текст ответа будет добавлен.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="faq__list m-only" data-faq>
+        <div class="faq__item is-open">
+          <h3 class="faq__question">
+            <button class="faq__toggle" type="button" aria-expanded="true" aria-controls="msfaq-1" id="msfaq-1-q">
+              <span class="faq__num">01</span>
+              <span class="faq__text">Какие вкусы стиков доступны?</span>
+              <span class="faq__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.33 8h9.34" /><path class="faq__icon-v" d="M8 3.33v9.34" /></svg></span>
+            </button>
+          </h3>
+          <div class="faq__answer" id="msfaq-1" role="region" aria-labelledby="msfaq-1-q">
+            <div class="faq__answer-inner">
+              <p>В линейке FLEX представлены классические и фруктовые вкусы, чтобы каждый день начинать с того, что нравится.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__question">
+            <button class="faq__toggle" type="button" aria-expanded="false" aria-controls="msfaq-2" id="msfaq-2-q">
+              <span class="faq__num">02</span>
+              <span class="faq__text">Как выбрать подходящий вкус?</span>
+              <span class="faq__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.33 8h9.34" /><path class="faq__icon-v" d="M8 3.33v9.34" /></svg></span>
+            </button>
+          </h3>
+          <div class="faq__answer" id="msfaq-2" role="region" aria-labelledby="msfaq-2-q">
+            <div class="faq__answer-inner">
+              <p>Текст ответа будет добавлен.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__question">
+            <button class="faq__toggle" type="button" aria-expanded="false" aria-controls="msfaq-3" id="msfaq-3-q">
+              <span class="faq__num">03</span>
+              <span class="faq__text">Как хранить стики?</span>
+              <span class="faq__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.33 8h9.34" /><path class="faq__icon-v" d="M8 3.33v9.34" /></svg></span>
+            </button>
+          </h3>
+          <div class="faq__answer" id="msfaq-3" role="region" aria-labelledby="msfaq-3-q">
+            <div class="faq__answer-inner">
+              <p>Текст ответа будет добавлен.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__question">
+            <button class="faq__toggle" type="button" aria-expanded="false" aria-controls="msfaq-4" id="msfaq-4-q">
+              <span class="faq__num">04</span>
+              <span class="faq__text">Где купить стики FLEX?</span>
+              <span class="faq__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.33 8h9.34" /><path class="faq__icon-v" d="M8 3.33v9.34" /></svg></span>
+            </button>
+          </h3>
+          <div class="faq__answer" id="msfaq-4" role="region" aria-labelledby="msfaq-4-q">
+            <div class="faq__answer-inner">
+              <p>Текст ответа будет добавлен.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__question">
+            <button class="faq__toggle" type="button" aria-expanded="false" aria-controls="msfaq-5" id="msfaq-5-q">
+              <span class="faq__num">05</span>
+              <span class="faq__text">Что делать, если вкус не чувствуется?</span>
+              <span class="faq__icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3.33 8h9.34" /><path class="faq__icon-v" d="M8 3.33v9.34" /></svg></span>
+            </button>
+          </h3>
+          <div class="faq__answer" id="msfaq-5" role="region" aria-labelledby="msfaq-5-q">
+            <div class="faq__answer-inner">
+              <p>Текст ответа будет добавлен.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="button button--ghost faq__help m-only" href="help.html">Помощь</a>
+    </section>
+
+    <script type="application/json" id="stick-data">{"purple": {"name": "Purple Mix", "text": "Табачный бленд с ягодными нотами и капсулой с ментолом", "pack": 2, "metrics": [2, 2], "glow": ["#fde6f3", "#691996"]}, "yellow": {"name": "Yellow Mix", "text": "Табачный бленд с фруктовыми нотами и цитрусовой капсулой", "pack": 1, "metrics": [2, 1], "glow": ["#fff5b2", "#973d0a"]}, "skygreen": {"name": "Skygreen", "text": "Классический табачный бленд с мятным акцентом", "pack": 4, "metrics": [5, 4], "glow": ["#eefbfb", "#036b9a"]}, "sunshine": {"name": "Sunshine Mix", "text": "Табачный бленд с нотами тропических фруктов и капсулой", "pack": 3, "metrics": [2, 1], "glow": ["#ffeb55", "#e44f16"]}}</script>
+  </main>
+
+  <footer class="footer">
+    <a class="footer__logo" href="index.html" aria-label="FLEX — на главную">
+      <img src="assets/logo/logo.svg" alt="FLEX" width="265" height="60" loading="lazy" />
+    </a>
+
+    <p class="footer__desc">Устройства, стики и аксессуары для современного опыта.</p>
+
+    <div class="footer__social footer__social--mobile">
+      <a class="footer__social-link" href="#" aria-label="Instagram"><img src="assets/images/social-user.svg" alt="" width="20" height="20" loading="lazy" /></a>
+      <a class="footer__social-link" href="#" aria-label="WhatsApp"><img src="assets/images/whatsapp.svg" alt="" width="20" height="20" loading="lazy" /></a>
+      <a class="footer__social-link" href="#" aria-label="Telegram"><img src="assets/images/telegram.svg" alt="" width="20" height="20" loading="lazy" /></a>
+    </div>
+
+    <ul class="footer__mnav" aria-label="Разделы">
+      <li><a class="footer__mnav-link" href="catalog.html">Каталог<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="footer__mnav-link" href="favorites.html">Избранное<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="footer__mnav-link" href="starter-kit.html">Программы<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="footer__mnav-link" href="about.html">О бренде<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="footer__mnav-link" href="help.html">Помощь<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+    </ul>
+
+    <nav class="footer__nav" aria-label="Карта сайта">
+      <div class="footer__col">
+        <h2 class="footer__title">Каталог</h2>
+        <ul class="footer__list">
+          <li><a class="footer__link" href="stick.html">Стики</a></li>
+          <li><a class="footer__link" href="device.html">Устройства</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h2 class="footer__title">Программы</h2>
+        <ul class="footer__list">
+          <li><a class="footer__link" href="starter-kit.html">Стартовый набор</a></li>
+          <li><a class="footer__link" href="referral.html">Реферальная программа</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h2 class="footer__title">О бренде</h2>
+        <ul class="footer__list">
+          <li><a class="footer__link footer__link--upper" href="about.html">Flex</a></li>
+          <li><a class="footer__link footer__link--upper" href="faiim.html">Faiim</a></li>
+          <li><a class="footer__link" href="#">Новости</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__col--contacts">
+        <div class="footer__group">
+          <h2 class="footer__title">Контакты</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="tel:7707">7707</a></li>
+            <li><span class="footer__text">Достык, 192/2</span></li>
+            <li><span class="footer__text">Почта</span></li>
+          </ul>
+        </div>
+
+        <div class="footer__social">
+          <a class="footer__social-link" href="#" aria-label="Instagram"><img src="assets/images/social-user.svg" alt="" width="20" height="20" loading="lazy" /></a>
+          <a class="footer__social-link" href="#" aria-label="WhatsApp"><img src="assets/images/whatsapp.svg" alt="" width="20" height="20" loading="lazy" /></a>
+          <a class="footer__social-link" href="#" aria-label="Telegram"><img src="assets/images/telegram.svg" alt="" width="20" height="20" loading="lazy" /></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="footer__bottom">
+      <a class="footer__link" href="#">Условия использования сайта</a>
+      <a class="footer__link" href="#">Политика конфиденциальности</a>
+      <a class="footer__link" href="#">Политика файлов Cookie</a>
+      <a class="footer__link" href="#">Документы</a>
+      <a class="footer__link" href="#">Согласие на сбор, обработку и хранение перс.данных</a>
+    </div>
+
+    <p class="footer__copy">© 2026 FLEX. Все права защищены.</p>
+  </footer>
+
+  <script src="assets/vendor/lenis.min.js" defer></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
+  <script src="assets/vendor/fancybox/fancybox.umd.js" defer></script>
+  <script src="src/lib/main.js?v=37" defer></script>
+</body>
+</html>

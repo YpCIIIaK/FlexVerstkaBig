@@ -403,6 +403,7 @@
     const pinFor = (id) => pins.find((p) => p.dataset.pin.split(",").includes(id));
 
     const placeTooltip = (pin) => {
+      if (!pin.offsetParent) return;
       const gap = pin.offsetWidth + 6;
       let left = pin.offsetLeft + gap;
       const box = pin.offsetParent.clientWidth;
@@ -965,7 +966,7 @@
     const promo = root.querySelector("[data-promo]");
     if (promo && window.Swiper) {
       new Swiper(promo, {
-        loop: true,
+        rewind: true,
         speed: 600,
         grabCursor: true,
         autoplay: { delay: 6000, disableOnInteraction: false, pauseOnMouseEnter: true },

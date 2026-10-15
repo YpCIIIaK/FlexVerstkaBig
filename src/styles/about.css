@@ -365,14 +365,11 @@
 .fact__spinner {
   width: calc(116 * var(--wm));
   height: calc(116 * var(--wm));
-  animation: fact-spin 1204ms linear infinite, fact-pulse 1204ms linear infinite;
+  transform-origin: 50% 50%;
+  animation: fact-spin 1.2s linear infinite;
 }
 
 @keyframes fact-spin { to { rotate: 360deg; } }
-@keyframes fact-pulse {
-  0%, 100% { scale: 1; }
-  25%, 75% { scale: 0.862; }
-}
 
 .fact--pause {
   grid-column: 2;
@@ -717,5 +714,17 @@
   .about-flavours .section-title {
     font-size: calc(28 * var(--wm));
     line-height: calc(34 * var(--wm));
+  }
+}
+
+@media (min-width: 768px) {
+  .about__title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
 }

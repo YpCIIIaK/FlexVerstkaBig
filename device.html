@@ -6,7 +6,7 @@
   <title>FLEX Фиолетовый Песок — устройства — Flex</title>
   <meta name="description" content="Устройство FLEX для нагревания табака: цвета, функции и стартовый набор." />
 
-  <link rel="stylesheet" href="src/styles/main.css?v=84" />
+  <link rel="stylesheet" href="src/styles/main.css?v=85" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="assets/vendor/fancybox/fancybox.css" />
 </head>
@@ -75,11 +75,17 @@
         <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
         Каталог
       </a>
-      <button class="header__link header__link--programs" type="button" aria-expanded="false">
-        <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
-        Программы
-        <img class="header__arrow" src="assets/images/arrow-drop-up.svg" alt="" width="24" height="24" />
-      </button>
+      <div class="header__item" data-menu>
+        <button class="header__link header__link--programs" type="button" aria-expanded="false" aria-controls="menu-programs" data-menu-trigger>
+          <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+          Программы
+          <img class="header__arrow" src="assets/images/arrow-drop-up.svg" alt="" width="24" height="24" />
+        </button>
+        <ul class="header__menu" id="menu-programs" data-menu-list hidden>
+          <li><a class="header__menu-link" href="starter-kit.html">Стартовый набор</a></li>
+          <li><a class="header__menu-link" href="referral.html">Реферальная программа</a></li>
+        </ul>
+      </div>
       <a class="header__link header__link--help" href="help.html">
         <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
         Помощь

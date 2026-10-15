@@ -71,10 +71,8 @@
 }
 
 .about-bento__banner {
-  width: 100%;
+  flex: none;
   height: calc(200 * var(--wm));
-  border-radius: calc(20 * var(--wm));
-  object-fit: cover;
 }
 
 .about-bento__row,

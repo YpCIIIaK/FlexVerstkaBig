@@ -378,3 +378,94 @@
 .breadcrumbs__link { transition: color 0.2s ease; }
 .breadcrumbs__link:hover { color: var(--w-80); }
 .breadcrumbs__current { color: var(--white); }
+
+@media (max-width: 767px) {
+  .auth {
+    flex-direction: column;
+    overflow: visible;
+  }
+
+  .auth__aside { display: contents; }
+
+  .auth__logo {
+    position: relative;
+    z-index: 2;
+    order: -1;
+    display: flex;
+    justify-content: center;
+    padding: calc(24 * var(--wm)) calc(16 * var(--wm));
+  }
+
+  .auth__logo img {
+    width: calc(71 * var(--wm));
+    height: calc(16 * var(--wm));
+  }
+
+  .auth__panel {
+    flex: 1 0 auto;
+    gap: calc(48 * var(--wm));
+    padding: calc(32 * var(--wm)) calc(16 * var(--wm));
+    background-color: transparent;
+  }
+
+  .auth__form,
+  .auth__contacts,
+  .auth__progress { width: 100%; }
+
+  .auth__form { gap: calc(24 * var(--wm)); }
+
+  .auth__title {
+    font-size: calc(30 * var(--wm));
+    line-height: calc(36 * var(--wm));
+  }
+
+  .auth__lead {
+    font-size: calc(14 * var(--wm));
+    line-height: calc(20 * var(--wm));
+  }
+
+  .auth__fields { gap: calc(16 * var(--wm)); }
+
+  .code__digits { height: calc(52 * var(--wm)); }
+
+  .auth__contacts { gap: calc(16 * var(--wm)); }
+
+  .auth__contacts-text {
+    font-size: calc(14 * var(--wm));
+    line-height: calc(20 * var(--wm));
+  }
+
+  .auth__social {
+    width: calc(44 * var(--wm));
+    height: calc(44 * var(--wm));
+  }
+
+  .auth__disclaimer {
+    position: relative;
+    z-index: 2;
+    order: 1;
+    padding: calc(24 * var(--wm)) calc(16 * var(--wm)) 0;
+    border-top: 1px solid var(--w-10);
+    font-size: calc(12 * var(--wm));
+    line-height: calc(16 * var(--wm));
+    color: var(--w-50);
+  }
+
+  .auth__docs {
+    position: relative;
+    z-index: 2;
+    order: 2;
+    gap: calc(8 * var(--wm));
+    padding: calc(16 * var(--wm)) calc(16 * var(--wm)) calc(32 * var(--wm));
+  }
+
+  .auth__doc {
+    font-size: calc(12 * var(--wm));
+    line-height: calc(16 * var(--wm));
+  }
+
+  .auth__progress-text {
+    font-size: calc(16 * var(--wm));
+    line-height: calc(24 * var(--wm));
+  }
+}

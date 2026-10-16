@@ -524,7 +524,8 @@
 
   .home-flavours .section-title,
   .programs .section-title,
-  .home .stores__title {
+  .home .stores__title,
+  .help .stores__title {
     font-size: calc(28 * var(--wm));
     line-height: calc(34 * var(--wm));
   }
@@ -612,55 +613,65 @@
 
   .program .button { width: 100%; }
 
-  .home .stores {
+  .home .stores,
+  .help .stores {
     gap: calc(24 * var(--wm));
     padding: calc(64 * var(--wm)) calc(16 * var(--wm)) 0;
   }
 
-  .home .stores__body {
+  .home .stores__body,
+  .help .stores__body {
     flex-direction: column;
     gap: calc(12 * var(--wm));
   }
 
-  .home .stores__map-col { display: contents; }
+  .home .stores__map-col,
+  .help .stores__map-col { display: contents; }
 
-  .home .map {
+  .home .map,
+  .help .map {
     order: -2;
     width: 100%;
     height: calc(280 * var(--wm));
     margin-bottom: calc(12 * var(--wm));
   }
 
-  .home .stores__controls {
+  .home .stores__controls,
+  .help .stores__controls {
     order: -1;
     flex-direction: column;
     gap: calc(12 * var(--wm));
     width: 100%;
   }
 
-  .home .select {
+  .home .select,
+  .help .select {
     flex: none;
     width: 100%;
   }
 
-  .home .stores__list-wrap {
+  .home .stores__list-wrap,
+  .help .stores__list-wrap {
     flex: none;
     width: 100%;
     height: calc(619 * var(--wm));
   }
 
-  .home .map__tooltip {
+  .home .map__tooltip,
+  .help .map__tooltip {
     width: calc(205 * var(--wm));
     padding: calc(12 * var(--wm));
   }
 
-  .home .map__point .map__tooltip {
+  .home .map__point .map__tooltip,
+  .help .map__point .map__tooltip {
     top: calc(-22 * var(--wm));
     left: 0;
     translate: -50% -100%;
   }
 
-  .home .stores__list { overscroll-behavior: auto; }
+  .home .stores__list,
+  .help .stores__list { overscroll-behavior: auto; }
 
   .home-flavours .flavour--yellow { order: 1; }
   .home-flavours .flavour--purple { order: 2; }

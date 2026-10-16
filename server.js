@@ -15,6 +15,7 @@ try {
 const PORT = Number(env.PORT || 8080);
 const API_URL = (env.API_URL || "https://dev.api.ktng.bybyte.dev/site").replace(/\/$/, "");
 const SITE_KEY = env.SITE_KEY || "";
+const MAPS_KEY = env.YANDEX_MAPS_KEY || "";
 
 if (!SITE_KEY) console.warn("SITE_KEY is empty: fill it in .env");
 
@@ -73,10 +74,13 @@ const serveFile = (req, res) => {
       return fs.createReadStream(path.join(ROOT, "404.html")).pipe(res);
     }
     res.writeHead(200, { "Content-Type": TYPES[path.extname(file).toLowerCase()] || "application/octet-stream" });
-    res.end(data);
+    res.end(file.endsWith(".html") ? data.toString().replaceAll("YANDEX_MAPS_KEY", MAPS_KEY) : data);
   });
 };
 
 http
-  .createServer((req, res) => (req.url.startsWith("/api/") ? proxy(req, res) : serveFile(req, res)))
+  .createServer((req, res) => {
+    if (req.url.startsWith("/api/")) return proxy(req, res);
+    serveFile(req, res);
+  })
   .listen(PORT, () => console.log(`http://localhost:${PORT}/login.html -> ${API_URL}`));

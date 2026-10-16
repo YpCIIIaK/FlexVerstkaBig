@@ -560,6 +560,15 @@
 
 .map__tooltip-meta { color: var(--w-50); }
 
+.map__point .map__pin,
+.map__cluster { translate: -50% -50%; }
+
+.map__point .map__tooltip {
+  top: 0;
+  left: calc(22 * var(--wm));
+  translate: 0 -50%;
+}
+
 @media (max-width: 767px) {
   .help { padding-bottom: 0; }
 
@@ -682,5 +691,17 @@
   .m-contacts__social .channel__badge img {
     width: calc(24 * var(--wm));
     height: calc(24 * var(--wm));
+  }
+}
+
+@media (min-width: 768px) {
+  .help .stores__body { align-items: stretch; }
+
+  .help .stores__list-wrap { height: auto; }
+
+  .help .stores__list {
+    position: absolute;
+    inset: 0;
+    height: auto;
   }
 }

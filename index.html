@@ -7,7 +7,7 @@
   <meta name="description" content="FLEX — устройство для нагревания табака и стики FAIIM. Линейка устройств, вкусы, программы и магазины рядом." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="src/styles/main.css?v=141" />
+  <link rel="stylesheet" href="src/styles/main.css?v=143" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="assets/vendor/fancybox/fancybox.css" />
 </head>
@@ -388,37 +388,37 @@
       <div class="stores__body">
         <div class="stores__list-wrap">
           <ul class="stores__list" data-store-list>
-            <li><button class="store" type="button" data-store="0" aria-pressed="false">
+            <li><button class="store" type="button" data-store="0" data-city="Алматы" data-coords="76.9567,43.2333" aria-pressed="false">
               <span class="store__name">FLEX Store Достык Плаза</span>
               <span class="store__address">пр. Достык 5, ТРЦ Dostyk Plaza, 1 этаж</span>
               <span class="store__meta"><span class="store__hours">10:00-21:00</span><span class="store__distance">0.8 км</span></span>
             </button></li>
-            <li><button class="store is-active" type="button" data-store="1" aria-pressed="true">
+            <li><button class="store is-active" type="button" data-store="1" data-city="Алматы" data-coords="76.9322,43.2637" aria-pressed="true">
               <span class="store__name">FLEX Corner Mega Park</span>
               <span class="store__address">ул. Абая 150, ТРЦ Mega Park, 2 этаж</span>
               <span class="store__meta"><span class="store__hours">10:00-22:00</span><span class="store__distance">1.2 км</span></span>
             </button></li>
-            <li><button class="store" type="button" data-store="2" aria-pressed="false">
+            <li><button class="store" type="button" data-store="2" data-city="Алматы" data-coords="76.9000,43.2395" aria-pressed="false">
               <span class="store__name">Табачная лавка на Абая</span>
               <span class="store__address">ул. Абая 120, вход со двора</span>
               <span class="store__meta"><span class="store__hours">09:00-21:00</span><span class="store__distance">2.5 км</span></span>
             </button></li>
-            <li><button class="store" type="button" data-store="3" aria-pressed="false">
+            <li><button class="store" type="button" data-store="3" data-city="Алматы" data-coords="76.9461,43.2601" aria-pressed="false">
               <span class="store__name">FLEX Point ЦУМ</span>
               <span class="store__address">пр. Абая 44, ЦУМ, 1 этаж</span>
               <span class="store__meta"><span class="store__hours">10:00-20:00</span><span class="store__distance">3.1 км</span></span>
             </button></li>
-            <li><button class="store" type="button" data-store="4" aria-pressed="false">
+            <li><button class="store" type="button" data-store="4" data-city="Алматы" data-coords="76.9286,43.2187" aria-pressed="false">
               <span class="store__name">FLEX Store Esentai Mall</span>
               <span class="store__address">ул. Жибек Жолы 53, Esentai Mall, 1 этаж</span>
               <span class="store__meta"><span class="store__hours">10:00-22:00</span><span class="store__distance">4.2 км</span></span>
             </button></li>
-            <li><button class="store" type="button" data-store="5" aria-pressed="false">
+            <li><button class="store" type="button" data-store="5" data-city="Алматы" data-coords="76.9289,43.2361" aria-pressed="false">
               <span class="store__name">FLEX Corner Рахат Палас</span>
               <span class="store__address">ул. Байзакова 28, Рахат Палас, 1 этаж</span>
               <span class="store__meta"><span class="store__hours">10:00-21:00</span><span class="store__distance">5.0 км</span></span>
             </button></li>
-            <li><button class="store" type="button" data-store="6" aria-pressed="false">
+            <li><button class="store" type="button" data-store="6" data-city="Алматы" data-coords="76.8921,43.2017" aria-pressed="false">
               <span class="store__name">Smoke House Розыбакиева</span>
               <span class="store__address">ул. Розыбакиева 247, ТРЦ Grand Park</span>
               <span class="store__meta"><span class="store__hours">09:00-21:00</span><span class="store__distance">6.3 км</span></span>
@@ -449,11 +449,6 @@
 
           <div class="map" data-map>
             <img class="map__image" src="assets/images/map-clean.webp" alt="" width="1688" height="1282" loading="lazy" />
-            <button class="map__pin" type="button" style="left: 31.03%; top: 18.93%" data-pin="0" aria-label="FLEX Store Достык Плаза"></button>
-            <button class="map__pin" type="button" style="left: 41.38%; top: 71.79%" data-pin="2" aria-label="Табачная лавка на Абая"></button>
-            <button class="map__pin" type="button" style="left: 69.99%; top: 25.89%" data-pin="3" aria-label="FLEX Point ЦУМ"></button>
-            <button class="map__cluster" type="button" style="left: 74.46%; top: 62.5%" data-pin="4,5,6" aria-label="Ещё 3 магазина">3</button>
-            <button class="map__pin is-active" type="button" style="left: 30.14%; top: 49.29%" data-pin="1" aria-label="FLEX Corner Mega Park"></button>
             <div class="map__tooltip" data-map-tooltip>
               <p class="map__tooltip-name" data-tooltip-name>FLEX Corner Mega Park</p>
               <p class="map__tooltip-address" data-tooltip-address>ул. Абая 150, ТРЦ Mega Park, 2 этаж</p>
@@ -563,6 +558,8 @@
   <script src="assets/vendor/lenis.min.js" defer></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
   <script src="assets/vendor/fancybox/fancybox.umd.js" defer></script>
-  <script src="src/lib/main.js?v=58" defer></script>
+  <script src="src/lib/main.js?v=59" defer></script>
+  <script src="https://api-maps.yandex.ru/v3/?apikey=YANDEX_MAPS_KEY&amp;lang=ru_RU" defer></script>
+  <script src="src/lib/map.js?v=2" defer></script>
 </body>
 </html>

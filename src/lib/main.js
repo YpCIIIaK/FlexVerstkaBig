@@ -251,7 +251,7 @@
       if (c === 10) c = iinChecksum(d, [3, 4, 5, 6, 7, 8, 9, 10, 11, 1, 2]);
       return c !== 10 && c === Number(d[11]);
     };
-
+ 
     const setIinError = (text) => {
       iinField.classList.toggle("is-error", Boolean(text));
       iinError.hidden = !text;
@@ -385,82 +385,6 @@
     root.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && !menu.hidden) { setOpen(false); trigger.focus(); }
     });
-  };
-
-  const initStores = () => {
-    const root = document.querySelector("[data-stores]");
-    if (!root) return;
-
-    const cards = [...root.querySelectorAll("[data-store]")];
-    const pins = [...root.querySelectorAll("[data-pin]")];
-    const search = root.querySelector("[data-store-search]");
-    const empty = root.querySelector("[data-store-empty]");
-    const tooltip = root.querySelector("[data-map-tooltip]");
-    const tipName = tooltip.querySelector("[data-tooltip-name]");
-    const tipAddress = tooltip.querySelector("[data-tooltip-address]");
-    const tipMeta = tooltip.querySelector("[data-tooltip-meta]");
-
-    const openStatus = (hours) => {
-      const m = hours.match(/(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/);
-      if (!m) return hours;
-      const now = new Date();
-      const mins = now.getHours() * 60 + now.getMinutes();
-      const from = +m[1] * 60 + +m[2];
-      const to = +m[3] * 60 + +m[4];
-      return mins >= from && mins < to ? "Открыто" : "Закрыто";
-    };
-
-    const pinFor = (id) => pins.find((p) => p.dataset.pin.split(",").includes(id));
-
-    const placeTooltip = (pin) => {
-      if (!pin.offsetParent) return;
-      const gap = pin.offsetWidth + 6;
-      let left = pin.offsetLeft + gap;
-      const box = pin.offsetParent.clientWidth;
-      if (left + tooltip.offsetWidth > box) left = pin.offsetLeft - tooltip.offsetWidth - 6;
-      left = Math.max(8, Math.min(left, box - tooltip.offsetWidth - 8));
-      tooltip.style.left = left + "px";
-      tooltip.style.top = Math.max(0, pin.offsetTop - 28) + "px";
-    };
-
-    const select = (id, scroll) => {
-      const card = cards.find((c) => c.dataset.store === id);
-      if (!card) return;
-      cards.forEach((c) => {
-        const on = c === card;
-        c.classList.toggle("is-active", on);
-        c.setAttribute("aria-pressed", String(on));
-      });
-      const pin = pinFor(id);
-      pins.forEach((p) => p.classList.toggle("is-active", p === pin));
-
-      tipName.textContent = card.querySelector(".store__name").textContent;
-      tipAddress.textContent = card.querySelector(".store__address").textContent;
-      tipMeta.textContent = card.querySelector(".store__distance").textContent + " • " + openStatus(card.querySelector(".store__hours").textContent);
-      if (pin) placeTooltip(pin);
-
-      if (scroll) card.scrollIntoView({ block: "nearest", behavior: "smooth" });
-    };
-
-    cards.forEach((card) => card.addEventListener("click", () => select(card.dataset.store)));
-    pins.forEach((pin) => pin.addEventListener("click", () => select(pin.dataset.pin.split(",")[0], true)));
-
-    search.addEventListener("input", () => {
-      const q = search.value.trim().toLowerCase();
-      let shown = 0;
-      cards.forEach((card) => {
-        const match = !q || card.textContent.toLowerCase().includes(q);
-        card.parentElement.hidden = !match;
-        if (match) shown += 1;
-      });
-      empty.hidden = shown > 0;
-    });
-
-
-    const active = cards.find((c) => c.classList.contains("is-active"));
-    const relayout = () => { if (active) select(root.querySelector(".store.is-active").dataset.store); };
-    relayout();
-    window.addEventListener("resize", relayout);
   };
 
   const initProfile = () => {
@@ -1242,7 +1166,6 @@
 
   initAuth();
   initFaq();
-  initStores();
   initProfile();
   initProductCards();
   initProductSwipers();

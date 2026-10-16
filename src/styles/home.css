@@ -654,6 +654,12 @@
     padding: calc(12 * var(--wm));
   }
 
+  .home .map__point .map__tooltip {
+    top: calc(-22 * var(--wm));
+    left: 0;
+    translate: -50% -100%;
+  }
+
   .home .stores__list { overscroll-behavior: auto; }
 
   .home-flavours .flavour--yellow { order: 1; }

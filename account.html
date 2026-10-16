@@ -8,7 +8,7 @@
   <meta name="robots" content="noindex" />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="src/styles/main.css?v=137" />
+  <link rel="stylesheet" href="src/styles/main.css?v=141" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="assets/vendor/fancybox/fancybox.css" />
 </head>
@@ -177,7 +177,7 @@
         </nav>
 
         <div class="account__logout">
-          <a class="account__logout-link" href="login.html">
+          <a class="account__logout-link" href="login.html" data-logout>
             <img src="assets/images/log-out.svg" alt="" width="18" height="18" />
             Выйти из аккаунта
           </a>
@@ -191,29 +191,29 @@
           <div class="account-card__row">
             <label class="field">
               <span class="field__label">Имя</span>
-              <input class="field__input field__input--static" type="text" value="Алексей Морозов" readonly />
+              <input class="field__input field__input--static" type="text" value="" readonly data-profile-name />
             </label>
             <label class="field">
               <span class="field__label">Телефон</span>
-              <input class="field__input field__input--static" type="tel" value="+7 777 246-18-40" readonly />
+              <input class="field__input field__input--static" type="tel" value="" readonly data-profile-phone />
             </label>
           </div>
 
           <div class="account-card__row">
             <label class="field">
               <span class="field__label">Дата рождения</span>
-              <input class="field__input field__input--static" type="text" value="12 сентября 1992" readonly />
+              <input class="field__input field__input--static" type="text" value="" readonly data-profile-birthdate />
             </label>
             <label class="field">
               <span class="field__label">Дата регистрации</span>
-              <input class="field__input field__input--static" type="text" value="18 мая 2024" readonly />
+              <input class="field__input field__input--static" type="text" value="" readonly data-profile-registered />
             </label>
           </div>
 
           <div class="field">
             <label class="field__label" for="profile-email">Email</label>
             <div class="field__box" data-email-box>
-              <input class="field__input field__input--static" id="profile-email" type="email" value="alexey.morozov@gmail.com" readonly data-email />
+              <input class="field__input field__input--static" id="profile-email" type="email" value="" readonly data-email />
               <button class="field__action" type="button" aria-haspopup="dialog" aria-label="Изменить email" data-email-edit><span class="t-desk">Изменить</span><svg class="field__action-icon t-mob" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9" /><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" /></svg></button>
             </div>
           </div>
@@ -223,7 +223,7 @@
             ФИО, ИИН, пол и дата рождения не подлежат редактированию. Для изменения номера телефона обратитесь в поддержку по номеру 7707.
           </p>
         </form>
-        <a class="account-logout m-only" href="login.html"><img src="assets/images/log-out.svg" alt="" width="20" height="20" />Выйти из аккаунта</a>
+        <a class="account-logout m-only" href="login.html" data-logout><img src="assets/images/log-out.svg" alt="" width="20" height="20" />Выйти из аккаунта</a>
       </section>
     </div>
   </main>
@@ -403,6 +403,7 @@
   <script src="assets/vendor/lenis.min.js" defer></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
   <script src="assets/vendor/fancybox/fancybox.umd.js" defer></script>
-  <script src="src/lib/main.js?v=57" defer></script>
+  <script src="src/lib/main.js?v=58" defer></script>
+  <script src="src/lib/api.js?v=2" defer></script>
 </body>
 </html>

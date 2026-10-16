@@ -227,11 +227,6 @@
 
     window.flexAuth = { showError: setAlert, showCode, showPhone, setLoading, setCodeState };
 
-    form.addEventListener("auth:submit", () => {
-      setLoading(true);
-      setTimeout(() => { setLoading(false); showCode(); }, 800);
-    });
-
     const showLoginProgress = () => {
       clearInterval(timerId);
       form.hidden = true;
@@ -240,11 +235,6 @@
     };
 
     window.flexAuth.showLoginProgress = showLoginProgress;
-
-    codeForm.addEventListener("auth:verify", () => {
-      showLoginProgress();
-      setTimeout(() => showRegistration(), 1200);
-    });
 
     const iinForm = document.querySelector("[data-iin-form]");
     const iinField = iinForm.querySelector("[data-iin-field]");
@@ -295,11 +285,6 @@
       e.preventDefault();
       if (!isValidIin(iinInput.value)) { setIinError(IIN_ERROR); return; }
       iinForm.dispatchEvent(new CustomEvent("auth:register", { detail: { phone, iin: iinInput.value } }));
-    });
-
-    iinForm.addEventListener("auth:register", () => {
-      setLoading(true);
-      setTimeout(() => showComplete(), 800);
     });
 
     const complete = document.querySelector("[data-complete]");

@@ -469,3 +469,24 @@
     line-height: calc(24 * var(--wm));
   }
 }
+
+@media (min-width: 768px) {
+  .auth__panel {
+    --wm: calc(100vw / 1440 * 0.85);
+    min-width: 0;
+    padding-right: calc(139 * var(--wm));
+  }
+
+  .code__digit { width: 0; }
+
+  .auth__head { --wm: calc(100vw / 1440 * 1.1); }
+
+  .auth__form,
+  .auth__contacts,
+  .auth__progress {
+    align-self: stretch;
+    width: auto;
+  }
+
+  .code { gap: 0; }
+}

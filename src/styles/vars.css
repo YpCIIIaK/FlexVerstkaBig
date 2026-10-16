@@ -57,3 +57,7 @@
 @media (max-width: 767px) {
   :root { --width-base: 390; --width-current: 100vw; }
 }
+
+@media (min-width: 768px) {
+  :root { --header-h: calc(80 * var(--wm)); }
+}

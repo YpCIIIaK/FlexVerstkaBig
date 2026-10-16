@@ -6,7 +6,8 @@
   <title>FLEX — устройство для нагревания табака</title>
   <meta name="description" content="FLEX — устройство для нагревания табака и стики FAIIM. Линейка устройств, вкусы, программы и магазины рядом." />
 
-  <link rel="stylesheet" href="src/styles/main.css?v=87" />
+  <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
+  <link rel="stylesheet" href="src/styles/main.css?v=137" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="assets/vendor/fancybox/fancybox.css" />
 </head>
@@ -148,41 +149,45 @@
       </div>
     </section>
 
-    <section class="showcase" aria-labelledby="showcase-title">
+    <section class="showcase" aria-labelledby="showcase-title" data-showcase>
       <h2 class="mobile-title showcase__title" id="showcase-title">Как работает FLEX</h2>
-      <img class="showcase__logo" src="assets/logo/logo.svg" alt="FLEX" width="115" height="26" />
-      <video class="showcase__video" src="assets/video/flex-rotate.mp4" poster="assets/video/flex-rotate.jpg" width="443" height="589" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
-      <div class="callouts" data-cycle>
-        <div class="callout callout--right callout--top is-active" data-cycle-item>
-          <span class="pulse" aria-hidden="true"><span></span></span>
-          <svg class="callout__line" viewBox="0 0 132 61" aria-hidden="true"><path d="M131.883 0.5H49.8828L0.382812 60" /></svg>
-          <div class="callout__card">
-            <h3 class="callout__title">Графический UI-дисплей</h3>
-            <p class="callout__text">Визуализация статуса, режима и уровня заряда</p>
-          </div>
-        </div>
-        <div class="callout callout--right callout--mid" data-cycle-item>
-          <span class="pulse" aria-hidden="true"><span></span></span>
-          <svg class="callout__line" viewBox="0 0 132 61" aria-hidden="true"><path d="M131.883 0.5H49.8828L0.382812 60" /></svg>
-          <div class="callout__card">
-            <h3 class="callout__title">Два режима работы</h3>
-            <p class="callout__text">Возможность переключения между Классическим и Сбалансированным сеансами использования</p>
-          </div>
-        </div>
-        <div class="callout callout--left callout--left-top" data-cycle-item>
-          <span class="pulse" aria-hidden="true"><span></span></span>
-          <svg class="callout__line" viewBox="0 0 132 61" aria-hidden="true"><path d="M131.883 0.5H49.8828L0.382812 60" /></svg>
-          <div class="callout__card">
-            <h3 class="callout__title">Функция паузы</h3>
-            <p class="callout__text">Опция поставить сеанс “на паузу” и продолжить, когда необходимо</p>
-          </div>
-        </div>
-        <div class="callout callout--left callout--left-bottom" data-cycle-item>
-          <span class="pulse" aria-hidden="true"><span></span></span>
-          <svg class="callout__line" viewBox="0 0 132 61" aria-hidden="true"><path d="M131.883 0.5H49.8828L0.382812 60" /></svg>
-          <div class="callout__card">
-            <h3 class="callout__title">Быстрая зарядка</h3>
-            <p class="callout__text">До 50% за тридцать минут, сокращая время ожидания</p>
+      <div class="showcase__pin">
+        <div class="showcase__stage">
+          <img class="showcase__logo" src="assets/logo/logo.svg" alt="FLEX" width="115" height="26" />
+          <video class="showcase__video" src="assets/video/flex-rotate.mp4" data-scrub-src="assets/video/flex-rotate-scrub.mp4" data-scrub-webm="assets/video/flex-rotate-scrub.webm" poster="assets/video/flex-rotate.jpg" width="443" height="589" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+          <div class="callouts" data-cycle>
+            <div class="callout callout--right callout--top is-active" data-cycle-item>
+              <span class="pulse" aria-hidden="true"><span></span></span>
+              <svg class="callout__line" viewBox="0 0 132 61" aria-hidden="true"><path d="M131.883 0.5H49.8828L0.382812 60" /></svg>
+              <div class="callout__card">
+                <h3 class="callout__title">Графический UI-дисплей</h3>
+                <p class="callout__text">Визуализация статуса, режима и уровня заряда</p>
+              </div>
+            </div>
+            <div class="callout callout--right callout--mid" data-cycle-item>
+              <span class="pulse" aria-hidden="true"><span></span></span>
+              <svg class="callout__line" viewBox="0 0 132 61" aria-hidden="true"><path d="M131.883 0.5H49.8828L0.382812 60" /></svg>
+              <div class="callout__card">
+                <h3 class="callout__title">Два режима работы</h3>
+                <p class="callout__text">Возможность переключения между Классическим и Сбалансированным сеансами использования</p>
+              </div>
+            </div>
+            <div class="callout callout--left callout--left-top" data-cycle-item>
+              <span class="pulse" aria-hidden="true"><span></span></span>
+              <svg class="callout__line" viewBox="0 0 132 61" aria-hidden="true"><path d="M131.883 0.5H49.8828L0.382812 60" /></svg>
+              <div class="callout__card">
+                <h3 class="callout__title">Функция паузы</h3>
+                <p class="callout__text">Опция поставить сеанс “на паузу” и продолжить, когда необходимо</p>
+              </div>
+            </div>
+            <div class="callout callout--left callout--left-bottom" data-cycle-item>
+              <span class="pulse" aria-hidden="true"><span></span></span>
+              <svg class="callout__line" viewBox="0 0 132 61" aria-hidden="true"><path d="M131.883 0.5H49.8828L0.382812 60" /></svg>
+              <div class="callout__card">
+                <h3 class="callout__title">Быстрая зарядка</h3>
+                <p class="callout__text">До 50% за тридцать минут, сокращая время ожидания</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -219,19 +224,23 @@
       <div class="lineup__stage">
         <figure class="lineup__item lineup__item--beige" style="--i: 0">
           <figcaption class="lineup__name">Бежевый Песок</figcaption>
-          <img class="lineup__img" src="assets/images/lineup-lefttop.webp" alt="FLEX Бежевый Песок" width="207" height="700" loading="lazy" />
+          <img class="lineup__img" src="assets/images/lineup-front-beige.webp" alt="FLEX Бежевый Песок" width="235" height="1100" loading="lazy" />
+          <img class="lineup__img lineup__img--side" src="assets/images/lineup-angled-beige.webp" alt="" width="335" height="1100" loading="lazy" aria-hidden="true" />
         </figure>
         <figure class="lineup__item lineup__item--violet" style="--i: 1">
           <figcaption class="lineup__name">Фиолетовый Песок</figcaption>
-          <img class="lineup__img" src="assets/images/lineup-righttop.webp" alt="FLEX Фиолетовый Песок" width="207" height="700" loading="lazy" />
+          <img class="lineup__img" src="assets/images/lineup-front-violet.webp" alt="FLEX Фиолетовый Песок" width="235" height="1100" loading="lazy" />
+          <img class="lineup__img lineup__img--side" src="assets/images/lineup-angled-violet.webp" alt="" width="334" height="1100" loading="lazy" aria-hidden="true" />
         </figure>
         <figure class="lineup__item lineup__item--silver" style="--i: 2">
           <figcaption class="lineup__name">Серый Металлик</figcaption>
-          <img class="lineup__img" src="assets/images/lineup-leftbottom.webp" alt="FLEX Серый Металлик" width="207" height="700" loading="lazy" />
+          <img class="lineup__img" src="assets/images/lineup-front-silver.webp" alt="FLEX Серый Металлик" width="235" height="1100" loading="lazy" />
+          <img class="lineup__img lineup__img--side" src="assets/images/lineup-angled-silver.webp" alt="" width="322" height="1100" loading="lazy" aria-hidden="true" />
         </figure>
         <figure class="lineup__item lineup__item--blue" style="--i: 3">
           <figcaption class="lineup__name">Синий Металлик</figcaption>
-          <img class="lineup__img" src="assets/images/lineup-rightbottom.webp" alt="FLEX Синий Металлик" width="207" height="700" loading="lazy" />
+          <img class="lineup__img" src="assets/images/lineup-front-blue.webp" alt="FLEX Синий Металлик" width="235" height="1100" loading="lazy" />
+          <img class="lineup__img lineup__img--side" src="assets/images/lineup-angled-blue.webp" alt="" width="335" height="1100" loading="lazy" aria-hidden="true" />
         </figure>
       </div>
     </section>
@@ -359,7 +368,7 @@
             <h3 class="program__title"><span class="t-desk">Стартовый набор</span><span class="t-mob">Всё для первого знакомства</span></h3>
             <p class="program__text"><span class="t-desk">Устройство и стики в наборе для быстрого старта</span><span class="t-mob">Устройство и стики собраны в удобный стартовый набор, чтобы быстро начать.</span></p>
           </div>
-          <img class="program__img program__img--contain" src="assets/images/program-starter.webp" alt="Стартовый набор FLEX" width="604" height="340" loading="lazy" />
+          <img class="program__img" src="assets/images/program-starter.webp" alt="Стартовый набор FLEX" width="604" height="340" loading="lazy" />
           <a class="button button--ghost" href="starter-kit.html"><span class="t-desk">Узнать больше</span><span class="t-mob">Выбрать стартовый набор</span></a>
         </article>
         <article class="program">
@@ -439,7 +448,7 @@
           </div>
 
           <div class="map" data-map>
-            <img class="map__image" src="assets/images/map.webp" alt="" width="783" height="560" loading="lazy" />
+            <img class="map__image" src="assets/images/map-clean.webp" alt="" width="1688" height="1282" loading="lazy" />
             <button class="map__pin" type="button" style="left: 31.03%; top: 18.93%" data-pin="0" aria-label="FLEX Store Достык Плаза"></button>
             <button class="map__pin" type="button" style="left: 41.38%; top: 71.79%" data-pin="2" aria-label="Табачная лавка на Абая"></button>
             <button class="map__pin" type="button" style="left: 69.99%; top: 25.89%" data-pin="3" aria-label="FLEX Point ЦУМ"></button>
@@ -470,10 +479,29 @@
     </div>
 
     <ul class="footer__mnav" aria-label="Разделы">
-      <li><a class="footer__mnav-link" href="catalog.html">Каталог<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li class="footer__acc">
+        <button class="footer__mnav-link" type="button" aria-expanded="false" aria-controls="fsub-1" data-footer-acc>Каталог<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
+        <ul class="footer__msub" id="fsub-1" hidden>
+          <li><a class="footer__msub-link" href="catalog.html">Все товары</a></li>
+          <li><a class="footer__msub-link" href="stick.html">Стики</a></li>
+          <li><a class="footer__msub-link" href="device.html">Устройства</a></li>
+        </ul>
+      </li>
       <li><a class="footer__mnav-link" href="favorites.html">Избранное<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
-      <li><a class="footer__mnav-link" href="starter-kit.html">Программы<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
-      <li><a class="footer__mnav-link" href="about.html">О бренде<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li class="footer__acc">
+        <button class="footer__mnav-link" type="button" aria-expanded="false" aria-controls="fsub-2" data-footer-acc>Программы<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
+        <ul class="footer__msub" id="fsub-2" hidden>
+          <li><a class="footer__msub-link" href="starter-kit.html">Стартовый набор</a></li>
+          <li><a class="footer__msub-link" href="referral.html">Реферальная программа</a></li>
+        </ul>
+      </li>
+      <li class="footer__acc">
+        <button class="footer__mnav-link" type="button" aria-expanded="false" aria-controls="fsub-3" data-footer-acc>О бренде<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
+        <ul class="footer__msub" id="fsub-3" hidden>
+          <li><a class="footer__msub-link" href="about.html">О FLEX</a></li>
+          <li><a class="footer__msub-link" href="faiim.html">О FAIIM</a></li>
+        </ul>
+      </li>
       <li><a class="footer__mnav-link" href="help.html">Помощь<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
     </ul>
 
@@ -535,6 +563,6 @@
   <script src="assets/vendor/lenis.min.js" defer></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
   <script src="assets/vendor/fancybox/fancybox.umd.js" defer></script>
-  <script src="src/lib/main.js?v=38" defer></script>
+  <script src="src/lib/main.js?v=57" defer></script>
 </body>
 </html>

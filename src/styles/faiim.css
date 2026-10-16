@@ -231,7 +231,12 @@
   height: calc(260 * var(--wm));
   object-fit: contain;
   filter: drop-shadow(0 calc(12 * var(--wm)) calc(16 * var(--wm)) rgba(0, 0, 0, 0.3));
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  backface-visibility: hidden;
 }
+
+.flavour:hover .flavour__pack { transform: translate3d(0, calc(-10 * var(--wm)), 0); }
 
 .flavour__ribbon {
   position: absolute;
@@ -239,7 +244,7 @@
   max-width: none;
   height: auto;
   pointer-events: none;
-  transition: transform 0.3s ease-in;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .flavour__ribbon--top {
@@ -344,6 +349,16 @@
   transition: transform 0.2s ease;
 }
 
+.flavour { position: relative; }
+
+.flavour__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.flavour:hover .flavour__arrow,
 .flavour__link:hover .flavour__arrow { transform: translateX(calc(3 * var(--wm))); }
 
 @media (prefers-reduced-motion: reduce) {

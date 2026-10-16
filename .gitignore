@@ -26,3 +26,4 @@ font-test.html
 
 # исходные видео: в вёрстке используются пережатые из assets/video
 assets/images/*.mp4
+assets/images/*/

@@ -7,7 +7,8 @@
   <title>Настройки — Flex</title>
   <meta name="robots" content="noindex" />
 
-  <link rel="stylesheet" href="src/styles/main.css?v=87" />
+  <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
+  <link rel="stylesheet" href="src/styles/main.css?v=137" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="assets/vendor/fancybox/fancybox.css" />
 </head>
@@ -220,10 +221,29 @@
     </div>
 
     <ul class="footer__mnav" aria-label="Разделы">
-      <li><a class="footer__mnav-link" href="catalog.html">Каталог<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li class="footer__acc">
+        <button class="footer__mnav-link" type="button" aria-expanded="false" aria-controls="fsub-1" data-footer-acc>Каталог<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
+        <ul class="footer__msub" id="fsub-1" hidden>
+          <li><a class="footer__msub-link" href="catalog.html">Все товары</a></li>
+          <li><a class="footer__msub-link" href="stick.html">Стики</a></li>
+          <li><a class="footer__msub-link" href="device.html">Устройства</a></li>
+        </ul>
+      </li>
       <li><a class="footer__mnav-link" href="favorites.html">Избранное<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
-      <li><a class="footer__mnav-link" href="starter-kit.html">Программы<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
-      <li><a class="footer__mnav-link" href="about.html">О бренде<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li class="footer__acc">
+        <button class="footer__mnav-link" type="button" aria-expanded="false" aria-controls="fsub-2" data-footer-acc>Программы<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
+        <ul class="footer__msub" id="fsub-2" hidden>
+          <li><a class="footer__msub-link" href="starter-kit.html">Стартовый набор</a></li>
+          <li><a class="footer__msub-link" href="referral.html">Реферальная программа</a></li>
+        </ul>
+      </li>
+      <li class="footer__acc">
+        <button class="footer__mnav-link" type="button" aria-expanded="false" aria-controls="fsub-3" data-footer-acc>О бренде<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
+        <ul class="footer__msub" id="fsub-3" hidden>
+          <li><a class="footer__msub-link" href="about.html">О FLEX</a></li>
+          <li><a class="footer__msub-link" href="faiim.html">О FAIIM</a></li>
+        </ul>
+      </li>
       <li><a class="footer__mnav-link" href="help.html">Помощь<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
     </ul>
 
@@ -285,6 +305,6 @@
   <script src="assets/vendor/lenis.min.js" defer></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
   <script src="assets/vendor/fancybox/fancybox.umd.js" defer></script>
-  <script src="src/lib/main.js?v=38" defer></script>
+  <script src="src/lib/main.js?v=57" defer></script>
 </body>
 </html>

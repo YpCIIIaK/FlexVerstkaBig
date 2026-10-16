@@ -622,3 +622,9 @@
     background: radial-gradient(circle, var(--white) 0 calc(4 * var(--wm)), var(--purple-accent) calc(4.5 * var(--wm)));
   }
 }
+
+.promo__img--full {
+  width: auto;
+  max-width: calc(628 * var(--wm));
+  object-fit: cover;
+}

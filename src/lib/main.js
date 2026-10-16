@@ -41,15 +41,15 @@
       let d = value.replace(/\D/g, "");
       if (d.length > 10 && (d[0] === "7" || d[0] === "8")) d = d.slice(1);
       else if (value.trim().startsWith("+7")) d = d.slice(1);
-      return d.slice(0, 10);
+      return d.replace(/^8+/, "").slice(0, 10);
     };
 
     const format = (d) => {
       if (!d) return "";
       let out = "+7 (" + d.slice(0, 3);
-      if (d.length >= 3) out += ") " + d.slice(3, 6);
-      if (d.length >= 6) out += "-" + d.slice(6, 8);
-      if (d.length >= 8) out += "-" + d.slice(8, 10);
+      if (d.length > 3) out += ") " + d.slice(3, 6);
+      if (d.length > 6) out += "-" + d.slice(6, 8);
+      if (d.length > 8) out += "-" + d.slice(8, 10);
       return out;
     };
 
@@ -77,6 +77,31 @@
     };
 
     input.addEventListener("input", update);
+
+    const caretAfter = (n) => {
+      if (n === 0) return Math.min(4, input.value.length);
+      let seen = 0;
+      for (let i = 4; i < input.value.length; i++) {
+        if (/\d/.test(input.value[i]) && ++seen === n) return i + 1;
+      }
+      return input.value.length;
+    };
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key !== "Backspace" || input.selectionStart !== input.selectionEnd) return;
+      const pos = input.selectionStart;
+      if (pos <= 4 || /\d/.test(input.value[pos - 1])) return;
+      e.preventDefault();
+      const d = digitsOf(input.value);
+      const before = (input.value.slice(4, pos).match(/\d/g) || []).length;
+      if (before === 0) return;
+      const next = d.slice(0, before - 1) + d.slice(before);
+      input.value = format(next);
+      const caret = caretAfter(before - 1);
+      input.setSelectionRange(caret, caret);
+      submit.disabled = !isValid(next);
+      setAlert("");
+    });
 
     input.addEventListener("blur", () => {
       const d = digitsOf(input.value);
@@ -1031,6 +1056,7 @@
     document.querySelectorAll("[data-cycle]").forEach((el) => {
       const items = [...el.querySelectorAll("[data-cycle-item]")];
       if (items.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (el.closest("[data-showcase]") && window.matchMedia("(min-width: 768px)").matches) return;
       let i = 0;
       setInterval(() => {
         items[i].classList.remove("is-active");
@@ -1129,6 +1155,106 @@
     });
   };
 
+  const initShowcase = () => {
+    const root = document.querySelector("[data-showcase]");
+    if (!root || !window.matchMedia("(min-width: 768px)").matches) return;
+    const pin = root.querySelector(".showcase__pin");
+    const video = root.querySelector("video");
+    const items = [...root.querySelectorAll("[data-cycle-item]")];
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (video && !reduced) {
+      video.removeAttribute("autoplay");
+      video.loop = false;
+      video.preload = "auto";
+      const webm = video.dataset.scrubWebm;
+      const alpha = webm && video.canPlayType('video/webm; codecs="vp9"') && !/^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      video.src = alpha ? webm : (video.dataset.scrubSrc || video.src);
+      video.classList.toggle("is-alpha", Boolean(alpha));
+      if (alpha) video.removeAttribute("poster");
+      video.pause();
+    }
+
+    const fit = () => {
+      const need = 700 * (window.innerWidth / 1440);
+      root.style.setProperty("--fit", String(Math.min(1, pin.clientHeight / need)));
+    };
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const top = parseFloat(getComputedStyle(pin).top) || 0;
+      const rect = root.getBoundingClientRect();
+      const total = rect.height - pin.offsetHeight;
+      const p = total > 0 ? Math.min(1, Math.max(0, (top - rect.top) / total)) : 0;
+      if (video && !reduced && video.duration) {
+        const t = p * (video.duration - 0.05);
+        if (Math.abs(video.currentTime - t) > 0.02) video.currentTime = t;
+      }
+      items.forEach((item, i) => item.classList.toggle("is-active", reduced || p >= (i + 1) / (items.length + 1)));
+    };
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+
+    fit();
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", () => { fit(); update(); });
+    if (video) video.addEventListener("loadedmetadata", update);
+  };
+
+  const initLineupFit = () => {
+    const el = document.querySelector("[data-lineup]");
+    if (!el) return;
+    const fit = () => {
+      if (!window.matchMedia("(min-width: 768px)").matches) { el.style.removeProperty("--lf"); return; }
+      const wm = window.innerWidth / 1440;
+      const header = document.querySelector(".header");
+      const head = el.querySelector(".lineup__head");
+      const avail = window.innerHeight - (header ? header.offsetHeight : 80 * wm) - (head ? head.offsetHeight : 0) - 88 * wm;
+      el.style.setProperty("--lf", String(Math.min(1, avail / (680 * wm))));
+    };
+    fit();
+    window.addEventListener("resize", fit);
+  };
+
+  const initFlavoursFit = () => {
+    document.querySelectorAll(".home-flavours, .home .programs, .home .stores").forEach((el) => fitSection(el));
+  };
+
+  const fitSection = (el) => {
+    const fit = () => {
+      el.style.setProperty("--ff", "1");
+      if (!window.matchMedia("(min-width: 768px)").matches) return;
+      const header = document.querySelector(".header");
+      const avail = window.innerHeight - (header ? header.offsetHeight : 0);
+      const style = getComputedStyle(el);
+      const content = [...el.children].reduce((h, c) => h + c.offsetHeight, 0) + parseFloat(style.rowGap || 0) * (el.children.length - 1) + parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+      el.style.setProperty("--ff", String(Math.min(1, avail / content)));
+    };
+    fit();
+    window.addEventListener("resize", fit);
+    window.addEventListener("load", fit);
+  };
+
+  document.documentElement.style.visibility = "visible";
+
+  const initFooterAcc = () => {
+    document.querySelectorAll("[data-footer-acc]").forEach((btn) => {
+      const item = btn.closest(".footer__acc");
+      const sub = item.querySelector(".footer__msub");
+      btn.addEventListener("click", () => {
+        const open = btn.getAttribute("aria-expanded") !== "true";
+        btn.setAttribute("aria-expanded", String(open));
+        item.classList.toggle("is-open", open);
+        sub.hidden = !open;
+      });
+    });
+  };
+
   initAuth();
   initFaq();
   initStores();
@@ -1142,9 +1268,13 @@
   initCatalog();
   initCopy();
   initHome();
+  initShowcase();
+  initLineupFit();
+  initFlavoursFit();
   initMobileMenu();
   initLangSwitch();
   initReadMore();
+  initFooterAcc();
   initMobileHome();
   document.querySelectorAll("[data-select]").forEach((el) => initSelect(el));
 })();

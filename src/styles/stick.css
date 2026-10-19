@@ -596,3 +596,9 @@
     background-color: rgba(255, 255, 255, 0.25);
   }
 }
+
+@media (min-width: 768px) {
+  .stick-gallery__swiper { height: min(calc(600 * var(--wm)), calc(100svh - 210 * var(--wm))); }
+
+  .stick-info { padding-bottom: calc(22 * var(--wm)); }
+}

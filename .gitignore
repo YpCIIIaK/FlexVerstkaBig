@@ -22,3 +22,5 @@ assets/images/*.mp4
 assets/images/*/
 
 .env
+
+assets/video/FLEX - *

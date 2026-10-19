@@ -53,7 +53,6 @@
   height: 100%;
   object-fit: contain;
   object-position: center;
-  filter: drop-shadow(0 calc(24 * var(--wm)) calc(30 * var(--wm)) rgba(0, 0, 0, 0.35));
 }
 
 .stick-gallery__slide--dark img { object-fit: contain; }

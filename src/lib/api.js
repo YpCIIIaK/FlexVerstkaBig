@@ -15,7 +15,7 @@
 
   const logout = () => {
     localStorage.removeItem(KEY);
-    location.replace("login.html");
+    fetch("/api/v1/logout", { method: "POST" }).finally(() => location.replace("login.html"));
   };
 
   const login = async (verifyToken) => {
@@ -95,10 +95,7 @@
 
   const loggedIn = Boolean(localStorage.getItem(KEY));
 
-  if (document.querySelector("[data-auth-form]")) {
-    if (loggedIn) location.replace("account.html");
-    else initLogin(window.flexAuth);
-  }
+  if (document.querySelector("[data-auth-form]")) initLogin(window.flexAuth);
 
   if (document.querySelector("[data-profile]")) {
     if (loggedIn) initAccount();

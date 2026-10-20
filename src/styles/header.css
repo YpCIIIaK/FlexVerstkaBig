@@ -171,11 +171,20 @@
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.header__menu-link:hover { background-color: var(--w-05); color: var(--white); }
+.header__menu-link:hover,
+.header__menu-link[aria-current="page"] { color: var(--white); }
 
-.header__menu-link[aria-current="page"] {
-  background-color: rgba(160, 93, 218, 0.2);
-  color: var(--white);
+.header__menu-text {
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+}
+
+.header__menu-link:hover .header__cloud,
+.header__menu-link:focus-visible .header__cloud,
+.header__menu-link[aria-current="page"] .header__cloud {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .header__burger,

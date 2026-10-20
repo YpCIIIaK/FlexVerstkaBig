@@ -54,7 +54,10 @@
     tooltip.querySelector("[data-tooltip-address]").textContent = text(card, ".store__address");
     tooltip.querySelector("[data-tooltip-meta]").textContent = text(card, ".store__distance") + " • " + openStatus(text(card, ".store__hours"));
     paint();
-    if (fromMap) card.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    if (fromMap) {
+      const list = root.querySelector("[data-store-list]");
+      list.scrollTo({ top: card.getBoundingClientRect().top - list.getBoundingClientRect().top + list.scrollTop - 16, behavior: "smooth" });
+    }
     if (map) map.update({ location: { center: lngLat(card), zoom: Math.max(map.zoom, 14), duration: 400 } });
   };
 
@@ -77,7 +80,7 @@
     if (map) map.update({ location: { center: CITIES[city], zoom: 12, duration: 400 } });
   }));
 
-  select(activeId, true);
+  select(activeId);
   filter();
 
   if (!window.ymaps3) return;

@@ -54,7 +54,7 @@
         ui.setLoading(false);
         ui.showLoginProgress();
         await login(verifyToken);
-        location.href = "account.html";
+        location.href = "index.html";
       } catch (err) {
         ui.setCodeState(err.status < 500 ? "wrong" : "server");
       }
@@ -65,7 +65,7 @@
       try {
         await api("/register", { verify_token: verifyToken, iin: e.detail.iin });
         await login(verifyToken);
-        ui.showComplete({ href: "account.html" });
+        ui.showComplete({ href: "index.html" });
       } catch (err) {
         ui.setLoading(false);
         ui.setIinError(err.detail || iinError);

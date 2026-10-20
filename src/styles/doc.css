@@ -14,9 +14,7 @@
   border-radius: calc(20 * var(--wm));
   outline: 1px solid var(--w-10);
   outline-offset: -1px;
-  background-color: rgba(20, 20, 20, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background-color: rgba(20, 20, 20, 0.92);
 }
 
 .doc__title {

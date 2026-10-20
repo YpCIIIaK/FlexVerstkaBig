@@ -3,13 +3,24 @@
 
   const KEY = "flex_session";
 
+  const ERRORS = {
+    INVALID_PHONE: "Введите номер телефона в формате +7 7XX XXX XX XX",
+    OTP_INVALID: "Неверный или истёкший код",
+    INVALID_VERIFY_TOKEN: "Время подтверждения истекло. Запросите код заново.",
+  };
+
+  const errorText = (data) => {
+    const detail = typeof data.detail === "string" ? data.detail : "";
+    return ERRORS[data.code] || (/[а-яё]/i.test(detail) ? detail : "");
+  };
+
   const api = async (path, body) => {
     const headers = { "Content-Type": "application/json" };
     const token = localStorage.getItem(KEY);
     if (token) headers.Authorization = "Bearer " + token;
     const res = await fetch("/api/v1" + path, { method: body ? "POST" : "GET", headers, body: body && JSON.stringify(body) });
     const data = await res.json().catch(() => ({}));
-    if (!res.ok) throw { status: res.status, detail: typeof data.detail === "string" ? data.detail : "" };
+    if (!res.ok) throw { status: res.status, code: data.code || "", detail: errorText(data) };
     return data;
   };
 

@@ -519,6 +519,36 @@
     });
   };
 
+  const FAV_KEY = "flex_favorites";
+
+  const readFavs = () => {
+    try { return JSON.parse(localStorage.getItem(FAV_KEY)) || []; } catch (e) { return []; }
+  };
+
+  const writeFavs = (list) => {
+    try { localStorage.setItem(FAV_KEY, JSON.stringify(list)); } catch (e) {}
+  };
+
+  const favId = (card) => card.querySelector(".product-card__title a")?.getAttribute("href") || card.dataset.name;
+
+  const favSnapshot = (card) => {
+    const el = card.cloneNode(true);
+    el.classList.add("swiper-slide");
+    el.removeAttribute("style");
+    [".product-card__img", ".product-card__dot"].forEach((sel) => {
+      el.querySelectorAll(sel).forEach((x, i) => x.classList.toggle("is-active", i === 0));
+    });
+    return el.outerHTML;
+  };
+
+  const initFavList = () => {
+    const wrap = document.querySelector("[data-fav-list] .swiper-wrapper");
+    if (!wrap) return;
+    const favs = readFavs();
+    wrap.innerHTML = favs.map((f) => f.html).join("");
+    document.querySelector("[data-fav-empty]").hidden = favs.length > 0;
+  };
+
   const initProductCards = () => {
     document.querySelectorAll("[data-product]").forEach((card) => {
       const imgs = [...card.querySelectorAll(".product-card__img")];
@@ -550,13 +580,32 @@
       dots.forEach((dot, i) => dot.addEventListener("click", () => { stop(); show(i); }));
     });
 
+    const setFav = (btn, on) => {
+      btn.classList.toggle("is-active", on);
+      btn.setAttribute("aria-pressed", String(on));
+      btn.setAttribute("aria-label", on ? "Убрать из избранного" : "Добавить в избранное");
+    };
+
+    const saved = new Set(readFavs().map((f) => f.id));
+
     document.querySelectorAll("[data-fav]").forEach((btn) => {
+      const card = btn.closest("[data-product]");
+      const id = favId(card);
+      setFav(btn, saved.has(id));
+
       btn.addEventListener("click", () => {
         const on = !btn.classList.contains("is-active");
-        btn.classList.toggle("is-active", on);
-        btn.setAttribute("aria-pressed", String(on));
-        btn.setAttribute("aria-label", on ? "Убрать из избранного" : "Добавить в избранное");
-        btn.dispatchEvent(new CustomEvent("product:favorite", { bubbles: true, detail: { favorite: on } }));
+        setFav(btn, on);
+        const favs = readFavs().filter((f) => f.id !== id);
+        if (on) favs.push({ id, html: favSnapshot(card) });
+        writeFavs(favs);
+
+        const list = card.closest("[data-fav-list]");
+        if (list && !on) {
+          card.remove();
+          list.swiper?.update();
+          document.querySelector("[data-fav-empty]").hidden = favs.length > 0;
+        }
       });
     });
   };
@@ -1167,6 +1216,7 @@
   initAuth();
   initFaq();
   initProfile();
+  initFavList();
   initProductCards();
   initProductSwipers();
   initTabs();

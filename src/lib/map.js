@@ -50,6 +50,7 @@
       c.classList.toggle("is-active", c === card);
       c.setAttribute("aria-pressed", String(c === card));
     });
+    tooltip.hidden = false;
     tooltip.querySelector("[data-tooltip-name]").textContent = text(card, ".store__name");
     tooltip.querySelector("[data-tooltip-address]").textContent = text(card, ".store__address");
     tooltip.querySelector("[data-tooltip-meta]").textContent = text(card, ".store__distance") + " • " + openStatus(text(card, ".store__hours"));
@@ -62,6 +63,11 @@
   };
 
   cards.forEach((card) => card.addEventListener("click", () => select(card.dataset.store)));
+
+  tooltip.querySelector("[data-tooltip-close]").addEventListener("click", (e) => {
+    e.stopPropagation();
+    tooltip.hidden = true;
+  });
 
   const filter = () => {
     const q = search.value.trim().toLowerCase();

@@ -560,6 +560,35 @@
 
 .map__tooltip-meta { color: var(--w-50); }
 
+.map__tooltip[hidden] { display: none; }
+
+.map__tooltip-name { padding-right: calc(24 * var(--wm)); }
+
+.map__tooltip-close {
+  position: absolute;
+  top: calc(8 * var(--wm));
+  right: calc(8 * var(--wm));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(24 * var(--wm));
+  height: calc(24 * var(--wm));
+  border-radius: 50%;
+  pointer-events: auto;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.map__tooltip-close:hover {
+  opacity: 1;
+  background-color: var(--w-10);
+}
+
+.map__tooltip-close img {
+  width: calc(14 * var(--wm));
+  height: calc(14 * var(--wm));
+}
+
 .map > .map__tooltip { display: none; }
 
 .map canvas { filter: brightness(0.7); }

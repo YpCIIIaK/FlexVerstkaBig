@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   gap: calc(32 * var(--wm));
-  max-width: calc(960 * var(--wm));
   padding: calc(48 * var(--wm));
   border-radius: calc(20 * var(--wm));
   outline: 1px solid var(--w-10);

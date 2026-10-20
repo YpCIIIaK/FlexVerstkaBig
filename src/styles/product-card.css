@@ -121,6 +121,15 @@
   overflow: hidden;
 }
 
+.products-row .stick-gallery__arrow { transition: background-color 0.2s ease, opacity 0.3s ease; }
+
+.products-row .swiper-button-disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.products-row .swiper-button-lock { display: none; }
+
 .products-row .swiper-slide {
   width: calc(320 * var(--wm));
   height: auto;

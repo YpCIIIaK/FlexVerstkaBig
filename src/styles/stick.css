@@ -279,6 +279,7 @@
 
 .product-card--device .product-card__gallery {
   width: calc(221 * var(--wm));
+  margin-inline: auto;
 }
 
 .product-card__title--plain { text-transform: none; }

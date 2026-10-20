@@ -586,6 +586,26 @@
       btn.setAttribute("aria-label", on ? "Убрать из избранного" : "Добавить в избранное");
     };
 
+    const removeFavCard = (card, list, left) => {
+      card.style.pointerEvents = "none";
+      card.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+      card.style.opacity = "0";
+      card.style.transform = "scale(0.95)";
+      setTimeout(() => {
+        const rest = [...list.querySelectorAll("[data-product]")].filter((c) => c !== card);
+        const before = rest.map((c) => c.getBoundingClientRect());
+        card.remove();
+        list.swiper?.update();
+        rest.forEach((c, i) => {
+          const now = c.getBoundingClientRect();
+          const dx = before[i].left - now.left;
+          const dy = before[i].top - now.top;
+          if (dx || dy) c.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "none" }], { duration: 450, easing: "cubic-bezier(0.22, 1, 0.36, 1)" });
+        });
+        document.querySelector("[data-fav-empty]").hidden = left > 0;
+      }, 300);
+    };
+
     const saved = new Set(readFavs().map((f) => f.id));
 
     document.querySelectorAll("[data-fav]").forEach((btn) => {
@@ -601,11 +621,7 @@
         writeFavs(favs);
 
         const list = card.closest("[data-fav-list]");
-        if (list && !on) {
-          card.remove();
-          list.swiper?.update();
-          document.querySelector("[data-fav-empty]").hidden = favs.length > 0;
-        }
+        if (list && !on) removeFavCard(card, list, favs.length);
       });
     });
   };
@@ -614,7 +630,17 @@
     if (!window.Swiper) return;
     document.querySelectorAll("[data-products-swiper]").forEach((el) => {
       if (el.hasAttribute("data-fav-list") && window.matchMedia("(max-width: 767px)").matches) return;
+      const arrow = (dir, d) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "stick-gallery__arrow stick-gallery__arrow--" + dir;
+        btn.setAttribute("aria-label", dir === "prev" ? "Назад" : "Вперёд");
+        btn.innerHTML = `<svg viewBox="0 0 20 20" aria-hidden="true"><path d="${d}" /></svg>`;
+        el.append(btn);
+        return btn;
+      };
       new Swiper(el, {
+        navigation: { prevEl: arrow("prev", "M12.5 15L7.5 10L12.5 5"), nextEl: arrow("next", "M7.5 15L12.5 10L7.5 5") },
         slidesPerView: "auto",
         spaceBetween: 24 * (window.innerWidth / 1440),
         grabCursor: true,

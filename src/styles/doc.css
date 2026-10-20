@@ -1,0 +1,104 @@
+.doc {
+  display: flex;
+  flex-direction: column;
+  padding: 0 calc(40 * var(--wm)) calc(120 * var(--wm));
+}
+
+.doc .breadcrumbs { padding-bottom: calc(40 * var(--wm)); }
+
+.doc__card {
+  display: flex;
+  flex-direction: column;
+  gap: calc(32 * var(--wm));
+  max-width: calc(960 * var(--wm));
+  padding: calc(48 * var(--wm));
+  border-radius: calc(20 * var(--wm));
+  outline: 1px solid var(--w-10);
+  outline-offset: -1px;
+  background-color: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.doc__title {
+  font-size: calc(32 * var(--wm));
+  font-weight: 700;
+  line-height: calc(40 * var(--wm));
+}
+
+.doc-text {
+  display: flex;
+  flex-direction: column;
+  gap: calc(16 * var(--wm));
+  font-size: calc(16 * var(--wm));
+  line-height: calc(26 * var(--wm));
+  color: var(--w-80);
+  overflow-wrap: anywhere;
+}
+
+.doc-text h2,
+.doc-text h3 {
+  margin-top: calc(16 * var(--wm));
+  font-size: calc(20 * var(--wm));
+  font-weight: 700;
+  line-height: calc(28 * var(--wm));
+  color: var(--white);
+}
+
+.doc-text b,
+.doc-text strong { color: var(--white); }
+
+.doc-text a { text-decoration: underline; }
+
+.doc-text ul,
+.doc-text ol {
+  display: flex;
+  flex-direction: column;
+  gap: calc(8 * var(--wm));
+  padding-left: calc(24 * var(--wm));
+}
+
+.doc-text ul { list-style: disc; }
+.doc-text ol { list-style: decimal; }
+
+.doc-text table {
+  border-collapse: collapse;
+  font-size: calc(14 * var(--wm));
+  line-height: calc(20 * var(--wm));
+}
+
+.doc-text td,
+.doc-text th {
+  padding: calc(8 * var(--wm)) calc(12 * var(--wm));
+  border: 1px solid var(--w-10);
+  vertical-align: top;
+}
+
+@media (max-width: 767px) {
+  .doc { padding: 0 calc(16 * var(--wm)) calc(64 * var(--wm)); }
+
+  .doc .breadcrumbs { padding: calc(24 * var(--wm)) 0; }
+
+  .doc__card {
+    gap: calc(24 * var(--wm));
+    padding: calc(24 * var(--wm));
+  }
+
+  .doc__title {
+    font-size: calc(22 * var(--wm));
+    line-height: calc(28 * var(--wm));
+  }
+
+  .doc-text {
+    font-size: calc(14 * var(--wm));
+    line-height: calc(22 * var(--wm));
+  }
+
+  .doc-text h2,
+  .doc-text h3 {
+    font-size: calc(16 * var(--wm));
+    line-height: calc(22 * var(--wm));
+  }
+
+  .doc-text table { display: block; overflow-x: auto; }
+}

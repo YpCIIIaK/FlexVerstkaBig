@@ -773,7 +773,8 @@
 }
 
 @media (min-width: 768px) {
-  .home .stores {
+  .home .stores,
+  .help .stores {
     --wm: calc(100vw / 1440 * var(--ff, 1));
     justify-content: center;
     min-height: calc(100svh - var(--header-h));
@@ -782,17 +783,22 @@
 }
 
 @media (min-width: 768px) {
-  .home .stores__list-wrap { flex: 0 0 calc(380 * 100vw / 1440); }
+  .home .stores__list-wrap,
+  .help .stores__list-wrap { flex: 0 0 calc(380 * 100vw / 1440); }
 
-  .home .stores__map-col { flex: 1 1 auto; }
+  .home .stores__map-col,
+  .help .stores__map-col { flex: 1 1 auto; }
 }
 
 @media (min-width: 768px) {
-  .home .stores__body { align-items: stretch; }
+  .home .stores__body,
+  .help .stores__body { align-items: stretch; }
 
-  .home .stores__list-wrap { height: auto; }
+  .home .stores__list-wrap,
+  .help .stores__list-wrap { height: auto; }
 
-  .home .stores__list {
+  .home .stores__list,
+  .help .stores__list {
     position: absolute;
     inset: 0;
     height: auto;
@@ -801,10 +807,15 @@
 
 @media (min-width: 768px) {
   .home .store,
+  .help .store,
   .home .stores__controls,
+  .help .stores__controls,
   .home .map__tooltip,
+  .help .map__tooltip,
   .home .map__pin,
-  .home .map__cluster { --wm: calc(100vw / 1440); }
+  .help .map__pin,
+  .home .map__cluster,
+  .help .map__cluster { --wm: calc(100vw / 1440); }
 }
 
 @media (min-width: 768px) {
@@ -813,7 +824,8 @@
   .home .programs__head,
   .home .program__head,
   .home .program .button,
-  .home .stores__title { --wm: calc(100vw / 1440); }
+  .home .stores__title,
+  .help .stores__title { --wm: calc(100vw / 1440); }
 }
 
 .lineup__img--side {

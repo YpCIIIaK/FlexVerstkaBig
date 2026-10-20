@@ -1206,7 +1206,7 @@
   };
 
   const initFlavoursFit = () => {
-    document.querySelectorAll(".home-flavours, .home .programs, .home .stores").forEach((el) => fitSection(el));
+    document.querySelectorAll(".home-flavours, .home .programs, .home .stores, .help .stores").forEach((el) => fitSection(el));
   };
 
   const fitSection = (el) => {

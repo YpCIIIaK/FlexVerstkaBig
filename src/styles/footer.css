@@ -27,10 +27,11 @@
 }
 
 .footer__nav {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
   justify-content: space-between;
-  align-items: flex-start;
-  gap: calc(40 * var(--wm));
+  align-items: start;
+  gap: calc(64 * var(--wm)) calc(40 * var(--wm));
   width: 100%;
 }
 
@@ -74,6 +75,14 @@
 
 .footer__link--upper { text-transform: uppercase; }
 
+.footer__legal {
+  grid-column: 3 / -1;
+  contain: inline-size;
+  font-size: calc(12 * var(--wm));
+  line-height: calc(16 * var(--wm));
+  color: var(--w-50);
+}
+
 .footer__social {
   display: flex;
   gap: calc(12 * var(--wm));
@@ -112,7 +121,7 @@
 .footer__desc,
 .footer__social--mobile,
 .footer__mnav,
-.footer__copy { display: none; }
+.footer__mcontacts { display: none; }
 
 @media (max-width: 767px) {
   .footer {
@@ -189,8 +198,16 @@
 
   .footer__bottom .footer__link:last-child { display: none; }
 
+  .footer__mcontacts {
+    display: flex;
+    flex-direction: column;
+    gap: calc(8 * var(--wm));
+  }
+
+  .footer__mcontacts .footer__text { white-space: normal; }
+
   .footer__copy {
-    display: block;
+    margin-top: calc(8 * var(--wm));
     font-size: calc(12 * var(--wm));
     line-height: calc(16 * var(--wm));
     color: var(--w-50);

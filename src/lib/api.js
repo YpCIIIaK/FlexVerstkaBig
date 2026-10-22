@@ -10,8 +10,13 @@
   };
 
   const errorText = (data) => {
+    const code = data.code || "";
     const detail = typeof data.detail === "string" ? data.detail : "";
-    return ERRORS[data.code] || (/[а-яё]/i.test(detail) ? detail : "");
+    if (ERRORS[code]) return ERRORS[code];
+    if (/ALREADY|EXISTS|TAKEN|DUPLICATE/.test(code) || /занят|уже (есть|существ|зарегистр)|already|exists/i.test(detail)) return "Пользователь уже создан";
+    if (/IIN/.test(code) && code !== "IIN_NOT_FOUND") return "ИИН указан неверно";
+    if (/курильщ|smoker/i.test(detail)) return "";
+    return /[а-яё]/i.test(detail) ? detail : "";
   };
 
   const api = async (path, body) => {

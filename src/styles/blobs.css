@@ -14,13 +14,10 @@
   --blur: 100;
   --spin: 40s;
 
-  background: radial-gradient(50% 50% at 50% 50%,
-    var(--purple-300) 0%,
-    var(--purple-500) 37%,
-    var(--purple-700-3) 50%,
-    var(--purple-700-2) 66%,
-    var(--purple-700) 88%,
-    transparent 100%);
+}
+
+.blob--purple::before {
+  background-image: url("../../assets/images/blob-purple.webp");
 }
 
 .blob--blue {
@@ -31,13 +28,10 @@
   --blur: 100;
   --spin: 40s;
 
-  background: radial-gradient(50% 50% at 50% 50%,
-    var(--blue-500-2) 0%,
-    var(--blue-500) 37%,
-    var(--blue-700-3) 50%,
-    var(--blue-700-2) 66%,
-    var(--blue-700) 88%,
-    transparent 100%);
+}
+
+.blob--blue::before {
+  background-image: url("../../assets/images/blob-blue.webp");
 }
 
 .blob {
@@ -49,10 +43,16 @@
   top: calc(var(--y) * var(--wm));
   width: calc(var(--w) * var(--wm));
   height: calc(var(--h) * var(--wm));
-  border-radius: 50%;
-  filter: blur(calc(var(--blur) * var(--wm)));
   will-change: transform;
   animation: blob-orbit var(--spin) linear infinite;
+}
+
+.blob::before {
+  content: "";
+  position: absolute;
+  inset: calc(-300 * var(--wm));
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 @keyframes blob-orbit {

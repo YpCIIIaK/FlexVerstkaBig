@@ -161,11 +161,16 @@
 
 .stick-info__capsule[hidden] { display: none; }
 
+.stick-info__capsule { gap: calc(8 * var(--wm)); }
+
 .stick-info__capsule-value {
   display: inline-flex;
   align-items: center;
   gap: calc(8 * var(--wm));
+  font-family: "TT Norms Pro Trial", sans-serif;
   font-size: calc(16 * var(--wm));
+  font-style: normal;
+  font-weight: 450;
   line-height: calc(24 * var(--wm));
 }
 

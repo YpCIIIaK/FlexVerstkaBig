@@ -92,11 +92,11 @@
 }
 
 .bento__card--small .bento__bg--dim {
-  transform: scale(0.5);
+  transform: translateX(calc(-20 * var(--wm))) scale(0.5);
   transform-origin: top right;
 }
 
-.bento__card--small:hover .bento__bg--dim { transform: scale(0.52); }
+.bento__card--small:hover .bento__bg--dim { transform: translateX(calc(-20 * var(--wm))) scale(0.52); }
 
 .bento__title {
   font-size: calc(24 * var(--wm));

@@ -1160,7 +1160,7 @@
     }
 
     const fit = () => {
-      const need = 700 * (window.innerWidth / 1440);
+      const need = 664 * (window.innerWidth / 1440);
       root.style.setProperty("--fit", String(Math.min(1, pin.clientHeight / need)));
     };
 
@@ -1226,6 +1226,26 @@
 
   document.documentElement.style.visibility = "visible";
 
+  const initHeaderHide = () => {
+    const header = document.querySelector(".header");
+    if (!header) return;
+    let last = window.scrollY;
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const y = window.scrollY;
+      const busy = header.querySelector('[aria-expanded="true"]');
+      if (Math.abs(y - last) < 4) return;
+      const hide = y > last && y > header.offsetHeight && !busy;
+      header.classList.toggle("is-hidden", hide);
+      document.documentElement.classList.toggle("is-header-hidden", hide);
+      last = y;
+    };
+    window.addEventListener("scroll", () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+  };
+
   const initFooterAcc = () => {
     document.querySelectorAll("[data-footer-acc]").forEach((btn) => {
       const item = btn.closest(".footer__acc");
@@ -1259,6 +1279,7 @@
   initLangSwitch();
   initReadMore();
   initFooterAcc();
+  initHeaderHide();
   initMobileHome();
   document.querySelectorAll("[data-select]").forEach((el) => initSelect(el));
 })();

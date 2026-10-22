@@ -7,7 +7,7 @@
   <meta name="description" content="FLEX — устройство для нагревания табака и стики FAIIM. Линейка устройств, вкусы, программы и магазины рядом." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="src/styles/main.css?v=163" />
+  <link rel="stylesheet" href="src/styles/main.css?v=165" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -152,7 +152,6 @@
       <h2 class="mobile-title showcase__title" id="showcase-title">Как работает FLEX</h2>
       <div class="showcase__pin">
         <div class="showcase__stage">
-          <img class="showcase__logo" src="assets/logo/logo.svg" alt="FLEX" width="115" height="26" />
           <video class="showcase__video" src="assets/video/flex-rotate.mp4" data-scrub-src="assets/video/flex-rotate-scrub.mp4" data-scrub-webm="assets/video/flex-rotate-scrub.webm" poster="assets/video/flex-rotate.jpg" width="443" height="589" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
           <div class="callouts" data-cycle>
             <div class="callout callout--right callout--top is-active" data-cycle-item>
@@ -168,7 +167,11 @@
               <svg class="callout__line" viewBox="0 0 132 61" aria-hidden="true"><path d="M131.883 0.5H49.8828L0.382812 60" /></svg>
               <div class="callout__card">
                 <h3 class="callout__title">Два режима работы</h3>
-                <p class="callout__text">Возможность переключения между Классическим и Сбалансированным сеансами использования</p>
+                <p class="callout__text">Возможность переключения между сеансами использования:</p>
+                <ul class="callout__list">
+                  <li>Классическим</li>
+                  <li>Сбалансированным</li>
+                </ul>
               </div>
             </div>
             <div class="callout callout--left callout--left-top" data-cycle-item>
@@ -184,7 +187,8 @@
               <svg class="callout__line" viewBox="0 0 132 61" aria-hidden="true"><path d="M131.883 0.5H49.8828L0.382812 60" /></svg>
               <div class="callout__card">
                 <h3 class="callout__title">Быстрая зарядка</h3>
-                <p class="callout__text">До 50% за тридцать минут, сокращая время ожидания</p>
+                <p class="callout__text">До 50% за тридцать минут*, сокращая время ожидания</p>
+                <p class="callout__note">*При использовании оригинального кабеля питания и рекомендованного блока</p>
               </div>
             </div>
           </div>
@@ -557,7 +561,7 @@
 
   <script src="assets/vendor/lenis.min.js" defer></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
-  <script src="src/lib/main.js?v=63" defer></script>
+  <script src="src/lib/main.js?v=65" defer></script>
   <script src="https://api-maps.yandex.ru/v3/?apikey=f2768010-a070-4c67-9db8-1e3a11bb5941&amp;lang=ru_RU" defer></script>
   <script src="src/lib/map.js?v=8" defer></script>
 </body>

@@ -336,7 +336,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .fact--modes:hover .fact__point { animation: fact-point 2.4s ease-in-out infinite; }
+  .fact--modes:hover .fact__point { animation: fact-point 12s ease-in-out infinite; }
 }
 
 @keyframes fact-point {

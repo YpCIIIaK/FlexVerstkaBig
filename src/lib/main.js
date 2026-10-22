@@ -1272,6 +1272,24 @@
     }, { passive: true });
   };
 
+  const initHeroScrollIndicator = () => {
+    const indicator = document.querySelector("[data-hero-scroll]");
+    if (!indicator) return;
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      indicator.classList.toggle("is-hidden", window.scrollY > 8);
+    };
+
+    update();
+    window.addEventListener("scroll", () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }, { passive: true });
+  };
+
   const initFooterAcc = () => {
     document.querySelectorAll("[data-footer-acc]").forEach((btn) => {
       const item = btn.closest(".footer__acc");
@@ -1306,6 +1324,7 @@
   initReadMore();
   initFooterAcc();
   initHeaderHide();
+  initHeroScrollIndicator();
   initMobilePosters();
   initMobileHome();
   document.querySelectorAll("[data-select]").forEach((el) => initSelect(el));

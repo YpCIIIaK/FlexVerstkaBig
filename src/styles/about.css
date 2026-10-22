@@ -88,7 +88,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: calc(560 * var(--wm));
+  height: calc(520 * var(--wm));
   padding: 0 calc(11 * var(--wm)) 0 calc(40 * var(--wm));
   position: relative;
   isolation: isolate;
@@ -160,8 +160,8 @@
 }
 
 .how__video {
-  width: calc(372 * var(--wm));
-  height: calc(531 * var(--wm));
+  width: calc(350 * var(--wm));
+  height: calc(500 * var(--wm));
 }
 
 .shades {

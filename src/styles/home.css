@@ -81,7 +81,7 @@
 
 @keyframes hero-scroll-arrow {
   0%, 100% { opacity: 0.35; translate: 0 0; }
-  50% { opacity: 1; translate: calc(2 * var(--wm)) calc(2 * var(--wm)); }
+  50% { opacity: 1; translate: 0 calc(2 * var(--wm)); }
 }
 
 .pulse {

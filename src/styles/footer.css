@@ -31,7 +31,7 @@
   grid-template-columns: repeat(4, auto);
   justify-content: space-between;
   align-items: start;
-  gap: calc(64 * var(--wm)) calc(40 * var(--wm));
+  gap: calc(40 * var(--wm)) calc(40 * var(--wm));
   width: 100%;
 }
 
@@ -78,6 +78,7 @@
 .footer__legal {
   grid-column: 3 / -1;
   contain: inline-size;
+  margin-bottom: calc(-32 * var(--wm));
   font-size: calc(12 * var(--wm));
   line-height: calc(16 * var(--wm));
   color: var(--w-50);

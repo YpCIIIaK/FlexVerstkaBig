@@ -275,11 +275,8 @@
   transform: translateY(-50%);
 }
 
-.details__video--mask {
+.details__video.is-alpha {
   mix-blend-mode: normal;
-  filter: brightness(0);
-  opacity: 0.72;
-  transform: translateY(-50%) scale(0.985);
 }
 
 .fact {

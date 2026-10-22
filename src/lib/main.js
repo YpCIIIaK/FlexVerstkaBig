@@ -1290,26 +1290,21 @@
     }, { passive: true });
   };
 
-  const initDetailsVideoMask = () => {
-    const device = document.querySelector("[data-details-device]");
-    const mask = document.querySelector("[data-details-mask]");
-    if (!device || !mask) return;
+  const initDetailsVideo = () => {
+    const video = document.querySelector("[data-details-device]");
+    if (!video) return;
 
-    const sync = () => {
-      if (Math.abs(mask.currentTime - device.currentTime) > 0.06) {
-        mask.currentTime = device.currentTime;
-      }
-      mask.playbackRate = device.playbackRate;
-    };
+    const alphaSrc = video.dataset.alphaSrc;
+    const alpha = alphaSrc
+      && video.canPlayType('video/webm; codecs="vp9"')
+      && !/^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-    device.addEventListener("playing", () => {
-      sync();
-      mask.play().catch(() => {});
-    });
-    device.addEventListener("pause", () => mask.pause());
-    device.addEventListener("seeking", sync);
-    device.addEventListener("ratechange", sync);
-    device.addEventListener("timeupdate", sync);
+    if (!alpha) return;
+    video.src = alphaSrc;
+    video.classList.add("is-alpha");
+    video.removeAttribute("poster");
+    video.load();
+    video.play().catch(() => {});
   };
 
   const initFooterAcc = () => {
@@ -1347,7 +1342,7 @@
   initFooterAcc();
   initHeaderHide();
   initHeroScrollIndicator();
-  initDetailsVideoMask();
+  initDetailsVideo();
   initMobilePosters();
   initMobileHome();
   document.querySelectorAll("[data-select]").forEach((el) => initSelect(el));

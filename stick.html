@@ -7,7 +7,7 @@
   <meta name="description" content="Стики FAIIM для устройств FLEX: вкусы, насыщенность и ментол." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="src/styles/main.css?v=175" />
+  <link rel="stylesheet" href="src/styles/main.css?v=178" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -155,6 +155,9 @@
         <div class="stick-gallery__frame">
           <div class="swiper stick-gallery__swiper" data-stick-gallery>
             <div class="swiper-wrapper">
+              <div class="swiper-slide stick-gallery__slide stick-gallery__slide--pack" style="--glow-from: #ffeb55; --glow-to: #e44f16" data-slide-flavour="sunshine">
+                <img src="assets/images/product-3.webp" alt="Пачка FAIIM Sunshine Mix" width="640" height="520" loading="lazy" />
+              </div>
               <div class="swiper-slide stick-gallery__slide stick-gallery__slide--pack" style="--glow-from: #fde6f3; --glow-to: #691996" data-slide-flavour="purple">
                 <img src="assets/images/product-2.webp" alt="Пачка FAIIM Purple Mix" width="640" height="520" fetchpriority="high" />
               </div>
@@ -163,9 +166,6 @@
               </div>
               <div class="swiper-slide stick-gallery__slide stick-gallery__slide--pack" style="--glow-from: #eefbfb; --glow-to: #036b9a" data-slide-flavour="skygreen">
                 <img src="assets/images/product-4.webp" alt="Пачка FAIIM Skygreen" width="640" height="520" loading="lazy" />
-              </div>
-              <div class="swiper-slide stick-gallery__slide stick-gallery__slide--pack" style="--glow-from: #ffeb55; --glow-to: #e44f16" data-slide-flavour="sunshine">
-                <img src="assets/images/product-3.webp" alt="Пачка FAIIM Sunshine Mix" width="640" height="520" loading="lazy" />
               </div>
             </div>
           </div>
@@ -192,10 +192,10 @@
           <div class="stick-info__flavours">
             <p class="stick-info__label">Вкус: <span data-stick-name>Purple Mix</span></p>
             <div class="swatches" role="radiogroup" aria-label="Вкус">
+                <button class="swatch" type="button" role="radio" aria-checked="false" aria-label="Sunshine Mix" data-flavour="sunshine" style="--swatch: linear-gradient(180deg, #adcd0e 0%, #df5b06 100%); --ring: linear-gradient(180deg, #adcd0e 0%, #df5b06 100%)"><span></span></button>
                 <button class="swatch is-active" type="button" role="radio" aria-checked="true" aria-label="Purple Mix" data-flavour="purple" style="--swatch: linear-gradient(180deg, #e734bb 0%, #5377d8 100%); --ring: linear-gradient(180deg, #c63aa4 0%, #486ed4 100%)"><span></span></button>
                 <button class="swatch" type="button" role="radio" aria-checked="false" aria-label="Yellow Mix" data-flavour="yellow" style="--swatch: linear-gradient(180deg, #fa3918 0%, #fcd617 100%); --ring: linear-gradient(180deg, #fa3918 0%, #fcd617 100%)"><span></span></button>
                 <button class="swatch" type="button" role="radio" aria-checked="false" aria-label="Skygreen" data-flavour="skygreen" style="--swatch: linear-gradient(180deg, #50dfec 0%, #0167ab 100%); --ring: linear-gradient(180deg, #50dfec 0%, #0167ab 100%)"><span></span></button>
-                <button class="swatch" type="button" role="radio" aria-checked="false" aria-label="Sunshine Mix" data-flavour="sunshine" style="--swatch: linear-gradient(180deg, #adcd0e 0%, #df5b06 100%); --ring: linear-gradient(180deg, #adcd0e 0%, #df5b06 100%)"><span></span></button>
             </div>
           </div>
           <a class="button button--ghost stick-info__cta" href="starter-kit.html">Стартовый набор</a>
@@ -341,10 +341,10 @@
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
           </button>
           <div class="product-card__gallery">
-            <img class="product-card__img is-active" src="assets/images/skygreen-1.webp" alt="Skygreen" width="640" height="520" loading="lazy" />
-            <img class="product-card__img" src="assets/images/skygreen-2.webp" alt="Skygreen" width="640" height="520" loading="lazy" />
-            <img class="product-card__img" src="assets/images/skygreen-3.webp" alt="Skygreen" width="640" height="520" loading="lazy" />
-            <img class="product-card__img" src="assets/images/skygreen-4.webp" alt="Skygreen" width="640" height="520" loading="lazy" />
+            <img class="product-card__img is-active" src="assets/images/sunshine-mix-1.webp" alt="Sunshine Mix" width="640" height="520" loading="lazy" />
+            <img class="product-card__img" src="assets/images/sunshine-mix-2.webp" alt="Sunshine Mix" width="640" height="520" loading="lazy" />
+            <img class="product-card__img" src="assets/images/sunshine-mix-3.webp" alt="Sunshine Mix" width="640" height="520" loading="lazy" />
+            <img class="product-card__img" src="assets/images/sunshine-mix-4.webp" alt="Sunshine Mix" width="640" height="520" loading="lazy" />
           </div>
           <div class="product-card__dots">
             <button class="product-card__dot is-active" type="button" aria-label="Фото 1"></button>
@@ -353,8 +353,8 @@
             <button class="product-card__dot" type="button" aria-label="Фото 4"></button>
           </div>
           <div class="product-card__info">
-            <h3 class="product-card__title"><a href="stick.html?flavour=skygreen">Skygreen</a></h3>
-            <p class="product-card__text">Свежий мятный вкус с лёгкой ментоловой прохладой.</p>
+            <h3 class="product-card__title"><a href="stick.html?flavour=sunshine">Sunshine Mix</a></h3>
+            <p class="product-card__text">Солнечный фруктовый микс с медовым послевкусием.</p>
           </div>
         </article>
         <article class="product-card" data-product>
@@ -404,10 +404,10 @@
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
           </button>
           <div class="product-card__gallery">
-            <img class="product-card__img is-active" src="assets/images/sunshine-mix-1.webp" alt="Sunshine Mix" width="640" height="520" loading="lazy" />
-            <img class="product-card__img" src="assets/images/sunshine-mix-2.webp" alt="Sunshine Mix" width="640" height="520" loading="lazy" />
-            <img class="product-card__img" src="assets/images/sunshine-mix-3.webp" alt="Sunshine Mix" width="640" height="520" loading="lazy" />
-            <img class="product-card__img" src="assets/images/sunshine-mix-4.webp" alt="Sunshine Mix" width="640" height="520" loading="lazy" />
+            <img class="product-card__img is-active" src="assets/images/skygreen-1.webp" alt="Skygreen" width="640" height="520" loading="lazy" />
+            <img class="product-card__img" src="assets/images/skygreen-2.webp" alt="Skygreen" width="640" height="520" loading="lazy" />
+            <img class="product-card__img" src="assets/images/skygreen-3.webp" alt="Skygreen" width="640" height="520" loading="lazy" />
+            <img class="product-card__img" src="assets/images/skygreen-4.webp" alt="Skygreen" width="640" height="520" loading="lazy" />
           </div>
           <div class="product-card__dots">
             <button class="product-card__dot is-active" type="button" aria-label="Фото 1"></button>
@@ -416,8 +416,8 @@
             <button class="product-card__dot" type="button" aria-label="Фото 4"></button>
           </div>
           <div class="product-card__info">
-            <h3 class="product-card__title"><a href="stick.html?flavour=sunshine">Sunshine Mix</a></h3>
-            <p class="product-card__text">Солнечный фруктовый микс с медовым послевкусием.</p>
+            <h3 class="product-card__title"><a href="stick.html?flavour=skygreen">Skygreen</a></h3>
+            <p class="product-card__text">Свежий мятный вкус с лёгкой ментоловой прохладой.</p>
           </div>
         </article>
       </div>

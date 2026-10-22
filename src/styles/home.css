@@ -679,9 +679,9 @@
   .home .stores__list,
   .help .stores__list { overscroll-behavior: auto; }
 
-  .home-flavours .flavour--yellow { order: 1; }
+  .home-flavours .flavour--sunshine { order: 1; }
   .home-flavours .flavour--purple { order: 2; }
-  .home-flavours .flavour--sunshine { order: 3; }
+  .home-flavours .flavour--yellow { order: 3; }
   .home-flavours .flavour--skygreen { order: 4; }
 }
 

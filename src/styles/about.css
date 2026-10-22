@@ -333,7 +333,10 @@
   background-color: var(--white);
   box-shadow: 0 0 12px rgba(145, 201, 255, 0.4);
   transform: translateY(-50%);
-  animation: fact-point 12s ease-in-out infinite;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fact--modes:hover .fact__point { animation: fact-point 2.4s ease-in-out infinite; }
 }
 
 @keyframes fact-point {
@@ -353,7 +356,10 @@
   width: calc(116 * var(--wm));
   height: calc(116 * var(--wm));
   transform-origin: 50% 50%;
-  animation: fact-spin 1.2s linear infinite;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fact--display:hover .fact__spinner { animation: fact-spin 1.2s linear infinite; }
 }
 
 @keyframes fact-spin { to { rotate: 360deg; } }
@@ -378,7 +384,10 @@
   width: calc(90 * var(--wm));
   height: auto;
   margin-top: calc(40 * var(--wm));
-  animation: fact-arrow 2.4s ease-in-out infinite;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fact--charge:hover .fact__arrow { animation: fact-arrow 2.4s ease-in-out infinite; }
 }
 
 @keyframes fact-arrow {
@@ -432,7 +441,7 @@
   .fact--modes,
   .fact__point,
   .fact__spinner,
-  .fact__arrow { animation: none; }
+  .fact__arrow { animation: none !important; }
   .shade__img,
   .shade__label { transition: none; }
 }

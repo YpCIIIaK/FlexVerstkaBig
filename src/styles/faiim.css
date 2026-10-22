@@ -92,11 +92,19 @@
 }
 
 .bento__card--small .bento__bg--dim {
-  transform: translate(calc(-20 * var(--wm)), calc(20 * var(--wm))) scale(0.5);
+  transform: translate(calc(-20 * var(--wm)), calc(8 * var(--wm))) scale(0.5);
   transform-origin: top right;
 }
 
-.bento__card--small:hover .bento__bg--dim { transform: translate(calc(-20 * var(--wm)), calc(20 * var(--wm))) scale(0.52); }
+.bento__card--small:hover .bento__bg--dim { transform: translate(calc(-20 * var(--wm)), calc(8 * var(--wm))) scale(0.52); }
+
+.bento__card--small .bento__bg--aerosol {
+  transform: translate(calc(-20 * var(--wm)), 0) scale(0.5);
+}
+
+.bento__card--small:hover .bento__bg--aerosol {
+  transform: translate(calc(-20 * var(--wm)), 0) scale(0.52);
+}
 
 .bento__title {
   font-size: calc(24 * var(--wm));

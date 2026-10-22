@@ -1226,6 +1226,11 @@
 
   document.documentElement.style.visibility = "visible";
 
+  const initMobilePosters = () => {
+    if (!window.matchMedia("(max-width: 767px)").matches) return;
+    document.querySelectorAll("video[data-mobile-poster]").forEach((v) => { v.poster = v.dataset.mobilePoster; });
+  };
+
   const initHeaderHide = () => {
     const header = document.querySelector(".header");
     if (!header) return;
@@ -1280,6 +1285,7 @@
   initReadMore();
   initFooterAcc();
   initHeaderHide();
+  initMobilePosters();
   initMobileHome();
   document.querySelectorAll("[data-select]").forEach((el) => initSelect(el));
 })();

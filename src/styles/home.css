@@ -356,7 +356,7 @@
   .home-hero {
     display: flex;
     align-items: flex-end;
-    height: calc(780 * var(--wm));
+    height: calc(750 * var(--wm));
     padding: 0 calc(16 * var(--wm)) calc(40 * var(--wm));
   }
 

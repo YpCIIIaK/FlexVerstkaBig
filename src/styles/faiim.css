@@ -338,6 +338,21 @@
 
 .flavour__dot.is-on { background-color: var(--accent); }
 
+.flavour__capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(8 * var(--wm));
+  font-size: calc(12 * var(--wm));
+  line-height: calc(16 * var(--wm));
+}
+
+.flavour__capsule img {
+  flex: none;
+  width: calc(24 * var(--wm));
+  height: calc(24 * var(--wm));
+  object-fit: contain;
+}
+
 .flavour__link {
   display: inline-flex;
   align-self: flex-start;

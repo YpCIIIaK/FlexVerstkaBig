@@ -159,6 +159,23 @@
   line-height: calc(24 * var(--wm));
 }
 
+.stick-info__capsule[hidden] { display: none; }
+
+.stick-info__capsule-value {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(8 * var(--wm));
+  font-size: calc(16 * var(--wm));
+  line-height: calc(24 * var(--wm));
+}
+
+.stick-info__capsule-value img {
+  flex: none;
+  width: calc(24 * var(--wm));
+  height: calc(24 * var(--wm));
+  object-fit: contain;
+}
+
 .stick-info__bottom {
   display: flex;
   flex-direction: column;

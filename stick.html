@@ -7,7 +7,7 @@
   <meta name="description" content="Стики FAIIM для устройств FLEX: вкусы, насыщенность и ментол." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="src/styles/main.css?v=180" />
+  <link rel="stylesheet" href="src/styles/main.css?v=182" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -185,6 +185,10 @@
           <div class="stick-info__metrics d-only">
             <div class="flavour__metric stick-info__metric"><span class="flavour__metric-label">Насыщенность</span><span class="flavour__dots" role="img" aria-label="Насыщенность: 2 из 5" data-metric><span class="flavour__dot is-on"></span><span class="flavour__dot is-on"></span><span class="flavour__dot"></span><span class="flavour__dot"></span><span class="flavour__dot"></span></span></div>
             <div class="flavour__metric stick-info__metric"><span class="flavour__metric-label">Ментол</span><span class="flavour__dots" role="img" aria-label="Ментол: 2 из 5" data-metric><span class="flavour__dot is-on"></span><span class="flavour__dot is-on"></span><span class="flavour__dot"></span><span class="flavour__dot"></span><span class="flavour__dot"></span></span></div>
+            <div class="flavour__metric stick-info__metric stick-info__capsule" data-capsule-row>
+              <span class="flavour__metric-label">Капсула</span>
+              <span class="stick-info__capsule-value"><img src="assets/images/capsule-purple.webp" alt="" width="24" height="24" data-capsule-img /><span>Есть</span></span>
+            </div>
           </div>
         </div>
 
@@ -547,7 +551,7 @@
       <a class="button button--ghost faq__help m-only" href="help.html">Помощь</a>
     </section>
 
-    <script type="application/json" id="stick-data">{"purple": {"name": "Purple Mix", "text": "Табачный бленд с ягодными нотами и капсулой с ментолом", "pack": 2, "metrics": [2, 2], "glow": ["#fde6f3", "#691996"], "images": ["assets/images/purple-mix-1.webp", "assets/images/purple-mix-2.webp", "assets/images/purple-mix-4.webp", "assets/images/purple-mix-3.webp"]}, "yellow": {"name": "Yellow Mix", "text": "Табачный бленд с фруктовыми нотами и цитрусовой капсулой", "pack": 1, "metrics": [2, 1], "glow": ["#fff5b2", "#973d0a"], "images": ["assets/images/yellow-mix-1.webp", "assets/images/yellow-mix-4.webp", "assets/images/yellow-mix-2.webp", "assets/images/yellow-mix-3.webp"]}, "skygreen": {"name": "Skygreen", "text": "Классический табачный бленд с мятным акцентом", "pack": 4, "metrics": [5, 4], "glow": ["#eefbfb", "#036b9a"], "images": ["assets/images/skygreen-1.webp", "assets/images/skygreen-2.webp", "assets/images/skygreen-4.webp", "assets/images/skygreen-3.webp"]}, "sunshine": {"name": "Sunshine Mix", "text": "Табачный бленд с нотами тропических фруктов и капсулой", "pack": 3, "metrics": [2, 1], "glow": ["#ffeb55", "#e44f16"], "images": ["assets/images/sunshine-mix-1.webp", "assets/images/sunshine-mix-4.webp", "assets/images/sunshine-mix-2.webp", "assets/images/sunshine-mix-3.webp"]}}</script>
+    <script type="application/json" id="stick-data">{"purple": {"name": "Purple Mix", "text": "Табачный бленд с ягодными нотами и капсулой с ментолом", "pack": 2, "capsule": "assets/images/capsule-purple.webp", "metrics": [2, 2], "glow": ["#fde6f3", "#691996"], "images": ["assets/images/purple-mix-1.webp", "assets/images/purple-mix-2.webp", "assets/images/purple-mix-4.webp", "assets/images/purple-mix-3.webp"]}, "yellow": {"name": "Yellow Mix", "text": "Табачный бленд с фруктовыми нотами и цитрусовой капсулой", "pack": 1, "capsule": "assets/images/capsule-yellow.webp", "metrics": [2, 1], "glow": ["#fff5b2", "#973d0a"], "images": ["assets/images/yellow-mix-1.webp", "assets/images/yellow-mix-4.webp", "assets/images/yellow-mix-2.webp", "assets/images/yellow-mix-3.webp"]}, "skygreen": {"name": "Skygreen", "text": "Классический табачный бленд с мятным акцентом", "pack": 4, "metrics": [5, 4], "glow": ["#eefbfb", "#036b9a"], "images": ["assets/images/skygreen-1.webp", "assets/images/skygreen-2.webp", "assets/images/skygreen-4.webp", "assets/images/skygreen-3.webp"]}, "sunshine": {"name": "Sunshine Mix", "text": "Табачный бленд с нотами тропических фруктов и капсулой", "pack": 3, "capsule": "assets/images/capsule-sunshine.webp", "metrics": [2, 1], "glow": ["#ffeb55", "#e44f16"], "images": ["assets/images/sunshine-mix-1.webp", "assets/images/sunshine-mix-4.webp", "assets/images/sunshine-mix-2.webp", "assets/images/sunshine-mix-3.webp"]}}</script>
   </main>
 
   <footer class="footer">
@@ -642,6 +646,6 @@
 
   <script src="assets/vendor/lenis.min.js" defer></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
-  <script src="src/lib/main.js?v=67" defer></script>
+  <script src="src/lib/main.js?v=69" defer></script>
 </body>
 </html>

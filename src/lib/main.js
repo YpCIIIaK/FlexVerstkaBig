@@ -752,6 +752,8 @@
     const text = root.querySelector("[data-stick-text]");
     const metrics = [...root.querySelectorAll("[data-metric]")];
     const labels = ["Насыщенность", "Ментол"];
+    const capsuleRow = root.querySelector("[data-capsule-row]");
+    const capsuleImg = root.querySelector("[data-capsule-img]");
 
     const heading = root.querySelector("[data-stick-heading]");
     const param = root.dataset.param || "flavour";
@@ -768,6 +770,10 @@
           [...m.children].forEach((dot, k) => dot.classList.toggle("is-on", k < f.metrics[i]));
           m.setAttribute("aria-label", labels[i] + ": " + f.metrics[i] + " из 5");
         });
+      }
+      if (capsuleRow) {
+        capsuleRow.hidden = !f.capsule;
+        if (f.capsule && capsuleImg) capsuleImg.src = f.capsule;
       }
       swatches.forEach((s) => {
         const on = s.dataset.flavour === key;

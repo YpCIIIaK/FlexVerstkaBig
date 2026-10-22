@@ -343,7 +343,7 @@
 .flavour__capsule {
   display: inline-flex;
   align-items: center;
-  gap: calc(8 * var(--wm));
+  gap: calc(0 * var(--wm));
   font-family: "TT Norms Pro Trial", sans-serif;
   font-size: calc(16 * var(--wm));
   font-style: normal;

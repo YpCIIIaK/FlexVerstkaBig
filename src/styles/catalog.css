@@ -58,6 +58,8 @@
   color: var(--w-80);
 }
 
+.promo__text > .button { margin-top: calc(8 * var(--wm)); }
+
 .promo__note {
   margin-top: auto;
   font-size: calc(12 * var(--wm));

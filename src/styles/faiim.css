@@ -91,6 +91,13 @@
   padding: calc(32 * var(--wm));
 }
 
+.bento__card--small .bento__bg--dim {
+  transform: scale(0.5);
+  transform-origin: top right;
+}
+
+.bento__card--small:hover .bento__bg--dim { transform: scale(0.52); }
+
 .bento__title {
   font-size: calc(24 * var(--wm));
   font-weight: 450;

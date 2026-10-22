@@ -275,6 +275,10 @@
   transform: translateY(-50%);
 }
 
+.details__video--alpha {
+  mix-blend-mode: normal;
+}
+
 .fact {
   position: relative;
   display: flex;

@@ -1290,6 +1290,28 @@
     }, { passive: true });
   };
 
+  const initDetailsVideoMask = () => {
+    const device = document.querySelector("[data-details-device]");
+    const mask = document.querySelector("[data-details-mask]");
+    if (!device || !mask) return;
+
+    const sync = () => {
+      if (Math.abs(mask.currentTime - device.currentTime) > 0.06) {
+        mask.currentTime = device.currentTime;
+      }
+      mask.playbackRate = device.playbackRate;
+    };
+
+    device.addEventListener("playing", () => {
+      sync();
+      mask.play().catch(() => {});
+    });
+    device.addEventListener("pause", () => mask.pause());
+    device.addEventListener("seeking", sync);
+    device.addEventListener("ratechange", sync);
+    device.addEventListener("timeupdate", sync);
+  };
+
   const initFooterAcc = () => {
     document.querySelectorAll("[data-footer-acc]").forEach((btn) => {
       const item = btn.closest(".footer__acc");
@@ -1325,6 +1347,7 @@
   initFooterAcc();
   initHeaderHide();
   initHeroScrollIndicator();
+  initDetailsVideoMask();
   initMobilePosters();
   initMobileHome();
   document.querySelectorAll("[data-select]").forEach((el) => initSelect(el));

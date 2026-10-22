@@ -307,7 +307,8 @@
       </header>
 
       <div class="details__body">
-        <video class="details__video" src="assets/video/flex-rotate.mp4" poster="assets/video/flex-rotate.jpg" width="467" height="621" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+        <video class="details__video details__video--mask" src="assets/video/flex-rotate-mask.webm" width="467" height="621" autoplay muted loop playsinline preload="metadata" aria-hidden="true" data-details-mask></video>
+        <video class="details__video" src="assets/video/flex-rotate.mp4" poster="assets/video/flex-rotate.jpg" width="467" height="621" autoplay muted loop playsinline preload="metadata" aria-hidden="true" data-details-device></video>
 
         <article class="fact fact--modes">
           <h3 class="fact__title">Два режима работы</h3>
@@ -531,6 +532,6 @@
 
   <script src="assets/vendor/lenis.min.js" defer></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
-  <script src="src/lib/main.js?v=66" defer></script>
+  <script src="src/lib/main.js?v=67" defer></script>
 </body>
 </html>

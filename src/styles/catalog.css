@@ -58,7 +58,11 @@
   color: var(--w-80);
 }
 
-.promo__text > .button { margin-top: calc(8 * var(--wm)); }
+.promo__text > .button {
+  position: relative;
+  top: calc(30 * var(--wm));
+  margin-top: calc(8 * var(--wm));
+}
 
 .promo__note {
   margin-top: auto;

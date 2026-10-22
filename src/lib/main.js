@@ -778,20 +778,32 @@
       if (push) history.replaceState(null, "", "?" + param + "=" + key);
     };
 
-    const slideIndex = (key) => {
-      const el = root.querySelector('[data-slide-flavour="' + key + '"]');
-      if (!el) return 0;
-      const real = el.getAttribute("data-swiper-slide-index");
-      return real !== null ? Number(real) : [...root.querySelectorAll("[data-slide-flavour]")].indexOf(el);
+    const makeSlides = (key) => {
+      const f = flavours[key];
+      if (!f || !Array.isArray(f.images)) return [];
+      return f.images.map((src, index) => {
+        const slide = document.createElement("div");
+        slide.className = "swiper-slide stick-gallery__slide stick-gallery__slide--pack";
+        if (f.glow) {
+          slide.style.setProperty("--glow-from", f.glow[0]);
+          slide.style.setProperty("--glow-to", f.glow[1]);
+        }
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = index === 0 ? f.name : f.name + ", другой ракурс";
+        img.width = param === "color" ? 600 : 640;
+        img.height = param === "color" ? 798 : 520;
+        if (index > 0) img.loading = "lazy";
+        slide.appendChild(img);
+        return slide;
+      });
     };
 
-    swatches.forEach((s) => s.addEventListener("click", () => {
-      apply(s.dataset.flavour, true);
-      if (gallery) gallery.slideToLoop(slideIndex(s.dataset.flavour));
-    }));
-
     const initial = new URLSearchParams(location.search).get(param);
-    if (initial && flavours[initial]) apply(initial, false);
+    const fallback = swatches.find((s) => s.classList.contains("is-active"))?.dataset.flavour;
+    const initialKey = initial && flavours[initial] ? initial : fallback;
+    if (initialKey) apply(initialKey, false);
 
     const el = root.querySelector("[data-stick-gallery]");
     const dotsBox = root.querySelector("[data-stick-dots]");
@@ -799,7 +811,7 @@
     if (!el || !window.Swiper) return;
 
     gallery = new Swiper(el, {
-      loop: true,
+      rewind: true,
       speed: 500,
       grabCursor: true,
       navigation: {
@@ -813,15 +825,24 @@
         bulletActiveClass: "is-active",
         bulletElement: "button",
       },
-      on: {
-        slideChange(sw) {
-          const slide = sw.slides[sw.activeIndex];
-          if (slide && slide.dataset.slideFlavour) apply(slide.dataset.slideFlavour, true);
-        },
-      },
     });
 
-    if (initial && flavours[initial]) gallery.slideToLoop(slideIndex(initial), 0);
+    const renderGallery = (key) => {
+      const slides = makeSlides(key);
+      if (!slides.length) return;
+      gallery.removeAllSlides();
+      gallery.appendSlide(slides);
+      gallery.update();
+      gallery.slideTo(0, 0);
+    };
+
+    if (initialKey) renderGallery(initialKey);
+
+    swatches.forEach((s) => s.addEventListener("click", () => {
+      const key = s.dataset.flavour;
+      apply(key, true);
+      renderGallery(key);
+    }));
   };
 
   const initCatalog = () => {

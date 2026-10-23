@@ -78,7 +78,7 @@
 .footer__legal {
   grid-column: 3 / -1;
   contain: inline-size;
-  margin-bottom: calc(-32 * var(--wm));
+  margin-bottom: calc(-64 * var(--wm));
   font-size: calc(12 * var(--wm));
   line-height: calc(16 * var(--wm));
   color: var(--w-50);

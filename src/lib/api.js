@@ -7,6 +7,7 @@
     INVALID_PHONE: "Введите номер телефона в формате +7 7XX XXX XX XX",
     OTP_INVALID: "Неверный или истёкший код",
     INVALID_VERIFY_TOKEN: "Время подтверждения истекло. Запросите код заново.",
+    OTP_TOO_MANY_ATTEMPTS: "Слишком много попыток. Запросите код заново.",
   };
 
   const errorText = (data) => {
@@ -41,6 +42,18 @@
 
   const initLogin = (ui) => {
     let verifyToken = "";
+    let mode = "login";
+
+    const sendCode = async (phone) => {
+      try {
+        await api("/cabinet/login/code", { phone });
+        mode = "login";
+      } catch (err) {
+        if (err.code !== "SITE_LOGIN_CLIENT_NOT_FOUND") throw err;
+        await api("/phone", { phone });
+        mode = "register";
+      }
+    };
     const alertText = document.querySelector("[data-auth-alert-text]").textContent;
     const iinError = document.querySelector("[data-iin-error]").textContent;
     const codeForm = document.querySelector("[data-code-form]");
@@ -48,7 +61,7 @@
     document.querySelector("[data-auth-form]").addEventListener("auth:submit", async (e) => {
       ui.setLoading(true);
       try {
-        await api("/phone", { phone: e.detail.phone });
+        await sendCode(e.detail.phone);
         ui.setLoading(false);
         ui.showCode();
       } catch (err) {
@@ -58,12 +71,20 @@
     });
 
     codeForm.addEventListener("auth:resend", (e) => {
-      api("/phone", { phone: e.detail.phone }).catch(() => ui.setCodeState("server"));
+      sendCode(e.detail.phone).catch(() => ui.setCodeState("server"));
     });
 
     codeForm.addEventListener("auth:verify", async (e) => {
       ui.setLoading(true);
       try {
+        if (mode === "login") {
+          const session = await api("/cabinet/login/verify", { phone: e.detail.phone, code: e.detail.code });
+          localStorage.setItem(KEY, session.token);
+          ui.setLoading(false);
+          ui.showLoginProgress();
+          location.href = "index.html";
+          return;
+        }
         const res = await api("/otp/verify", { phone: e.detail.phone, code: e.detail.code });
         verifyToken = res.verify_token;
         if (!res.registered) return ui.showRegistration();

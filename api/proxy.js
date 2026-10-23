@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
   try {
     const r = await fetch(url, { method: req.method, headers, body });
     const data = Buffer.from(await r.arrayBuffer());
-    if (route === "cabinet/session" && r.ok) res.setHeader("Set-Cookie", cookie(JSON.parse(data).token, 86400));
+    if ((route === "cabinet/session" || route === "cabinet/login/verify") && r.ok) res.setHeader("Set-Cookie", cookie(JSON.parse(data).token, 86400));
     res.status(r.status);
     res.setHeader("Content-Type", r.headers.get("content-type") || "application/json");
     res.send(data);

@@ -1,3 +1,7 @@
 {
-  "rewrites": [{ "source": "/api/v1/:path*", "destination": "/api/proxy?path=:path*" }]
+  "rewrites": [
+    { "source": "/api/v1/:path*", "destination": "/api/proxy?path=:path*" },
+    { "source": "/referral", "destination": "/referral.html" },
+    { "source": "/starterkit", "destination": "/starter-kit.html" }
+  ]
 }

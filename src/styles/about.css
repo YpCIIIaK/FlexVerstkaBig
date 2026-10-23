@@ -295,6 +295,14 @@
   overflow: hidden;
 }
 
+.fact--static-glass {
+  background:
+    linear-gradient(180deg, rgba(109, 157, 180, 0.08) 0%, rgba(20, 20, 20, 0.18) 100%),
+    rgba(13, 13, 22, 0.72);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
 .fact__title {
   font-size: calc(32 * var(--wm));
   font-weight: 700;

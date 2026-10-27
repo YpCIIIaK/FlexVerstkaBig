@@ -446,3 +446,29 @@
     font-size: calc(16 * var(--wm));
   }
 }
+
+@media (min-width: 768px) {
+  .account [data-fav-list] .swiper-slide,
+  .account [data-fav-list] .product-card { width: calc(288 * var(--wm)); }
+
+  .account [data-fav-list] .product-card__gallery { height: calc(234 * var(--wm)); }
+}
+
+@media (min-width: 768px) {
+  .account-card--fav { position: relative; }
+
+  .account-card--fav > .stick-gallery__arrow {
+    top: calc(45 * var(--wm));
+    transition: background-color 0.2s ease, opacity 0.3s ease;
+  }
+
+  .account-card--fav > .stick-gallery__arrow--prev { right: calc(84 * var(--wm)); left: auto; }
+  .account-card--fav > .stick-gallery__arrow--next { right: calc(32 * var(--wm)); }
+
+  .account-card--fav > .swiper-button-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .account-card--fav > .swiper-button-lock { display: none; }
+}

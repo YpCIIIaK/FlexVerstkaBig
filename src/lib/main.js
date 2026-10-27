@@ -636,7 +636,7 @@
         btn.className = "stick-gallery__arrow stick-gallery__arrow--" + dir;
         btn.setAttribute("aria-label", dir === "prev" ? "Назад" : "Вперёд");
         btn.innerHTML = `<svg viewBox="0 0 20 20" aria-hidden="true"><path d="${d}" /></svg>`;
-        el.append(btn);
+        (el.closest(".account-card--fav") || el).append(btn);
         return btn;
       };
       new Swiper(el, {

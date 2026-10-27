@@ -1258,6 +1258,36 @@
     document.querySelectorAll("video[data-mobile-poster]").forEach((v) => { v.poster = v.dataset.mobilePoster; });
   };
 
+  const initViewportVideos = () => {
+    const videos = [...document.querySelectorAll("video[autoplay]")];
+    if (!videos.length || !("IntersectionObserver" in window)) return;
+
+    const visible = new WeakMap();
+    const sync = (video) => {
+      if (document.hidden || !visible.get(video)) {
+        video.pause();
+        return;
+      }
+      video.play().catch(() => {});
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        visible.set(entry.target, entry.isIntersecting);
+        sync(entry.target);
+      });
+    }, { rootMargin: "100px 0px", threshold: 0.01 });
+
+    videos.forEach((video) => {
+      visible.set(video, false);
+      observer.observe(video);
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      videos.forEach(sync);
+    });
+  };
+
   const initHeaderHide = () => {
     const header = document.querySelector(".header");
     if (!header) return;
@@ -1350,6 +1380,7 @@
   initHeroScrollIndicator();
   initDetailsVideo();
   initMobilePosters();
+  initViewportVideos();
   initMobileHome();
   document.querySelectorAll("[data-select]").forEach((el) => initSelect(el));
 })();

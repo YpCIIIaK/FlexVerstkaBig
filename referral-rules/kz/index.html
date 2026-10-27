@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Рефералдық бағдарламаның қағидалары — Flex</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Условия использования сайта FLEX." />
+
+  <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
+  <link rel="stylesheet" href="../../src/styles/main.css?v=186" />
+  <link rel="stylesheet" href="../../assets/vendor/swiper/swiper-bundle.min.css" />
+</head>
+<body>
+  <svg class="visually-hidden" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="cloud-gold" x1="54.2873" y1="5.07195" x2="26.9609" y2="25.2305" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-gold-start)" />
+        <stop offset="1" style="stop-color: var(--cloud-gold-end)" stop-opacity="0.4" />
+      </linearGradient>
+      <linearGradient id="cloud-green" x1="24.1852" y1="1.89462" x2="15.8294" y2="31.4495" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-green-start)" stop-opacity="0.4" />
+        <stop offset="1" style="stop-color: var(--cloud-green-end)" />
+      </linearGradient>
+      <linearGradient id="cloud-blue" x1="54.2873" y1="5.07195" x2="26.9609" y2="25.2305" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-blue-start)" />
+        <stop offset="1" style="stop-color: var(--cloud-blue-end)" stop-opacity="0.4" />
+      </linearGradient>
+      <linearGradient id="cloud-purple" x1="24.1852" y1="1.89462" x2="15.8294" y2="31.4495" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-purple-start)" stop-opacity="0.4" />
+        <stop offset="1" style="stop-color: var(--cloud-purple-end)" />
+      </linearGradient>
+      <linearGradient id="cloud-mint" x1="24.1852" y1="1.89462" x2="15.8294" y2="31.4495" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-mint-start)" />
+        <stop offset="1" style="stop-color: var(--cloud-mint-end)" stop-opacity="0.5" />
+      </linearGradient>
+      <linearGradient id="cloud-violet" x1="54.2873" y1="5.07195" x2="26.9609" y2="25.2305" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-purple-end)" />
+        <stop offset="1" style="stop-color: var(--cloud-purple-start)" stop-opacity="0.4" />
+      </linearGradient>
+      <linearGradient id="cloud-sand" x1="24.1852" y1="1.89462" x2="15.8294" y2="31.4495" gradientUnits="userSpaceOnUse">
+        <stop style="stop-color: var(--cloud-gold-end)" stop-opacity="0.4" />
+        <stop offset="1" style="stop-color: var(--cloud-gold-start)" />
+      </linearGradient>
+      <symbol id="clouds" viewBox="0 0 58 32">
+        <g opacity="0.8">
+          <path d="M45.6102 27.384C38.9079 30.0171 33.2429 25.2896 31.2481 22.5967C29.7521 20.0035 27.6576 13.5605 31.2481 8.53372C35.7363 2.2503 39.007 0.455029 47.7047 0.455078C55.7834 0.455124 58.7957 5.82264 56.5546 8.0794C54.0344 10.6171 53.8617 11.0715 53.9881 13.6203C54.2325 18.5457 53.9881 24.0927 45.6102 27.384Z" style="fill: var(--cloud-a, url(#cloud-gold))" />
+          <path d="M5.51217 8.83254C-3.34446 21.0403 0.425589 28.6802 3.41769 30.9741C9.70127 33.3679 17.4804 31.5725 27.6536 25.5883C37.8268 19.604 36.6288 12.8701 33.937 7.9349C30.3465 1.352 16.583 -6.4272 5.51217 8.83254Z" style="fill: var(--cloud-b, url(#cloud-green))" />
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="blobs blobs--fixed" aria-hidden="true">
+    <div class="blob blob--purple"></div>
+    <div class="blob blob--blue"></div>
+  </div>
+
+  <header class="header">
+    <button class="header__burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu" data-burger>
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="header__nav" aria-label="Основное меню">
+      <div class="header__item" data-menu>
+        <button class="header__link" type="button" aria-expanded="false" aria-controls="menu-brand" data-menu-trigger>
+          <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+          О Бренде
+          <img class="header__arrow" src="../../assets/images/arrow-drop-up.svg" alt="" width="24" height="24" />
+        </button>
+        <ul class="header__menu" id="menu-brand" data-menu-list hidden>
+          <li><a class="header__menu-link" href="../../about.html"><span class="header__menu-text"><svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>О FLEX</span></a></li>
+          <li><a class="header__menu-link" href="../../faiim.html"><span class="header__menu-text"><svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>О FAIIM</span></a></li>
+        </ul>
+      </div>
+      <a class="header__link header__link--catalog" href="../../catalog.html">
+        <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+        Каталог
+      </a>
+      <div class="header__item" data-menu>
+        <button class="header__link header__link--programs" type="button" aria-expanded="false" aria-controls="menu-programs" data-menu-trigger>
+          <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+          Программы
+          <img class="header__arrow" src="../../assets/images/arrow-drop-up.svg" alt="" width="24" height="24" />
+        </button>
+        <ul class="header__menu" id="menu-programs" data-menu-list hidden>
+          <li><a class="header__menu-link" href="../../starter-kit.html"><span class="header__menu-text"><svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>Стартовый набор</span></a></li>
+          <li><a class="header__menu-link" href="../../referral.html"><span class="header__menu-text"><svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>Реферальная программа</span></a></li>
+        </ul>
+      </div>
+      <a class="header__link header__link--help" href="../../help.html">
+        <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+        Помощь
+      </a>
+    </nav>
+
+    <a class="header__logo" href="../../index.html" aria-label="FLEX — на главную">
+      <img src="../../assets/logo/logo.svg" alt="FLEX" width="115" height="26" />
+    </a>
+
+    <div class="header__actions">
+      <div class="header__icons">
+        <a class="header__icon" href="#" aria-label="Поиск"><img src="../../assets/images/search.svg" alt="" width="20" height="20" /></a>
+        <a class="header__icon" href="../../favorites.html" aria-label="Избранное"><img src="../../assets/images/heart.svg" alt="" width="20" height="20" /></a>
+        <a class="header__icon" href="../../account.html" aria-label="Личный кабинет"><img src="../../assets/images/user.svg" alt="" width="20" height="20" /></a>
+      </div>
+      <button class="header__lang" type="button" aria-label="Язык: русский">
+        <img src="../../assets/images/globe.svg" alt="" width="20" height="20" />
+        RU
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Мобильное меню" data-mobile-menu hidden>
+    <div class="mobile-menu__top">
+      <ul class="mobile-menu__list">
+      <li><a class="mobile-menu__link" href="../../catalog.html">Каталог<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="../../favorites.html">Избранное<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="../../starter-kit.html">Программы<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="../../about.html">О бренде<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="../../help.html">Помощь<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      </ul>
+
+      <div class="mobile-menu__lang">
+        <p class="mobile-menu__caption">Язык</p>
+        <div class="lang-switch" role="radiogroup" aria-label="Язык">
+          <button class="lang-switch__btn is-active" type="button" role="radio" aria-checked="true">RU</button>
+          <button class="lang-switch__btn" type="button" role="radio" aria-checked="false">KZ</button>
+          <button class="lang-switch__btn" type="button" role="radio" aria-checked="false">EN</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-menu__social">
+      <p class="mobile-menu__caption">Свяжитесь с нами</p>
+  <div class="mobile-menu__social-list">
+      <a class="footer__social-link" href="#" aria-label="Instagram"><img src="../../assets/images/social-user.svg" alt="" width="20" height="20" loading="lazy" /></a>
+      <a class="footer__social-link" href="#" aria-label="WhatsApp"><img src="../../assets/images/whatsapp.svg" alt="" width="20" height="20" loading="lazy" /></a>
+      <a class="footer__social-link" href="#" aria-label="Telegram"><img src="../../assets/images/telegram.svg" alt="" width="20" height="20" loading="lazy" /></a>
+    </div>
+    </div>
+  </nav>
+
+  <main class="doc">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="../../index.html">Главная</a>
+      <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+      <span class="breadcrumbs__current" aria-current="page">Рефералдық бағдарламаның қағидалары</span>
+    </nav>
+
+    <article class="doc__card">
+      <h1 class="doc__title">FLEX РЕФЕРАЛДЫҚ БАҒДАРЛАМАСЫНЫҢ ҚАҒИДАЛАРЫ</h1>
+      <div class="doc-text">
+            <h3>1. Жалпы ережелер</h3>
+            <p>1.1. Осы Қағидалар FLEX рефералдық бағдарламасына (бұдан әрі – <b>«Бағдарлама»</b>) қатысу шарттарын, рефералдық кодты пайдалану тәртібін, сыйақыларды алу және беру шарттарын айқындайды.</p>
+            <p>1.2. Бағдарламаны Қазақстан Республикасының аумағында «KT&amp;G Global Kazakhstan (Кей-Ти-Энд-Джи Глобал Қазақстан)» ЖШС (бұдан әрі – <b>«Ұйымдастырушы»</b>) жүргізеді.</p>
+            <p>1.3. Бағдарламаға қатысу ерікті болып табылады. Осы Қағидаларда көзделген іс-әрекеттерді жасай отырып, Қатысушы Қағидалармен танысқанын, оларды түсінгенін және олардың шарттарын қабылдағанын растайды.</p>
+            <p>1.4. Бағдарлама Қазақстан Республикасы заңнамасының талаптарына және осы Қағидалардың талаптарына сәйкес келетін, құрамында никотині бар өнімді 21 жастан асқан тұтынушыларға ғана арналған.</p>
+            <h3>2. Терминдер мен анықтамалар</h3>
+            <p>2.1. <b>Бағдарлама</b> – FLEX рефералдық бағдарламасы, оның шеңберінде Ұйымдастырушының Дерекқорында тіркелген, құрамында никотині бар өнімнің кәмелетке толған тұтынушысы жаңа тұтынушыға FLEX темекіні қыздыру жүйесін ұсына алады және осы Қағидалардың шарттарын орындаған жағдайда сыйақы ала алады.</p>
+            <p>2.2. <b>Қатысушы –</b> құрамында никотин бар өнімді тұтынушы болып табылатын, Ұйымдастырушының Дерекқорында сәтті тіркелген және FLEX құрылғысын алғашқы сатып алуды жасау үшін өзінің Рефералдық кодын басқа тұлғаға беретін 21 жасқа толған жеке тұлға.</p>
+            <p>2.3. <b>Шақырылған пайдаланушы </b>– өзінің алғашқы FLEX құрылғысын сатып алу кезінде Қатысушының рефералдық кодын пайдаланатын және Бағдарламаның қалған шарттарын орындайтын жаңа тұтынушы.</p>
+            <p>2.4. <b>Рефералдық код</b> – Қатысушының бейінінде жасалған бірегей иесіздендірілген әріптік-сандық код.</p>
+            <p>2.5. <b>Сәтті ұсыным</b> – Шақырылған пайдаланушының осы Қағидалардың барлық талаптарын орындаған жағдайда Қатысушының қолданыстағы рефералдық кодын пайдалана отырып, бірінші FLEX құрылғысын сатып алуы.</p>
+            <p>2.6. <b>Сыйақы</b> – осы Қағидаларға сәйкес Қатысушыға және Шақырылған пайдаланушыға берілетін, номиналдық құны <b>1 000 (бір мың) теңге</b> серіктестік сервистің электрондық ваучері.</p>
+            <p>2.7. <b>Дерекқор </b>– 21 жастан үлкен FLEX темекіні қыздыру жүйелерін тұтынушылардың дерекқоры.</p>
+            <h3>3. Бағдарламаға кім қатыса алады</h3>
+            <p>3.1. Бағдарламаға <b>21 жастан</b> үлкен, темекі және/немесе құрамында никотині бар өнімді тұтынушылар болып табылатын және Қазақстан Республикасы заңнамасының талаптарына сәйкес келетін жеке тұлғалар қатыса алады.</p>
+            <p>3.2. Дерекқорда тiркелген және 21+ жасын верификациялаудың мiндеттi рәсiмiнен өткен тұтынушы қатысушы бола алады.</p>
+            <p>3.3. Бұдан бұрын FLEX құрылғысын сатып алмаған және өзінің <b>алғашқы FLEX құрылғысын дерекқорда тіркеліпп сатып алған</b> тұлға Шақырылған пайдаланушы бола алады.</p>
+            <p>3.4. Бір адам бір ұсыным шеңберінде бір мезгілде Қатысушы және Шақырылған пайдаланушы ретінде Бағдарламаға қатыса алмайды.</p>
+            <h3>4. Бағдарлама қалай жұмыс істейді</h3>
+            <p>4.1. Рефералдық код тікелей Дерекқорда тіркелу аяқталған және 21+ жасын растау рәсімінен сәтті өткен кезде Қатысушының жеке бейінінде (FLEX Kazakhstan Telegram-ботында немесе myflex.kz сайтында) автоматты түрде жасалып, беріледі. Меншікті Рефералдық кодты алу үшін FLEX құрылғысын немесе бастапқы пакетті сатып алу талап етілмейді.</p>
+            <p>4.2. Шақырылған тұтынушы Ұйымдастырушының ресми бөлшек сауда дүкендерінде немесе Ұйымдастырушы қарастырған өзге де сату арнасында FLEX құрылғысын алғашқы сатып алу кезінде рефералдық кодты көрсетеді.</p>
+            <p>4.3. Рефералдық код Шақырылған тұтынушының <b>бірінші FLEX құрылғысын</b> сатып алу және тіркеу кезінде ғана пайдаланылуы мүмкін.</p>
+            <p>4.4. Егер осы Қағидалардың барлық шарттары орындалса, мұндай сатып алу сәтті ұсыным болып танылады.</p>
+            <p>4.5. Сәтті ұсынымды растағаннан кейін:</p>
+            <p>• Қатысушыға номиналды құны <b>1 000 (бір мың) теңге</b> серіктестік сервис ваучері беріледі;</p>
+            <p>• Шақырылған пайдаланушыға номиналды құны <b>1 000 (бір мың) теңге</b> серіктестік сервис ваучері беріледі;</p>
+            <p>4.6. Бір рефералдық кодты <b>10 (он) реттен</b> артық емес табысты пайдалануға болады.</p>
+            <p>4.7. Рефералдық кодты 10 (он) рет табысты пайдалану лимитіне жеткеннен кейін оны сыйақы алу үшін одан әрі пайдалану мүмкін емес.</p>
+            <p>4.8. Сыйақы Қатысушыға және Шақырылған пайдаланушыға FLEX Kazakhstan Telegram-ботында пуш-хабарлама немесе Дерекқорда тіркелу кезінде олар көрсеткен нөміріне SMS-хабарлама жіберу арқылы беріледі.</p>
+            <p>4.9. Рефералдық кодты Қатысушы 21 жасқа толған және құрамында никотин бар өнімді тұтынушылар болып табылатын жеке таныс адамдарға ғана беруді жүзеге асырады.</p>
+            <h3>5. Сыйақы алу шарттары</h3>
+            <p>5.1. Сыйақы алу құқығы мынадай шарттарды бір мезгілде орындаған кезде ғана туындайды:</p>
+            <p>1. Қатысушы осы Қағидалардың талаптарына сәйкес келеді;</p>
+            <p>2. Шақырылған пайдаланушы бұрын FLEX құрылғысын сатып алмаған;</p>
+            <p>3. бірінші FLEX құрылғысын сатып алу кезінде Қатысушының қолданыстағы рефералдық коды көрсетілген;</p>
+            <p>4. сатып алу ойдағыдай аяқталған және күші жойылмаған, қайтарылмаған немесе жарамсыз деп танылмаған;</p>
+            <p>5. сатып алу сәтінде рефералдық код 10 рет табысты пайдаланудың белгіленген лимитін тауысқан жоқ;</p>
+            <p>6. осы Қағидаларға сәйкес Бағдарламадан сатып алуды алып тастау үшін негіздер жоқ.</p>
+            <p>5.2. FLEX құрылғысын бір сатып алу тек бір сәтті ұсыным үшін ғана ескерілуі мүмкін және бір мезгілде бірнеше рефералдық кодтарды пайдалануға болмайды.</p>
+            <p>5.3. Егер Шақырылған пайдаланушы бұдан бұрын FLEX құрылғысын сатып алған болса, құрылғыны қайта сатып алу сәтті ұсыным болып саналмайды және сыйақы алуға құқық бермейді.</p>
+            <p>5.4. Оның негізінде сыйақы берiлген немесе берiлуi тиіс болған сатып алуды болдырмау, қайтару немесе күшiн жою кезінде Ұйымдастырушы тиiстi сыйақының күшiн жоюға құқылы.</p>
+            <h3>6. Сыйақы</h3>
+            <p>6.1. Бағдарлама шеңберінде <b>номиналды құны 1 000 (бір мың) теңге «Яндекс Плюс» </b>сервисіне ваучер сыйақы болып табылады.</p>
+            <p>6.2. Сәтті ұсыным жасалған жағдайда бір ваучер Қатысушыға және бір ваучер Шақырылған пайдаланушыға беріледі.</p>
+            <p>6.3. Ваучер ақшалай баламада төленбейді және ақша қаражатына айырбастауға жатпайды.</p>
+            <p>6.4. Белсендіру шарттары, ваучердің қолданылу мерзімі және пайдалану тәртібі «Яндекс Плюс» тиісті ұсынысының шарттарымен айқындалады.</p>
+            <p>6.5. Ұйымдастырушы «Яндекс Плюс» сервисінің жеткізушісі болып табылмайды және сервистің жұмысына, жекелеген функциялардың қолжетімділігіне, оны пайдалану шарттарының өзгеруіне немесе сервисті ұсынудың тоқтатылуына жауапты болмайды.</p>
+            <p>6.6. Ваучерді алу тәртібі туралы ақпарат Қатысушыға және Шақырылған Пайдаланушыға олар Ұйымдастырушыға берген байланыс деректері бойынша жіберіледі.</p>
+            <p>6.7. Сыйақы алуға байланысты жеке тұлғалардың табысына салық салуды Ұйымдастырушы Қазақстан Республикасының Салық кодексіне сәйкес жүзеге асырады.</p>
+            <h3>7. Шектеулер және Бағдарламаны жосықсыз пайдалану</h3>
+            <p>7.1. Рефералдық код Қатысушының жеке пайдалануына және Бағдарламаға қатысу үшін таныстарына, достарына және өзге де тұлғаларға беруіне арналған.</p>
+            <p>7.2. Рефералдық кодты мынадай түрде пайдалануға жол берілмейді:</p>
+            <p>• жалған немесе немқұрайлы сатып алулар жасау үшін;</p>
+            <p>• көрінеу жалған деректерді пайдалана отырып;</p>
+            <p>• құрылғыны бірінші сатып алуға шектеуді айналып өту үшін;</p>
+            <p>• ұсынымдар санын жасанды түрде ұлғайту жолымен сыйақы алу мақсатында;</p>
+            <p>• Интернет желісінде рефералдық кодты ашық түрде орналастыру жолымен (әлеуметтік желілерді, блогтарды, форумдарды, промокодтар мен купондардың сайт-агрегаторларын, мәнмәтіндік және таргеттелген жарнаманы қоса алғанда) не жаппай дербестендірілмеген спам-тарату арқылы. Рефералдық код қатаң түрде кәмелетке толған таныс адамдарға (21+) жеке беруге арналған. Рефералдық кодты жария орналастыру анықталған жағдайда Ұйымдастырушы осы кодты бұғаттауға және ол бойынша есептелген барлық сыйақылардың күшін жоюға құқылы.</p>
+            <p>• осы Қағидаларды немесе Қазақстан Республикасының заңнамасын бұзатын өзге де тәсілмен.</p>
+            <p>7.3. Ұйымдастырушы ұсынылған ақпараттың дұрыстығын және сатып алулардың Бағдарлама шарттарына сәйкестігін тексеруге құқылы.</p>
+            <p>7.4. Осы Қағидалардың бұзылуы анықталған жағдайда Ұйымдастырушы сыйақы беруден бас тартуға, бұдан бұрын берілген сыйақының күшін жоюға және/немесе тиісті тұлғаның Бағдарламаға қатысуын тоқтатуға құқылы.</p>
+            <p>7.5. Егер сатып алу осы Қағидаларды бұза отырып не сыйақыны заңсыз алу мақсатында жасалды деп пайымдауға негіз болса, ұйымдастырушы Бағдарлама шеңберінде сатып алуды ескермеуге құқылы.</p>
+            <h3>8. Дербес деректер</h3>
+            <p>8.1. Бағдарламаға қатысу үшін Ұйымдастырушы Бағдарламаны іске асыру, оның шарттарының сақталуын тексеру және сыйақы беру үшін қажетті көлемде Қатысушылардың дербес деректерін жинауды және өңдеуді жүзеге асыруға құқылы.</p>
+            <p>8.2. Қатысушылар шынайы және өзекті деректер беруге міндеттенеді.</p>
+            <p>8.3. Дербес деректерді өңдеу Қазақстан Республикасының заңнамасына және Ұйымдастырушының дербес деректерді өңдеуге қатысты қолданылатын саясатына сәйкес жүзеге асырылады.</p>
+            <h3>9. Бағдарламаны өзгерту және тоқтату</h3>
+            <p>9.1. Ұйымдастырушы осы Қағидаларды, Бағдарламаның шарттарын, сыйақының мөлшерi мен түрiн, қатысу тәртiбiн және Бағдарламаның өзге де шарттарын өзгертуге құқылы.</p>
+            <p>9.2. Қағидалардың өзекті редакциясы <a href="https://myflex.kz/referral" target="_blank" rel="noopener">myflex.kz/referral</a> сайтында орналастырылады.</p>
+            <p>9.3. Ұйымдастырушы FLEX сайтында тиісті ақпаратты орналастырып немесе байланысудың өзге де қолжетімді арналарын пайдалана отырып, Бағдарламаны тоқтата тұруға немесе тоқтатуға құқылы.</p>
+            <p>9.4. Бағдарламаны өзгерту немесе тоқтату Қазақстан Республикасының заңнамасында немесе осы Қағидаларда көзделген жағдайларды қоспағанда, тиісті өзгерістер күшіне енген күнге дейін сыйақы алу құқығын иеленген Қатысушылардың құқықтарына әсер етпейді.</p>
+            <h3>10. Қорытынды ережелер</h3>
+            <p>10.1 Осы Қағидалармен реттелмеген барлық жағдайларда Ұйымдастырушы мен Қатысушылар Қазақстан Республикасының заңнамасын басшылыққа алады.</p>
+            <p>10.2. Бағдарламаға қатысу Қатысушының осы Қағидаларды толық және сөзсіз қабылдауын білдіреді.</p>
+            <p>10.3. Бағдарламаға рұқсат берілгенге және Сыйақы берілгенге дейін Ұйымдастырушы ҚР заңнамасында белгіленген тәртіппен Қатысушының 21+ жасын және жеке басын верификациялауды жүргізуге міндетті.</p>
+            <p>10.4. Шынайы емес ақпарат анықталған немесе Бағдарлама шарттары сақталмаған жағдайда тұлға тиісті сыйақы алу құқығын жоғалтады.</p>
+            <p>10.5. Ұйымдастырушы тиісті сервисті жеткізуші тарапынан техникалық іркілістерді, шектеулерді немесе өзгерістерді қоса алғанда, Ұйымдастырушыға байланысты емес себептер бойынша ваучерді алу немесе пайдалану мүмкін еместігі үшін жауапты болмайды.</p>
+            <p>10.6. Осы Қағидалар қазақ және орыс тілдерінде жасалды. Мәтіннің басқаша оқылуы туындаған жағдайда қазақ тіліндегі мәтін басым күшке ие болады.</p>
+          </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <a class="footer__logo" href="../../index.html" aria-label="FLEX — на главную">
+      <img src="../../assets/logo/logo.svg" alt="FLEX" width="265" height="60" loading="lazy" />
+    </a>
+
+    <p class="footer__desc">Устройства, стики и аксессуары для современного опыта.</p>
+
+
+    <ul class="footer__mnav" aria-label="Разделы">
+      <li class="footer__acc">
+        <button class="footer__mnav-link" type="button" aria-expanded="false" aria-controls="fsub-1" data-footer-acc>Каталог<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
+        <ul class="footer__msub" id="fsub-1" hidden>
+          <li><a class="footer__msub-link" href="../../catalog.html">Все товары</a></li>
+          <li><a class="footer__msub-link" href="../../stick.html">Стики</a></li>
+          <li><a class="footer__msub-link" href="../../device.html">Устройства</a></li>
+        </ul>
+      </li>
+      <li><a class="footer__mnav-link" href="../../favorites.html">Избранное<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li class="footer__acc">
+        <button class="footer__mnav-link" type="button" aria-expanded="false" aria-controls="fsub-2" data-footer-acc>Программы<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
+        <ul class="footer__msub" id="fsub-2" hidden>
+          <li><a class="footer__msub-link" href="../../starter-kit.html">Стартовый набор</a></li>
+          <li><a class="footer__msub-link" href="../../referral.html">Реферальная программа</a></li>
+        </ul>
+      </li>
+      <li class="footer__acc">
+        <button class="footer__mnav-link" type="button" aria-expanded="false" aria-controls="fsub-3" data-footer-acc>О бренде<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
+        <ul class="footer__msub" id="fsub-3" hidden>
+          <li><a class="footer__msub-link" href="../../about.html">О FLEX</a></li>
+          <li><a class="footer__msub-link" href="../../faiim.html">О FAIIM</a></li>
+        </ul>
+      </li>
+      <li><a class="footer__mnav-link" href="../../help.html">Помощь<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+    </ul>
+
+    <div class="footer__mcontacts">
+      <a class="footer__link" href="tel:7707">7707</a>
+      <span class="footer__text">Адрес: г. Алматы, улица Достык 192/2, БЦ GREEN TOWER</span>
+      <p class="footer__copy">© 2026 ТОО «KT&amp;G Global Kazakhstan (Кей-Ти-Энд-Джи Глобал Казахстан)» (БИН 230140014703). Все права защищены.</p>
+    </div>
+
+    <nav class="footer__nav" aria-label="Карта сайта">
+      <div class="footer__col">
+        <h2 class="footer__title">Каталог</h2>
+        <ul class="footer__list">
+          <li><a class="footer__link" href="../../stick.html">Стики</a></li>
+          <li><a class="footer__link" href="../../device.html">Устройства</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h2 class="footer__title">Программы</h2>
+        <ul class="footer__list">
+          <li><a class="footer__link" href="../../starter-kit.html">Стартовый набор</a></li>
+          <li><a class="footer__link" href="../../referral.html">Реферальная программа</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h2 class="footer__title">О бренде</h2>
+        <ul class="footer__list">
+          <li><a class="footer__link footer__link--upper" href="../../about.html">Flex</a></li>
+          <li><a class="footer__link footer__link--upper" href="../../faiim.html">Faiim</a></li>
+          <li><a class="footer__link" href="#">Новости</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__col--contacts">
+        <div class="footer__group">
+          <h2 class="footer__title">Контакты</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="tel:7707">7707</a></li>
+            <li><span class="footer__text">Адрес: г. Алматы, улица Достык 192/2,<br />БЦ GREEN TOWER</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="footer__legal">© 2026 ТОО «KT&amp;G Global Kazakhstan (Кей-Ти-Энд-Джи Глобал Казахстан)» (БИН 230140014703). Все права защищены.</p>
+    </nav>
+
+    <div class="footer__bottom">
+      <a class="footer__link" href="../../terms/" target="_blank" rel="noopener">Условия использования сайта</a>
+      <a class="footer__link" href="../../privacy/" target="_blank" rel="noopener">Политика конфиденциальности</a>
+      <a class="footer__link" href="../../cookie/" target="_blank" rel="noopener">Политика файлов Cookie</a>
+      <a class="footer__link" href="#">Документы</a>
+      <a class="footer__link" href="../../consent/" target="_blank" rel="noopener">Согласие на сбор, обработку и хранение перс.данных</a>
+    </div>
+
+  </footer>
+
+  <script src="../../assets/vendor/lenis.min.js" defer></script>
+  <script src="../../assets/vendor/swiper/swiper-bundle.min.js" defer></script>
+  <script src="../../src/lib/main.js?v=69" defer></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 export const config = {
-  matcher: ["/((?!api/|login\\.html|src/|assets/|favicon|terms|privacy|cookie|consent).*)"],
+  matcher: ["/((?!api/|login\\.html|src/|assets/|favicon|terms|privacy|cookie|consent|referral-rules|starter-kit-rules).*)"],
 };
 
 export default async function middleware(request) {

@@ -172,9 +172,9 @@
   border-radius: calc(20 * var(--wm));
   outline: 1px solid var(--w-10);
   outline-offset: -1px;
-  background-color: rgba(20, 20, 20, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background-color: rgba(20, 20, 20, 0.72);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .construction__title {
@@ -226,10 +226,10 @@
   outline: 1px solid rgba(255, 255, 255, 0.06);
   outline-offset: -1px;
   background:
-    linear-gradient(180deg, rgba(16, 15, 28, 0.8) 20%, var(--tint) 100%),
-    rgba(16, 15, 28, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+    linear-gradient(180deg, rgba(16, 15, 28, 0.72) 20%, var(--tint) 100%),
+    rgba(16, 15, 28, 0.72);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   overflow: hidden;
 }
 

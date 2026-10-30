@@ -425,14 +425,14 @@
     display: flex;
     align-items: flex-end;
     height: calc(750 * var(--wm));
-    padding: 0 calc(16 * var(--wm)) calc(40 * var(--wm));
+    padding: 0 calc(16 * var(--wm)) calc(72 * var(--wm));
   }
 
   .home-hero::after {
     content: "";
     position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(2, 1, 13, 0) 30%, rgba(2, 1, 13, 0.2) 58%, rgba(2, 1, 13, 0.92) 100%);
+    inset: 0 0 calc(56 * var(--wm));
+    background: linear-gradient(180deg, rgba(2, 1, 13, 0) 30%, rgba(2, 1, 13, 0.2) 58%, rgba(2, 1, 13, 0.8) 100%);
   }
 
   .home-hero__copy {

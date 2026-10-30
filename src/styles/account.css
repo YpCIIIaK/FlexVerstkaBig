@@ -206,6 +206,7 @@
 
   .account-tabs .tabs__btn {
     flex: 1 0 auto;
+    text-align: center;
     padding-right: calc(16 * var(--wm));
     padding-left: calc(16 * var(--wm));
     font-size: calc(14 * var(--wm));

@@ -388,7 +388,8 @@
 
 .program__img {
   width: 100%;
-  height: calc(300 * var(--wm));
+  height: auto;
+  aspect-ratio: 1208 / 600;
   border-radius: calc(16 * var(--wm));
   object-fit: cover;
 }
@@ -684,7 +685,7 @@
     line-height: calc(20 * var(--wm));
   }
 
-  .program__img { height: calc(238 * var(--wm)); }
+  .program__img { height: auto; }
 
   .program .button { width: 100%; }
 

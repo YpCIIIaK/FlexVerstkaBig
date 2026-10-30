@@ -147,9 +147,10 @@
 }
 
 .stick-info__metrics {
-  display: flex;
-  flex-direction: column;
-  gap: calc(12 * var(--wm));
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: calc(12 * var(--wm)) calc(16 * var(--wm));
 }
 
 .stick-info .flavour__dot.is-on { background-color: var(--white); }

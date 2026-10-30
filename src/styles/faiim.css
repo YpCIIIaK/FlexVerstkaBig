@@ -322,16 +322,13 @@
 }
 
 .flavour__metrics {
-  display: flex;
-  flex-direction: column;
-  gap: calc(12 * var(--wm));
-}
-
-.flavour__metric {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
   gap: calc(12 * var(--wm));
 }
+
+.flavour__metric { display: contents; }
 
 .flavour__metric-label {
   font-size: calc(12 * var(--wm));
@@ -352,8 +349,6 @@
 }
 
 .flavour__dot.is-on { background-color: var(--accent); }
-
-.flavour__metric--capsule { gap: calc(8 * var(--wm)); }
 
 .flavour__capsule {
   display: inline-flex;
@@ -409,4 +404,202 @@
   .bento__bg,
   .flavour__ribbon { transition: none; }
   .construction__panel:not([hidden]) { animation: none; }
+}
+
+@media (max-width: 767px) {
+  .faiim { padding-bottom: calc(64 * var(--wm)); }
+
+  .faiim .breadcrumbs { padding: calc(24 * var(--wm)) calc(16 * var(--wm)); }
+
+  .faiim .section-title {
+    font-size: calc(28 * var(--wm));
+    line-height: calc(34 * var(--wm));
+  }
+
+  .bento {
+    flex-direction: column;
+    gap: calc(12 * var(--wm));
+    height: auto;
+    padding: 0 calc(16 * var(--wm));
+  }
+
+  .bento__card--main {
+    flex: none;
+    height: calc(420 * var(--wm));
+    padding: calc(24 * var(--wm));
+  }
+
+  .bento__side { gap: calc(12 * var(--wm)); }
+
+  .bento__title {
+    font-size: calc(20 * var(--wm));
+    line-height: calc(28 * var(--wm));
+  }
+
+  .bento__card--wide {
+    gap: calc(8 * var(--wm));
+    height: auto;
+    min-height: calc(200 * var(--wm));
+    padding: calc(24 * var(--wm));
+  }
+
+  .bento__card--wide .bento__text { max-width: none; }
+
+  .bento__row {
+    grid-template-columns: 1fr;
+    gap: calc(12 * var(--wm));
+  }
+
+  .bento__card--small {
+    gap: calc(8 * var(--wm));
+    min-height: calc(260 * var(--wm));
+    padding: calc(24 * var(--wm));
+  }
+
+  .bento__card--small .bento__bg--dim,
+  .bento__card--small .bento__bg--aerosol,
+  .bento__card--small:hover .bento__bg--dim,
+  .bento__card--small:hover .bento__bg--aerosol {
+    object-fit: contain;
+    object-position: right top;
+    transform: translate(calc(-28 * var(--wm)), calc(16 * var(--wm))) scale(0.5);
+  }
+
+  .bento__subtitle {
+    font-size: calc(18 * var(--wm));
+    line-height: calc(24 * var(--wm));
+  }
+
+  .bento__text {
+    font-size: calc(14 * var(--wm));
+    line-height: calc(20 * var(--wm));
+  }
+
+  .construction {
+    gap: calc(24 * var(--wm));
+    padding: calc(64 * var(--wm)) calc(16 * var(--wm)) 0;
+  }
+
+  .construction .tabs { gap: calc(8 * var(--wm)); }
+
+  .construction .tabs__btn {
+    flex: 1 1 0;
+    padding: calc(12 * var(--wm)) calc(16 * var(--wm));
+    font-size: calc(14 * var(--wm));
+    line-height: calc(20 * var(--wm));
+    text-align: center;
+  }
+
+  .construction__panel {
+    grid-template-columns: 1fr;
+    gap: calc(12 * var(--wm));
+  }
+
+  .construction__card {
+    gap: calc(16 * var(--wm));
+    padding: calc(20 * var(--wm));
+  }
+
+  .construction__title {
+    font-size: calc(22 * var(--wm));
+    line-height: calc(28 * var(--wm));
+  }
+
+  .construction__img {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .faiim .flavours {
+    gap: calc(24 * var(--wm));
+    padding: calc(64 * var(--wm)) calc(16 * var(--wm)) 0;
+  }
+
+  .faiim .flavours__head { display: contents; }
+
+  .faiim .flavours__head .button {
+    order: 1;
+    width: 100%;
+  }
+
+  .faiim .flavours__track {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(12 * var(--wm));
+    padding: 0;
+  }
+
+  .faiim .flavour {
+    gap: calc(8 * var(--wm));
+    padding-bottom: calc(12 * var(--wm));
+  }
+
+  .faiim .flavour__visual { height: calc(120 * var(--wm)); }
+
+  .faiim .flavour__pack {
+    width: calc(156 * var(--wm));
+    height: calc(127 * var(--wm));
+  }
+
+  .faiim .flavour__ribbon { display: none; }
+
+  .faiim .flavour__body {
+    gap: calc(12 * var(--wm));
+    padding: 0 calc(12 * var(--wm));
+  }
+
+  .faiim .flavour__head {
+    gap: calc(8 * var(--wm));
+    padding-bottom: calc(12 * var(--wm));
+  }
+
+  .faiim .flavour__title {
+    font-size: calc(20 * var(--wm));
+    line-height: calc(26 * var(--wm));
+    text-transform: none;
+    white-space: normal;
+  }
+
+  .faiim .flavour__text {
+    min-height: 0;
+    font-size: calc(12 * var(--wm));
+    line-height: calc(16 * var(--wm));
+  }
+
+  .faiim .flavour__body { flex: 1 1 auto; }
+
+  .faiim .flavour__bottom {
+    flex: 1 1 auto;
+    justify-content: space-between;
+    gap: calc(16 * var(--wm));
+  }
+
+  .faiim .flavour__metrics { gap: calc(8 * var(--wm)) calc(10 * var(--wm)); }
+
+  .faiim .flavour__metric-label {
+    font-size: calc(11 * var(--wm));
+    line-height: calc(14 * var(--wm));
+  }
+
+  .faiim .flavour__dots { gap: calc(3 * var(--wm)); }
+
+  .faiim .flavour__dot {
+    width: calc(6 * var(--wm));
+    height: calc(6 * var(--wm));
+  }
+
+  .faiim .flavour__capsule {
+    font-size: calc(12 * var(--wm));
+    line-height: calc(16 * var(--wm));
+  }
+
+  .faiim .flavour__capsule img {
+    width: calc(16 * var(--wm));
+    height: calc(16 * var(--wm));
+  }
+
+  .faiim .flavour__link {
+    font-size: calc(14 * var(--wm));
+    line-height: calc(20 * var(--wm));
+  }
 }

@@ -83,6 +83,18 @@
   100% { transform: translate(calc(var(--r) * -0.0), calc(var(--r) * 0.0)) scaleX(calc(1 - (1 - var(--round)) * 0.0)); }
 }
 
+@media (max-width: 767px) {
+  .blob--purple {
+    --r: calc(500 * var(--wm));
+    top: calc(50vh - (500 + var(--h) / 2) * var(--wm));
+  }
+
+  .blob--blue {
+    --r: calc(-500 * var(--wm));
+    top: calc(50vh + (500 - var(--h) / 2) * var(--wm));
+  }
+}
+
 body.is-locked .blob {
   animation-play-state: paused;
 }

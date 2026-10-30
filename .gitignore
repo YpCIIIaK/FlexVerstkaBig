@@ -10,6 +10,7 @@ desktop.ini
 *.tmp
 
 assets/images/*.png
+assets/images/*.zip
 assets/logo/*.png
 .secrets/
 

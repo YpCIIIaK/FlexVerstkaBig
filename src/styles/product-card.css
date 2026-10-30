@@ -140,3 +140,7 @@
   line-height: calc(24 * var(--wm));
   color: var(--w-50);
 }
+
+@media (max-width: 767px) {
+  .product-card { border-radius: calc(20 * var(--wm)) calc(20 * var(--wm)) 0 0; }
+}

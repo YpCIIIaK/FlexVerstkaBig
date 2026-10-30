@@ -2,6 +2,8 @@
 
 .referral__image { border-radius: calc(28 * var(--wm)); }
 
+.referral__picture { display: contents; }
+
 .referral-code__box {
   position: relative;
   display: flex;

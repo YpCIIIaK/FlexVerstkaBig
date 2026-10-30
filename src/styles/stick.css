@@ -526,8 +526,14 @@
   }
 
   .about-flavours__track .product-card__gallery {
-    width: calc(137 * var(--wm));
-    height: calc(161 * var(--wm));
+    width: 100%;
+    height: calc(200 * var(--wm));
+  }
+
+  .about-flavours__track .product-card__img {
+    left: -8%;
+    width: 116%;
+    max-width: none;
   }
 
   .about-flavours__track .product-card__dot {

@@ -7,7 +7,7 @@
   <meta name="description" content="FLEX — устройство для нагревания табака и стики FAIIM. Линейка устройств, вкусы, программы и магазины рядом." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="src/styles/main.css?v=187" />
+  <link rel="stylesheet" href="src/styles/main.css?v=197" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -114,8 +114,20 @@
       <ul class="mobile-menu__list">
       <li><a class="mobile-menu__link" href="catalog.html">Каталог<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
       <li><a class="mobile-menu__link" href="favorites.html">Избранное<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
-      <li><a class="mobile-menu__link" href="starter-kit.html">Программы<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
-      <li><a class="mobile-menu__link" href="about.html">О бренде<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li class="mobile-menu__acc">
+        <button class="mobile-menu__link" type="button" aria-expanded="false" aria-controls="msub-programs" data-menu-acc>Программы<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
+        <ul class="mobile-menu__sub" id="msub-programs" hidden>
+          <li><a class="mobile-menu__sub-link" href="starter-kit.html">Стартовый набор</a></li>
+          <li><a class="mobile-menu__sub-link" href="referral.html">Реферальная программа</a></li>
+        </ul>
+      </li>
+      <li class="mobile-menu__acc">
+        <button class="mobile-menu__link" type="button" aria-expanded="false" aria-controls="msub-brand" data-menu-acc>О бренде<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
+        <ul class="mobile-menu__sub" id="msub-brand" hidden>
+          <li><a class="mobile-menu__sub-link" href="about.html">О FLEX</a></li>
+          <li><a class="mobile-menu__sub-link" href="faiim.html">О FAIIM</a></li>
+        </ul>
+      </li>
       <li><a class="mobile-menu__link" href="help.html">Помощь<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
       </ul>
 
@@ -209,10 +221,10 @@
         <p class="picker__lead">Одна технология — четыре цветовых решения. Выберите вариант, который подходит именно вам.</p>
       </div>
       <div class="picker__stage">
-          <img class="picker__device is-active" src="assets/images/lineup-righttop.webp" alt="FLEX Violet" width="207" height="700" loading="lazy" data-picker-device="violet" />
-          <img class="picker__device" src="assets/images/lineup-leftbottom.webp" alt="FLEX Metal Silver" width="207" height="700" loading="lazy" data-picker-device="silver" />
-          <img class="picker__device" src="assets/images/lineup-rightbottom.webp" alt="FLEX Metal Blue" width="207" height="700" loading="lazy" data-picker-device="blue" />
-          <img class="picker__device" src="assets/images/lineup-lefttop.webp" alt="FLEX Beige" width="207" height="700" loading="lazy" data-picker-device="beige" />
+          <img class="picker__device is-active" src="assets/images/lineup-angled-violet.webp" alt="FLEX Violet" width="335" height="1100" loading="lazy" data-picker-device="violet" />
+          <img class="picker__device" src="assets/images/lineup-angled-silver.webp" alt="FLEX Metal Silver" width="335" height="1100" loading="lazy" data-picker-device="silver" />
+          <img class="picker__device" src="assets/images/lineup-angled-blue.webp" alt="FLEX Metal Blue" width="335" height="1100" loading="lazy" data-picker-device="blue" />
+          <img class="picker__device" src="assets/images/lineup-angled-beige.webp" alt="FLEX Beige" width="335" height="1100" loading="lazy" data-picker-device="beige" />
       </div>
       <div class="picker__colors" role="radiogroup" aria-label="Цвет устройства">
           <button class="picker__btn is-active" type="button" role="radio" aria-checked="true" data-picker-color="violet"><span class="picker__swatch" style="background: #ba7edc"></span>Violet</button>
@@ -575,6 +587,6 @@
 
   <script src="assets/vendor/lenis.min.js" defer></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
-  <script src="src/lib/main.js?v=69" defer></script>
+  <script src="src/lib/main.js?v=70" defer></script>
 </body>
 </html>

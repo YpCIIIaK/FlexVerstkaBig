@@ -408,8 +408,14 @@
   }
 
   .account [data-fav-list] .product-card__gallery {
-    width: calc(137 * var(--wm));
-    height: calc(161 * var(--wm));
+    width: 100%;
+    height: calc(200 * var(--wm));
+  }
+
+  .account [data-fav-list] .product-card__img {
+    left: -8%;
+    width: 116%;
+    max-width: none;
   }
 
   .account [data-fav-list] .product-card__dots { gap: calc(3 * var(--wm)); }

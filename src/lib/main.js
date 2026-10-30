@@ -1344,9 +1344,9 @@
   };
 
   const initFooterAcc = () => {
-    document.querySelectorAll("[data-footer-acc]").forEach((btn) => {
-      const item = btn.closest(".footer__acc");
-      const sub = item.querySelector(".footer__msub");
+    document.querySelectorAll("[data-footer-acc], [data-menu-acc]").forEach((btn) => {
+      const item = btn.closest("li");
+      const sub = item.querySelector("ul");
       btn.addEventListener("click", () => {
         const open = btn.getAttribute("aria-expanded") !== "true";
         btn.setAttribute("aria-expanded", String(open));

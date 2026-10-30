@@ -619,8 +619,8 @@
   .home-flavours .flavour__visual { height: calc(120 * var(--wm)); }
 
   .home-flavours .flavour__pack {
-    width: calc(122 * var(--wm));
-    height: calc(122 * var(--wm));
+    width: calc(156 * var(--wm));
+    height: calc(127 * var(--wm));
   }
 
   .home-flavours .flavour__ribbon,

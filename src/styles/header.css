@@ -318,6 +318,33 @@
     stroke-linecap: round;
   }
 
+  .mobile-menu__acc .mobile-menu__link {
+    width: 100%;
+    text-align: left;
+  }
+
+  .mobile-menu__arrow { transition: transform 0.3s ease; }
+
+  .mobile-menu__acc.is-open .mobile-menu__arrow { transform: rotate(90deg); }
+
+  .mobile-menu__acc.is-open .mobile-menu__link { border-bottom-color: transparent; }
+
+  .mobile-menu__sub {
+    display: flex;
+    flex-direction: column;
+    gap: calc(12 * var(--wm));
+    padding: 0 0 calc(16 * var(--wm));
+    border-bottom: 1px solid var(--w-10);
+  }
+
+  .mobile-menu__sub[hidden] { display: none; }
+
+  .mobile-menu__sub-link {
+    font-size: calc(16 * var(--wm));
+    line-height: calc(24 * var(--wm));
+    color: var(--w-80);
+  }
+
   .mobile-menu__lang {
     display: flex;
     flex-direction: column;

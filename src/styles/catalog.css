@@ -382,8 +382,14 @@
 
   .catalog-grid .product-card__gallery,
   .catalog-grid .product-card--device .product-card__gallery {
-    width: calc(137 * var(--wm));
-    height: calc(161 * var(--wm));
+    width: 100%;
+    height: calc(200 * var(--wm));
+  }
+
+  .catalog-grid .product-card__img {
+    left: -8%;
+    width: 116%;
+    max-width: none;
   }
 
   .catalog-grid .product-card__dots { gap: calc(3 * var(--wm)); }

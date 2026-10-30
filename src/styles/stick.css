@@ -177,6 +177,7 @@
 
 .stick-info__capsule-value img {
   flex: none;
+  margin-left: calc(-3 * var(--wm));
   width: calc(24 * var(--wm));
   height: calc(24 * var(--wm));
   object-fit: contain;

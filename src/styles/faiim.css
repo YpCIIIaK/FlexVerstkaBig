@@ -363,6 +363,7 @@
 
 .flavour__capsule img {
   flex: none;
+  margin-left: calc(-3 * var(--wm));
   width: calc(24 * var(--wm));
   height: calc(24 * var(--wm));
   object-fit: contain;
@@ -594,6 +595,7 @@
   }
 
   .faiim .flavour__capsule img {
+    margin-left: calc(-2 * var(--wm));
     width: calc(16 * var(--wm));
     height: calc(16 * var(--wm));
   }

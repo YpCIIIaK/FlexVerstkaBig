@@ -621,6 +621,17 @@
   .m-fact--wide { grid-column: 1 / -1; }
   .m-fact--center { align-items: center; }
 
+  .m-fact--video {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .m-fact--video.m-fact--wide {
+    height: auto;
+    aspect-ratio: 1440 / 810;
+  }
+
   .m-fact__copy {
     display: flex;
     flex-direction: column;

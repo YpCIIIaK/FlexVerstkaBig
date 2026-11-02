@@ -134,7 +134,7 @@
     width: 94%;
     height: auto;
     object-fit: contain;
-    transform: translateX(-7.4%);
+    transform: translateX(-14%);
   }
 
   .starter:not(.referral) .starter-terms {

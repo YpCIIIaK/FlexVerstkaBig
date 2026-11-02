@@ -450,6 +450,12 @@
     color: var(--w-80);
   }
 
+  .catalog-promo__note {
+    font-size: calc(12 * var(--wm));
+    line-height: calc(16 * var(--wm));
+    color: var(--w-80);
+  }
+
   .catalog-promo__img {
     width: 100%;
     height: calc(144 * var(--wm));

@@ -7,7 +7,7 @@
   <meta name="description" content="Устройство FLEX: дизайн, технология нагрева без горения, оттенки и функции." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="src/styles/main.css?v=215" />
+  <link rel="stylesheet" href="src/styles/main.css?v=217" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -160,23 +160,6 @@
 
     <h1 class="about__title"><span class="t-desk">О FLEX</span><span class="t-mob">Особенности FLEX</span></h1>
 
-    <section class="m-bento m-only" aria-label="Преимущества FLEX">
-      <article class="m-bento__card m-bento__card--main">
-        <img class="m-bento__bg" src="assets/images/about-1.webp" alt="" width="437" height="484" fetchpriority="high" />
-        <p class="m-bento__text m-bento__text--lg">Дизайн FLEX сочетает компактность и удобную форму.</p>
-      </article>
-      <div class="m-bento__row">
-        <article class="m-bento__card">
-          <img class="m-bento__bg" src="assets/images/about-5.webp" alt="" width="783" height="260" loading="lazy" />
-          <p class="m-bento__text">FLEX управляется просто — без лишних настроек.</p>
-        </article>
-        <article class="m-bento__card m-bento__card--bottom">
-          <img class="m-bento__bg" src="assets/images/about-6.webp" alt="" width="553" height="260" loading="lazy" />
-          <p class="m-bento__text">Компактный FLEX удобно брать с собой каждый день.</p>
-        </article>
-      </div>
-    </section>
-
     <section class="m-how m-only" aria-labelledby="m-how-title">
       <h2 class="mobile-title" id="m-how-title">Как работает FLEX</h2>
       <video class="m-how__video" src="assets/video/flex-rotate.mp4" poster="assets/video/flex-rotate.jpg" width="363" height="483" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
@@ -204,16 +187,16 @@
 
     <section class="picker about-picker m-only" aria-label="Выбери свой оттенок" data-picker>
       <div class="picker__stage">
-          <img class="picker__device is-active" src="assets/images/lineup-angled-violet.webp" alt="FLEX Violet" width="335" height="1100" loading="lazy" data-picker-device="violet" />
-          <img class="picker__device" src="assets/images/lineup-angled-silver.webp" alt="FLEX Metal Silver" width="335" height="1100" loading="lazy" data-picker-device="silver" />
-          <img class="picker__device" src="assets/images/lineup-angled-blue.webp" alt="FLEX Metal Blue" width="335" height="1100" loading="lazy" data-picker-device="blue" />
-          <img class="picker__device" src="assets/images/lineup-angled-beige.webp" alt="FLEX Beige" width="335" height="1100" loading="lazy" data-picker-device="beige" />
+          <img class="picker__device" src="assets/images/lineup-angled-violet.webp" alt="FLEX Фиолетовый Песок" width="335" height="1100" loading="lazy" data-picker-device="violet" />
+          <img class="picker__device" src="assets/images/lineup-angled-silver.webp" alt="FLEX Серый Металлик" width="335" height="1100" loading="lazy" data-picker-device="silver" />
+          <img class="picker__device" src="assets/images/lineup-angled-blue.webp" alt="FLEX Синий Металлик" width="335" height="1100" loading="lazy" data-picker-device="blue" />
+          <img class="picker__device is-active" src="assets/images/lineup-angled-beige.webp" alt="FLEX Бежевый Песок" width="335" height="1100" loading="lazy" data-picker-device="beige" />
       </div>
       <div class="picker__colors" role="radiogroup" aria-label="Цвет устройства">
-          <button class="picker__btn is-active" type="button" role="radio" aria-checked="true" data-picker-color="violet"><span class="picker__swatch" style="background: #ba7edc"></span>Violet</button>
-          <button class="picker__btn" type="button" role="radio" aria-checked="false" data-picker-color="silver"><span class="picker__swatch" style="background: #d7d7d7"></span>Metal Silver</button>
-          <button class="picker__btn" type="button" role="radio" aria-checked="false" data-picker-color="blue"><span class="picker__swatch" style="background: #86b6ca"></span>Metal Blue</button>
-          <button class="picker__btn" type="button" role="radio" aria-checked="false" data-picker-color="beige"><span class="picker__swatch" style="background: #ad9c95"></span>Beige</button>
+          <button class="picker__btn is-active" type="button" role="radio" aria-checked="true" data-picker-color="beige"><span class="picker__swatch" style="background: #ad9c95"></span>Бежевый Песок</button>
+          <button class="picker__btn is-active" type="button" role="radio" aria-checked="true" data-picker-color="violet"><span class="picker__swatch" style="background: #ba7edc"></span>Фиолетовый Песок</button>
+          <button class="picker__btn" type="button" role="radio" aria-checked="false" data-picker-color="blue"><span class="picker__swatch" style="background: #86b6ca"></span>Синий Металлик</button>
+          <button class="picker__btn" type="button" role="radio" aria-checked="false" data-picker-color="silver"><span class="picker__swatch" style="background: #d7d7d7"></span>Серый Металлик</button>
       </div>
       <a class="button" href="catalog.html">Смотреть в каталоге</a>
     </section>
@@ -479,8 +462,8 @@
       <li class="footer__acc">
         <button class="footer__mnav-link" type="button" aria-expanded="false" aria-controls="fsub-3" data-footer-acc>О бренде<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
         <ul class="footer__msub" id="fsub-3" hidden>
-          <li><a class="footer__msub-link" href="about.html">О FLEX</a></li>
-          <li><a class="footer__msub-link" href="faiim.html">О FAIIM</a></li>
+          <li><a class="footer__msub-link" href="about.html">FLEX</a></li>
+          <li><a class="footer__msub-link" href="faiim.html">FAIIM</a></li>
         </ul>
       </li>
       <li><a class="footer__mnav-link" href="help.html">Помощь<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>

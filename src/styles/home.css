@@ -506,14 +506,16 @@
 
   .m-steps { height: 300svh; }
 
+  .home .m-steps { margin-top: calc(48 * var(--wm)); }
+
   .m-steps__pin {
     position: sticky;
-    top: 0;
+    top: calc(64 * var(--wm));
     display: flex;
     flex-direction: column;
     gap: calc(16 * var(--wm));
-    height: 100svh;
-    padding: calc(80 * var(--wm)) calc(16 * var(--wm)) calc(24 * var(--wm));
+    height: calc(100svh - 64 * var(--wm));
+    padding: calc(16 * var(--wm)) calc(16 * var(--wm)) calc(24 * var(--wm));
     overflow: hidden;
   }
 

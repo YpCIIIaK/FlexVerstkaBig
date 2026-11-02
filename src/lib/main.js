@@ -1114,6 +1114,29 @@
   };
 
   const initMobileHome = () => {
+    const steps = document.querySelector("[data-msteps]");
+    if (steps) {
+      const items = [...steps.querySelectorAll("[data-msteps-item]")];
+      let ticking = false;
+      const update = () => {
+        ticking = false;
+        const rect = steps.getBoundingClientRect();
+        const total = rect.height - window.innerHeight;
+        const p = total > 0 ? Math.min(0.999, Math.max(0, -rect.top / total)) : 0;
+        const current = Math.floor(p * items.length);
+        items.forEach((item, i) => {
+          item.classList.toggle("is-active", i === current);
+          item.classList.toggle("is-past", i < current);
+        });
+      };
+      window.addEventListener("scroll", () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(update);
+      }, { passive: true });
+      update();
+    }
+
     const features = document.querySelector("[data-features]");
     if (features && window.Swiper) {
       new Swiper(features, {

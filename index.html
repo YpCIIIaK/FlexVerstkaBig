@@ -7,7 +7,7 @@
   <meta name="description" content="FLEX — устройство для нагревания табака и стики FAIIM. Линейка устройств, вкусы, программы и магазины рядом." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="src/styles/main.css?v=217" />
+  <link rel="stylesheet" href="src/styles/main.css?v=218" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -167,7 +167,30 @@
       </div>
     </section>
 
-    <section class="showcase" aria-labelledby="showcase-title" data-showcase>
+    <section class="m-steps m-only" aria-labelledby="m-steps-title" data-msteps>
+      <div class="m-steps__pin">
+        <h2 class="mobile-title" id="m-steps-title">Как работает FLEX</h2>
+        <video class="m-steps__video" poster="assets/video/flex-open-poster.webp" width="372" height="531" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="assets/video/flex-open.webm" type="video/webm" />
+          <source src="assets/video/flex-open.mp4" type="video/mp4" />
+        </video>
+        <div class="m-steps__cards">
+          <article class="feature-slide m-steps__card is-active" data-msteps-item>
+            <h3 class="feature-slide__title">Нагрев без горения</h3>
+            <p class="feature-slide__text">Усовершенствованная технология нагрева табака без процесса горения, пепла и дыма.</p>
+          </article>
+          <article class="feature-slide m-steps__card" data-msteps-item>
+            <h3 class="feature-slide__title">Снижение запаха</h3>
+            <p class="feature-slide__text">Оптимизированная технология, которая уменьшает характерный запах нагреваемого табака.</p>
+          </article>
+          <article class="feature-slide m-steps__card" data-msteps-item>
+            <p class="feature-slide__text">Более насыщенный опыт использования по сравнению с традиционными устройствами.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase d-only" aria-labelledby="showcase-title" data-showcase>
       <h2 class="mobile-title showcase__title" id="showcase-title">Как работает FLEX</h2>
       <div class="showcase__pin">
         <div class="showcase__stage">
@@ -587,6 +610,6 @@
 
   <script src="assets/vendor/lenis.min.js" defer></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
-  <script src="src/lib/main.js?v=72" defer></script>
+  <script src="src/lib/main.js?v=73" defer></script>
 </body>
 </html>

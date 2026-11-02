@@ -504,6 +504,49 @@
     color: var(--w-80);
   }
 
+  .m-steps { height: 300svh; }
+
+  .m-steps__pin {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: calc(16 * var(--wm));
+    height: 100svh;
+    padding: calc(80 * var(--wm)) calc(16 * var(--wm)) calc(24 * var(--wm));
+    overflow: hidden;
+  }
+
+  .m-steps__video {
+    flex: 1 1 auto;
+    min-height: 0;
+    align-self: center;
+    width: 100%;
+    max-height: calc(483 * var(--wm));
+    object-fit: contain;
+    mix-blend-mode: lighten;
+    pointer-events: none;
+  }
+
+  .m-steps__cards {
+    display: grid;
+    flex: none;
+  }
+
+  .m-steps__card {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transform: translateY(calc(48 * var(--wm)));
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .m-steps__card.is-past { transform: translateY(calc(-48 * var(--wm))); }
+
+  .m-steps__card.is-active {
+    opacity: 1;
+    transform: none;
+  }
+
   .lineup { display: none; }
 
   .picker {

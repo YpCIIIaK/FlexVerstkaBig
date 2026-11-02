@@ -632,3 +632,5 @@
 
   .stick-info { padding-bottom: calc(22 * var(--wm)); }
 }
+
+.stick-gallery__slide img { cursor: zoom-in; }

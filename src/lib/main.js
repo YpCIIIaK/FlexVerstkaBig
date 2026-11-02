@@ -833,6 +833,12 @@
       },
     });
 
+    el.addEventListener("click", (e) => {
+      if (!window.Fancybox || !gallery.allowClick || !e.target.closest(".stick-gallery__slide img")) return;
+      const imgs = [...el.querySelectorAll(".stick-gallery__slide img")];
+      Fancybox.show(imgs.map((img) => ({ src: img.currentSrc || img.src, type: "image", caption: img.alt })), { startIndex: gallery.activeIndex });
+    });
+
     const renderGallery = (key) => {
       const slides = makeSlides(key);
       if (!slides.length) return;

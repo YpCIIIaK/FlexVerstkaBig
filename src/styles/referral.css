@@ -141,6 +141,26 @@
     color: var(--w-80);
   }
 
+  .referral-code,
+  .referral-code__box,
+  .referral-code__input { width: 100%; }
+
+  .referral-code__box { gap: 0; }
+
+  .referral-code__copy {
+    left: auto;
+    right: calc(14 * var(--wm));
+  }
+
+  .referral-code__done {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: calc(4 * var(--wm));
+    font-size: calc(12 * var(--wm));
+    line-height: calc(16 * var(--wm));
+  }
+
   .referral .starter-hero__image {
     flex: none;
     width: 100%;

@@ -1310,10 +1310,59 @@
     const safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     const alpha = !safari && probe.canPlayType('video/webm; codecs="vp9"');
     document.querySelectorAll("video[data-alpha-webm]").forEach((video) => {
-      if (!alpha) return;
-      video.src = video.dataset.alphaWebm;
-      video.classList.add("is-alpha");
+      if (alpha) {
+        video.src = video.dataset.alphaWebm;
+        video.classList.add("is-alpha");
+      } else if (video.dataset.alphaPack) {
+        packVideo(video);
+      }
     });
+  };
+
+  const packVideo = (video) => {
+    const canvas = document.createElement("canvas");
+    const gl = canvas.getContext("webgl", { premultipliedAlpha: false, alpha: true });
+    if (!gl) return;
+    const vs = "attribute vec2 p;varying vec2 v;void main(){v=vec2(p.x*.5+.5,.5-p.y*.5);gl_Position=vec4(p,0.,1.);}";
+    const fs = "precision mediump float;uniform sampler2D t;varying vec2 v;void main(){vec3 c=texture2D(t,vec2(v.x,v.y*.5)).rgb;float a=texture2D(t,vec2(v.x,.5+v.y*.5)).r;gl_FragColor=vec4(c,a);}";
+    const sh = (type, src) => { const o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); return o; };
+    const prog = gl.createProgram();
+    gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs));
+    gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fs));
+    gl.linkProgram(prog);
+    gl.useProgram(prog);
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(prog, "p");
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
+    [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach((k) => gl.texParameteri(gl.TEXTURE_2D, k, gl.CLAMP_TO_EDGE));
+    [gl.TEXTURE_MIN_FILTER, gl.TEXTURE_MAG_FILTER].forEach((k) => gl.texParameteri(gl.TEXTURE_2D, k, gl.LINEAR));
+
+    canvas.className = video.className + " is-alpha";
+    canvas.setAttribute("aria-hidden", "true");
+    video.removeAttribute("poster");
+    video.src = video.dataset.alphaPack;
+    video.classList.add("is-packed");
+    video.after(canvas);
+
+    const draw = () => {
+      if (video.readyState >= 2) {
+        const w = video.videoWidth;
+        const h = video.videoHeight / 2;
+        if (canvas.width !== w || canvas.height !== h) {
+          canvas.width = w;
+          canvas.height = h;
+          gl.viewport(0, 0, w, h);
+        }
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, video);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      }
+      if (video.requestVideoFrameCallback) video.requestVideoFrameCallback(draw);
+      else requestAnimationFrame(draw);
+    };
+    draw();
   };
 
   const initViewportVideos = () => {

@@ -54,3 +54,13 @@ ul, ol { list-style: none; }
 @media (max-width: 767px) {
   .d-only { display: none !important; }
 }
+
+video.is-packed {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+canvas.is-alpha { mix-blend-mode: normal; }

@@ -797,7 +797,7 @@
 
         const img = document.createElement("img");
         img.src = src;
-        img.alt = index === 0 ? f.name : f.name + ", другой ракурс";
+        img.alt = f.name;
         img.width = param === "color" ? 600 : 640;
         img.height = param === "color" ? 798 : 520;
         if (index > 0) img.loading = "lazy";

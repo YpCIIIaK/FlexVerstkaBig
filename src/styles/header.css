@@ -40,6 +40,7 @@
   left: 50%;
   top: 50%;
   width: calc(58 * var(--wm));
+  max-width: none;
   height: calc(32 * var(--wm));
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.63);

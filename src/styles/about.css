@@ -341,7 +341,8 @@
 .fact--pause .fact__video { object-position: 50% 21%; }
 
 .fact--charge .fact__video {
-  transform: scale(1.03);
+  object-position: 50% 0;
+  transform: scale(1.05);
   transform-origin: 50% 0;
 }
 

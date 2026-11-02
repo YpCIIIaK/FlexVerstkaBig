@@ -336,6 +336,9 @@
   pointer-events: none;
 }
 
+.fact--display .fact__video,
+.fact--pause .fact__video { object-position: 50% 15%; }
+
 .fact--modes {
   grid-column: 1 / 3;
   grid-row: 1;

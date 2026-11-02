@@ -183,6 +183,19 @@
   line-height: calc(40 * var(--wm));
 }
 
+.construction__lead {
+  margin-top: calc(8 * var(--wm));
+  font-size: calc(16 * var(--wm));
+  font-weight: 700;
+  line-height: calc(24 * var(--wm));
+}
+
+.construction__text {
+  font-size: calc(13 * var(--wm));
+  line-height: calc(20 * var(--wm));
+  color: var(--w-80);
+}
+
 .construction__img {
   width: 100%;
   height: calc(350 * var(--wm));
@@ -504,6 +517,17 @@
   .construction__title {
     font-size: calc(22 * var(--wm));
     line-height: calc(28 * var(--wm));
+  }
+
+  .construction__lead {
+    margin-top: 0;
+    font-size: calc(14 * var(--wm));
+    line-height: calc(20 * var(--wm));
+  }
+
+  .construction__text {
+    font-size: calc(13 * var(--wm));
+    line-height: calc(18 * var(--wm));
   }
 
   .construction__img {

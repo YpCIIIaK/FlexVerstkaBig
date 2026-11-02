@@ -187,9 +187,15 @@
 }
 
 .header__menu-link:hover .header__cloud,
-.header__menu-link:focus-visible .header__cloud {
+.header__menu-link:focus-visible .header__cloud,
+.header__menu-link[aria-current="page"] .header__cloud {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
+}
+
+.header__menu:has(.header__menu-link:not([aria-current="page"]):hover) .header__menu-link[aria-current="page"] .header__cloud {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.63);
 }
 
 .header__burger,

@@ -557,7 +557,6 @@
   .faiim .flavour__title {
     font-size: calc(20 * var(--wm));
     line-height: calc(26 * var(--wm));
-    text-transform: none;
     white-space: normal;
   }
 

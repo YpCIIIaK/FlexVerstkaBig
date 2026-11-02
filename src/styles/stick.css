@@ -550,7 +550,6 @@
   .about-flavours__track .product-card__title {
     font-size: calc(20 * var(--wm));
     line-height: calc(26 * var(--wm));
-    text-transform: none;
   }
 
   .about-flavours__track .product-card__text {
@@ -581,7 +580,6 @@
 }
 
 @media (max-width: 767px) {
-  .stick .stick-info__title { text-transform: none; }
 
   .m-text {
     font-size: calc(14 * var(--wm));

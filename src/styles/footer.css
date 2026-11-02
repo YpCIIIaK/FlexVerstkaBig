@@ -197,7 +197,6 @@
     color: var(--w-50);
   }
 
-  .footer__bottom .footer__link:last-child { display: none; }
 
   .footer__mcontacts {
     display: flex;

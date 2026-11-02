@@ -508,6 +508,27 @@
 
   .home .m-steps { margin-top: calc(48 * var(--wm)); }
 
+  .m-steps--4 { height: 400svh; }
+
+  .feature-slide__list {
+    display: flex;
+    flex-direction: column;
+    gap: calc(4 * var(--wm));
+    margin-top: calc(-8 * var(--wm));
+    padding-left: calc(20 * var(--wm));
+    list-style: disc;
+    font-size: calc(14 * var(--wm));
+    line-height: calc(20 * var(--wm));
+    color: var(--w-80);
+  }
+
+  .feature-slide__note {
+    margin-top: calc(-8 * var(--wm));
+    font-size: calc(12 * var(--wm));
+    line-height: calc(16 * var(--wm));
+    color: var(--w-50);
+  }
+
   .m-steps__pin {
     position: sticky;
     top: calc(64 * var(--wm));
@@ -670,8 +691,7 @@
     height: calc(127 * var(--wm));
   }
 
-  .home-flavours .flavour__ribbon,
-  .home-flavours .flavour__metrics { display: none; }
+  .home-flavours .flavour__ribbon { display: none; }
 
   .home-flavours .flavour__body {
     gap: calc(12 * var(--wm));

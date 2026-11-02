@@ -141,8 +141,6 @@
     color: var(--w-80);
   }
 
-  .referral-code { display: none; }
-
   .referral .starter-hero__image {
     flex: none;
     width: 100%;

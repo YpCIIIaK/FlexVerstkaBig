@@ -7,7 +7,7 @@
   <meta name="description" content="Стики FAIIM для устройств FLEX: вкусы, насыщенность и ментол." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="src/styles/main.css?v=220" />
+  <link rel="stylesheet" href="src/styles/main.css?v=222" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="assets/vendor/fancybox/fancybox.css" />
 </head>
@@ -113,8 +113,14 @@
   <nav class="mobile-menu" id="mobile-menu" aria-label="Мобильное меню" data-mobile-menu hidden>
     <div class="mobile-menu__top">
       <ul class="mobile-menu__list">
+      <li class="mobile-menu__acc">
+        <button class="mobile-menu__link" type="button" aria-expanded="false" aria-controls="msub-brand" data-menu-acc>О Бренде<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
+        <ul class="mobile-menu__sub" id="msub-brand" hidden>
+          <li><a class="mobile-menu__sub-link" href="about.html">FLEX</a></li>
+          <li><a class="mobile-menu__sub-link" href="faiim.html">FAIIM</a></li>
+        </ul>
+      </li>
       <li><a class="mobile-menu__link" href="catalog.html">Каталог<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
-      <li><a class="mobile-menu__link" href="favorites.html">Избранное<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
       <li class="mobile-menu__acc">
         <button class="mobile-menu__link" type="button" aria-expanded="false" aria-controls="msub-programs" data-menu-acc>Программы<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
         <ul class="mobile-menu__sub" id="msub-programs" hidden>
@@ -122,14 +128,8 @@
           <li><a class="mobile-menu__sub-link" href="referral.html">Реферальная программа</a></li>
         </ul>
       </li>
-      <li class="mobile-menu__acc">
-        <button class="mobile-menu__link" type="button" aria-expanded="false" aria-controls="msub-brand" data-menu-acc>О бренде<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
-        <ul class="mobile-menu__sub" id="msub-brand" hidden>
-          <li><a class="mobile-menu__sub-link" href="about.html">FLEX</a></li>
-          <li><a class="mobile-menu__sub-link" href="faiim.html">FAIIM</a></li>
-        </ul>
-      </li>
       <li><a class="mobile-menu__link" href="help.html">Помощь<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="favorites.html">Избранное<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
       </ul>
 
       <div class="mobile-menu__lang">
@@ -195,7 +195,7 @@
             <p class="stick-info__text read-more__text" data-stick-text>Табачный бленд с ягодными нотами и капсулой с ментолом</p>
             <button class="read-more__btn" type="button" aria-expanded="false" data-read-more-btn>Показать полностью <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" /></svg></button>
           </div>
-          <div class="stick-info__metrics d-only">
+          <div class="stick-info__metrics">
             <div class="flavour__metric stick-info__metric"><span class="flavour__metric-label">Насыщенность</span><span class="flavour__dots" role="img" aria-label="Насыщенность: 2 из 5" data-metric><span class="flavour__dot is-on"></span><span class="flavour__dot is-on"></span><span class="flavour__dot"></span><span class="flavour__dot"></span><span class="flavour__dot"></span></span></div>
             <div class="flavour__metric stick-info__metric"><span class="flavour__metric-label">Ментол</span><span class="flavour__dots" role="img" aria-label="Ментол: 2 из 5" data-metric><span class="flavour__dot is-on"></span><span class="flavour__dot is-on"></span><span class="flavour__dot"></span><span class="flavour__dot"></span><span class="flavour__dot"></span></span></div>
             <div class="flavour__metric stick-info__metric stick-info__capsule" data-capsule-row>
@@ -236,7 +236,7 @@
     </section>
 
     <section class="stick-devices" aria-labelledby="devices-title">
-      <h2 class="section-title" id="devices-title"><span class="t-desk">Линейка устройств FLEX</span><span class="t-mob">Выберите свой вкус</span></h2>
+      <h2 class="section-title" id="devices-title">Линейка устройств FLEX</h2>
       <div class="about-flavours__track d-only">
         <article class="product-card product-card--device" data-product>
           <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
@@ -540,6 +540,7 @@
         <ul class="footer__msub" id="fsub-3" hidden>
           <li><a class="footer__msub-link" href="about.html">FLEX</a></li>
           <li><a class="footer__msub-link" href="faiim.html">FAIIM</a></li>
+          <li><a class="footer__msub-link" href="#">Новости</a></li>
         </ul>
       </li>
       <li><a class="footer__mnav-link" href="help.html">Помощь<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>

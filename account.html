@@ -8,7 +8,7 @@
   <meta name="robots" content="noindex" />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="src/styles/main.css?v=220" />
+  <link rel="stylesheet" href="src/styles/main.css?v=222" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -113,8 +113,14 @@
   <nav class="mobile-menu" id="mobile-menu" aria-label="Мобильное меню" data-mobile-menu hidden>
     <div class="mobile-menu__top">
       <ul class="mobile-menu__list">
+      <li class="mobile-menu__acc">
+        <button class="mobile-menu__link" type="button" aria-expanded="false" aria-controls="msub-brand" data-menu-acc>О Бренде<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
+        <ul class="mobile-menu__sub" id="msub-brand" hidden>
+          <li><a class="mobile-menu__sub-link" href="about.html">FLEX</a></li>
+          <li><a class="mobile-menu__sub-link" href="faiim.html">FAIIM</a></li>
+        </ul>
+      </li>
       <li><a class="mobile-menu__link" href="catalog.html">Каталог<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
-      <li><a class="mobile-menu__link" href="favorites.html">Избранное<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
       <li class="mobile-menu__acc">
         <button class="mobile-menu__link" type="button" aria-expanded="false" aria-controls="msub-programs" data-menu-acc>Программы<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
         <ul class="mobile-menu__sub" id="msub-programs" hidden>
@@ -122,14 +128,8 @@
           <li><a class="mobile-menu__sub-link" href="referral.html">Реферальная программа</a></li>
         </ul>
       </li>
-      <li class="mobile-menu__acc">
-        <button class="mobile-menu__link" type="button" aria-expanded="false" aria-controls="msub-brand" data-menu-acc>О бренде<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
-        <ul class="mobile-menu__sub" id="msub-brand" hidden>
-          <li><a class="mobile-menu__sub-link" href="about.html">FLEX</a></li>
-          <li><a class="mobile-menu__sub-link" href="faiim.html">FAIIM</a></li>
-        </ul>
-      </li>
       <li><a class="mobile-menu__link" href="help.html">Помощь<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="favorites.html">Избранное<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
       </ul>
 
       <div class="mobile-menu__lang">
@@ -346,6 +346,7 @@
         <ul class="footer__msub" id="fsub-3" hidden>
           <li><a class="footer__msub-link" href="about.html">FLEX</a></li>
           <li><a class="footer__msub-link" href="faiim.html">FAIIM</a></li>
+          <li><a class="footer__msub-link" href="#">Новости</a></li>
         </ul>
       </li>
       <li><a class="footer__mnav-link" href="help.html">Помощь<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>

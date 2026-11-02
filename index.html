@@ -7,7 +7,7 @@
   <meta name="description" content="FLEX — устройство для нагревания табака и стики FAIIM. Линейка устройств, вкусы, программы и магазины рядом." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="src/styles/main.css?v=220" />
+  <link rel="stylesheet" href="src/styles/main.css?v=222" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -112,8 +112,14 @@
   <nav class="mobile-menu" id="mobile-menu" aria-label="Мобильное меню" data-mobile-menu hidden>
     <div class="mobile-menu__top">
       <ul class="mobile-menu__list">
+      <li class="mobile-menu__acc">
+        <button class="mobile-menu__link" type="button" aria-expanded="false" aria-controls="msub-brand" data-menu-acc>О Бренде<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
+        <ul class="mobile-menu__sub" id="msub-brand" hidden>
+          <li><a class="mobile-menu__sub-link" href="about.html">FLEX</a></li>
+          <li><a class="mobile-menu__sub-link" href="faiim.html">FAIIM</a></li>
+        </ul>
+      </li>
       <li><a class="mobile-menu__link" href="catalog.html">Каталог<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
-      <li><a class="mobile-menu__link" href="favorites.html">Избранное<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
       <li class="mobile-menu__acc">
         <button class="mobile-menu__link" type="button" aria-expanded="false" aria-controls="msub-programs" data-menu-acc>Программы<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
         <ul class="mobile-menu__sub" id="msub-programs" hidden>
@@ -121,14 +127,8 @@
           <li><a class="mobile-menu__sub-link" href="referral.html">Реферальная программа</a></li>
         </ul>
       </li>
-      <li class="mobile-menu__acc">
-        <button class="mobile-menu__link" type="button" aria-expanded="false" aria-controls="msub-brand" data-menu-acc>О бренде<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
-        <ul class="mobile-menu__sub" id="msub-brand" hidden>
-          <li><a class="mobile-menu__sub-link" href="about.html">FLEX</a></li>
-          <li><a class="mobile-menu__sub-link" href="faiim.html">FAIIM</a></li>
-        </ul>
-      </li>
       <li><a class="mobile-menu__link" href="help.html">Помощь<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="favorites.html">Избранное<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
       </ul>
 
       <div class="mobile-menu__lang">
@@ -167,7 +167,7 @@
       </div>
     </section>
 
-    <section class="m-steps m-only" aria-labelledby="m-steps-title" data-msteps>
+    <section class="m-steps m-steps--4 m-only" aria-labelledby="m-steps-title" data-msteps>
       <div class="m-steps__pin">
         <h2 class="mobile-title" id="m-steps-title">Как работает FLEX</h2>
         <video class="m-steps__video" poster="assets/video/flex-open-poster.webp" width="372" height="531" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
@@ -176,15 +176,25 @@
         </video>
         <div class="m-steps__cards">
           <article class="feature-slide m-steps__card is-active" data-msteps-item>
-            <h3 class="feature-slide__title">Нагрев без горения</h3>
-            <p class="feature-slide__text">Усовершенствованная технология нагрева табака без процесса горения, пепла и дыма.</p>
+            <h3 class="feature-slide__title">Графический UI-дисплей</h3>
+            <p class="feature-slide__text">Визуализация статуса, режима и уровня заряда</p>
           </article>
           <article class="feature-slide m-steps__card" data-msteps-item>
-            <h3 class="feature-slide__title">Снижение запаха</h3>
-            <p class="feature-slide__text">Оптимизированная технология, которая уменьшает характерный запах нагреваемого табака.</p>
+            <h3 class="feature-slide__title">Два режима работы</h3>
+            <p class="feature-slide__text">Возможность переключения между сеансами использования:</p>
+            <ul class="feature-slide__list">
+              <li>Классическим</li>
+              <li>Сбалансированным</li>
+            </ul>
           </article>
           <article class="feature-slide m-steps__card" data-msteps-item>
-            <p class="feature-slide__text">Более насыщенный опыт использования по сравнению с традиционными устройствами.</p>
+            <h3 class="feature-slide__title">Функция паузы</h3>
+            <p class="feature-slide__text">Опция поставить сеанс “на паузу” и продолжить, когда необходимо</p>
+          </article>
+          <article class="feature-slide m-steps__card" data-msteps-item>
+            <h3 class="feature-slide__title">Быстрая зарядка</h3>
+            <p class="feature-slide__text">До 50% за тридцать минут*, сокращая время ожидания</p>
+            <p class="feature-slide__note">*При использовании оригинального кабеля питания и рекомендованного блока</p>
           </article>
         </div>
       </div>
@@ -292,7 +302,7 @@
 
     <section class="flavours home-flavours" aria-labelledby="flavours-title">
       <div class="flavours__head">
-        <h2 class="section-title" id="flavours-title"><span class="t-desk">Линейка вкусов FAIIM</span><span class="t-mob">Линейка вкусов</span></h2>
+        <h2 class="section-title" id="flavours-title">Линейка вкусов FAIIM</h2>
       </div>
       <div class="flavours__track">
           <article class="flavour flavour--sunshine">
@@ -304,7 +314,7 @@
             <div class="flavour__body">
               <div class="flavour__head">
                 <h3 class="flavour__title">Sunshine mix</h3>
-                <p class="flavour__text"><span class="t-desk">Табачный бленд с нотами тропических фруктов и капсулой</span><span class="t-mob">Табачный вкус с бархатным послевкусием.</span></p>
+                <p class="flavour__text">Табачный бленд с нотами тропических фруктов и капсулой</p>
               </div>
               <div class="flavour__bottom">
                 <div class="flavour__metrics">
@@ -334,7 +344,7 @@
             <div class="flavour__body">
               <div class="flavour__head">
                 <h3 class="flavour__title">Purple Mix</h3>
-                <p class="flavour__text"><span class="t-desk">Табачный бленд с ягодными нотами и капсулой с ментолом</span><span class="t-mob">Глубокий ягодный вкус с прохладным финишем.</span></p>
+                <p class="flavour__text">Табачный бленд с ягодными нотами и капсулой с ментолом</p>
               </div>
               <div class="flavour__bottom">
                 <div class="flavour__metrics">
@@ -364,7 +374,7 @@
             <div class="flavour__body">
               <div class="flavour__head">
                 <h3 class="flavour__title">Yellow mix</h3>
-                <p class="flavour__text"><span class="t-desk">Табачный бленд с фруктовыми нотами и цитрусовой капсулой</span><span class="t-mob">Табачный вкус с бархатным послевкусием.</span></p>
+                <p class="flavour__text">Табачный бленд с фруктовыми нотами и цитрусовой капсулой</p>
               </div>
               <div class="flavour__bottom">
                 <div class="flavour__metrics">
@@ -394,7 +404,7 @@
             <div class="flavour__body">
               <div class="flavour__head">
                 <h3 class="flavour__title">Skygreen</h3>
-                <p class="flavour__text"><span class="t-desk">Классический табачный бленд с мятным акцентом</span><span class="t-mob">Освежающий цитрусовый микс с лёгкой сладостью.</span></p>
+                <p class="flavour__text">Классический табачный бленд с мятным акцентом</p>
               </div>
               <div class="flavour__bottom">
                 <div class="flavour__metrics">
@@ -416,31 +426,31 @@
 
     <section class="programs" aria-labelledby="programs-title">
       <header class="programs__head">
-        <h2 class="section-title" id="programs-title"><span class="t-desk">Программы FLEX</span><span class="t-mob">Больше от вашего FLEX</span></h2>
+        <h2 class="section-title" id="programs-title">Программы FLEX</h2>
         <p class="programs__lead">Зарегистрируйте устройство в личном кабинете и пользуйтесь дополнительными возможностями.</p>
       </header>
       <div class="programs__grid">
         <article class="program">
           <div class="program__head">
-            <h3 class="program__title"><span class="t-desk">Стартовый набор</span><span class="t-mob">Всё для первого знакомства</span></h3>
-            <p class="program__text"><span class="t-desk">Устройство и стики в наборе для быстрого старта</span><span class="t-mob">Устройство и стики собраны в удобный стартовый набор, чтобы быстро начать.</span></p>
+            <h3 class="program__title">Стартовый набор</h3>
+            <p class="program__text">Устройство и стики в наборе для быстрого старта</p>
           </div>
           <img class="program__img" src="assets/images/program-starter.webp?v=4" alt="Стартовый набор FLEX" width="604" height="300" loading="lazy" />
-          <a class="button button--ghost" href="starter-kit.html"><span class="t-desk">Узнать больше</span><span class="t-mob">Выбрать стартовый набор</span></a>
+          <a class="button button--ghost" href="starter-kit.html">Узнать больше</a>
         </article>
         <article class="program">
           <div class="program__head">
-            <h3 class="program__title"><span class="t-desk">Реферальная программа</span><span class="t-mob">Рекомендуйте друзьям</span></h3>
-            <p class="program__text"><span class="t-desk">Участие в программе рекомендации Flex</span><span class="t-mob">Делитесь FLEX с друзьями и участвуйте в программе рекомендаций.</span></p>
+            <h3 class="program__title">Реферальная программа</h3>
+            <p class="program__text">Участие в программе рекомендации Flex</p>
           </div>
           <img class="program__img" src="assets/images/program-referral.webp?v=3" alt="Программа рекомендации FLEX" width="604" height="300" loading="lazy" />
-          <a class="button button--ghost" href="referral.html"><span class="t-desk">Узнать больше</span><span class="t-mob">Подробнее о программе</span></a>
+          <a class="button button--ghost" href="referral.html">Узнать больше</a>
         </article>
       </div>
     </section>
 
     <section class="stores" id="stores" hidden aria-labelledby="stores-title" data-stores>
-      <h2 class="stores__title" id="stores-title"><span class="t-desk">Магазины Flex рядом</span><span class="t-mob">Найдите FLEX рядом</span></h2>
+      <h2 class="stores__title" id="stores-title">Магазины Flex рядом</h2>
 
       <div class="stores__body">
         <div class="stores__list-wrap">
@@ -548,6 +558,7 @@
         <ul class="footer__msub" id="fsub-3" hidden>
           <li><a class="footer__msub-link" href="about.html">FLEX</a></li>
           <li><a class="footer__msub-link" href="faiim.html">FAIIM</a></li>
+          <li><a class="footer__msub-link" href="#">Новости</a></li>
         </ul>
       </li>
       <li><a class="footer__mnav-link" href="help.html">Помощь<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>

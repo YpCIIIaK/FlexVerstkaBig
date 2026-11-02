@@ -7,7 +7,7 @@
   <meta name="description" content="Программа рекомендации FLEX: поделитесь кодом и получите 1000 баллов Яндекс Плюс." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="src/styles/main.css?v=220" />
+  <link rel="stylesheet" href="src/styles/main.css?v=222" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -112,8 +112,14 @@
   <nav class="mobile-menu" id="mobile-menu" aria-label="Мобильное меню" data-mobile-menu hidden>
     <div class="mobile-menu__top">
       <ul class="mobile-menu__list">
+      <li class="mobile-menu__acc">
+        <button class="mobile-menu__link" type="button" aria-expanded="false" aria-controls="msub-brand" data-menu-acc>О Бренде<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
+        <ul class="mobile-menu__sub" id="msub-brand" hidden>
+          <li><a class="mobile-menu__sub-link" href="about.html">FLEX</a></li>
+          <li><a class="mobile-menu__sub-link" href="faiim.html">FAIIM</a></li>
+        </ul>
+      </li>
       <li><a class="mobile-menu__link" href="catalog.html">Каталог<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
-      <li><a class="mobile-menu__link" href="favorites.html">Избранное<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
       <li class="mobile-menu__acc">
         <button class="mobile-menu__link" type="button" aria-expanded="false" aria-controls="msub-programs" data-menu-acc>Программы<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
         <ul class="mobile-menu__sub" id="msub-programs" hidden>
@@ -121,14 +127,8 @@
           <li><a class="mobile-menu__sub-link" href="referral.html">Реферальная программа</a></li>
         </ul>
       </li>
-      <li class="mobile-menu__acc">
-        <button class="mobile-menu__link" type="button" aria-expanded="false" aria-controls="msub-brand" data-menu-acc>О бренде<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
-        <ul class="mobile-menu__sub" id="msub-brand" hidden>
-          <li><a class="mobile-menu__sub-link" href="about.html">FLEX</a></li>
-          <li><a class="mobile-menu__sub-link" href="faiim.html">FAIIM</a></li>
-        </ul>
-      </li>
       <li><a class="mobile-menu__link" href="help.html">Помощь<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
+      <li><a class="mobile-menu__link" href="favorites.html">Избранное<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
       </ul>
 
       <div class="mobile-menu__lang">
@@ -155,15 +155,13 @@
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
       <a class="breadcrumbs__link" href="index.html">Главная</a>
       <span class="breadcrumbs__sep" aria-hidden="true">/</span>
-      <span class="breadcrumbs__link t-mob">Программы</span>
-      <span class="breadcrumbs__sep t-mob" aria-hidden="true">/</span>
-      <span class="breadcrumbs__current" aria-current="page"><span class="t-desk">Рекомендуйте FLEX друзьям</span><span class="t-mob">Реферальная программа</span></span>
+      <span class="breadcrumbs__current" aria-current="page">Рекомендуйте FLEX друзьям</span>
     </nav>
 
     <section class="starter-hero">
       <div class="starter-hero__info">
         <div class="starter-hero__head referral__head">
-          <h1 class="starter-hero__title"><span class="t-desk">Программа рекомендации FLEX</span><span class="t-mob">Рекомендуйте FLEX друзьям</span></h1>
+          <h1 class="starter-hero__title">Программа рекомендации FLEX</h1>
           <p class="referral__lead">Расскажите другу о FLEX и поделитесь номером телефона, привязанным к вашему аккаунту.</p>
           <div class="field referral-code" data-copy>
             <span class="field__label" id="ref-code-label">Ваш реферальный код</span>
@@ -176,7 +174,7 @@
             </div>
           </div>
         </div>
-        <a class="button button--ghost" href="#terms"><span class="t-desk">Полные условия программы</span><span class="t-mob">Условия программы</span></a>
+        <a class="button button--ghost" href="#terms">Полные условия программы</a>
       </div>
       <picture class="referral__picture">
         <img class="starter-hero__image referral__image" src="assets/images/referral-hero.webp?v=2" alt="Рекомендуйте FLEX друзьям" width="1812" height="900" fetchpriority="high" />
@@ -243,6 +241,7 @@
         <ul class="footer__msub" id="fsub-3" hidden>
           <li><a class="footer__msub-link" href="about.html">FLEX</a></li>
           <li><a class="footer__msub-link" href="faiim.html">FAIIM</a></li>
+          <li><a class="footer__msub-link" href="#">Новости</a></li>
         </ul>
       </li>
       <li><a class="footer__mnav-link" href="help.html">Помощь<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>

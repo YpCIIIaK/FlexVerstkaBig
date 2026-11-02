@@ -733,10 +733,7 @@
   }
 
   .m-buy .button,
-  .about .about-picker {
-    margin-top: calc(-40 * var(--wm));
-    padding-top: 0;
-  }
+  .about .about-picker { padding-top: calc(24 * var(--wm)); }
 
   .about-picker .button,
   .about-flavours .button { width: 100%; }

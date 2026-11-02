@@ -1287,6 +1287,24 @@
     document.querySelectorAll("video[data-mobile-poster]").forEach((v) => { v.poster = v.dataset.mobilePoster; });
   };
 
+  const initEqualTexts = () => {
+    const groups = [...document.querySelectorAll(".flavours__track, .about-flavours__track")];
+    if (!groups.length) return;
+    const run = () => {
+      groups.forEach((group) => {
+        const texts = [...group.querySelectorAll(".flavour__text, .product-card__text")];
+        texts.forEach((t) => { t.style.minHeight = ""; });
+        const visible = texts.filter((t) => t.offsetParent);
+        const max = Math.max(0, ...visible.map((t) => t.getBoundingClientRect().height));
+        visible.forEach((t) => { t.style.minHeight = max + "px"; });
+      });
+    };
+    run();
+    window.addEventListener("resize", run);
+    window.addEventListener("load", run);
+    if (document.fonts) document.fonts.ready.then(run);
+  };
+
   const initAlphaVideos = () => {
     const probe = document.createElement("video");
     const safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -1431,6 +1449,7 @@
   initHeroScrollIndicator();
   initDetailsVideo();
   initMobilePosters();
+  initEqualTexts();
   initAlphaVideos();
   initViewportVideos();
   initMobileHome();

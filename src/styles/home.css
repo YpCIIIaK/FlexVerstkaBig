@@ -551,6 +551,8 @@
     pointer-events: none;
   }
 
+  .m-steps__video.is-alpha { mix-blend-mode: normal; }
+
   .m-steps__cards {
     display: grid;
     flex: none;
@@ -562,6 +564,8 @@
     transform: translateY(calc(48 * var(--wm)));
     transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
+
+  .m-steps__card--center { justify-content: center; }
 
   .m-steps__card.is-past { transform: translateY(calc(-48 * var(--wm))); }
 

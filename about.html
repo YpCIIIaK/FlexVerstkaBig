@@ -7,7 +7,7 @@
   <meta name="description" content="Устройство FLEX: дизайн, технология нагрева без горения, оттенки и функции." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="src/styles/main.css?v=227" />
+  <link rel="stylesheet" href="src/styles/main.css?v=229" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -163,10 +163,7 @@
     <section class="m-steps m-only" aria-labelledby="m-steps-title" data-msteps>
       <div class="m-steps__pin">
         <h2 class="mobile-title" id="m-steps-title">Как работает FLEX</h2>
-        <video class="m-steps__video" poster="assets/video/flex-open-poster.webp" width="372" height="531" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-          <source src="assets/video/flex-open.webm" type="video/webm" />
-          <source src="assets/video/flex-open.mp4" type="video/mp4" />
-        </video>
+        <video class="m-steps__video" src="assets/video/flex-open.mp4" data-alpha-webm="assets/video/flex-open.webm" poster="assets/video/flex-open-poster.webp" width="372" height="531" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
         <div class="m-steps__cards">
           <article class="feature-slide m-steps__card is-active" data-msteps-item>
             <h3 class="feature-slide__title">Нагрев без горения</h3>
@@ -176,7 +173,7 @@
             <h3 class="feature-slide__title">Снижение запаха</h3>
             <p class="feature-slide__text">Оптимизированная технология, которая уменьшает характерный запах нагреваемого табака.</p>
           </article>
-          <article class="feature-slide m-steps__card" data-msteps-item>
+          <article class="feature-slide m-steps__card m-steps__card--center" data-msteps-item>
             <p class="feature-slide__text">Более насыщенный опыт использования по сравнению с традиционными устройствами.</p>
           </article>
         </div>
@@ -267,10 +264,7 @@
           </article>
         </div>
       </div>
-      <video class="how__video" poster="assets/video/flex-open-poster.webp" width="372" height="531" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-        <source src="assets/video/flex-open.webm" type="video/webm" />
-        <source src="assets/video/flex-open.mp4" type="video/mp4" />
-      </video>
+      <video class="how__video" src="assets/video/flex-open.mp4" data-alpha-webm="assets/video/flex-open.webm" poster="assets/video/flex-open-poster.webp" width="372" height="531" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
     </section>
 
     <section class="shades d-only" aria-labelledby="shades-title" data-shades>
@@ -525,6 +519,6 @@
 
   <script src="assets/vendor/lenis.min.js" defer></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
-  <script src="src/lib/main.js?v=73" defer></script>
+  <script src="src/lib/main.js?v=74" defer></script>
 </body>
 </html>

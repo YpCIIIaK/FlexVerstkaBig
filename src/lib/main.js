@@ -1287,11 +1287,28 @@
     document.querySelectorAll("video[data-mobile-poster]").forEach((v) => { v.poster = v.dataset.mobilePoster; });
   };
 
+  const initAlphaVideos = () => {
+    const probe = document.createElement("video");
+    const safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const alpha = !safari && probe.canPlayType('video/webm; codecs="vp9"');
+    document.querySelectorAll("video[data-alpha-webm]").forEach((video) => {
+      if (!alpha) return;
+      video.src = video.dataset.alphaWebm;
+      video.classList.add("is-alpha");
+    });
+  };
+
   const initViewportVideos = () => {
     const videos = [...document.querySelectorAll("video[autoplay]")];
     if (!videos.length || !("IntersectionObserver" in window)) return;
 
     const visible = new WeakMap();
+    videos.forEach((video) => {
+      video.muted = true;
+      video.playsInline = true;
+      video.setAttribute("muted", "");
+    });
+
     const sync = (video) => {
       if (document.hidden || !visible.get(video)) {
         video.pause();
@@ -1314,6 +1331,11 @@
 
     document.addEventListener("visibilitychange", () => {
       videos.forEach(sync);
+    });
+
+    const retry = () => videos.forEach((video) => { if (video.paused && visible.get(video) && !video.dataset.scrubSrc) sync(video); });
+    ["touchstart", "touchend", "pointerdown", "scroll"].forEach((type) => {
+      window.addEventListener(type, retry, { passive: true });
     });
   };
 
@@ -1409,6 +1431,7 @@
   initHeroScrollIndicator();
   initDetailsVideo();
   initMobilePosters();
+  initAlphaVideos();
   initViewportVideos();
   initMobileHome();
   document.querySelectorAll("[data-select]").forEach((el) => initSelect(el));

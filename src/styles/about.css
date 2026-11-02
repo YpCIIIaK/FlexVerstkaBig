@@ -336,8 +336,9 @@
   pointer-events: none;
 }
 
-.fact--display .fact__video,
-.fact--pause .fact__video { object-position: 50% 15%; }
+.fact--display .fact__video { object-position: 50% 15%; }
+
+.fact--pause .fact__video { object-position: 50% 21%; }
 
 .fact--modes {
   grid-column: 1 / 3;
@@ -629,6 +630,8 @@
     padding: 0;
     overflow: hidden;
   }
+
+  .m-fact--pause .fact__video { object-position: 50% 66%; }
 
   .m-fact--video.m-fact--wide {
     height: auto;

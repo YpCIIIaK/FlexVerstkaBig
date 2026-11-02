@@ -325,6 +325,17 @@
   gap: calc(12 * var(--wm));
 }
 
+.fact--video { padding: 0; }
+
+.fact__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
 .fact--modes {
   grid-column: 1 / 3;
   grid-row: 1;

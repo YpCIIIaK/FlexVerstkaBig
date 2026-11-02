@@ -62,8 +62,9 @@
   width: calc(668 * var(--wm));
   height: calc(420 * var(--wm));
   object-fit: cover;
-  transform: translateX(-14%);
 }
+
+.starter:not(.referral) .starter-hero__image { transform: translateX(-14%); }
 
 .starter-terms {
   display: flex;

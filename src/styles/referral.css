@@ -1,6 +1,10 @@
 .referral__head { gap: calc(16 * var(--wm)); }
 
-.referral__image { border-radius: calc(28 * var(--wm)); }
+.referral__image {
+  height: auto;
+  aspect-ratio: 1812 / 900;
+  border-radius: calc(28 * var(--wm));
+}
 
 .referral__picture { display: contents; }
 
@@ -142,7 +146,7 @@
   .referral .starter-hero__image {
     flex: none;
     width: 100%;
-    height: calc(238 * var(--wm));
+    height: auto;
   }
 
   .steps-section {

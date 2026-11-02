@@ -7,7 +7,7 @@
   <meta name="description" content="Устройство FLEX: дизайн, технология нагрева без горения, оттенки и функции." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="src/styles/main.css?v=218" />
+  <link rel="stylesheet" href="src/styles/main.css?v=219" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -160,26 +160,24 @@
 
     <h1 class="about__title"><span class="t-desk">О FLEX</span><span class="t-mob">Особенности FLEX</span></h1>
 
-    <section class="m-how m-only" aria-labelledby="m-how-title">
-      <h2 class="mobile-title" id="m-how-title">Как работает FLEX</h2>
-      <video class="m-how__video" src="assets/video/flex-rotate.mp4" poster="assets/video/flex-rotate.jpg" width="363" height="483" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
-      <div class="swiper features" data-features>
-        <div class="swiper-wrapper">
-          <article class="swiper-slide feature-slide">
+    <section class="m-steps m-only" aria-labelledby="m-steps-title" data-msteps>
+      <div class="m-steps__pin">
+        <h2 class="mobile-title" id="m-steps-title">Как работает FLEX</h2>
+        <video class="m-steps__video" poster="assets/video/flex-open-poster.webp" width="372" height="531" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="assets/video/flex-open.webm" type="video/webm" />
+          <source src="assets/video/flex-open.mp4" type="video/mp4" />
+        </video>
+        <div class="m-steps__cards">
+          <article class="feature-slide m-steps__card is-active" data-msteps-item>
             <h3 class="feature-slide__title">Нагрев без горения</h3>
-            <p class="feature-slide__text">Технология нагрева FLEX работает без процесса горения, обеспечивая более контролируемую работу устройства во время использования. Система рассчитана на стабильное взаимодействие со стиком и последовательный пользовательский опыт от начала до конца сессии.</p>
+            <p class="feature-slide__text">Усовершенствованная технология нагрева табака без процесса горения, пепла и дыма.</p>
           </article>
-          <article class="swiper-slide feature-slide">
-            <h3 class="feature-slide__title">Простое управление</h3>
-            <p class="feature-slide__text">Основные функции устройства собраны в понятную и интуитивную систему управления. Пользователю не нужно разбираться в сложных настройках: взаимодействие остаётся простым, последовательным и понятным с первого использования.</p>
+          <article class="feature-slide m-steps__card" data-msteps-item>
+            <h3 class="feature-slide__title">Снижение запаха</h3>
+            <p class="feature-slide__text">Оптимизированная технология, которая уменьшает характерный запах нагреваемого табака.</p>
           </article>
-          <article class="swiper-slide feature-slide">
-            <h3 class="feature-slide__title">Понятная индикация</h3>
-            <p class="feature-slide__text">Устройство быстро подготавливается к использованию и сокращает время ожидания перед началом сессии. Логика работы построена так, чтобы основные действия занимали минимум времени и не требовали от пользователя дополнительных шагов.</p>
-          </article>
-          <article class="swiper-slide feature-slide">
-            <h3 class="feature-slide__title">Энергосбережение</h3>
-            <p class="feature-slide__text">Система FLEX поддерживает последовательную работу устройства на протяжении всей сессии. Продуманная конструкция и алгоритм работы помогают сохранять предсказуемое поведение устройства и одинаковый сценарий использования каждый раз.</p>
+          <article class="feature-slide m-steps__card" data-msteps-item>
+            <p class="feature-slide__text">Более насыщенный опыт использования по сравнению с традиционными устройствами.</p>
           </article>
         </div>
       </div>

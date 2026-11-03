@@ -654,18 +654,18 @@
   .device .stick-benefits__row .benefit {
     flex: none;
     display: grid;
-    grid-template-columns: calc(56 * var(--wm)) 1fr;
-    gap: calc(16 * var(--wm));
+    grid-template-columns: calc(48 * var(--wm)) 1fr;
+    gap: calc(12 * var(--wm)) calc(16 * var(--wm));
     align-items: center;
     min-height: 0;
     padding: calc(24 * var(--wm)) calc(20 * var(--wm));
   }
 
   .device .benefit__img {
-    width: calc(96 * var(--wm));
+    width: calc(82 * var(--wm));
     max-width: none;
-    height: calc(96 * var(--wm));
-    margin: calc(-20 * var(--wm));
+    height: calc(82 * var(--wm));
+    margin: calc(-28 * var(--wm)) calc(-17 * var(--wm));
     border-radius: 0;
     object-fit: contain;
   }

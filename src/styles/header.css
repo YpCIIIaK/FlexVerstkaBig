@@ -210,8 +210,7 @@
   }
 
   .header__nav,
-  .header__lang,
-  .header__icon[href="favorites.html"] { display: none; }
+  .header__lang { display: none; }
 
   .header__burger {
     display: flex;

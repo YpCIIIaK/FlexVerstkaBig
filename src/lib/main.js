@@ -545,7 +545,8 @@
     const wrap = document.querySelector("[data-fav-list] .swiper-wrapper");
     if (!wrap) return;
     const favs = readFavs();
-    wrap.innerHTML = favs.map((f) => f.html).join("");
+    const base = /\/kz\//.test(location.pathname) ? "../" : "";
+    wrap.innerHTML = favs.map((f) => f.html.replace(/(src|href)="(?:\.\.\/)*(assets\/)/g, `$1="${base}$2`)).join("");
     document.querySelector("[data-fav-empty]").hidden = favs.length > 0;
   };
 
@@ -659,7 +660,6 @@
   const initProductSwipers = () => {
     if (!window.Swiper) return;
     document.querySelectorAll("[data-products-swiper]").forEach((el) => {
-      if (el.hasAttribute("data-fav-list") && window.matchMedia("(max-width: 767px)").matches) return;
       const arrow = (dir, d) => {
         const btn = document.createElement("button");
         btn.type = "button";
@@ -669,7 +669,7 @@
         (el.closest(".account-card--fav") || el).append(btn);
         return btn;
       };
-      new Swiper(el, {
+      const sw = new Swiper(el, {
         navigation: { prevEl: arrow("prev", "M12.5 15L7.5 10L12.5 5"), nextEl: arrow("next", "M7.5 15L12.5 10L7.5 5") },
         slidesPerView: "auto",
         spaceBetween: 24 * (window.innerWidth / 1440),
@@ -681,6 +681,19 @@
           },
         },
       });
+      if (!el.hasAttribute("data-fav-list")) return;
+      const mq = window.matchMedia("(max-width: 767px)");
+      const apply = () => {
+        if (mq.matches) {
+          sw.disable();
+          sw.setTranslate(0);
+        } else {
+          sw.enable();
+          sw.update();
+        }
+      };
+      mq.addEventListener("change", apply);
+      apply();
     });
   };
 
@@ -1113,15 +1126,32 @@
     });
   };
 
+  const KZ_PAGES = ["index.html", "about.html", "catalog.html", "stick.html", "device.html", "faiim.html", "starter-kit.html", "referral.html", "404.html", "account.html", "favorites.html", "settings.html", "login.html"];
+
+  const langUrl = (lang) => {
+    const parts = location.pathname.split("/").filter(Boolean);
+    const isKz = parts[0] === "kz";
+    const file = parts.length === (isKz ? 2 : 1) && parts[parts.length - 1].endsWith(".html") ? parts[parts.length - 1] : (parts.length === (isKz ? 1 : 0) ? "index.html" : "");
+    if (lang === "kz") {
+      if (isKz) return null;
+      return "/kz/" + (KZ_PAGES.includes(file) ? file : "index.html") + location.search;
+    }
+    if (!isKz) return null;
+    return "/" + (file === "index.html" ? "" : file) + location.search;
+  };
+
   const initLangSwitch = () => {
+    const go = (lang) => {
+      const url = langUrl(lang);
+      if (url) location.href = url;
+    };
+    document.querySelectorAll(".header__lang").forEach((btn) => {
+      btn.addEventListener("click", () => go(/\/kz\//.test(location.pathname) ? "ru" : "kz"));
+    });
     document.querySelectorAll(".lang-switch").forEach((group) => {
-      const btns = [...group.querySelectorAll(".lang-switch__btn")];
-      btns.forEach((b) => b.addEventListener("click", () => {
-        btns.forEach((x) => {
-          const on = x === b;
-          x.classList.toggle("is-active", on);
-          x.setAttribute("aria-checked", String(on));
-        });
+      group.querySelectorAll(".lang-switch__btn").forEach((b) => b.addEventListener("click", () => {
+        const lang = b.textContent.trim().toLowerCase();
+        if (lang === "ru" || lang === "kz") go(lang);
       }));
     });
   };

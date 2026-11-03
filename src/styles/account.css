@@ -383,10 +383,13 @@
   }
 
   .account [data-fav-list] .swiper-wrapper {
+    transform: none !important;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: calc(16 * var(--wm)) calc(12 * var(--wm));
   }
+
+  .account [data-fav-list] .stick-gallery__arrow { display: none; }
 
   .account [data-fav-list] .product-card {
     display: flex;

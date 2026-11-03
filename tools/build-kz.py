@@ -149,6 +149,7 @@ def process(name):
     src = re.sub(r'(<button class="header__lang"[^>]*aria-label=")[^"]*("[^>]*>\s*<img[^>]*>\s*)RU', r'\1Тіл: қазақша\2KZ', src)
     src = src.replace('<button class="lang-switch__btn is-active" type="button" role="radio" aria-checked="true">RU</button>', '<button class="lang-switch__btn" type="button" role="radio" aria-checked="false">RU</button>')
     src = src.replace('<button class="lang-switch__btn" type="button" role="radio" aria-checked="false">KZ</button>', '<button class="lang-switch__btn is-active" type="button" role="radio" aria-checked="true">KZ</button>')
+    src = src.replace('Похоже, такой страницы не существует или она была перемещена. Вернитесь', 'Мұндай бет жоқ немесе ол басқа жерге көшірілген сияқты. Вернитесь')
     src = src.replace('Оттенки устройств<br />FLEX', 'FLEX құрылғыларының<br />реңктері')
     src = re.sub(
         r'Обратиться по номеру телефона (<a href="tel:7707">7707</a>) или в официальный магазин FLEX',

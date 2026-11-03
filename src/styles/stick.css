@@ -632,3 +632,48 @@
 }
 
 .stick-gallery__slide img { cursor: zoom-in; }
+
+@media (max-width: 767px) {
+  .device .stick-benefits {
+    gap: calc(24 * var(--wm));
+    padding: calc(64 * var(--wm)) calc(16 * var(--wm)) 0;
+  }
+
+  .device .stick-benefits .section-title {
+    font-size: calc(28 * var(--wm));
+    line-height: calc(34 * var(--wm));
+  }
+
+  .device .stick-benefits__row {
+    flex-direction: column;
+    gap: calc(12 * var(--wm));
+  }
+
+  .device .stick-benefits__row .benefit {
+    flex: none;
+    display: grid;
+    grid-template-columns: calc(40 * var(--wm)) 1fr;
+    gap: calc(16 * var(--wm)) calc(24 * var(--wm));
+    align-items: center;
+    min-height: 0;
+    padding: calc(24 * var(--wm)) calc(20 * var(--wm));
+  }
+
+  .device .benefit__img {
+    width: calc(40 * var(--wm));
+    height: calc(40 * var(--wm));
+    margin: 0;
+    border-radius: 0;
+    object-fit: contain;
+  }
+
+  .device .benefit__title,
+  .device .benefit__text { padding: 0; }
+
+  .device .benefit__text {
+    grid-column: 2;
+    font-size: calc(16 * var(--wm));
+    line-height: calc(24 * var(--wm));
+    color: var(--w-80);
+  }
+}

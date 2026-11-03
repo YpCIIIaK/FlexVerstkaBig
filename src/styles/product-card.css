@@ -144,3 +144,5 @@
 @media (max-width: 767px) {
   .product-card { border-radius: calc(20 * var(--wm)) calc(20 * var(--wm)) 0 0; }
 }
+
+.product-card__gallery { touch-action: pan-y; }

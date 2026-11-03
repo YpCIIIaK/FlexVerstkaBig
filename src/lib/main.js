@@ -578,6 +578,31 @@
       });
 
       dots.forEach((dot, i) => dot.addEventListener("click", () => { stop(); show(i); }));
+
+      const gallery = card.querySelector(".product-card__gallery");
+      if (!gallery) return;
+      let sx = 0;
+      let sy = 0;
+      let swiped = false;
+      gallery.addEventListener("touchstart", (e) => {
+        sx = e.touches[0].clientX;
+        sy = e.touches[0].clientY;
+        swiped = false;
+      }, { passive: true });
+      gallery.addEventListener("touchend", (e) => {
+        const dx = e.changedTouches[0].clientX - sx;
+        const dy = e.changedTouches[0].clientY - sy;
+        if (Math.abs(dx) < 30 || Math.abs(dx) < Math.abs(dy)) return;
+        swiped = true;
+        stop();
+        show((current + (dx < 0 ? 1 : imgs.length - 1)) % imgs.length);
+      }, { passive: true });
+      gallery.addEventListener("click", (e) => {
+        if (!swiped) return;
+        e.preventDefault();
+        e.stopPropagation();
+        swiped = false;
+      }, true);
     });
 
     const setFav = (btn, on) => {

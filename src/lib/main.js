@@ -1283,6 +1283,15 @@
   document.documentElement.style.visibility = "visible";
 
   const initMobilePosters = () => {
+    document.querySelectorAll("video").forEach((video) => {
+      const sources = [...video.querySelectorAll("source[media]")];
+      if (!sources.length) return;
+      const pick = [...video.querySelectorAll("source")].find((s) => !s.media || window.matchMedia(s.media).matches);
+      if (!pick) return;
+      video.querySelectorAll("source").forEach((s) => s.remove());
+      video.src = pick.getAttribute("src");
+      video.load();
+    });
     if (!window.matchMedia("(max-width: 767px)").matches) return;
     document.querySelectorAll("video[data-mobile-poster]").forEach((v) => { v.poster = v.dataset.mobilePoster; });
   };

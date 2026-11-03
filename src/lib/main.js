@@ -1433,6 +1433,14 @@
     window.addEventListener("scroll", () => {
       if (!ticking) { ticking = true; requestAnimationFrame(update); }
     }, { passive: true });
+
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    document.addEventListener("mousemove", (e) => {
+      if (!header.classList.contains("is-hidden") || e.clientY > header.offsetHeight + 40) return;
+      header.classList.remove("is-hidden");
+      document.documentElement.classList.remove("is-header-hidden");
+      last = window.scrollY;
+    }, { passive: true });
   };
 
   const initHeroScrollIndicator = () => {

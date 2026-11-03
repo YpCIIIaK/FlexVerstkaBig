@@ -242,12 +242,12 @@
   }
 
   .header__actions { gap: calc(4 * var(--wm)); }
-  .header__icons { gap: calc(4 * var(--wm)); }
+  .header__icons { gap: 0; }
 
   .header__icon {
     justify-content: center;
     align-items: center;
-    width: calc(44 * var(--wm));
+    width: calc(34 * var(--wm));
     height: calc(44 * var(--wm));
   }
 

@@ -1351,6 +1351,7 @@
     document.querySelectorAll("video[data-alpha-webm]").forEach((video) => {
       if (alpha) {
         video.src = video.dataset.alphaWebm;
+        video.removeAttribute("poster");
         video.classList.add("is-alpha");
       } else if (video.dataset.alphaPack) {
         packVideo(video);

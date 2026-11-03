@@ -273,7 +273,16 @@
   backface-visibility: hidden;
 }
 
-.flavour:hover .flavour__pack { transform: translate3d(0, calc(-10 * var(--wm)), 0); }
+@media (hover: hover) and (pointer: fine) {
+  .flavour:hover .flavour__pack { transform: translate3d(0, calc(-10 * var(--wm)), 0); }
+}
+
+@media (max-width: 767px) {
+  .flavour__pack {
+    transition: none;
+    will-change: auto;
+  }
+}
 
 .flavour__ribbon {
   position: absolute;

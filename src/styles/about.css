@@ -774,7 +774,6 @@
   }
 
   .m-buy .button,
-  .about .about-picker { padding-top: calc(24 * var(--wm)); }
 
   .about-picker .button,
   .about-flavours .button { width: 100%; }
@@ -800,4 +799,10 @@
     clip: rect(0 0 0 0);
     white-space: nowrap;
   }
+}
+
+.about-how { padding-top: calc(80 * var(--wm)); }
+
+@media (max-width: 767px) {
+  .about-how { padding-top: calc(24 * var(--wm)); }
 }

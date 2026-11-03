@@ -337,7 +337,10 @@
   color: var(--w-80);
 }
 
+.flavour__body { flex: 1 1 auto; }
+
 .flavour__bottom {
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   gap: calc(32 * var(--wm));
@@ -392,6 +395,7 @@
 }
 
 .flavour__link {
+  margin-top: auto;
   display: inline-flex;
   align-self: flex-start;
   align-items: center;

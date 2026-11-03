@@ -451,16 +451,14 @@
   }
 
   .catalog-promo__note {
-    font-size: calc(12 * var(--wm));
-    line-height: calc(16 * var(--wm));
-    color: var(--w-80);
+    font-size: calc(14 * var(--wm));
+    line-height: calc(20 * var(--wm));
+    color: var(--w-50);
   }
 
   .catalog-promo__img {
     width: 100%;
-    height: calc(144 * var(--wm));
-    border-radius: calc(16 * var(--wm));
-    object-fit: cover;
+    height: auto;
   }
 
   .filter-backdrop {

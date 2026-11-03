@@ -801,8 +801,12 @@
   }
 }
 
-.about-how { padding-top: calc(80 * var(--wm)); }
+.about-how { padding: 0; }
+
+.about .about-flavours { padding-top: 0; }
 
 @media (max-width: 767px) {
-  .about-how { padding-top: calc(24 * var(--wm)); }
+  .about-how { padding: calc(24 * var(--wm)) calc(16 * var(--wm)) 0; }
+
+  .about .about-flavours { padding-top: calc(64 * var(--wm)); }
 }

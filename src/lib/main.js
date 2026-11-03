@@ -583,13 +583,18 @@
       if (!gallery) return;
       let sx = 0;
       let sy = 0;
+      let inside = false;
       let swiped = false;
-      gallery.addEventListener("touchstart", (e) => {
-        sx = e.touches[0].clientX;
-        sy = e.touches[0].clientY;
+      card.addEventListener("touchstart", (e) => {
+        const t = e.touches[0];
+        const r = gallery.getBoundingClientRect();
+        inside = t.clientX >= r.left && t.clientX <= r.right && t.clientY >= r.top && t.clientY <= r.bottom;
+        sx = t.clientX;
+        sy = t.clientY;
         swiped = false;
       }, { passive: true });
-      gallery.addEventListener("touchend", (e) => {
+      card.addEventListener("touchend", (e) => {
+        if (!inside) return;
         const dx = e.changedTouches[0].clientX - sx;
         const dy = e.changedTouches[0].clientY - sy;
         if (Math.abs(dx) < 30 || Math.abs(dx) < Math.abs(dy)) return;
@@ -597,7 +602,7 @@
         stop();
         show((current + (dx < 0 ? 1 : imgs.length - 1)) % imgs.length);
       }, { passive: true });
-      gallery.addEventListener("click", (e) => {
+      card.addEventListener("click", (e) => {
         if (!swiped) return;
         e.preventDefault();
         e.stopPropagation();

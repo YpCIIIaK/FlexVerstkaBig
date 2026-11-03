@@ -510,6 +510,8 @@
 
   .m-steps--4 { height: 400svh; }
 
+  .m-steps--2 { height: 200svh; }
+
   .feature-slide__list {
     display: flex;
     flex-direction: column;

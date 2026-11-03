@@ -126,6 +126,24 @@
   gap: calc(24 * var(--wm));
 }
 
+.how__grid--2 { grid-template-columns: repeat(2, 1fr); }
+
+.how__grid--2 .how__card {
+  justify-content: flex-start;
+  aspect-ratio: auto;
+}
+
+.how__grid--2 .how__card-title {
+  font-size: calc(24 * var(--wm));
+  line-height: calc(32 * var(--wm));
+}
+
+.how__grid--2 .how__card-text {
+  margin-top: 0;
+  font-size: calc(14 * var(--wm));
+  line-height: calc(20 * var(--wm));
+}
+
 .how__card {
   display: flex;
   flex-direction: column;
@@ -143,6 +161,12 @@
   font-size: calc(20 * var(--wm));
   font-weight: 700;
   line-height: calc(26 * var(--wm));
+}
+
+.how__card-lead {
+  font-size: calc(16 * var(--wm));
+  font-weight: 700;
+  line-height: calc(24 * var(--wm));
 }
 
 .how__card-text {
@@ -801,12 +825,17 @@
   }
 }
 
-.about-how { padding: 0; }
 
 .about .about-flavours { padding-top: 0; }
 
 @media (max-width: 767px) {
-  .about-how { padding: calc(24 * var(--wm)) calc(16 * var(--wm)) 0; }
+  .about .about-picker { padding-top: calc(24 * var(--wm)); }
+
+  .feature-slide__lead {
+    font-size: calc(14 * var(--wm));
+    font-weight: 700;
+    line-height: calc(20 * var(--wm));
+  }
 
   .about .about-flavours { padding-top: calc(64 * var(--wm)); }
 }

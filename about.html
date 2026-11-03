@@ -7,7 +7,7 @@
   <meta name="description" content="Устройство FLEX: дизайн, технология нагрева без горения, оттенки и функции." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="src/styles/main.css?v=248" />
+  <link rel="stylesheet" href="src/styles/main.css?v=249" />
   <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -158,19 +158,22 @@
 
     <h1 class="about__title">О FLEX</h1>
 
-    <section class="construction about-how m-only" aria-labelledby="m-how-title">
-      <h2 class="mobile-title" id="m-how-title">Как работает FLEX</h2>
-      <div class="construction__panel">
-        <article class="construction__card">
-          <h3 class="construction__title">Нагрев без горения</h3>
-          <p class="construction__lead">Устройство FLEX нагревает табак в стике без открытого пламени. В отличие от традиционных сигарет, процесс не сопровождается горением табака и образованием пепла.</p>
-          <p class="construction__text">Система нагрева контролирует температурный режим во время использования, обеспечивая работу устройства с совместимыми стиками FAIIM.</p>
-        </article>
-        <article class="construction__card">
-          <h3 class="construction__title">Снижение запаха</h3>
-          <p class="construction__lead">Технология FLEX направлена на уменьшение характерного табачного запаха за счёт нагрева без горения. При этом вместо сигаретного дыма образуется аэрозоль.</p>
-          <p class="construction__text">Интенсивность запаха и объём образуемого аэрозоля зависят от состава стика, температурного режима и условий использования.</p>
-        </article>
+    <section class="m-steps m-steps--2 m-only" aria-labelledby="m-steps-title" data-msteps>
+      <div class="m-steps__pin">
+        <h2 class="mobile-title" id="m-steps-title">Как работает FLEX</h2>
+        <video class="m-steps__video" src="assets/video/flex-open.mp4" data-alpha-webm="assets/video/flex-open.webm" data-alpha-pack="assets/video/flex-open-pack.mp4" poster="assets/video/flex-open-poster.webp" width="372" height="531" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+        <div class="m-steps__cards">
+          <article class="feature-slide m-steps__card is-active" data-msteps-item>
+            <h3 class="feature-slide__title">Нагрев без горения</h3>
+            <p class="feature-slide__lead">Устройство FLEX нагревает табак в стике без открытого пламени. В отличие от традиционных сигарет, процесс не сопровождается горением табака и образованием пепла.</p>
+            <p class="feature-slide__text">Система нагрева контролирует температурный режим во время использования, обеспечивая работу устройства с совместимыми стиками FAIIM.</p>
+          </article>
+          <article class="feature-slide m-steps__card" data-msteps-item>
+            <h3 class="feature-slide__title">Снижение запаха</h3>
+            <p class="feature-slide__lead">Технология FLEX направлена на уменьшение характерного табачного запаха за счёт нагрева без горения. При этом вместо сигаретного дыма образуется аэрозоль.</p>
+            <p class="feature-slide__text">Интенсивность запаха и объём образуемого аэрозоля зависят от состава стика, температурного режима и условий использования.</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -230,20 +233,23 @@
       <a class="button" href="help.html#mobile-contacts">Открыть карту</a>
     </section>
 
-    <section class="construction about-how d-only" aria-labelledby="how-title">
-      <h2 class="section-title" id="how-title">Как работает FLEX</h2>
-      <div class="construction__panel">
-        <article class="construction__card">
-          <h3 class="construction__title">Нагрев без горения</h3>
-          <p class="construction__lead">Устройство FLEX нагревает табак в стике без открытого пламени. В отличие от традиционных сигарет, процесс не сопровождается горением табака и образованием пепла.</p>
-          <p class="construction__text">Система нагрева контролирует температурный режим во время использования, обеспечивая работу устройства с совместимыми стиками FAIIM.</p>
-        </article>
-        <article class="construction__card">
-          <h3 class="construction__title">Снижение запаха</h3>
-          <p class="construction__lead">Технология FLEX направлена на уменьшение характерного табачного запаха за счёт нагрева без горения. При этом вместо сигаретного дыма образуется аэрозоль.</p>
-          <p class="construction__text">Интенсивность запаха и объём образуемого аэрозоля зависят от состава стика, температурного режима и условий использования.</p>
-        </article>
+    <section class="how d-only" aria-labelledby="how-title">
+      <div class="how__content">
+        <h2 class="how__title" id="how-title">Как работает FLEX</h2>
+        <div class="how__grid how__grid--2">
+          <article class="how__card">
+            <h3 class="how__card-title">Нагрев без горения</h3>
+            <p class="how__card-lead">Устройство FLEX нагревает табак в стике без открытого пламени. В отличие от традиционных сигарет, процесс не сопровождается горением табака и образованием пепла.</p>
+            <p class="how__card-text">Система нагрева контролирует температурный режим во время использования, обеспечивая работу устройства с совместимыми стиками FAIIM.</p>
+          </article>
+          <article class="how__card">
+            <h3 class="how__card-title">Снижение запаха</h3>
+            <p class="how__card-lead">Технология FLEX направлена на уменьшение характерного табачного запаха за счёт нагрева без горения. При этом вместо сигаретного дыма образуется аэрозоль.</p>
+            <p class="how__card-text">Интенсивность запаха и объём образуемого аэрозоля зависят от состава стика, температурного режима и условий использования.</p>
+          </article>
+        </div>
       </div>
+      <video class="how__video" src="assets/video/flex-open.mp4" data-alpha-webm="assets/video/flex-open.webm" data-alpha-pack="assets/video/flex-open-pack.mp4" poster="assets/video/flex-open-poster.webp" width="372" height="531" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
     </section>
 
     <section class="shades d-only" aria-labelledby="shades-title" data-shades>
@@ -414,7 +420,6 @@
           <li><a class="footer__msub-link" href="device.html">Устройства</a></li>
         </ul>
       </li>
-      <li><a class="footer__mnav-link" href="favorites.html">Избранное<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
       <li class="footer__acc">
         <button class="footer__mnav-link" type="button" aria-expanded="false" aria-controls="fsub-2" data-footer-acc>Программы<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></button>
         <ul class="footer__msub" id="fsub-2" hidden>
@@ -442,6 +447,7 @@
       <div class="footer__col">
         <h2 class="footer__title">Каталог</h2>
         <ul class="footer__list">
+          <li><a class="footer__link" href="catalog.html">Все товары</a></li>
           <li><a class="footer__link" href="stick.html">Стики</a></li>
           <li><a class="footer__link" href="device.html">Устройства</a></li>
         </ul>

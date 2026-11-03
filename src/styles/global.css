@@ -64,3 +64,10 @@ video.is-packed {
 }
 
 canvas.is-alpha { mix-blend-mode: normal; }
+
+video:not(.home-hero__video) {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+video.is-loaded:not(.is-packed) { opacity: 1; }

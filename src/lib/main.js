@@ -1435,6 +1435,17 @@
     draw();
   };
 
+  const initVideoReveal = () => {
+    document.querySelectorAll("video").forEach((video) => {
+      const show = () => video.classList.add("is-loaded");
+      if (video.readyState >= 2) show();
+      else {
+        video.addEventListener("loadeddata", show, { once: true });
+        video.addEventListener("playing", show, { once: true });
+      }
+    });
+  };
+
   const initViewportVideos = () => {
     const videos = [...document.querySelectorAll("video[autoplay]")];
     if (!videos.length || !("IntersectionObserver" in window)) return;
@@ -1578,6 +1589,7 @@
   initMobilePosters();
   initEqualTexts();
   initAlphaVideos();
+  initVideoReveal();
   initViewportVideos();
   initMobileHome();
   document.querySelectorAll("[data-select]").forEach((el) => initSelect(el));

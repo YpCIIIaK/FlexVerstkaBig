@@ -239,3 +239,9 @@
     color: var(--w-80);
   }
 }
+
+.footer__col--contacts .footer__social { margin-top: calc(16 * var(--wm)); }
+
+@media (max-width: 767px) {
+  .footer__mcontacts .footer__social { margin-top: calc(4 * var(--wm)); }
+}

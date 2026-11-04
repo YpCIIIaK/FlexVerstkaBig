@@ -8,6 +8,8 @@ ErrorDocument 404 /gate.php
 
 RewriteEngine On
 
+RewriteRule ^api/(schema\.sql|setup\.php)$ - [F,L]
+RewriteRule ^api/local/(.*)$ api/local.php?r=$1 [QSA,L]
 RewriteRule ^api/v1/(.*)$ api/proxy.php?path=$1 [QSA,L]
 
 RewriteCond %{REQUEST_URI} !^/(gate\.php|api/|src/|assets/|stub/|login\.html|kz/login\.html|terms|privacy|cookie|consent|referral-rules|starter-kit-rules|favicon|robots\.txt)

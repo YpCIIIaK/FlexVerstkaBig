@@ -541,6 +541,40 @@
     try { localStorage.setItem(FAV_KEY, JSON.stringify(list)); } catch (e) {}
   };
 
+  const FAV_SYNCED = "flex_favorites_synced";
+
+  const favApi = (method, body) => fetch("/api/local/favorites", {
+    method,
+    headers: { "Content-Type": "application/json" },
+    credentials: "same-origin",
+    body: body && JSON.stringify(body),
+  });
+
+  const syncFavs = (onChange) => {
+    favApi("GET")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (!d || !Array.isArray(d.items)) return;
+        const server = d.items;
+        const local = readFavs();
+        let synced = false;
+        try { synced = localStorage.getItem(FAV_SYNCED) === "1"; } catch (e) {}
+        if (!synced) {
+          try { localStorage.setItem(FAV_SYNCED, "1"); } catch (e) {}
+          const have = new Set(server.map((f) => f.id));
+          const extra = local.filter((f) => !have.has(f.id));
+          extra.forEach((f) => favApi("POST", f).catch(() => {}));
+          if (extra.length) server.push(...extra);
+        }
+        const key = (list) => list.map((f) => f.id).sort().join("\n");
+        if (key(server) === key(local)) return;
+        writeFavs(server);
+        if (document.querySelector("[data-fav-list]")) location.reload();
+        else onChange(new Set(server.map((f) => f.id)));
+      })
+      .catch(() => {});
+  };
+
   const favId = (card) => card.querySelector(".product-card__title a")?.getAttribute("href") || card.dataset.name;
 
   const favSnapshot = (card) => {
@@ -662,10 +696,15 @@
         const favs = readFavs().filter((f) => f.id !== id);
         if (on) favs.push({ id, html: favSnapshot(card) });
         writeFavs(favs);
+        favApi(on ? "POST" : "DELETE", on ? favs[favs.length - 1] : { id }).catch(() => {});
 
         const list = card.closest("[data-fav-list]");
         if (list && !on) removeFavCard(card, list, favs.length);
       });
+    });
+
+    syncFavs((ids) => {
+      document.querySelectorAll("[data-fav]").forEach((btn) => setFav(btn, ids.has(favId(btn.closest("[data-product]")))));
     });
   };
 

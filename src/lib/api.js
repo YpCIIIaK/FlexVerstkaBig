@@ -31,6 +31,7 @@
   };
 
   const logout = () => {
+    ["flex_favorites", "flex_favorites_synced"].forEach((k) => localStorage.removeItem(k));
     localStorage.removeItem(KEY);
     fetch("/api/v1/logout", { method: "POST" }).finally(() => location.replace("login.html"));
   };

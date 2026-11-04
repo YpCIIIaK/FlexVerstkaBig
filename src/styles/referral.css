@@ -213,8 +213,4 @@
 
 .referral .steps-section { padding-top: 0; }
 
-.referral-terms { padding-top: calc(80 * var(--wm)); }
-
-@media (max-width: 767px) {
-  .referral-terms { padding-top: calc(64 * var(--wm)); }
-}
+.steps-section__button { align-self: flex-start; }

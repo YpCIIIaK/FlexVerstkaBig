@@ -183,6 +183,8 @@ def process(name):
     src = src.replace('assets/video/main-hero-ru-mobile.mp4', 'assets/video/main-hero-kz-mobile.mp4').replace('assets/video/main-hero-ru-mobile.jpg', 'assets/video/main-hero-kz-mobile.jpg')
     src = src.replace('assets/video/main-hero-ru.mp4', 'assets/video/main-hero-kz2.mp4').replace('assets/video/main-hero-ru.jpg', 'assets/video/main-hero-kz2.jpg')
     src = src.replace('Оттенки устройств<br />FLEX', 'FLEX құрылғыларының<br />реңктері')
+    src = src.replace('© 2026 ТОО «KT&amp;G Global Kazakhstan (Кей-Ти-Энд-Джи Глобал Казахстан)»<br />(БИН 230140014703). Все права защищены.', '© 2026 «KT&amp;G Global Kazakhstan (Кей-Ти-Энд-Джи Глобал Қазақстан)» ЖШС<br />БСН 230140014703. Барлық құқықтар қорғалған.')
+    src = src.replace('© 2026 ТОО «KT&amp;G Global Kazakhstan (Кей-Ти-Энд-Джи Глобал Казахстан)» (БИН 230140014703). Все права защищены.', '© 2026 «KT&amp;G Global Kazakhstan (Кей-Ти-Энд-Джи Глобал Қазақстан)» ЖШС БСН 230140014703. Барлық құқықтар қорғалған.')
     src = src.replace('Адрес: г. Алматы, улица Достык 192/2,', 'Мекенжай: Алматы қ., Достық көшесі, 192/2,').replace('БЦ GREEN TOWER', '«GREEN TOWER» бизнес орталығы')
     src = re.sub(
         r'(<p class="(?:callout|feature-slide)__text">)Возможность переключения между сеансами использования:</p>\s*<ul class="(?:callout|feature-slide)__list">.*?</ul>',

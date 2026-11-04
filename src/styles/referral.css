@@ -210,3 +210,11 @@
     line-height: calc(20 * var(--wm));
   }
 }
+
+.referral .steps-section { padding-top: 0; }
+
+.referral-terms { padding-top: calc(80 * var(--wm)); }
+
+@media (max-width: 767px) {
+  .referral-terms { padding-top: calc(64 * var(--wm)); }
+}

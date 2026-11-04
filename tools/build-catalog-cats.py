@@ -9,7 +9,7 @@ SKIP = ("http:", "https:", "mailto:", "tel:", "#", "/", "data:", "javascript:")
 def relink(src, up):
     def fix(m):
         attr, q, url = m.group(1), m.group(2), m.group(3)
-        if not url or url.startswith(SKIP) or not re.match(r"^[\w.-]+(?:/|\.(?:html|webp|png|jpe?g|svg|mp4|webm|css|js))", url):
+        if not url or url.startswith(SKIP) or not re.match(r"^[\w.-]+(?:/|\.(?:html|webp|png|jpe?g|svg|mp4|webm|css|js))", url):
             return m.group(0)
         return f"{attr}={q}{up}{url}"
     src = re.sub(r'\b(href|src|srcset|poster|data-[a-z-]+)=(["\'])([^"\']*)', fix, src)

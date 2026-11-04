@@ -3,6 +3,16 @@
 
   requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add("is-painted")));
 
+  document.querySelectorAll(".blobs").forEach((box) => {
+    const urls = [...box.querySelectorAll(".blob")]
+      .map((b) => getComputedStyle(b, "::before").backgroundImage.match(/url\(["']?([^"')]+)/))
+      .filter(Boolean)
+      .map((m) => m[1]);
+    const ready = () => requestAnimationFrame(() => requestAnimationFrame(() => box.classList.add("is-ready")));
+    Promise.all(urls.map((u) => { const img = new Image(); img.src = u; return img.decode().catch(() => {}); })).then(ready);
+    setTimeout(() => box.classList.add("is-ready"), 3000);
+  });
+
   const initAuth = () => {
     const form = document.querySelector("[data-auth-form]");
     if (!form) return;

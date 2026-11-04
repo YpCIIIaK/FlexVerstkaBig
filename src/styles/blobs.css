@@ -1,4 +1,6 @@
 .blobs {
+  opacity: 0;
+  transition: opacity 0.6s ease;
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -107,3 +109,5 @@ body.is-locked .blob {
   position: fixed;
   z-index: -1;
 }
+
+.blobs.is-ready { opacity: 1; }

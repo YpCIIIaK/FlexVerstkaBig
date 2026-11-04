@@ -7,11 +7,11 @@
   <title>Авторизация/Регистрация — Flex</title>
   <meta name="robots" content="noindex, nofollow" />
 
-  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/tt-norms-pro-450.woff2" crossorigin />
-  <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/tt-norms-pro-700.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/tt-norms-pro-450.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/tt-norms-pro-700.woff2" crossorigin />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="../src/styles/main.css?v=267" />
+  <link rel="stylesheet" href="/src/styles/main.css?v=267" />
 </head>
 <body>
 
@@ -24,7 +24,7 @@
 
     <aside class="auth__aside">
       <div class="auth__logo">
-        <img src="../assets/logo/logo.svg" alt="Flex" width="115" height="26" />
+        <img src="/assets/logo/logo.svg" alt="Flex" width="115" height="26" />
       </div>
 
       <p class="auth__disclaimer">
@@ -33,9 +33,9 @@
       </p>
 
       <ul class="auth__docs">
-        <li><a class="auth__doc" href="../terms/" target="_blank" rel="noopener">Сайтты пайдалану шарттары</a></li>
-        <li><a class="auth__doc" href="../privacy/" target="_blank" rel="noopener">Құпиялылық саясаты</a></li>
-        <li><a class="auth__doc" href="../cookie/" target="_blank" rel="noopener">Cookie файлдарын пайдалану саясаты</a></li>
+        <li><a class="auth__doc" href="/terms/" target="_blank" rel="noopener">Сайтты пайдалану шарттары</a></li>
+        <li><a class="auth__doc" href="/privacy/" target="_blank" rel="noopener">Құпиялылық саясаты</a></li>
+        <li><a class="auth__doc" href="/cookie/" target="_blank" rel="noopener">Cookie файлдарын пайдалану саясаты</a></li>
       </ul>
     </aside>
 
@@ -55,14 +55,14 @@
           </label>
 
           <div class="alert" role="alert" data-auth-alert hidden>
-            <img class="alert__icon" src="../assets/images/alert-circle.svg" alt="" width="20" height="20" />
+            <img class="alert__icon" src="/assets/images/alert-circle.svg" alt="" width="20" height="20" />
             <p class="alert__text" data-auth-alert-text>Не удалось отправить СМС. Попробуйте через 5 минут.</p>
           </div>
 
           <button class="button" type="submit" data-auth-submit disabled>Получить код</button>
         </div>
 
-        <p class="auth__consent">Нажимая кнопку, вы соглашаетесь с <a href="../privacy/" target="_blank" rel="noopener">Политикой конфиденциальности</a></p>
+        <p class="auth__consent">Нажимая кнопку, вы соглашаетесь с <a href="/privacy/" target="_blank" rel="noopener">Политикой конфиденциальности</a></p>
       </form>
 
       <form class="auth__form" data-code-form novalidate hidden>
@@ -86,7 +86,7 @@
           </fieldset>
 
           <div class="alert" role="alert" data-code-alert hidden>
-            <img class="alert__icon" src="../assets/images/alert-triangle.svg" alt="" width="20" height="20" />
+            <img class="alert__icon" src="/assets/images/alert-triangle.svg" alt="" width="20" height="20" />
             <p class="alert__text">Произошла ошибка на сервере. Попробуйте ещё раз.</p>
           </div>
 
@@ -123,31 +123,31 @@
           <p class="auth__lead">Ваш аккаунт FLEX создан. Теперь вы можете перейти на сайт.</p>
         </header>
 
-        <a class="button" href="./" data-complete-link>Перейти в FLEX</a>
-        <img class="loader__spinner" src="../assets/images/loader.svg" alt="Переходим на сайт" width="100" height="100" role="status" data-complete-spinner hidden />
+        <a class="button" href="/kz/" data-complete-link>Перейти в FLEX</a>
+        <img class="loader__spinner" src="/assets/images/loader.svg" alt="Переходим на сайт" width="100" height="100" role="status" data-complete-spinner hidden />
       </div>
 
       <div class="auth__progress" data-login-progress hidden>
-        <img class="loader__spinner" src="../assets/images/loader.svg" alt="" width="100" height="100" />
+        <img class="loader__spinner" src="/assets/images/loader.svg" alt="" width="100" height="100" />
         <p class="auth__progress-text" role="status">Выполняем вход…</p>
       </div>
 
       <footer class="auth__contacts">
         <p class="auth__contacts-text">Если у вас есть вопросы свяжитесь с нами:</p>
         <div class="auth__socials">
-          <a class="auth__social" href="https://t.me/Myflexkzbot" target="_blank" rel="noopener" aria-label="Telegram"><img src="../assets/images/telegram-icon.svg" alt="" width="52" height="52" /></a>
-          <a class="auth__social" href="tel:7707" aria-label="Позвонить 7707"><img src="../assets/images/call-icon.svg" alt="" width="52" height="52" /></a>
+          <a class="auth__social" href="https://t.me/Myflexkzbot" target="_blank" rel="noopener" aria-label="Telegram"><img src="/assets/images/telegram-icon.svg" alt="" width="52" height="52" /></a>
+          <a class="auth__social" href="tel:7707" aria-label="Позвонить 7707"><img src="/assets/images/call-icon.svg" alt="" width="52" height="52" /></a>
         </div>
       </footer>
 
       <div class="loader" data-loader hidden>
-        <img class="loader__spinner" src="../assets/images/loader.svg" alt="Загрузка" width="100" height="100" role="status" />
+        <img class="loader__spinner" src="/assets/images/loader.svg" alt="Загрузка" width="100" height="100" role="status" />
       </div>
     </section>
 
   </main>
 
-  <script src="../src/lib/main.js?v=94"></script>
-  <script src="../src/lib/api.js?v=11"></script>
+  <script src="/src/lib/main.js?v=94"></script>
+  <script src="/src/lib/api.js?v=11"></script>
 </body>
 </html>

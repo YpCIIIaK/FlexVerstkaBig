@@ -40,6 +40,10 @@ function flex_stub($root) {
 $path = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?: '/');
 $aliases = ['/referral' => '/referral.html', '/starterkit' => '/starter-kit.html'];
 $path = $aliases[rtrim($path, '/')] ?? $path;
+if (strlen($path) > 1 && substr($path, -1) === '/' && !is_file($root . $path . 'index.html') && is_file($root . rtrim($path, '/') . '.html')) {
+    header('Location: ' . rtrim($path, '/') . (empty($_SERVER['QUERY_STRING']) ? '' : '?' . $_SERVER['QUERY_STRING']), true, 301);
+    exit;
+}
 if (substr($path, -1) === '/') $path .= 'index.html';
 elseif (!preg_match('/\.html$/', $path) && is_file($root . $path . '.html')) $path .= '.html';
 elseif (!preg_match('/\.html$/', $path) && is_dir($root . $path)) $path .= '/index.html';

@@ -150,6 +150,11 @@ def translate(text):
 def rewrite_paths(src):
     def fix(m):
         attr, q, url = m.group(1), m.group(2), m.group(3)
+        if attr == "href" and url.startswith("/") and not url.startswith("/kz/"):
+            page = re.split(r"[?#]", url[1:])[0]
+            if page == "" or page + ".html" in PAGES or page.startswith("catalog/"):
+                return f'{attr}={q}/kz{url}'
+            return m.group(0)
         if re.match(r"^(https?:|mailto:|tel:|#|/|data:|javascript:)", url):
             return m.group(0)
         if url.startswith(("assets/", "src/")) or url.startswith(DOC_DIRS):
@@ -173,7 +178,7 @@ def process(name):
     src = src.replace('<button class="lang-switch__btn" type="button" role="radio" aria-checked="false">KZ</button>', '<button class="lang-switch__btn is-active" type="button" role="radio" aria-checked="true">KZ</button>')
     src = src.replace('Похоже, такой страницы не существует или она была перемещена. Вернитесь', 'Мұндай бет жоқ немесе ол басқа жерге көшірілген сияқты. Вернитесь')
     if name == "catalog.html":
-        src = src.replace('href="starter-kit">Узнать больше</a>', 'href="starter-kit">Толығырақ</a>')
+        src = src.replace('href="starter-kit">Узнать больше</a>', 'href="starter-kit">Толығырақ</a>').replace('href="/starter-kit">Узнать больше</a>', 'href="/starter-kit">Толығырақ</a>')
     src = re.sub(r'assets/video/details-(pause|display|modes|charge-wide|charge)(\.mp4|-poster\.webp)', r'assets/video/details-kz-\1\2', src)
     src = src.replace('assets/video/main-hero-ru-mobile.mp4', 'assets/video/main-hero-kz-mobile.mp4').replace('assets/video/main-hero-ru-mobile.jpg', 'assets/video/main-hero-kz-mobile.jpg')
     src = src.replace('assets/video/main-hero-ru.mp4', 'assets/video/main-hero-kz2.mp4').replace('assets/video/main-hero-ru.jpg', 'assets/video/main-hero-kz2.jpg')
@@ -182,6 +187,7 @@ def process(name):
         r'(<p class="(?:callout|feature-slide)__text">)Возможность переключения между сеансами использования:</p>\s*<ul class="(?:callout|feature-slide)__list">.*?</ul>',
         r'\1Классикалық және теңгерімді пайдалану сеанстары арасында ауысу мүмкіндігі</p>', src, flags=re.S)
     src = src.replace('href="referral-rules/"', 'href="referral-rules/kz/"').replace('href="starter-kit-rules/"', 'href="starter-kit-rules/kz/"')
+    src = src.replace('href="/referral-rules/"', 'href="/referral-rules/kz/"').replace('href="/starter-kit-rules/"', 'href="/starter-kit-rules/kz/"')
     src = re.sub(
         r'Обратиться по номеру телефона (<a href="tel:7707">7707</a>) или в официальный магазин FLEX',
         r'\1 телефон нөміріне немесе ресми FLEX дүкеніне хабарласыңыз', src)

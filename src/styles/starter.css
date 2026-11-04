@@ -154,3 +154,9 @@
 
   .starter:not(.referral) .starter-terms .button { width: 100%; }
 }
+
+@media (min-width: 768px) {
+  .starter:not(.referral) .starter-hero {
+    min-height: calc(100svh - var(--header-h) - 160 * var(--wm));
+  }
+}

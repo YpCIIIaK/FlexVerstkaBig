@@ -64,7 +64,13 @@
   object-fit: cover;
 }
 
-.starter:not(.referral) .starter-hero__image { transform: translateX(-14%); }
+.starter:not(.referral) .starter-hero__image {
+  height: auto;
+  aspect-ratio: 1208 / 600;
+  object-fit: contain;
+}
+
+.starter:not(.referral) .starter-hero__info .button { align-self: flex-start; }
 
 .starter-terms {
   display: flex;
@@ -134,7 +140,6 @@
     width: 94%;
     height: auto;
     object-fit: contain;
-    transform: translateX(-14%);
   }
 
   .starter:not(.referral) .starter-terms {

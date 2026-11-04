@@ -1079,7 +1079,7 @@
     const SLUGS = { sticks: "stiki", devices: "ustroystva" };
     const catalogBase = (() => {
       const p = location.pathname;
-      const m = p.match(/^(.*?\/)catalog(?:\.html|\/(?:stiki|ustroystva)\/(?:index\.html)?)$/);
+      const m = p.match(/^(.*?\/)catalog(?:\.html)?(?:\/(?:stiki|ustroystva)\/(?:index\.html)?)?$/);
       return m ? m[1] : null;
     })();
     let pinned = false;
@@ -1096,7 +1096,7 @@
       });
       document.querySelectorAll("form[action]").forEach((f) => f.setAttribute("action", f.action));
     };
-    const urlFor = (f) => catalogBase + (SLUGS[f] ? "catalog/" + SLUGS[f] + "/" : (location.pathname.endsWith(".html") ? "catalog.html" : "catalog.html"));
+    const urlFor = (f) => catalogBase + (SLUGS[f] ? "catalog/" + SLUGS[f] + "/" : "catalog");
 
     const selectTab = (f, push) => {
       tabs.forEach((t) => {
@@ -1219,18 +1219,20 @@
     });
   };
 
-  const KZ_PAGES = ["index.html", "about.html", "catalog.html", "stick.html", "device.html", "faiim.html", "starter-kit.html", "referral.html", "404.html", "account.html", "favorites.html", "settings.html", "login.html"];
+  const KZ_PAGES = ["", "about", "catalog", "stick", "device", "faiim", "starter-kit", "referral", "404", "account", "favorites", "settings", "login"];
 
   const langUrl = (lang) => {
     const parts = location.pathname.split("/").filter(Boolean);
     const isKz = parts[0] === "kz";
-    const file = parts.length === (isKz ? 2 : 1) && parts[parts.length - 1].endsWith(".html") ? parts[parts.length - 1] : (parts.length === (isKz ? 1 : 0) ? "index.html" : "");
+    const rest = isKz ? parts.slice(1) : parts;
+    let file = rest.length === 1 ? rest[0].replace(/\.html$/, "") : (rest.length ? null : "");
+    if (file === "index") file = "";
     if (lang === "kz") {
       if (isKz) return null;
-      return "/kz/" + (KZ_PAGES.includes(file) ? file : "index.html") + location.search;
+      return "/kz/" + (KZ_PAGES.includes(file) ? file : "") + location.search;
     }
     if (!isKz) return null;
-    return "/" + (file === "index.html" ? "" : file) + location.search;
+    return "/" + (file || "") + location.search;
   };
 
   const initLangSwitch = () => {

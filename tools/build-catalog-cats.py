@@ -6,9 +6,17 @@ CATS = {"stiki": "sticks", "ustroystva": "devices"}
 SKIP = ("http:", "https:", "mailto:", "tel:", "#", "/", "data:", "javascript:")
 
 
-def relink(src, up):
+def relink(src, up, base_dir=""):
+    def page(url):
+        p = re.split(r"[?#]", url)[0]
+        return re.fullmatch(r"[\w-]+", p) and os.path.exists(os.path.join(ROOT, base_dir, p + ".html"))
+
     def fix(m):
         attr, q, url = m.group(1), m.group(2), m.group(3)
+        if url.startswith("./") and attr == "href":
+            return f"{attr}={q}{up}{url[2:]}"
+        if attr == "href" and url and not url.startswith(SKIP) and page(url):
+            return f"{attr}={q}{up}{url}"
         if not url or url.startswith(SKIP) or not re.match(r"^[\w.-]+(?:/|\.(?:html|webp|png|jpe?g|svg|mp4|webm|css|js))", url):
             return m.group(0)
         return f"{attr}={q}{up}{url}"
@@ -20,7 +28,7 @@ def relink(src, up):
 def build(base_dir, up_extra):
     src = open(os.path.join(ROOT, base_dir, "catalog.html"), encoding="utf-8").read()
     for slug, cat in CATS.items():
-        out = relink(src, "../../")
+        out = relink(src, "../../", base_dir)
         out = out.replace("<main class=\"catalog\"", f"<main class=\"catalog\" data-catalog-category=\"{cat}\"", 1)
         d = os.path.join(ROOT, base_dir, "catalog", slug)
         os.makedirs(d, exist_ok=True)

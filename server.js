@@ -63,6 +63,7 @@ const proxy = (req, res) => {
 const serveFile = (req, res) => {
   let p = decodeURIComponent(req.url.split("?")[0]);
   if (p.endsWith("/")) p += "index.html";
+  else if (!path.extname(p) && fs.existsSync(path.join(ROOT, p + ".html"))) p += ".html";
   const file = path.join(ROOT, p);
   if (!file.startsWith(ROOT) || path.basename(file).startsWith(".")) {
     res.writeHead(403);

@@ -1,4 +1,4 @@
-Options -Indexes
+Options -Indexes -MultiViews
 DirectoryIndex index.html
 ErrorDocument 404 /gate.php
 
@@ -11,6 +11,18 @@ RewriteEngine On
 RewriteRule ^api/(schema\.sql|setup\.php)$ - [F,L]
 RewriteRule ^api/local/(.*)$ api/local.php?r=$1 [QSA,L]
 RewriteRule ^api/v1/(.*)$ api/proxy.php?path=$1 [QSA,L]
+
+RewriteCond %{THE_REQUEST} \s/+((?:[\w-]+/)*)index\.html[?\s]
+RewriteCond %{REQUEST_URI} !^/stub/
+RewriteRule ^ /%1 [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+((?:[\w-]+/)*[\w-]+)\.html[?\s]
+RewriteCond %{REQUEST_URI} !^/stub/
+RewriteRule ^ /%1 [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/(kz/)?login$
+RewriteCond %{DOCUMENT_ROOT}/%1login.html -f
+RewriteRule ^ /%1login.html [L]
 
 RewriteCond %{REQUEST_URI} !^/(gate\.php|api/|src/|assets/|stub/|login\.html|kz/login\.html|terms|privacy|cookie|consent|referral-rules|starter-kit-rules|favicon|robots\.txt)
 RewriteCond %{REQUEST_URI} (\.html$|/$|^/[^.]*$)

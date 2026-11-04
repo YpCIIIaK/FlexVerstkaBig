@@ -157,6 +157,8 @@ def rewrite_paths(src):
         page = url.split("#")[0].split("?")[0]
         if page.endswith(".html") and page not in PAGES:
             return f'{attr}={q}../{url}'
+        if re.fullmatch(r"[\w-]+", page) and page + ".html" not in PAGES and os.path.exists(os.path.join(ROOT, page + ".html")):
+            return f'{attr}={q}../{url}'
         return m.group(0)
     src = re.sub(r'\b(href|src|srcset|poster|data-[a-z-]+)=(["\'])([^"\']*)', fix, src)
     src = re.sub(r'"(assets/[^"]+)"', r'"../\1"', src)
@@ -171,7 +173,7 @@ def process(name):
     src = src.replace('<button class="lang-switch__btn" type="button" role="radio" aria-checked="false">KZ</button>', '<button class="lang-switch__btn is-active" type="button" role="radio" aria-checked="true">KZ</button>')
     src = src.replace('Похоже, такой страницы не существует или она была перемещена. Вернитесь', 'Мұндай бет жоқ немесе ол басқа жерге көшірілген сияқты. Вернитесь')
     if name == "catalog.html":
-        src = src.replace('href="starter-kit.html">Узнать больше</a>', 'href="starter-kit.html">Толығырақ</a>')
+        src = src.replace('href="starter-kit">Узнать больше</a>', 'href="starter-kit">Толығырақ</a>')
     src = re.sub(r'assets/video/details-(pause|display|modes|charge-wide|charge)(\.mp4|-poster\.webp)', r'assets/video/details-kz-\1\2', src)
     src = src.replace('assets/video/main-hero-ru-mobile.mp4', 'assets/video/main-hero-kz-mobile.mp4').replace('assets/video/main-hero-ru-mobile.jpg', 'assets/video/main-hero-kz-mobile.jpg')
     src = src.replace('assets/video/main-hero-ru.mp4', 'assets/video/main-hero-kz2.mp4').replace('assets/video/main-hero-ru.jpg', 'assets/video/main-hero-kz2.jpg')

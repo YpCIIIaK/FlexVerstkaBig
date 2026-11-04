@@ -33,7 +33,7 @@
   const logout = () => {
     ["flex_favorites", "flex_favorites_synced"].forEach((k) => localStorage.removeItem(k));
     localStorage.removeItem(KEY);
-    fetch("/api/v1/logout", { method: "POST" }).finally(() => location.replace("login.html"));
+    fetch("/api/v1/logout", { method: "POST" }).finally(() => location.replace("login"));
   };
 
   const login = async (verifyToken) => {
@@ -83,7 +83,7 @@
           localStorage.setItem(KEY, session.token);
           ui.setLoading(false);
           ui.showLoginProgress();
-          location.href = "index.html";
+          location.href = "./";
           return;
         }
         const res = await api("/otp/verify", { phone: e.detail.phone, code: e.detail.code });
@@ -92,7 +92,7 @@
         ui.setLoading(false);
         ui.showLoginProgress();
         await login(verifyToken);
-        location.href = "index.html";
+        location.href = "./";
       } catch (err) {
         ui.setCodeState(err.status < 500 ? "wrong" : "server");
       }
@@ -103,7 +103,7 @@
       try {
         await api("/register", { verify_token: verifyToken, iin: e.detail.iin });
         await login(verifyToken);
-        ui.showComplete({ href: "index.html" });
+        ui.showComplete({ href: "./" });
       } catch (err) {
         ui.setLoading(false);
         ui.setIinError(err.detail || iinError);

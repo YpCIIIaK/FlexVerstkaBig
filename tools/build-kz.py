@@ -69,6 +69,9 @@ T = {
     "Снижение запаха": "Иістің азаюы",
     "Оттенки устройств FLEX": "FLEX құрылғыларының реңктері",
     "Открыть карту": "Картаны ашу",
+    "Смотреть в каталоге": "Каталогты көру",
+    "Все товары": "Барлық тауарлар",
+    "Подробнее": "Толығырақ",
     "Где купить FLEX?": "FLEX-ты қайдан сатып алуға болады?",
     "Где купить FAIIM?": "FAIIM-ды қайдан сатып алуға болады?",
     "Список магазинов FLEX": "FLEX дүкендерінің тізімі",
@@ -154,6 +157,10 @@ def process(name):
     src = src.replace('<button class="lang-switch__btn" type="button" role="radio" aria-checked="false">KZ</button>', '<button class="lang-switch__btn is-active" type="button" role="radio" aria-checked="true">KZ</button>')
     src = src.replace('Похоже, такой страницы не существует или она была перемещена. Вернитесь', 'Мұндай бет жоқ немесе ол басқа жерге көшірілген сияқты. Вернитесь')
     src = src.replace('Оттенки устройств<br />FLEX', 'FLEX құрылғыларының<br />реңктері')
+    src = re.sub(
+        r'(<p class="(?:callout|feature-slide)__text">)Возможность переключения между сеансами использования:</p>\s*<ul class="(?:callout|feature-slide)__list">.*?</ul>',
+        r'\1Классикалық және теңгерімді пайдалану сеанстары арасында ауысу мүмкіндігі</p>', src, flags=re.S)
+    src = src.replace('href="referral-rules/"', 'href="referral-rules/kz/"').replace('href="starter-kit-rules/"', 'href="starter-kit-rules/kz/"')
     src = re.sub(
         r'Обратиться по номеру телефона (<a href="tel:7707">7707</a>) или в официальный магазин FLEX',
         r'\1 телефон нөміріне немесе ресми FLEX дүкеніне хабарласыңыз', src)

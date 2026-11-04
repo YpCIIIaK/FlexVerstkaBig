@@ -1,0 +1,15 @@
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /gate.php
+
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+RewriteEngine On
+
+RewriteRule ^api/v1/(.*)$ api/proxy.php?path=$1 [QSA,L]
+
+RewriteCond %{REQUEST_URI} !^/(gate\.php|api/|src/|assets/|stub/|login\.html|kz/login\.html|terms|privacy|cookie|consent|referral-rules|starter-kit-rules|favicon|robots\.txt)
+RewriteCond %{REQUEST_URI} (\.html$|/$|^/[^.]*$)
+RewriteRule ^ gate.php [L]

@@ -1213,23 +1213,65 @@
     const devices = [...picker.querySelectorAll("[data-picker-device]")];
     const buttons = [...picker.querySelectorAll("[data-picker-color]")];
 
-    const select = (key) => {
-      let slot = 1;
+    const order = buttons.map((b) => b.dataset.pickerColor);
+    const n = order.length;
+    const pos = new Map();
+    let current = 0;
+    let queue = Promise.resolve();
+
+    const paint = () => {
       devices.forEach((d) => {
-        const on = d.dataset.pickerDevice === key;
-        d.classList.toggle("is-active", on);
-        if (on) d.removeAttribute("data-slot");
-        else d.dataset.slot = String(slot++);
+        const off = pos.get(d);
+        d.classList.toggle("is-active", off === 0);
+        d.dataset.slot = String(off);
       });
-      buttons.forEach((b) => {
-        const on = b.dataset.pickerColor === key;
+      buttons.forEach((b, i) => {
+        const on = i === current;
         b.classList.toggle("is-active", on);
         b.setAttribute("aria-checked", String(on));
       });
     };
 
+    const step = (dir) => {
+      current = (current + dir + n) % n;
+      devices.forEach((d) => {
+        let off = pos.get(d) - dir;
+        if (off < -2) off += n;
+        if (off > n - 2) off -= n;
+        const prev = pos.get(d);
+        if (Math.abs(off - prev) > 1) {
+          d.style.transition = "none";
+          d.dataset.slot = String(off > prev ? off + 1 : off - 1);
+          d.getBoundingClientRect();
+          d.style.transition = "";
+        }
+        pos.set(d, off);
+      });
+      paint();
+    };
+
+    const select = (key) => {
+      const target = order.indexOf(key);
+      queue = queue.then(async () => {
+        let diff = (target - current + n) % n;
+        if (diff === 0) return;
+        const dir = diff <= n / 2 ? 1 : -1;
+        let count = dir > 0 ? diff : n - diff;
+        while (count-- > 0) {
+          step(dir);
+          if (count > 0) await new Promise((r) => setTimeout(r, 220));
+        }
+      });
+    };
+
+    devices.forEach((d) => {
+      let off = order.indexOf(d.dataset.pickerDevice);
+      if (off > n - 2) off -= n;
+      pos.set(d, off);
+    });
+    paint();
+
     buttons.forEach((b) => b.addEventListener("click", () => select(b.dataset.pickerColor)));
-    select(buttons[0].dataset.pickerColor);
   };
 
   const initReadMore = () => {

@@ -395,6 +395,12 @@
     border-top: 1px solid var(--w-10);
   }
 
+  .mobile-menu__phone {
+    font-size: calc(20 * var(--wm));
+    font-weight: 700;
+    line-height: calc(26 * var(--wm));
+  }
+
   .mobile-menu__social-list {
     display: flex;
     gap: calc(12 * var(--wm));

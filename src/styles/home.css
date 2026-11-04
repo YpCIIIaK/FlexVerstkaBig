@@ -615,9 +615,10 @@
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), height 0.6s ease, opacity 0.4s ease, filter 0.4s ease;
   }
 
-  .picker__device[data-slot="1"] { transform: translateX(calc(-50% - 112 * var(--wm))); }
-  .picker__device[data-slot="2"] { transform: translateX(calc(-50% + 112 * var(--wm))); }
-  .picker__device[data-slot="3"] { transform: translateX(calc(-50% - 230 * var(--wm))); }
+  .picker__device[data-slot="-1"] { transform: translateX(calc(-50% - 112 * var(--wm))); }
+  .picker__device[data-slot="1"] { transform: translateX(calc(-50% + 112 * var(--wm))); }
+  .picker__device[data-slot="-2"] { opacity: 0; transform: translateX(calc(-50% - 230 * var(--wm))); }
+  .picker__device[data-slot="2"] { opacity: 0; transform: translateX(calc(-50% + 230 * var(--wm))); }
 
   .picker__device.is-active {
     z-index: 1;
@@ -697,7 +698,21 @@
     height: calc(127 * var(--wm));
   }
 
-  .home-flavours .flavour__ribbon { display: none; }
+  .home-flavours .flavour__ribbon {
+    width: calc(260 * var(--wm));
+    transform: none;
+    transition: none;
+  }
+
+  .home-flavours .flavour__ribbon--top {
+    top: calc(-9 * var(--wm));
+    left: calc(-82 * var(--wm));
+  }
+
+  .home-flavours .flavour__ribbon--bottom {
+    bottom: calc(-16 * var(--wm));
+    left: calc(-96 * var(--wm));
+  }
 
   .home-flavours .flavour__body {
     gap: calc(12 * var(--wm));

@@ -344,16 +344,17 @@
 
   .catalog-bar .tabs {
     gap: calc(8 * var(--wm));
-    margin: 0 calc(-16 * var(--wm));
-    padding: 0 calc(16 * var(--wm));
-    overflow-x: auto;
-    scrollbar-width: none;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
   }
 
   .catalog-bar .tabs::-webkit-scrollbar { display: none; }
 
   .catalog-bar .tabs__btn {
-    flex: none;
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: center;
     font-size: calc(14 * var(--wm));
   }
 

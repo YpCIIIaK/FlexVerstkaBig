@@ -70,6 +70,10 @@ T = {
     "Оттенки устройств FLEX": "FLEX құрылғыларының реңктері",
     "Открыть карту": "Картаны ашу",
     "Смотреть в каталоге": "Каталогты көру",
+    "Стартовый набор FLEX": "FLEX старттық жиынтық",
+    "Всё необходимое для первого знакомства с FLEX — в одном комплекте. Устройство и стики по выгодной цене": "FLEX-пен алғашқы танысу үшін қажеттінің барлығы бір жиынтықта. Құрылғы мен стиктер тиімді бағамен ұсынылады",
+    "* Стартовый набор доступен только в официальных магазинах FLEX": "*Старттық жиынтық тек FLEX ресми дүкендерінде қолжетімді.",
+    "*Доступен только в официальных магазинах FLEX. Изображение товара может отличаться от фактического внешнего вида": "*Старттық жиынтық тек FLEX ресми дүкендерінде қолжетімді.",
     "Главная": "Басты бет",
     "FLEX в деталях": "FLEX туралы толығырақ",
     "Усовершенствованная технология нагрева табака без процесса горения, пепла и дыма": "Темекіні жану процесінсіз, күлсіз және түтінсіз қыздырудың жетілдірілген технологиясы",
@@ -160,6 +164,8 @@ def process(name):
     src = src.replace('<button class="lang-switch__btn is-active" type="button" role="radio" aria-checked="true">RU</button>', '<button class="lang-switch__btn" type="button" role="radio" aria-checked="false">RU</button>')
     src = src.replace('<button class="lang-switch__btn" type="button" role="radio" aria-checked="false">KZ</button>', '<button class="lang-switch__btn is-active" type="button" role="radio" aria-checked="true">KZ</button>')
     src = src.replace('Похоже, такой страницы не существует или она была перемещена. Вернитесь', 'Мұндай бет жоқ немесе ол басқа жерге көшірілген сияқты. Вернитесь')
+    if name == "catalog.html":
+        src = src.replace('href="starter-kit.html">Узнать больше</a>', 'href="starter-kit.html">Толығырақ</a>')
     src = src.replace('Оттенки устройств<br />FLEX', 'FLEX құрылғыларының<br />реңктері')
     src = re.sub(
         r'(<p class="(?:callout|feature-slide)__text">)Возможность переключения между сеансами использования:</p>\s*<ul class="(?:callout|feature-slide)__list">.*?</ul>',

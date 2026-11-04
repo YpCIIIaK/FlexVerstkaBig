@@ -71,3 +71,10 @@ video:not(.home-hero__video) {
 }
 
 video.is-loaded:not(.is-packed) { opacity: 1; }
+
+html:not(.is-painted) *,
+html:not(.is-painted) *::before,
+html:not(.is-painted) *::after {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}

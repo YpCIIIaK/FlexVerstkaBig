@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add("is-painted")));
+
   const initAuth = () => {
     const form = document.querySelector("[data-auth-form]");
     if (!form) return;

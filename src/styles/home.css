@@ -562,6 +562,9 @@
 
   .m-steps__card {
     grid-area: 1 / 1;
+    background-color: rgba(38, 34, 74, 0.85);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     opacity: 0;
     transform: translateY(calc(48 * var(--wm)));
     transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);

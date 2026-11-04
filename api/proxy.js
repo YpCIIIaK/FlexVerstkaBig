@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
   }
 
   const qs = new URLSearchParams(query).toString();
-  const url = (process.env.API_URL || "https://dev.api.ktng.bybyte.dev/site") + "/api/v1/" + route + (qs ? "?" + qs : "");
+  const url = (process.env.API_URL || "https://api.ktng.bybyte.dev/site") + "/api/v1/" + route + (qs ? "?" + qs : "");
 
   const headers = { Accept: "application/json", "X-Site-Key": process.env.SITE_KEY || "" };
   ["content-type", "authorization", "accept-language"].forEach((h) => {

@@ -13,7 +13,7 @@ try {
 } catch (e) {}
 
 const PORT = Number(env.PORT || 8080);
-const API_URL = (env.API_URL || "https://dev.api.ktng.bybyte.dev/site").replace(/\/$/, "");
+const API_URL = (env.API_URL || "https://api.ktng.bybyte.dev/site").replace(/\/$/, "");
 const SITE_KEY = env.SITE_KEY || "";
 const MAPS_KEY = env.YANDEX_MAPS_KEY || "";
 

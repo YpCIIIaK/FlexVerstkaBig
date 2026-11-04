@@ -1528,10 +1528,10 @@
 
   const packVideo = (video) => {
     const canvas = document.createElement("canvas");
-    const gl = canvas.getContext("webgl", { premultipliedAlpha: false, alpha: true });
+    const gl = canvas.getContext("webgl", { premultipliedAlpha: true, alpha: true });
     if (!gl) return;
     const vs = "attribute vec2 p;varying vec2 v;void main(){v=vec2(p.x*.5+.5,.5-p.y*.5);gl_Position=vec4(p,0.,1.);}";
-    const fs = "precision mediump float;uniform sampler2D t;varying vec2 v;void main(){vec3 c=texture2D(t,vec2(v.x,v.y*.5)).rgb;float a=texture2D(t,vec2(v.x,.5+v.y*.5)).r;gl_FragColor=vec4(c,a);}";
+    const fs = "precision mediump float;uniform sampler2D t;varying vec2 v;void main(){vec3 c=texture2D(t,vec2(v.x,v.y*.5)).rgb;float a=texture2D(t,vec2(v.x,.5+v.y*.5)).r;gl_FragColor=vec4(c*a,a);}";
     const sh = (type, src) => { const o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); return o; };
     const prog = gl.createProgram();
     gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs));

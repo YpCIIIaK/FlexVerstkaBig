@@ -386,7 +386,7 @@
         value.textContent = option.textContent;
         setOpen(false);
         trigger.focus();
-        if (onChange) onChange(option.textContent);
+        if (onChange) onChange(option.textContent, option);
       });
     });
 
@@ -1729,5 +1729,18 @@
   initVideoReveal();
   initViewportVideos();
   initMobileHome();
-  document.querySelectorAll("[data-select]").forEach((el) => initSelect(el));
+  document.querySelectorAll("[data-select]").forEach((el) => {
+    if (!el.hasAttribute("data-lang-select")) return initSelect(el);
+    const current = location.pathname.split("/").filter(Boolean)[0] === "kz" ? "kz" : "ru";
+    el.querySelectorAll("[data-lang]").forEach((o) => {
+      const on = o.dataset.lang === current;
+      o.classList.toggle("is-selected", on);
+      o.setAttribute("aria-selected", String(on));
+      if (on) el.querySelector("[data-select-value]").textContent = o.textContent;
+    });
+    initSelect(el, (text, option) => {
+      const url = langUrl(option.dataset.lang);
+      if (url) location.href = url;
+    });
+  });
 })();

@@ -1037,16 +1037,51 @@
       });
     }
 
-    tabs.forEach((tab) => tab.addEventListener("click", () => {
+    const SLUGS = { sticks: "stiki", devices: "ustroystva" };
+    const catalogBase = (() => {
+      const p = location.pathname;
+      const m = p.match(/^(.*?\/)catalog(?:\.html|\/(?:stiki|ustroystva)\/(?:index\.html)?)$/);
+      return m ? m[1] : null;
+    })();
+    let pinned = false;
+    const pinUrls = () => {
+      if (pinned) return;
+      pinned = true;
+      document.querySelectorAll("a[href]").forEach((a) => {
+        const h = a.getAttribute("href");
+        if (h && !h.startsWith("#") && !/^[a-z]+:/i.test(h)) a.setAttribute("href", a.href);
+      });
+      document.querySelectorAll("img[src], source[src], video[src]").forEach((el) => {
+        const v = el.getAttribute("src");
+        if (v && !/^[a-z]+:/i.test(v)) el.setAttribute("src", el.src);
+      });
+      document.querySelectorAll("form[action]").forEach((f) => f.setAttribute("action", f.action));
+    };
+    const urlFor = (f) => catalogBase + (SLUGS[f] ? "catalog/" + SLUGS[f] + "/" : (location.pathname.endsWith(".html") ? "catalog.html" : "catalog.html"));
+
+    const selectTab = (f, push) => {
       tabs.forEach((t) => {
-        const on = t === tab;
+        const on = t.dataset.filter === f;
         t.classList.toggle("is-active", on);
         t.setAttribute("aria-selected", String(on));
       });
-      filter = tab.dataset.filter;
+      filter = f;
       limit = PAGE;
       render();
-    }));
+      if (push && catalogBase !== null && location.protocol !== "file:") {
+        const url = urlFor(f);
+        if (url !== location.pathname) {
+          pinUrls();
+          history.pushState({ catalogFilter: f }, "", url + location.search);
+        }
+      }
+    };
+
+    tabs.forEach((tab) => tab.addEventListener("click", () => selectTab(tab.dataset.filter, true)));
+    window.addEventListener("popstate", (e) => {
+      const f = (e.state && e.state.catalogFilter) || (Object.keys(SLUGS).find((k) => location.pathname.includes("/catalog/" + SLUGS[k])) || "all");
+      selectTab(f, false);
+    });
     if (filter !== "all") {
       const startTab = tabs.find((t) => t.dataset.filter === filter);
       if (startTab) tabs.forEach((t) => { const on = t === startTab; t.classList.toggle("is-active", on); t.setAttribute("aria-selected", String(on)); });

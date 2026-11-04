@@ -65,12 +65,19 @@ elseif (!preg_match('/\.html$/', $path) && is_dir($root . $path)) $path .= '/ind
 $file = realpath($root . $path);
 $valid = $file && strpos($file, realpath($root) . DIRECTORY_SEPARATOR) === 0 && is_file($file) && preg_match('/\.html$/', $file);
 
+const FLEX_STUB = false;
+
 if (!flex_authorized($cfg)) {
-    if ($path !== '/index.html') {
-        header('Location: /', true, 302);
-        exit;
+    if (FLEX_STUB) {
+        if ($path !== '/index.html') {
+            header('Location: /', true, 302);
+            exit;
+        }
+        flex_stub($root);
     }
-    flex_stub($root);
+    $kz = strpos($path, '/kz/') === 0;
+    header('Location: ' . ($kz ? '/kz/login' : '/login'), true, 302);
+    exit;
 }
 
 if (!$valid) flex_send($root . '/404.html', $cfg, 404);

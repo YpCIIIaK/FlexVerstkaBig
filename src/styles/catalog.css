@@ -354,6 +354,7 @@
   .catalog-bar .tabs__btn {
     flex: 1 1 0;
     min-width: 0;
+    padding-inline: calc(8 * var(--wm));
     text-align: center;
     font-size: calc(14 * var(--wm));
   }

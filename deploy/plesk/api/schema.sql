@@ -28,3 +28,13 @@ CREATE TABLE IF NOT EXISTS favorites (
   PRIMARY KEY (user_id, item_id),
   CONSTRAINT favorites_user_fk FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS site_sessions (
+  sid_hash CHAR(64) NOT NULL PRIMARY KEY,
+  user_id INT UNSIGNED NOT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  expires_at DATETIME NOT NULL,
+  KEY site_sessions_user (user_id),
+  KEY site_sessions_expires (expires_at),
+  CONSTRAINT site_sessions_user_fk FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -1,5 +1,6 @@
 <?php
-$cfg = require __DIR__ . '/../../flexcfg/config.php';
+require __DIR__ . '/lib.php';
+$cfg = flex_cfg();
 
 $route = trim($_GET['path'] ?? '', '/');
 $method = $_SERVER['REQUEST_METHOD'];
@@ -15,7 +16,7 @@ function flex_cookie($token, $age) {
 }
 
 if ($route === 'logout') {
-    flex_cookie('', 0);
+    flex_close_session();
     http_response_code(204);
     exit;
 }
@@ -63,7 +64,16 @@ curl_close($ch);
 
 if (($route === 'cabinet/session' || $route === 'cabinet/login/verify') && $status >= 200 && $status < 300) {
     $data = json_decode($body, true);
-    if (!empty($data['token'])) flex_cookie($data['token'], 86400);
+    if (!empty($data['token'])) {
+        $age = !empty($data['expires_at']) ? max(60, strtotime($data['expires_at']) - time()) : 86400;
+        flex_cookie($data['token'], $age);
+        try {
+            $uid = flex_upsert_user($data['profile'] ?? []);
+            if ($uid) flex_open_session($uid);
+        } catch (Exception $e) {
+            error_log('flex session: ' . $e->getMessage());
+        }
+    }
 }
 
 http_response_code($status);

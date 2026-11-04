@@ -118,8 +118,19 @@
       e.preventDefault();
       logout();
     }));
+    const local = async () => {
+      const r = await fetch("/api/local/profile", { credentials: "same-origin" });
+      if (!r.ok) throw { status: r.status };
+      return (await r.json()).profile || {};
+    };
     try {
-      const { profile: p } = await api("/cabinet/me");
+      let p;
+      try {
+        ({ profile: p } = await api("/cabinet/me"));
+      } catch (err) {
+        if (err.status !== 401 && err.status !== 404) throw err;
+        p = await local();
+      }
       const set = (sel, v) => { document.querySelector(sel).value = v || ""; };
       set("[data-profile-name]", p.name);
       set("[data-profile-phone]", p.phone);

@@ -1,5 +1,6 @@
 <?php
-$cfg = require __DIR__ . '/../../flexcfg/config.php';
+require __DIR__ . '/lib.php';
+$cfg = flex_cfg();
 
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
@@ -43,6 +44,8 @@ function day($v) {
 }
 
 function current_user($cfg) {
+    $uid = flex_session_user();
+    if ($uid) return $uid;
     $token = $_COOKIE['flex_session'] ?? '';
     if ($token === '') out(['detail' => 'Не авторизован'], 401);
     $hash = hash('sha256', $token);

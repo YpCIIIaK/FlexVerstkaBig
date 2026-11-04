@@ -1,8 +1,14 @@
 <?php
-$cfg = require __DIR__ . '/../flexcfg/config.php';
+require __DIR__ . '/api/lib.php';
+$cfg = flex_cfg();
 $root = __DIR__;
 
 function flex_authorized($cfg) {
+    try {
+        if (flex_session_user()) return true;
+    } catch (Exception $e) {
+        error_log('flex gate: ' . $e->getMessage());
+    }
     $token = $_COOKIE['flex_session'] ?? '';
     if ($token === '' || !preg_match('/^[\w.\-~+\/=]+$/', $token)) return false;
     $ctx = stream_context_create(['http' => [
@@ -11,12 +17,20 @@ function flex_authorized($cfg) {
         'ignore_errors' => true,
         'timeout' => 10,
     ]]);
-    @file_get_contents(rtrim($cfg['API_URL'], '/') . '/api/v1/cabinet/me', false, $ctx);
+    $body = @file_get_contents(rtrim($cfg['API_URL'], '/') . '/api/v1/cabinet/me', false, $ctx);
     $status = 0;
     foreach ($http_response_header ?? [] as $h) {
         if (preg_match('#^HTTP/\S+\s+(\d+)#', $h, $m)) $status = (int) $m[1];
     }
-    return $status >= 200 && $status < 300;
+    if ($status < 200 || $status >= 300) return false;
+    try {
+        $data = json_decode($body, true);
+        $uid = flex_upsert_user($data['profile'] ?? []);
+        if ($uid) flex_open_session($uid);
+    } catch (Exception $e) {
+        error_log('flex gate: ' . $e->getMessage());
+    }
+    return true;
 }
 
 function flex_send($file, $cfg, $code = 200) {

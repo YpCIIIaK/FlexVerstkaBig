@@ -79,9 +79,10 @@
 }
 
 .auth__title {
-  font-size: calc(48 * var(--wm));
+  font-size: calc(42 * var(--wm));
   font-weight: 700;
-  line-height: calc(56 * var(--wm));
+  line-height: calc(50 * var(--wm));
+  white-space: nowrap;
   letter-spacing: -0.02em;
 }
 
@@ -415,8 +416,8 @@
   .auth__form { gap: calc(24 * var(--wm)); }
 
   .auth__title {
-    font-size: calc(30 * var(--wm));
-    line-height: calc(36 * var(--wm));
+    font-size: calc(22 * var(--wm));
+    line-height: calc(28 * var(--wm));
   }
 
   .auth__lead {

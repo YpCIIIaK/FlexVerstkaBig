@@ -186,7 +186,8 @@
 .how__video.is-alpha { mix-blend-mode: normal; }
 
 .how__video {
-  width: calc(350 * var(--wm));
+  object-fit: contain;
+  width: calc(588 * var(--wm));
   height: calc(500 * var(--wm));
 }
 

@@ -923,7 +923,7 @@
     const empty = root.querySelector("[data-catalog-empty]");
     const promoCard = root.querySelector("[data-catalog-promo]");
     const PAGE = 8;
-    let filter = "all";
+    let filter = root.dataset.catalogCategory || "all";
     let limit = PAGE;
 
     const render = () => {
@@ -1047,6 +1047,10 @@
       limit = PAGE;
       render();
     }));
+    if (filter !== "all") {
+      const startTab = tabs.find((t) => t.dataset.filter === filter);
+      if (startTab) tabs.forEach((t) => { const on = t === startTab; t.classList.toggle("is-active", on); t.setAttribute("aria-selected", String(on)); });
+    }
 
     more.addEventListener("click", () => {
       limit += PAGE;

@@ -946,6 +946,7 @@
     const filterApply = root.querySelector("[data-filter-apply]");
 
     const readFilters = () => {
+      if (!filterPanel) return { notes: [], menthol: null, capsule: null };
       const data = new FormData(filterPanel);
       return { notes: data.getAll("notes"), menthol: data.get("menthol"), capsule: data.get("capsule") };
     };
@@ -971,68 +972,70 @@
       return "товаров";
     };
 
-    const filterCount = root.querySelector("[data-filter-count]");
-    const filterBackdrop = root.querySelector("[data-filter-backdrop]");
+    if (filterPanel) {
+      const filterCount = root.querySelector("[data-filter-count]");
+      const filterBackdrop = root.querySelector("[data-filter-backdrop]");
 
-    const updatePreview = () => {
-      const f = readFilters();
-      const n = countFor(f);
-      filterApply.textContent = "Показать " + n + " " + plural(n);
-      const selected = f.notes.length + (f.menthol ? 1 : 0) + (f.capsule ? 1 : 0);
-      filterCount.textContent = selected;
-      filterCount.hidden = selected === 0;
-    };
+      const updatePreview = () => {
+        const f = readFilters();
+        const n = countFor(f);
+        filterApply.textContent = "Показать " + n + " " + plural(n);
+        const selected = f.notes.length + (f.menthol ? 1 : 0) + (f.capsule ? 1 : 0);
+        filterCount.textContent = selected;
+        filterCount.hidden = selected === 0;
+      };
 
-    const updateBadge = () => {
-      const n = applied.notes.length + (applied.menthol ? 1 : 0) + (applied.capsule ? 1 : 0);
-      filterBadge.textContent = n;
-      filterBadge.hidden = n === 0;
-    };
+      const updateBadge = () => {
+        const n = applied.notes.length + (applied.menthol ? 1 : 0) + (applied.capsule ? 1 : 0);
+        filterBadge.textContent = n;
+        filterBadge.hidden = n === 0;
+      };
 
-    const isSheet = () => window.matchMedia("(max-width: 767px)").matches;
+      const isSheet = () => window.matchMedia("(max-width: 767px)").matches;
 
-    const setFilterOpen = (open) => {
-      filterPanel.hidden = !open;
-      filterBackdrop.hidden = !(open && isSheet());
-      document.documentElement.style.overflow = open && isSheet() ? "hidden" : "";
-      filterTrigger.setAttribute("aria-expanded", String(open));
-      if (open) updatePreview();
-    };
+      const setFilterOpen = (open) => {
+        filterPanel.hidden = !open;
+        filterBackdrop.hidden = !(open && isSheet());
+        document.documentElement.style.overflow = open && isSheet() ? "hidden" : "";
+        filterTrigger.setAttribute("aria-expanded", String(open));
+        if (open) updatePreview();
+      };
 
-    filterBackdrop.addEventListener("click", () => setFilterOpen(false));
+      filterBackdrop.addEventListener("click", () => setFilterOpen(false));
 
-    filterTrigger.addEventListener("click", () => setFilterOpen(filterPanel.hidden));
-    filterPanel.querySelectorAll('input[type="radio"]').forEach((radio) => {
-      const label = radio.closest("label");
-      label.addEventListener("pointerdown", () => { radio.dataset.wasChecked = radio.checked ? "1" : ""; });
-      radio.addEventListener("click", () => {
-        if (radio.dataset.wasChecked !== "1") return;
-        radio.checked = false;
-        radio.dataset.wasChecked = "";
-        updatePreview();
+      filterTrigger.addEventListener("click", () => setFilterOpen(filterPanel.hidden));
+      filterPanel.querySelectorAll('input[type="radio"]').forEach((radio) => {
+        const label = radio.closest("label");
+        label.addEventListener("pointerdown", () => { radio.dataset.wasChecked = radio.checked ? "1" : ""; });
+        radio.addEventListener("click", () => {
+          if (radio.dataset.wasChecked !== "1") return;
+          radio.checked = false;
+          radio.dataset.wasChecked = "";
+          updatePreview();
+        });
       });
-    });
 
-    filterPanel.addEventListener("change", updatePreview);
-    filterPanel.addEventListener("reset", () => setTimeout(updatePreview));
+      filterPanel.addEventListener("change", updatePreview);
+      filterPanel.addEventListener("reset", () => setTimeout(updatePreview));
 
-    filterPanel.addEventListener("submit", (e) => {
-      e.preventDefault();
-      applied = readFilters();
-      limit = PAGE;
-      updateBadge();
-      render();
-      setFilterOpen(false);
-      filterTrigger.focus();
-    });
+      filterPanel.addEventListener("submit", (e) => {
+        e.preventDefault();
+        applied = readFilters();
+        limit = PAGE;
+        updateBadge();
+        render();
+        setFilterOpen(false);
+        filterTrigger.focus();
+      });
 
-    document.addEventListener("click", (e) => {
-      if (!filterPanel.hidden && !filterRoot.contains(e.target)) setFilterOpen(false);
-    });
+      document.addEventListener("click", (e) => {
+        if (!filterPanel.hidden && !filterRoot.contains(e.target)) setFilterOpen(false);
+      });
 
-    filterRoot.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && !filterPanel.hidden) { setFilterOpen(false); filterTrigger.focus(); }
-    });
+      filterRoot.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !filterPanel.hidden) { setFilterOpen(false); filterTrigger.focus(); }
+      });
+    }
 
     tabs.forEach((tab) => tab.addEventListener("click", () => {
       tabs.forEach((t) => {

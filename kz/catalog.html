@@ -187,98 +187,6 @@
         <button class="tabs__btn is-active" type="button" role="tab" aria-selected="true" data-filter="all">Все</button>
         <button class="tabs__btn" type="button" role="tab" aria-selected="false" data-filter="sticks">Стиктер</button>
         <button class="tabs__btn" type="button" role="tab" aria-selected="false" data-filter="devices">Құрылғылар</button>
-        <button class="tabs__btn" type="button" role="tab" aria-selected="false" data-filter="sets">Наборы</button>
-      </div>
-
-      <div class="catalog-bar__controls">
-        <div class="catalog-filter" data-filter-root>
-          <button class="catalog-control" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="catalog-filter" data-filter-trigger>
-            Фильтр
-            <span class="catalog-control__badge" data-filter-badge hidden></span>
-          </button>
-
-          <div class="filter-backdrop" data-filter-backdrop hidden></div>
-          <form class="filter-panel" id="catalog-filter" aria-label="Фильтры" data-filter-panel hidden>
-            <div class="filter-panel__head">
-              <h2 class="filter-panel__title">Фильтры <span class="catalog-control__badge filter-panel__count" data-filter-count hidden></span></h2>
-              <button class="filter-panel__reset" type="reset">Сбросить</button>
-            </div>
-
-            <fieldset class="filter-group">
-              <legend class="filter-group__title">Ноты</legend>
-            <label class="filter-opt">
-              <input class="filter-opt__input" type="checkbox" name="notes" value="fruit" />
-              <span class="filter-opt__label">Фруктовые</span>
-              <span class="filter-opt__mark" aria-hidden="true"></span>
-            </label>
-            <label class="filter-opt">
-              <input class="filter-opt__input" type="checkbox" name="notes" value="citrus" />
-              <span class="filter-opt__label">Цитрусовые</span>
-              <span class="filter-opt__mark" aria-hidden="true"></span>
-            </label>
-            <label class="filter-opt">
-              <input class="filter-opt__input" type="checkbox" name="notes" value="berry" />
-              <span class="filter-opt__label">Ягодные</span>
-              <span class="filter-opt__mark" aria-hidden="true"></span>
-            </label>
-            <label class="filter-opt">
-              <input class="filter-opt__input" type="checkbox" name="notes" value="spicy" />
-              <span class="filter-opt__label">Пряные</span>
-              <span class="filter-opt__mark" aria-hidden="true"></span>
-            </label>
-            </fieldset>
-
-            <fieldset class="filter-group">
-              <legend class="filter-group__title">Ментол</legend>
-            <label class="filter-opt">
-              <input class="filter-opt__input" type="radio" name="menthol" value="no" />
-              <span class="filter-opt__label">Без ментола</span>
-              <span class="filter-opt__mark" aria-hidden="true"></span>
-            </label>
-            <label class="filter-opt">
-              <input class="filter-opt__input" type="radio" name="menthol" value="yes" />
-              <span class="filter-opt__label">С ментолом</span>
-              <span class="filter-opt__mark" aria-hidden="true"></span>
-            </label>
-            </fieldset>
-
-            <fieldset class="filter-group">
-              <legend class="filter-group__title">Капсула</legend>
-            <label class="filter-opt">
-              <input class="filter-opt__input" type="radio" name="capsule" value="yes" />
-              <span class="filter-opt__label">Есть</span>
-              <span class="filter-opt__mark" aria-hidden="true"></span>
-            </label>
-            <label class="filter-opt">
-              <input class="filter-opt__input" type="radio" name="capsule" value="no" />
-              <span class="filter-opt__label">Нет</span>
-              <span class="filter-opt__mark" aria-hidden="true"></span>
-            </label>
-            </fieldset>
-
-            <div class="filter-panel__foot">
-              <button class="button" type="submit" data-filter-apply>Показать товары</button>
-            </div>
-          </form>
-        </div>
-
-        <div class="select catalog-sort" data-select>
-          <button class="select__trigger catalog-control" type="button" aria-haspopup="listbox" aria-expanded="false" data-select-trigger>
-            <span data-select-value>По снижению цены</span>
-            <svg class="catalog-sort__icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M5.25 3v12M5.25 3 2.5 5.75M5.25 3 8 5.75M12.75 15V3M12.75 15 10 12.25M12.75 15l2.75-2.75" /></svg>
-          </button>
-          <div class="select__menu sort-sheet" data-select-menu data-catalog-sort hidden>
-            <div class="sort-sheet__head">
-              <h2 class="sort-sheet__title">Сортировка</h2>
-              <button class="sort-sheet__close" type="button" aria-label="Закрыть" data-select-close><img src="../assets/images/close.svg" alt="" width="20" height="20" /></button>
-            </div>
-            <ul class="sort-sheet__list" role="listbox" aria-label="Сортировка">
-            <li><button class="select__option" type="button" role="option" aria-selected="false" data-sort="alpha">По алфавиту</button></li>
-            <li><button class="select__option is-selected" type="button" role="option" aria-selected="true" data-sort="price-desc">По снижению цены</button></li>
-            <li><button class="select__option" type="button" role="option" aria-selected="false" data-sort="price-asc">По возрастанию цены</button></li>
-          </ul>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -447,18 +355,6 @@
             <p class="product-card__text">Жалбыз дәмі бар классикалық темекі бленді</p>
           </div>
         </article>
-        <article class="product-card" data-product data-category="sets" data-name="Стартовый набор FLEX">
-          <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
-          </button>
-          <div class="product-card__gallery">
-            <img class="product-card__img is-active" src="../assets/images/starter-kit.webp" alt="Стартовый набор FLEX" width="320" height="260" loading="lazy" />
-          </div>
-          <div class="product-card__info">
-            <h3 class="product-card__title product-card__title--plain"><a href="starter-kit.html">Стартовый набор FLEX</a></h3>
-            <p class="product-card__text">Устройство FLEX и пять пачек стиков FAIIM</p>
-          </div>
-        </article>
     </div>
 
     <p class="products-empty catalog__empty" data-catalog-empty hidden>В этой категории пока нет товаров.</p>
@@ -557,6 +453,6 @@
 
   <script src="../assets/vendor/lenis.min.js" defer></script>
   <script src="../assets/vendor/swiper/swiper-bundle.min.js" defer></script>
-  <script src="../src/lib/main.js?v=89" defer></script>
+  <script src="../src/lib/main.js?v=90" defer></script>
 </body>
 </html>

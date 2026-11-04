@@ -44,7 +44,7 @@ def process(src, page_dir):
         if name == "srcset":
             parts = [p.strip().split(None, 1) for p in val.split(",") if p.strip()]
             val = ", ".join(" ".join([absolute(p[0], page_dir)] + p[1:]) for p in parts)
-        else:
+        elif not name.startswith("data-") or re.search(r"[/.]", val):
             val = absolute(val, page_dir)
         return f"{name}={q}{val}"
     return re.sub(r'\b(href|src|srcset|poster|action|data-[a-z-]+)=(["\'])([^"\']*)', attr, src)

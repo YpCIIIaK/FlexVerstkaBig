@@ -78,7 +78,7 @@
   width: calc(628 * var(--wm));
   height: 100%;
   border-radius: calc(20 * var(--wm));
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .promo__dots { align-self: center; }

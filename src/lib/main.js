@@ -13,6 +13,8 @@
     setTimeout(() => box.classList.add("is-ready"), 3000);
   });
 
+  const KZ = /^\/kz(\/|$)/.test(location.pathname);
+
   const initAuth = () => {
     const form = document.querySelector("[data-auth-form]");
     if (!form) return;
@@ -39,9 +41,9 @@
     const codeAlert = codeForm.querySelector("[data-code-alert]");
 
     const CODE_STATES = {
-      wrong: { error: "Неверный код. Попробуйте ещё раз." },
-      expired: { error: "Срок действия кода истёк", button: "Получить новый код", clear: true },
-      server: { alert: true, button: "Попробовать ещё раз" },
+      wrong: { error: KZ ? "Код қате. Қайталап көріңіз." : "Неверный код. Попробуйте ещё раз." },
+      expired: { error: KZ ? "Кодтың жарамдылық мерзімі өтті" : "Срок действия кода истёк", button: KZ ? "Жаңа кодты алу" : "Получить новый код", clear: true },
+      server: { alert: true, button: KZ ? "Қайталап көру" : "Попробовать ещё раз" },
     };
     let codeState = "";
 
@@ -124,11 +126,11 @@
       clearInterval(timerId);
       let left = RESEND_SECONDS;
       resend.disabled = true;
-      resendTimer.textContent = " (через " + left + " сек)";
+      resendTimer.textContent = KZ ? " (" + left + " сек кейін)" : " (через " + left + " сек)";
       timerId = setInterval(() => {
         left -= 1;
         if (left > 0) {
-          resendTimer.textContent = " (через " + left + " сек)";
+          resendTimer.textContent = KZ ? " (" + left + " сек кейін)" : " (через " + left + " сек)";
           return;
         }
         clearInterval(timerId);
@@ -148,7 +150,7 @@
       codeError.hidden = !s.error;
       codeError.textContent = s.error || "";
       codeAlert.hidden = !s.alert;
-      codeSubmit.textContent = s.button || "Продолжить";
+      codeSubmit.textContent = s.button || (KZ ? "Жалғастыру" : "Продолжить");
       codeSubmit.disabled = s.button ? false : name === "wrong" || !isCodeFull();
       resend.hidden = Boolean(s.button);
       if (s.button) clearInterval(timerId);
@@ -1240,7 +1242,7 @@
       const url = langUrl(lang);
       if (url) location.href = url;
     };
-    document.querySelectorAll(".header__lang").forEach((btn) => {
+    document.querySelectorAll(".header__lang, .auth__lang").forEach((btn) => {
       btn.addEventListener("click", () => go(/\/kz\//.test(location.pathname) ? "ru" : "kz"));
     });
     document.querySelectorAll(".lang-switch").forEach((group) => {

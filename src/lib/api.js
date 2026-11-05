@@ -3,7 +3,14 @@
 
   const KEY = "flex_session";
 
-  const ERRORS = {
+  const KZ = /^\/kz(\/|$)/.test(location.pathname);
+
+  const ERRORS = KZ ? {
+    INVALID_PHONE: "Телефон нөмірін +7 7XX XXX XX XX пішімінде енгізіңіз",
+    OTP_INVALID: "Код қате немесе мерзімі өткен",
+    INVALID_VERIFY_TOKEN: "Растау уақыты аяқталды. Кодты қайта сұратыңыз.",
+    OTP_TOO_MANY_ATTEMPTS: "Тым көп әрекет. Кодты қайта сұратыңыз.",
+  } : {
     INVALID_PHONE: "Введите номер телефона в формате +7 7XX XXX XX XX",
     OTP_INVALID: "Неверный или истёкший код",
     INVALID_VERIFY_TOKEN: "Время подтверждения истекло. Запросите код заново.",
@@ -14,10 +21,10 @@
     const code = data.code || "";
     const detail = typeof data.detail === "string" ? data.detail : "";
     if (ERRORS[code]) return ERRORS[code];
-    if (/ALREADY|EXISTS|TAKEN|DUPLICATE/.test(code) || /занят|уже (есть|существ|зарегистр)|already|exists/i.test(detail)) return "Пользователь уже создан";
-    if (/IIN/.test(code) && code !== "IIN_NOT_FOUND") return "ИИН указан неверно";
+    if (/ALREADY|EXISTS|TAKEN|DUPLICATE/.test(code) || /занят|уже (есть|существ|зарегистр)|already|exists/i.test(detail)) return KZ ? "Пайдаланушы бұрыннан тіркелген" : "Пользователь уже создан";
+    if (/IIN/.test(code) && code !== "IIN_NOT_FOUND") return KZ ? "ЖСН қате көрсетілген" : "ИИН указан неверно";
     if (/курильщ|smoker/i.test(detail)) return "";
-    return /[а-яё]/i.test(detail) ? detail : "";
+    return !KZ && /[а-яё]/i.test(detail) ? detail : "";
   };
 
   const api = async (path, body) => {

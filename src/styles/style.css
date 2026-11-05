@@ -9,6 +9,26 @@
   isolation: isolate;
 }
 
+.auth__lang {
+  position: absolute;
+  top: calc(55 * var(--wm));
+  right: calc(60 * var(--wm));
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: calc(4 * var(--wm));
+  font-size: calc(16 * var(--wm));
+  line-height: calc(20 * var(--wm));
+  transition: opacity 0.2s ease;
+}
+
+.auth__lang:hover { opacity: 0.7; }
+
+.auth__lang img {
+  width: calc(20 * var(--wm));
+  height: calc(20 * var(--wm));
+}
+
 .auth__aside {
   position: relative;
   z-index: 2;
@@ -388,6 +408,11 @@
   }
 
   .auth__aside { display: contents; }
+
+  .auth__lang {
+    top: calc(22 * var(--wm));
+    right: calc(16 * var(--wm));
+  }
 
   .auth__logo {
     position: relative;

@@ -129,8 +129,8 @@
       </ul>
 
       <div class="mobile-menu__lang">
-        <p class="mobile-menu__caption">Язык</p>
-        <div class="lang-switch" role="radiogroup" aria-label="Язык">
+        <p class="mobile-menu__caption">Тіл</p>
+        <div class="lang-switch" role="radiogroup" aria-label="Тіл">
           <button class="lang-switch__btn" type="button" role="radio" aria-checked="false">RU</button>
           <button class="lang-switch__btn is-active" type="button" role="radio" aria-checked="true">KZ</button>
         </div>
@@ -139,7 +139,7 @@
 
     <div class="mobile-menu__social">
       <a class="mobile-menu__phone" href="tel:7707">7707</a>
-      <p class="mobile-menu__caption">Свяжитесь с нами</p>
+      <p class="mobile-menu__caption">Бізбен байланысыңыз</p>
   <div class="mobile-menu__social-list">
       <a class="footer__social-link" href="https://t.me/Myflexkzbot" target="_blank" rel="noopener" aria-label="Telegram"><img src="/assets/images/telegram.svg" alt="" width="20" height="20" loading="lazy" /></a>
     </div>
@@ -218,7 +218,7 @@
             <label class="field__label" for="profile-email">Email</label>
             <div class="field__box" data-email-box>
               <input class="field__input field__input--static" id="profile-email" type="email" value="" readonly data-email />
-              <button class="field__action" type="button" aria-haspopup="dialog" aria-label="Изменить email" data-email-edit><span class="t-desk">Өзгерту</span><svg class="field__action-icon t-mob" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9" /><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" /></svg></button>
+              <button class="field__action" type="button" aria-haspopup="dialog" aria-label="Email өзгерту" data-email-edit><span class="t-desk">Өзгерту</span><svg class="field__action-icon t-mob" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9" /><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" /></svg></button>
             </div>
           </div>
 
@@ -235,13 +235,13 @@
   <dialog class="modal" aria-labelledby="email-modal-title" data-email-modal>
     <form class="modal__step" method="dialog" novalidate data-email-step="edit">
       <header class="modal__head">
-        <h2 class="modal__title" id="email-modal-title">Изменить email</h2>
+        <h2 class="modal__title" id="email-modal-title">Email өзгерту</h2>
         <button class="modal__close" type="button" aria-label="Закрыть" data-modal-close><img src="/assets/images/close.svg" alt="" width="24" height="24" /></button>
       </header>
 
       <div class="modal__body">
         <div class="field">
-          <label class="field__label" for="email-current">Текущий email</label>
+          <label class="field__label" for="email-current">Ағымдағы email</label>
           <div class="field__box">
             <input class="field__input field__input--static field__input--locked" id="email-current" type="email" readonly data-email-current />
             <img class="field__icon" src="/assets/images/lock.svg" alt="" width="18" height="18" />
@@ -249,26 +249,26 @@
         </div>
 
         <div class="field">
-          <label class="field__label" for="email-new">Новый email</label>
+          <label class="field__label" for="email-new">Жаңа email</label>
           <input class="field__input field__input--static field__input--editable" id="email-new" type="email" autocomplete="email" placeholder="example@mail.com" aria-describedby="email-new-error" data-email-new />
-          <span class="field__error field__error--md" id="email-new-error" data-email-error hidden>Введите корректный email</span>
+          <span class="field__error field__error--md" id="email-new-error" data-email-error hidden>Дұрыс email енгізіңіз</span>
         </div>
 
         <p class="account-card__note">
           <img src="/assets/images/info.svg" alt="" width="16" height="16" />
-          На новый адрес придёт шестизначный код подтверждения.
+          Жаңа мекенжайға алты таңбалы растау коды келеді.
         </p>
       </div>
 
       <div class="modal__actions">
-        <button class="button button--ghost" type="button" data-modal-close>Отмена</button>
+        <button class="button button--ghost" type="button" data-modal-close>Болдырмау</button>
         <button class="button" type="submit">Жалғастыру</button>
       </div>
     </form>
 
     <form class="modal__step" method="dialog" novalidate data-email-step="code" hidden>
       <header class="modal__head">
-        <h2 class="modal__title">Подтвердите email</h2>
+        <h2 class="modal__title">Email растаңыз</h2>
         <button class="modal__close" type="button" aria-label="Закрыть" data-modal-close><img src="/assets/images/close.svg" alt="" width="24" height="24" /></button>
       </header>
 
@@ -285,13 +285,13 @@
           </div>
         </fieldset>
 
-        <p class="modal__timer" data-email-timer>Отправить повторно через 01:00</p>
+        <p class="modal__timer" data-email-timer>01:00 кейін қайта жіберу</p>
         <button class="modal__resend" type="button" data-email-resend hidden>Кодты қайта жіберу</button>
       </div>
 
       <div class="modal__actions">
-        <button class="button button--ghost" type="button" data-email-back>Назад</button>
-        <button class="button" type="submit" data-email-confirm disabled>Подтвердить</button>
+        <button class="button button--ghost" type="button" data-email-back>Артқа</button>
+        <button class="button" type="submit" data-email-confirm disabled>Растау</button>
       </div>
     </form>
 
@@ -301,11 +301,11 @@
           <span class="success-badge__inner"><img src="/assets/images/check.svg" alt="" width="32" height="32" /></span>
         </span>
         <div class="modal__success-text">
-          <h2 class="modal__title">Email изменён</h2>
-          <p class="modal__lead">Новый адрес подтверждён и сохранён:<br /><strong data-email-saved></strong></p>
+          <h2 class="modal__title">Email өзгертілді</h2>
+          <p class="modal__lead">Жаңа мекенжай расталып, сақталды:<br /><strong data-email-saved></strong></p>
         </div>
       </div>
-      <button class="button" type="button" data-modal-close>Готово</button>
+      <button class="button" type="button" data-modal-close>Дайын</button>
     </div>
   </dialog>
 
@@ -387,7 +387,7 @@
 
     <div class="footer__bottom">
       <a class="footer__link" href="/terms/" target="_blank" rel="noopener">Сайтты пайдалану шарттары</a>
-      <a class="footer__link" href="/privacy/" target="_blank" rel="noopener">Құпиялылық саясаты</a>
+      <a class="footer__link" href="/kz/privacy/" target="_blank" rel="noopener">Құпиялылық саясаты</a>
       <a class="footer__link" href="/cookie/" target="_blank" rel="noopener">Cookie файлдарын пайдалану саясаты</a>
       <a class="footer__link" href="/consent/" target="_blank" rel="noopener">Жеке деректерді жинауға, өңдеуге және сақтауға келісім</a>
     </div>
@@ -396,7 +396,7 @@
 
   <script src="/assets/vendor/lenis.min.js" defer></script>
   <script src="/assets/vendor/swiper/swiper-bundle.min.js" defer></script>
-  <script src="/src/lib/main.js?v=97" defer></script>
-  <script src="/src/lib/api.js?v=13" defer></script>
+  <script src="/src/lib/main.js?v=99" defer></script>
+  <script src="/src/lib/api.js?v=14" defer></script>
 </body>
 </html>

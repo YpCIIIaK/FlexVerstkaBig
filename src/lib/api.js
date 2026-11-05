@@ -118,7 +118,7 @@
     });
   };
 
-  const date = (v) => (v ? new Date(v).toLocaleDateString("ru-RU", { day: "numeric", month: "long", year: "numeric" }).replace(" г.", "") : "");
+  const date = (v) => (v ? new Date(v).toLocaleDateString(KZ ? "kk-KZ" : "ru-RU", { day: "numeric", month: "long", year: "numeric" }).replace(" г.", "") : "");
 
   const initAccount = async () => {
     document.querySelectorAll("[data-logout]").forEach((el) => el.addEventListener("click", (e) => {

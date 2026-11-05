@@ -441,7 +441,7 @@
     const startTimer = () => {
       clearInterval(timerId);
       let left = RESEND_SECONDS;
-      const render = () => { timerText.textContent = "Отправить повторно через " + pad(Math.floor(left / 60)) + ":" + pad(left % 60); };
+      const render = () => { const time = pad(Math.floor(left / 60)) + ":" + pad(left % 60); timerText.textContent = KZ ? time + " кейін қайта жіберу" : "Отправить повторно через " + time; };
       timerText.hidden = false;
       resend.hidden = true;
       render();
@@ -662,7 +662,7 @@
     const setFav = (btn, on) => {
       btn.classList.toggle("is-active", on);
       btn.setAttribute("aria-pressed", String(on));
-      btn.setAttribute("aria-label", on ? "Убрать из избранного" : "Добавить в избранное");
+      btn.setAttribute("aria-label", KZ ? (on ? "Таңдаулылардан алып тастау" : "Таңдаулыларға қосу") : (on ? "Убрать из избранного" : "Добавить в избранное"));
     };
 
     const removeFavCard = (card, list, left) => {
@@ -717,7 +717,7 @@
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "stick-gallery__arrow stick-gallery__arrow--" + dir;
-        btn.setAttribute("aria-label", dir === "prev" ? "Назад" : "Вперёд");
+        btn.setAttribute("aria-label", KZ ? (dir === "prev" ? "Артқа" : "Алға") : (dir === "prev" ? "Назад" : "Вперёд"));
         btn.innerHTML = `<svg viewBox="0 0 20 20" aria-hidden="true"><path d="${d}" /></svg>`;
         (el.closest(".account-card--fav") || el).append(btn);
         return btn;
@@ -847,7 +847,7 @@
     const swatches = [...root.querySelectorAll("[data-flavour]")];
     const text = root.querySelector("[data-stick-text]");
     const metrics = [...root.querySelectorAll("[data-metric]")];
-    const labels = ["Насыщенность", "Ментол"];
+    const labels = KZ ? ["Қанықтық", "Ментол"] : ["Насыщенность", "Ментол"];
     const capsuleRow = root.querySelector("[data-capsule-row]");
     const capsuleImg = root.querySelector("[data-capsule-img]");
 
@@ -864,7 +864,7 @@
       if (f.metrics) {
         metrics.forEach((m, i) => {
           [...m.children].forEach((dot, k) => dot.classList.toggle("is-on", k < f.metrics[i]));
-          m.setAttribute("aria-label", labels[i] + ": " + f.metrics[i] + " из 5");
+          m.setAttribute("aria-label", labels[i] + ": " + (KZ ? "5-тен " + f.metrics[i] : f.metrics[i] + " из 5"));
         });
       }
       if (capsuleRow) {
@@ -1020,7 +1020,7 @@
       const updatePreview = () => {
         const f = readFilters();
         const n = countFor(f);
-        filterApply.textContent = "Показать " + n + " " + plural(n);
+        filterApply.textContent = KZ ? n + " тауарды көрсету" : "Показать " + n + " " + plural(n);
         const selected = f.notes.length + (f.menthol ? 1 : 0) + (f.capsule ? 1 : 0);
         filterCount.textContent = selected;
         filterCount.hidden = selected === 0;
@@ -1178,10 +1178,10 @@
       btn.addEventListener("click", async () => {
         try {
           await navigator.clipboard.writeText(input.value);
-          done("Скопировано");
+          done(KZ ? "Көшірілді" : "Скопировано");
         } catch (e) {
           input.select();
-          done("Нажмите Ctrl+C, чтобы скопировать");
+          done(KZ ? "Көшіру үшін Ctrl+C басыңыз" : "Нажмите Ctrl+C, чтобы скопировать");
         }
       });
 
@@ -1221,7 +1221,7 @@
     });
   };
 
-  const KZ_PAGES = ["", "about", "catalog", "stick", "device", "faiim", "starter-kit", "referral", "404", "account", "favorites", "settings", "login"];
+  const KZ_PAGES = ["", "about", "catalog", "stick", "device", "faiim", "starter-kit", "referral", "404", "account", "favorites", "settings", "login", "privacy"];
 
   const langUrl = (lang) => {
     const parts = location.pathname.split("/").filter(Boolean);
@@ -1261,7 +1261,7 @@
     const setOpen = (open) => {
       menu.hidden = !open;
       burger.setAttribute("aria-expanded", String(open));
-      burger.setAttribute("aria-label", open ? "Закрыть меню" : "Меню");
+      burger.setAttribute("aria-label", KZ ? (open ? "Мәзірді жабу" : "Мәзір") : (open ? "Закрыть меню" : "Меню"));
       document.documentElement.style.overflow = open ? "hidden" : "";
     };
 
@@ -1386,7 +1386,7 @@
         const open = !box.classList.contains("is-open");
         box.classList.toggle("is-open", open);
         btn.setAttribute("aria-expanded", String(open));
-        label.textContent = open ? "Свернуть " : "Показать полностью ";
+        label.textContent = KZ ? (open ? "Жию " : "Толық көрсету ") : (open ? "Свернуть " : "Показать полностью ");
       });
 
       check();

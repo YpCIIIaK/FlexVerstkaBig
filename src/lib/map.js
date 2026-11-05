@@ -18,7 +18,7 @@
     const m = hours.match(/(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/);
     if (!m) return hours;
     const mins = new Date().getHours() * 60 + new Date().getMinutes();
-    return mins >= m[1] * 60 + +m[2] && mins < m[3] * 60 + +m[4] ? "Открыто" : "Закрыто";
+    return mins >= m[1] * 60 + +m[2] && mins < m[3] * 60 + +m[4] ? (/^\/kz(\/|$)/.test(location.pathname) ? "Ашық" : "Открыто") : (/^\/kz(\/|$)/.test(location.pathname) ? "Жабық" : "Закрыто");
   };
 
   let activeId = (cards.find((c) => c.classList.contains("is-active")) || cards[0]).dataset.store;

@@ -30,6 +30,6 @@ RewriteCond %{REQUEST_URI} ^/(kz/)?login$
 RewriteCond %{DOCUMENT_ROOT}/%1login.html -f
 RewriteRule ^ /%1login.html [L]
 
-RewriteCond %{REQUEST_URI} !^/(gate\.php|api/|src/|assets/|stub/|login\.html|kz/login\.html|terms|privacy|cookie|consent|referral-rules|starter-kit-rules|favicon|robots\.txt)
+RewriteCond %{REQUEST_URI} !^/(gate\.php|api/|src/|assets/|stub/|login\.html|kz/login\.html|kz/privacy|terms|privacy|cookie|consent|referral-rules|starter-kit-rules|favicon|robots\.txt)
 RewriteCond %{REQUEST_URI} (\.html$|/$|^/[^.]*$)
 RewriteRule ^ gate.php [L]

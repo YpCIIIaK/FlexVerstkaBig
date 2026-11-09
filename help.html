@@ -11,7 +11,7 @@
   <meta name="description" content="Помощь FLEX: горячая линия, Telegram, частые вопросы и магазины рядом." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="/src/styles/main.css?v=271" />
+  <link rel="stylesheet" href="/src/styles/main.css?v=272" />
   <link rel="stylesheet" href="/assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -89,6 +89,10 @@
           <li><a class="header__menu-link" href="/referral"><span class="header__menu-text"><svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>Реферальная программа</span></a></li>
         </ul>
       </div>
+      <a class="header__link header__link--help" href="/help" aria-current="page">
+        <svg class="header__cloud" aria-hidden="true" focusable="false"><use href="#clouds" /></svg>
+        Помощь
+      </a>
     </nav>
 
     <a class="header__logo" href="/" aria-label="FLEX — на главную">
@@ -124,6 +128,7 @@
           <li><a class="mobile-menu__sub-link" href="/referral">Реферальная программа</a></li>
         </ul>
       </li>
+      <li><a class="mobile-menu__link" href="/help">Помощь<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
       <li><a class="mobile-menu__link" href="/favorites">Избранное<svg class="mobile-menu__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
       </ul>
 
@@ -184,7 +189,7 @@
     <section class="faq" aria-labelledby="faq-title">
       <div class="faq__head">
         <h2 class="faq__title" id="faq-title">Часто задаваемые вопросы</h2>
-        <a class="button button--ghost d-only" href="#stores" hidden>Помощь</a>
+        <a class="button button--ghost d-only" href="#stores">Помощь</a>
       </div>
 
       <div class="faq__list d-only" data-faq>
@@ -282,46 +287,19 @@
       </div>
     </section>
 
-    <section class="stores" id="stores" hidden aria-labelledby="stores-title" data-stores>
+    <section class="stores" id="stores" aria-labelledby="stores-title" data-stores>
       <h2 class="stores__title" id="stores-title">Найдите FLEX рядом</h2>
 
       <div class="stores__body">
         <div class="stores__list-wrap">
           <ul class="stores__list" data-store-list>
-            <li><button class="store" type="button" data-store="0" data-city="Алматы" data-coords="76.9568,43.2334" aria-pressed="false">
-              <span class="store__name">FLEX Store Достык Плаза</span>
-              <span class="store__address">пр. Достык 5, ТРЦ Dostyk Plaza, 1 этаж</span>
-              <span class="store__meta"><span class="store__hours">10:00-21:00</span><span class="store__distance">0.8 км</span></span>
+            <li><button class="store is-active" type="button" data-store="0" data-city="Алматы" data-coords="76.93542,43.23601" aria-pressed="true">
+              <span class="store__name">Магазин FLEX, ТРЦ Forum</span>
+              <span class="store__address">Проспект Сейфуллина, 617</span>
             </button></li>
-            <li><button class="store is-active" type="button" data-store="1" data-city="Алматы" data-coords="76.8840,43.2375" aria-pressed="true">
-              <span class="store__name">FLEX Corner Mega Park</span>
-              <span class="store__address">ул. Абая 150, ТРЦ Mega Park, 2 этаж</span>
-              <span class="store__meta"><span class="store__hours">10:00-22:00</span><span class="store__distance">1.2 км</span></span>
-            </button></li>
-            <li><button class="store" type="button" data-store="2" data-city="Алматы" data-coords="76.9010,43.2386" aria-pressed="false">
-              <span class="store__name">Табачная лавка на Абая</span>
-              <span class="store__address">ул. Абая 120, вход со двора</span>
-              <span class="store__meta"><span class="store__hours">09:00-21:00</span><span class="store__distance">2.5 км</span></span>
-            </button></li>
-            <li><button class="store" type="button" data-store="3" data-city="Алматы" data-coords="76.9265,43.2399" aria-pressed="false">
-              <span class="store__name">FLEX Point ЦУМ</span>
-              <span class="store__address">пр. Абая 44, ЦУМ, 1 этаж</span>
-              <span class="store__meta"><span class="store__hours">10:00-20:00</span><span class="store__distance">3.1 км</span></span>
-            </button></li>
-            <li><button class="store" type="button" data-store="4" data-city="Алматы" data-coords="76.9552,43.2637" aria-pressed="false">
-              <span class="store__name">FLEX Store Esentai Mall</span>
-              <span class="store__address">ул. Жибек Жолы 53, Esentai Mall, 1 этаж</span>
-              <span class="store__meta"><span class="store__hours">10:00-22:00</span><span class="store__distance">4.2 км</span></span>
-            </button></li>
-            <li><button class="store" type="button" data-store="5" data-city="Алматы" data-coords="76.9110,43.2632" aria-pressed="false">
-              <span class="store__name">FLEX Corner Рахат Палас</span>
-              <span class="store__address">ул. Байзакова 28, Рахат Палас, 1 этаж</span>
-              <span class="store__meta"><span class="store__hours">10:00-21:00</span><span class="store__distance">5.0 км</span></span>
-            </button></li>
-            <li><button class="store" type="button" data-store="6" data-city="Алматы" data-coords="76.8921,43.2004" aria-pressed="false">
-              <span class="store__name">Smoke House Розыбакиева</span>
-              <span class="store__address">ул. Розыбакиева 247, ТРЦ Grand Park</span>
-              <span class="store__meta"><span class="store__hours">09:00-21:00</span><span class="store__distance">6.3 км</span></span>
+            <li><button class="store" type="button" data-store="1" data-city="Алматы" data-coords="76.96010,43.23162" aria-pressed="false">
+              <span class="store__name">Точка продажи, БЦ TRIUMPH</span>
+              <span class="store__address">Проспект Достык, 192, цокольный этаж</span>
             </button></li>
           </ul>
           <p class="stores__empty" data-store-empty hidden>Ничего не найдено</p>
@@ -336,8 +314,6 @@
               </button>
               <ul class="select__menu" role="listbox" aria-label="Город" data-select-menu hidden>
                 <li><button class="select__option is-selected" type="button" role="option" aria-selected="true">Алматы</button></li>
-                <li><button class="select__option" type="button" role="option" aria-selected="false">Астана</button></li>
-                <li><button class="select__option" type="button" role="option" aria-selected="false">Шымкент</button></li>
               </ul>
             </div>
 
@@ -351,9 +327,9 @@
             <img class="map__image" src="/assets/images/map-clean.webp" alt="" width="1688" height="1282" loading="lazy" />
             <div class="map__tooltip" data-map-tooltip>
               <button class="map__tooltip-close" type="button" aria-label="Закрыть подсказку" data-tooltip-close><img src="/assets/images/close.svg" alt="" width="16" height="16" /></button>
-              <p class="map__tooltip-name" data-tooltip-name>FLEX Corner Mega Park</p>
-              <p class="map__tooltip-address" data-tooltip-address>ул. Абая 150, ТРЦ Mega Park, 2 этаж</p>
-              <p class="map__tooltip-meta" data-tooltip-meta>1.2 км • Открыто</p>
+              <p class="map__tooltip-name" data-tooltip-name>Магазин FLEX, ТРЦ Forum</p>
+              <p class="map__tooltip-address" data-tooltip-address>Проспект Сейфуллина, 617</p>
+              <p class="map__tooltip-meta" data-tooltip-meta></p>
             </div>
           </div>
         </div>
@@ -390,6 +366,7 @@
           <li><a class="footer__msub-link" href="/about">FLEX</a></li>
         </ul>
       </li>
+      <li><a class="footer__mnav-link" href="/help">Помощь<svg class="footer__mnav-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12L10 8L6 4" /></svg></a></li>
     </ul>
 
     <div class="footer__mcontacts">
@@ -449,5 +426,7 @@
   <script src="/assets/vendor/lenis.min.js" defer></script>
   <script src="/assets/vendor/swiper/swiper-bundle.min.js" defer></script>
   <script src="/src/lib/main.js?v=99" defer></script>
+  <script src="https://api-maps.yandex.ru/v3/?apikey=YANDEX_MAPS_KEY&amp;lang=ru_RU" defer></script>
+  <script src="/src/lib/map.js?v=9" defer></script>
 </body>
 </html>

@@ -818,7 +818,8 @@
   .help .stores__list-wrap {
     flex: none;
     width: 100%;
-    height: calc(619 * var(--wm));
+    height: auto;
+    max-height: calc(619 * var(--wm));
   }
 
   .home .map__tooltip,
@@ -835,7 +836,11 @@
   }
 
   .home .stores__list,
-  .help .stores__list { overscroll-behavior: auto; }
+  .help .stores__list {
+    height: auto;
+    max-height: calc(619 * var(--wm));
+    overscroll-behavior: auto;
+  }
 
   .home-flavours .flavour--sunshine { order: 1; }
   .home-flavours .flavour--purple { order: 2; }

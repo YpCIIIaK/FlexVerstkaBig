@@ -9,7 +9,7 @@
   const empty = root.querySelector("[data-store-empty]");
   const mapEl = root.querySelector("[data-map]");
   const tooltip = root.querySelector("[data-map-tooltip]");
-  const text = (card, sel) => card.querySelector(sel).textContent;
+  const text = (card, sel) => card.querySelector(sel)?.textContent || "";
   const lngLat = (el) => el.dataset.coords.split(",").map(Number);
   const CITIES = { "Алматы": [76.9286, 43.238], "Астана": [71.4304, 51.1282], "Шымкент": [69.596, 42.3417] };
   let city = root.querySelector(".select__option.is-selected").textContent.trim();
@@ -53,7 +53,9 @@
     tooltip.hidden = false;
     tooltip.querySelector("[data-tooltip-name]").textContent = text(card, ".store__name");
     tooltip.querySelector("[data-tooltip-address]").textContent = text(card, ".store__address");
-    tooltip.querySelector("[data-tooltip-meta]").textContent = text(card, ".store__distance") + " • " + openStatus(text(card, ".store__hours"));
+    const meta = [text(card, ".store__distance"), openStatus(text(card, ".store__hours"))].filter(Boolean).join(" • ");
+    tooltip.querySelector("[data-tooltip-meta]").textContent = meta;
+    tooltip.querySelector("[data-tooltip-meta]").hidden = !meta;
     paint();
     if (fromMap) {
       const list = root.querySelector("[data-store-list]");

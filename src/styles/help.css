@@ -285,7 +285,8 @@
 .stores__list {
   display: flex;
   flex-direction: column;
-  gap: calc(12 * var(--wm));
+  --store-gap: calc(12 * var(--wm));
+  gap: var(--store-gap);
   height: 100%;
   padding: calc(16 * var(--wm)) calc(22 * var(--wm)) calc(16 * var(--wm)) calc(16 * var(--wm));
   margin-right: calc(10 * var(--wm));
@@ -325,6 +326,7 @@
 
 .store:hover { background-color: var(--w-04); }
 .store.is-active { background-color: rgba(160, 93, 218, 0.12); }
+li:not(:first-child) > .store.is-active { box-shadow: 0 calc(-1 * var(--store-gap)) 0 rgba(160, 93, 218, 0.12); }
 
 .store__name {
   font-size: calc(16 * var(--wm));

@@ -40,7 +40,14 @@
     properties: {},
   }));
 
-  const render = () => { if (clusterer) clusterer.update({ features: visible() }); };
+  const listEl = root.querySelector("[data-store-list]");
+  const fitScroll = () => listEl.parentElement.classList.toggle("is-fit", listEl.scrollHeight <= listEl.clientHeight + 1);
+  window.addEventListener("resize", fitScroll);
+
+  const render = () => {
+    fitScroll();
+    if (clusterer) clusterer.update({ features: visible() });
+  };
 
   const select = (id, fromMap) => {
     const card = cards.find((c) => c.dataset.store === id);

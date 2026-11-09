@@ -299,6 +299,18 @@
 .stores__list::-webkit-scrollbar-track { margin: calc(24 * var(--wm)) 0; border-radius: 999px; background: rgba(255, 255, 255, 0.04); }
 .stores__list::-webkit-scrollbar-thumb { border-radius: 999px; background: var(--w-20); }
 
+.stores__list-wrap.is-fit::after {
+  content: "";
+  position: absolute;
+  top: calc(24 * var(--wm));
+  bottom: calc(24 * var(--wm));
+  right: calc(10 * var(--wm));
+  width: 4px;
+  border-radius: 999px;
+  background: var(--w-20);
+  pointer-events: none;
+}
+
 .store {
   display: flex;
   flex-direction: column;

@@ -23,22 +23,17 @@
 
   let activeId = (cards.find((c) => c.classList.contains("is-active")) || cards[0]).dataset.store;
   let map = null;
-  let clusterer = null;
   const points = {};
 
   const paint = () => Object.entries(points).forEach(([id, p]) => {
     const on = id === activeId;
     p.pin.classList.toggle("is-active", on);
-    if (on) p.el.append(tooltip);
-    p.marker.update({ zIndex: on ? 10 : 0 });
+    if (on && tooltip.parentElement !== p.el) p.el.append(tooltip);
+    if (p.on !== on) {
+      p.on = on;
+      p.marker.update({ zIndex: on ? 10 : 0 });
+    }
   });
-
-  const visible = () => cards.filter((c) => !c.parentElement.hidden).map((c) => ({
-    type: "Feature",
-    id: c.dataset.store,
-    geometry: { type: "Point", coordinates: lngLat(c) },
-    properties: {},
-  }));
 
   const listEl = root.querySelector("[data-store-list]");
   const fitScroll = () => listEl.parentElement.classList.toggle("is-fit", listEl.scrollHeight <= listEl.clientHeight + 1);
@@ -46,7 +41,14 @@
 
   const render = () => {
     fitScroll();
-    if (clusterer) clusterer.update({ features: visible() });
+    if (!map) return;
+    cards.forEach((c) => {
+      const p = points[c.dataset.store];
+      const show = !c.parentElement.hidden;
+      if (show && !p.shown) map.addChild(p.marker);
+      if (!show && p.shown) map.removeChild(p.marker);
+      p.shown = show;
+    });
   };
 
   const select = (id, fromMap) => {
@@ -100,11 +102,8 @@
 
   if (!window.ymaps3) return;
 
-  ymaps3.ready.then(async () => {
+  ymaps3.ready.then(() => {
     const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapMarker } = ymaps3;
-    ymaps3.import.registerCdn("https://cdn.jsdelivr.net/npm/{package}", "@yandex/ymaps3-clusterer@0.0.12");
-    const { YMapClusterer, clusterByGrid } = await ymaps3.import("@yandex/ymaps3-clusterer");
-
     tooltip.remove();
     mapEl.querySelector(".map__image")?.remove();
 
@@ -112,32 +111,20 @@
     map.addChild(new YMapDefaultSchemeLayer({ theme: "dark" }));
     map.addChild(new YMapDefaultFeaturesLayer());
 
-    const marker = (f) => {
+    cards.forEach((c) => {
+      const id = c.dataset.store;
       const el = document.createElement("div");
       el.className = "map__point";
       const pin = document.createElement("button");
       pin.type = "button";
       pin.className = "map__pin";
-      pin.setAttribute("aria-label", text(cards.find((c) => c.dataset.store === f.id), ".store__name"));
-      pin.addEventListener("click", () => select(f.id, true));
+      pin.setAttribute("aria-label", text(c, ".store__name"));
+      pin.addEventListener("click", () => select(id, true));
       el.append(pin);
-      const m = new YMapMarker({ coordinates: f.geometry.coordinates }, el);
-      points[f.id] = { el, pin, marker: m };
-      paint();
-      return m;
-    };
+      points[id] = { el, pin, marker: new YMapMarker({ coordinates: lngLat(c) }, el), shown: false, on: null };
+    });
 
-    const cluster = (coordinates, features) => {
-      const el = document.createElement("button");
-      el.type = "button";
-      el.className = "map__cluster";
-      el.textContent = features.length;
-      el.addEventListener("click", () => map.update({ location: { center: coordinates, zoom: map.zoom + 2, duration: 400 } }));
-      return new YMapMarker({ coordinates }, el);
-    };
-
-    clusterer = new YMapClusterer({ method: clusterByGrid({ gridSize: 64 }), features: visible(), marker, cluster });
-    map.addChild(clusterer);
+    render();
     select(activeId);
   }).catch((e) => console.error("map", e));
 })();

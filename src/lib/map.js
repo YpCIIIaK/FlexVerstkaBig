@@ -14,13 +14,6 @@
   const CITIES = { "Алматы": [76.9286, 43.238], "Астана": [71.4304, 51.1282], "Шымкент": [69.596, 42.3417] };
   let city = root.querySelector(".select__option.is-selected").textContent.trim();
 
-  const openStatus = (hours) => {
-    const m = hours.match(/(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/);
-    if (!m) return hours;
-    const mins = new Date().getHours() * 60 + new Date().getMinutes();
-    return mins >= m[1] * 60 + +m[2] && mins < m[3] * 60 + +m[4] ? (/^\/kz(\/|$)/.test(location.pathname) ? "Ашық" : "Открыто") : (/^\/kz(\/|$)/.test(location.pathname) ? "Жабық" : "Закрыто");
-  };
-
   let activeId = (cards.find((c) => c.classList.contains("is-active")) || cards[0]).dataset.store;
   let map = null;
   const points = {};
@@ -62,7 +55,7 @@
     tooltip.hidden = false;
     tooltip.querySelector("[data-tooltip-name]").textContent = text(card, ".store__name");
     tooltip.querySelector("[data-tooltip-address]").textContent = text(card, ".store__address");
-    const meta = [text(card, ".store__distance"), openStatus(text(card, ".store__hours"))].filter(Boolean).join(" • ");
+    const meta = [text(card, ".store__distance"), text(card, ".store__hours")].filter(Boolean).join(" • ");
     tooltip.querySelector("[data-tooltip-meta]").textContent = meta;
     tooltip.querySelector("[data-tooltip-meta]").hidden = !meta;
     paint();

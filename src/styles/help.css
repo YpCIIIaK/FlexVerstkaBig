@@ -321,11 +321,12 @@
   width: calc(100% + 24 * var(--wm));
   border-bottom: 1px solid var(--w-10);
   text-align: left;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .store:hover { background-color: var(--w-04); }
 .store.is-active { background-color: rgba(160, 93, 218, 0.12); }
+li:not(:first-child) > .store:hover { box-shadow: 0 calc(-1 * var(--store-gap)) 0 var(--w-04); }
 li:not(:first-child) > .store.is-active { box-shadow: 0 calc(-1 * var(--store-gap)) 0 rgba(160, 93, 218, 0.12); }
 
 .store__name {

@@ -1225,6 +1225,11 @@
 
   const langUrl = (lang) => {
     const parts = location.pathname.split("/").filter(Boolean);
+    if (["referral-rules", "starter-kit-rules"].includes(parts[0])) {
+      const docKz = parts[1] === "kz";
+      if ((lang === "kz") === docKz) return null;
+      return "/" + parts[0] + "/" + (lang === "kz" ? "kz/" : "") + location.search;
+    }
     const isKz = parts[0] === "kz";
     const rest = isKz ? parts.slice(1) : parts;
     let file = rest.length === 1 ? rest[0].replace(/\.html$/, "") : (rest.length ? null : "");

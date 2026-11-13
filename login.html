@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32.png?v=1" />
+  <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png?v=1" />
+  <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+  <meta name="description" content="Вход и регистрация в личном кабинете FLEX по номеру телефона." />
+  <title>Авторизация/Регистрация — Flex</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/tt-norms-pro-450.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/tt-norms-pro-700.woff2" crossorigin />
+
+  <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
+  <link rel="stylesheet" href="/src/styles/main.css?v=276" />
+</head>
+<body>
+
+  <main class="auth">
+    <button class="auth__lang" type="button" aria-label="Язык: русский">
+      <img src="/assets/images/globe.svg" alt="" width="20" height="20" />
+      RU
+    </button>
+
+    <div class="blobs" aria-hidden="true">
+      <div class="blob blob--purple"></div>
+      <div class="blob blob--blue"></div>
+    </div>
+
+    <aside class="auth__aside">
+      <div class="auth__logo">
+        <img src="/assets/logo/logo.svg" alt="Flex" width="115" height="26" />
+      </div>
+
+      <p class="auth__disclaimer">
+        Доступ к веб-сайту разрешен исключительно для резидентов Республики Казахстан, достигших 21 года и старше, являющихся потребителями табачной и (или) никотинсодержащей продукции<br /><br />
+        Продолжая просмотр страниц сайта, вы подтверждаете, что ознакомлены и согласны с Условиями использования сайта и Политикой использования файлов Cookie.
+      </p>
+
+      <ul class="auth__docs">
+        <li><a class="auth__doc" href="/terms/" target="_blank" rel="noopener">Условия использования сайта</a></li>
+        <li><a class="auth__doc" href="/privacy/" target="_blank" rel="noopener">Политика конфиденциальности</a></li>
+        <li><a class="auth__doc" href="/cookie/" target="_blank" rel="noopener">Политика файлов Cookie</a></li>
+        <li><a class="auth__doc" href="/consent/" target="_blank" rel="noopener">Согласие на сбор, обработку и хранение перс.данных</a></li>
+      </ul>
+    </aside>
+
+    <section class="auth__panel">
+      <form class="auth__form" data-auth-form novalidate>
+        <header class="auth__head">
+          <h1 class="auth__title">Авторизация/Регистрация</h1>
+          <p class="auth__lead">Введите номер телефона. Мы отправим код подтверждения</p>
+        </header>
+
+        <div class="auth__fields">
+          <label class="field" data-field>
+            <span class="field__label">Номер телефона</span>
+            <input class="field__input" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                   placeholder="+7 (___) ___-__-__" aria-describedby="phone-error" data-phone />
+            <span class="field__error" id="phone-error" data-field-error hidden>Неверный формат номера телефона</span>
+          </label>
+
+          <div class="alert" role="alert" data-auth-alert hidden>
+            <img class="alert__icon" src="/assets/images/alert-circle.svg" alt="" width="20" height="20" />
+            <p class="alert__text" data-auth-alert-text>Не удалось отправить СМС. Попробуйте через 5 минут.</p>
+          </div>
+
+          <button class="button" type="submit" data-auth-submit disabled>Получить код</button>
+        </div>
+
+        <p class="auth__consent">Нажимая кнопку, вы соглашаетесь с <a href="/privacy/" target="_blank" rel="noopener">Политикой конфиденциальности</a></p>
+      </form>
+
+      <form class="auth__form" data-code-form novalidate hidden>
+        <header class="auth__head">
+          <h2 class="auth__title">Введите код</h2>
+          <p class="auth__lead">Код отправлен на номер <span data-code-phone>+7 ••• ••• •• 00</span></p>
+        </header>
+
+        <div class="auth__fields">
+          <fieldset class="code">
+            <legend class="code__label">Код подтверждения</legend>
+            <div class="code__digits" data-code-digits>
+              <input class="code__digit" type="text" inputmode="numeric" maxlength="1" autocomplete="one-time-code" aria-label="Цифра 1" />
+              <input class="code__digit" type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Цифра 2" />
+              <input class="code__digit" type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Цифра 3" />
+              <input class="code__digit" type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Цифра 4" />
+              <input class="code__digit" type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Цифра 5" />
+              <input class="code__digit" type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Цифра 6" />
+            </div>
+            <p class="code__error" data-code-error hidden></p>
+          </fieldset>
+
+          <div class="alert" role="alert" data-code-alert hidden>
+            <img class="alert__icon" src="/assets/images/alert-triangle.svg" alt="" width="20" height="20" />
+            <p class="alert__text">Произошла ошибка на сервере. Попробуйте ещё раз.</p>
+          </div>
+
+          <button class="button" type="submit" data-code-submit disabled>Продолжить</button>
+        </div>
+
+        <div class="auth__actions">
+          <button class="auth__resend" type="button" data-resend disabled>Отправить код повторно<span data-resend-timer> (через 59 сек)</span></button>
+          <button class="auth__change" type="button" data-change-phone>Изменить номер телефона</button>
+        </div>
+      </form>
+
+      <form class="auth__form" data-iin-form novalidate hidden>
+        <header class="auth__head">
+          <h2 class="auth__title">Завершите регистрацию</h2>
+          <p class="auth__lead">Чтобы создать личный кабинет, укажите ИИН.</p>
+        </header>
+
+        <div class="auth__fields">
+          <label class="field" data-iin-field>
+            <span class="field__label">ИИН</span>
+            <input class="field__input field__input--muted" type="text" name="iin" inputmode="numeric" maxlength="12" autocomplete="off"
+                   placeholder="Введите ИИН" aria-describedby="iin-error" data-iin />
+            <span class="field__error field__error--md" id="iin-error" data-iin-error hidden>ИИН введён некорректно</span>
+          </label>
+
+          <button class="button" type="submit" data-iin-submit disabled>Зарегистрироваться</button>
+        </div>
+      </form>
+
+      <div class="auth__form auth__complete" data-complete hidden>
+        <header class="auth__head">
+          <h2 class="auth__title">Личный кабинет создан</h2>
+          <p class="auth__lead">Ваш аккаунт FLEX создан. Теперь вы можете перейти на сайт.</p>
+        </header>
+
+        <a class="button" href="/" data-complete-link>Перейти в FLEX</a>
+        <img class="loader__spinner" src="/assets/images/loader.svg" alt="Переходим на сайт" width="100" height="100" role="status" data-complete-spinner hidden />
+      </div>
+
+      <div class="auth__progress" data-login-progress hidden>
+        <img class="loader__spinner" src="/assets/images/loader.svg" alt="" width="100" height="100" />
+        <p class="auth__progress-text" role="status">Выполняем вход…</p>
+      </div>
+
+      <footer class="auth__contacts">
+        <p class="auth__contacts-text">Если у вас есть вопросы свяжитесь с нами:</p>
+        <div class="auth__socials">
+          <a class="auth__social" href="https://t.me/Myflexkzbot" target="_blank" rel="noopener" aria-label="Telegram"><svg width="52" height="52" aria-hidden="true" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_445_6489)"><path d="M52 26C52 11.6406 40.3594 0 26 0C11.6406 0 0 11.6406 0 26C0 40.3594 11.6406 52 26 52C40.3594 52 52 40.3594 52 26Z" fill="white" fill-opacity="0.05"/><path d="M36.9933 15.8266C36.7029 15.5151 36.3206 15.3044 35.9021 15.2253C35.4836 15.1461 35.0508 15.2026 34.6667 15.3866L13.3333 23.5466C12.1267 24.0066 12 24.7133 12 25.0933C12 25.4733 12.1333 26.1666 13.3333 26.5533L17.74 27.8199L20.12 34.6133C20.2422 35.0561 20.5015 35.4489 20.8609 35.7352C21.2202 36.0215 21.661 36.1865 22.12 36.2066C22.7227 36.1961 23.299 35.9579 23.7333 35.5399L26.4 33.0799L30.2933 36.2199L30.3467 36.2599C30.7614 36.6007 31.2769 36.7952 31.8133 36.8133C32.3109 36.7976 32.7864 36.604 33.1534 36.2676C33.5204 35.9312 33.7545 35.4743 33.8133 34.9799L37.3333 17.6733C37.4179 17.3588 37.4301 17.0292 37.3689 16.7093C37.3077 16.3895 37.1747 16.0876 36.98 15.8266M25.0933 31.9999L22.7933 34.1133L23.6133 30.7799L25.0933 31.9999ZM27.3333 23.5266L22.48 28.6666C22.3777 28.773 22.3043 28.9038 22.2667 29.0466L21.3333 32.8399L19.4733 27.5066L27.3333 23.5266ZM32 21.0999C32.1387 20.9523 32.2213 20.7608 32.2334 20.5586C32.2456 20.3565 32.1866 20.1564 32.0667 19.9933C31.9446 19.8315 31.7693 19.718 31.5717 19.6729C31.3741 19.6277 31.1669 19.6538 30.9867 19.7466L18.3333 26.1933L14.2267 25.0199L35.26 17.0199C35.3672 16.9718 35.4826 16.9446 35.6 16.9399H35.6667C35.7059 17.0749 35.7059 17.2183 35.6667 17.3533L32.1667 34.6266C32.1667 34.7333 32.0533 35.0799 31.86 35.0799C31.7085 35.0607 31.5666 34.9956 31.4533 34.8933L26.9667 31.2799V31.2399L24.4133 29.1866L32 21.0999Z" fill="white" fill-opacity="0.5"/></g><defs><clipPath id="clip0_445_6489"><rect width="52" height="52" fill="white" fill-opacity="0.5"/></clipPath></defs></svg></a>
+          <a class="auth__social" href="tel:7707" aria-label="Позвонить 7707"><img src="/assets/images/call-icon.svg?v=3" alt="" width="52" height="52" /></a>
+        </div>
+      </footer>
+
+      <div class="loader" data-loader hidden>
+        <img class="loader__spinner" src="/assets/images/loader.svg" alt="Загрузка" width="100" height="100" role="status" />
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/src/lib/main.js?v=99"></script>
+  <script src="/src/lib/api.js?v=14"></script>
+</body>
+</html>

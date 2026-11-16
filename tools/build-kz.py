@@ -300,7 +300,7 @@ CYR = re.compile(r"[А-Яа-яЁё]")
 KZ_ONLY = re.compile(r"[ӘәҒғҚқҢңӨөҰұҮүҺһІі]")
 
 
-KZ_DOCS = ("privacy/",)
+KZ_DOCS = ("privacy/", "terms/", "cookie/", "consent/")
 
 
 def doc_article(slug):
@@ -309,7 +309,7 @@ def doc_article(slug):
 
 
 def build_docs():
-    for slug in ("privacy",):
+    for slug in ("privacy", "terms", "cookie", "consent"):
         process(f"{slug}/index.html", f"{slug}/index.html", doc_article(slug))
     for slug in ("referral-rules", "starter-kit-rules"):
         cur = open(os.path.join(ROOT, slug, "kz", "index.html"), encoding="utf-8").read()

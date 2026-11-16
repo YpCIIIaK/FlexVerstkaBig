@@ -1276,7 +1276,7 @@
     });
   };
 
-  const KZ_PAGES = ["", "about", "news", "catalog", "stick", "device", "faiim", "starter-kit", "referral", "404", "account", "favorites", "settings", "login", "privacy", "catalog/stiki", "catalog/ustroystva", "news/flagship-almaty", "news/flex-spekto", "starter-set"];
+  const KZ_PAGES = ["", "about", "news", "catalog", "stick", "device", "faiim", "starter-kit", "referral", "404", "account", "favorites", "settings", "login", "privacy", "terms", "cookie", "consent", "catalog/stiki", "catalog/ustroystva", "news/flagship-almaty", "news/flex-spekto", "starter-set"];
 
   const langUrl = (lang) => {
     const parts = location.pathname.split("/").filter(Boolean);

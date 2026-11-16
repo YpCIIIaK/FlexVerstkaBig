@@ -16,6 +16,7 @@ RewriteRule ^ https://myflex.kz%{REQUEST_URI} [R=301,L]
 
 RewriteRule ^api/(schema\.sql|setup\.php)$ - [F,L]
 RewriteRule ^stub(/|$) - [F,L]
+RewriteRule ^(kz/)?news(/.*|.html)?$ /$1 [R=302,L]
 RewriteRule ^api/local/(.*)$ api/local.php?r=$1 [QSA,L]
 RewriteRule ^api/v1/(.*)$ api/proxy.php?path=$1 [QSA,L]
 

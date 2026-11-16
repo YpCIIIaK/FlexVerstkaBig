@@ -68,7 +68,10 @@ def main():
     t = sub(t, r'            </div>\n          </div>\n          <a class="button button--ghost stick-info__cta" href="/starter-kit">[^<]*</a>\n',
             "            </div>\n" + NOTE + "          </div>\n" + CTA)
     t = sub(t, r'(        <div class="stick-info__bottom">\n)', r"\g<0>" if False else '        <div class="stick-info__bottom">\n' + PRICE)
-    t = sub(t, r'    <section class="stick-benefits".*?    </section>\n(?=\s*<script type="application/json" id="stick-data">)', DESC)
+    stick = open("stick.html", encoding="utf-8").read()
+    devices = re.search(r'    <section class="stick-devices" aria-labelledby="devices-title">.*?\n    </section>\n', stick, re.S).group(0)
+    flavours = re.search(r'    <section class="stick-devices" aria-labelledby="device-flavours-title">.*?\n    </section>\n', t, re.S).group(0)
+    t = sub(t, r'    <section class="stick-benefits".*?(?=    <section class="faq stick-faq")', DESC + "\n" + flavours + "\n" + devices + "\n")
     t = t.replace("header__link--catalog is-current", "header__link--catalog")
     m = re.search(r'(<script type="application/json" id="stick-data">)(.*?)(</script>)', t, re.S)
     data = json.loads(m.group(2))

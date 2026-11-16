@@ -8,11 +8,22 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = [
     "index.html", "about.html", "catalog.html", "stick.html", "device.html", "faiim.html",
     "starter-kit.html", "referral.html", "404.html", "account.html", "favorites.html",
-    "settings.html", "login.html", "news.html", "news/flagship-almaty.html", "news/flex-spekto.html",
+    "settings.html", "login.html", "news.html", "news/flagship-almaty.html", "news/flex-spekto.html", "starter-set.html",
 ]
 DOC_DIRS = ("terms/", "privacy/", "cookie/", "consent/", "referral-rules/", "starter-kit-rules/")
 
 T = {
+    'Купить сейчас': 'Қазір сатып алу',
+    'В корзину': 'Себетке',
+    "Стартовый набор для знакомства с FLEX": "FLEX-пен танысуға арналған бастапқы жиынтық",
+    "Стартовый набор для знакомства с FLEX — Flex": "FLEX-пен танысуға арналған бастапқы жиынтық — Flex",
+    "Набор включает в себя устройство FLEX и пять пачек стиков FAIIM": "Жиынтыққа FLEX құрылғысы және FAIIM стиктерінің бес қорабы кіреді",
+    "Набор доступен только для первой покупки": "Жиынтық тек алғашқы сатып алу үшін қолжетімді",
+    "Доступный FAIIM в наборе:": "Жиынтықтағы қолжетімді FAIIM:",
+    "4 зафиксированных – PURPLE MIX, SUNSHINE MIX, YELLOW MIX, SKYGREEN, 5 на выбор": "4 тұрақты – PURPLE MIX, SUNSHINE MIX, YELLOW MIX, SKYGREEN, 5-сі таңдау бойынша",
+    "Набор включает в себя": "Жиынтыққа кіреді",
+    "FLEX – система нагревания табака": "FLEX – темекіні қыздыру жүйесі",
+    "Дополнительный FAIIM по выбору из ассортимента": "Ассортименттен таңдау бойынша қосымша FAIIM",
     'Первый в мире флагманский магазин': 'Әлемдегі алғашқы флагмандық дүкен',
     'В этой категории пока нет новостей': 'Бұл санатта әзірге жаңалықтар жоқ',
     '16 ноября 2026': '16 қараша 2026',

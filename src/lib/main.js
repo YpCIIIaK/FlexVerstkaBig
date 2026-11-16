@@ -1276,7 +1276,7 @@
     });
   };
 
-  const KZ_PAGES = ["", "about", "news", "catalog", "stick", "device", "faiim", "starter-kit", "referral", "404", "account", "favorites", "settings", "login", "privacy", "catalog/stiki", "catalog/ustroystva", "news/flagship-almaty", "news/flex-spekto"];
+  const KZ_PAGES = ["", "about", "news", "catalog", "stick", "device", "faiim", "starter-kit", "referral", "404", "account", "favorites", "settings", "login", "privacy", "catalog/stiki", "catalog/ustroystva", "news/flagship-almaty", "news/flex-spekto", "starter-set"];
 
   const langUrl = (lang) => {
     const parts = location.pathname.split("/").filter(Boolean);
@@ -1775,6 +1775,9 @@
   initCatalog();
   initNews();
   initNewsGallery();
+  document.querySelectorAll("[data-set-fav]").forEach((btn) => btn.addEventListener("click", () => {
+    btn.setAttribute("aria-pressed", String(btn.getAttribute("aria-pressed") !== "true"));
+  }));
   initCopy();
   initHome();
   initShowcase();

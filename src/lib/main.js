@@ -968,7 +968,6 @@
       const matching = cards.filter((c) => filter === "all" || c.dataset.category === filter);
       cards.forEach((c) => { c.hidden = true; });
       matching.forEach((c, i) => { c.hidden = i >= limit; });
-      more.hidden = matching.length <= limit;
       empty.hidden = matching.length > 0;
     };
 

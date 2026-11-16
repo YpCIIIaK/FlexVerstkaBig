@@ -119,7 +119,7 @@
   display: flex;
   flex-direction: column;
   gap: calc(40 * var(--wm));
-  padding: calc(80 * var(--wm)) calc(40 * var(--wm)) 0;
+  padding: calc(120 * var(--wm)) calc(40 * var(--wm)) 0;
 }
 
 .set-desc__card {
@@ -191,6 +191,8 @@
 
   .set-page { --set-k: 0px; }
 
+  .set-page .stick-devices + .stick-devices { padding-top: 0; }
+
   .set-page .stick-info { gap: calc(24 * var(--wm)); }
 
   .set-cta { gap: calc(8 * var(--wm)); }
@@ -202,7 +204,7 @@
 
   .set-desc {
     gap: calc(24 * var(--wm));
-    padding: calc(64 * var(--wm)) calc(16 * var(--wm)) calc(48 * var(--wm));
+    padding: 0 calc(16 * var(--wm));
   }
 
   .set-desc .section-title {

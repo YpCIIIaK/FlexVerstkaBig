@@ -14,7 +14,9 @@
   const CITIES = { "Алматы": [76.9286, 43.238], "Астана": [71.4304, 51.1282], "Шымкент": [69.596, 42.3417] };
   let city = root.querySelector(".select__option.is-selected").textContent.trim();
 
-  let activeId = (cards.find((c) => c.classList.contains("is-active")) || cards[0]).dataset.store;
+  const wanted = cards.find((c) => c.dataset.store === new URLSearchParams(location.search).get("store"));
+  if (wanted) cards.forEach((c) => c.classList.toggle("is-active", c === wanted));
+  let activeId = (wanted || cards.find((c) => c.classList.contains("is-active")) || cards[0]).dataset.store;
   let map = null;
   const points = {};
 

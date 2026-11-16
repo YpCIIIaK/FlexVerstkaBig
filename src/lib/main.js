@@ -953,6 +953,62 @@
     }));
   };
 
+  const initNews = () => {
+    const root = document.querySelector("[data-news-page]");
+    if (!root) return;
+    const cards = [...root.querySelectorAll("[data-news]")];
+    const tabs = [...root.querySelectorAll("[data-news-tabs] [data-filter]")];
+    const more = root.querySelector("[data-news-more]");
+    const empty = root.querySelector("[data-news-empty]");
+    const PAGE = 6;
+    let filter = "all";
+    let limit = PAGE;
+
+    const render = () => {
+      const matching = cards.filter((c) => filter === "all" || c.dataset.category === filter);
+      cards.forEach((c) => { c.hidden = true; });
+      matching.forEach((c, i) => { c.hidden = i >= limit; });
+      more.hidden = matching.length <= limit;
+      empty.hidden = matching.length > 0;
+    };
+
+    tabs.forEach((tab) => tab.addEventListener("click", () => {
+      filter = tab.dataset.filter;
+      limit = PAGE;
+      tabs.forEach((t) => {
+        t.classList.toggle("is-active", t === tab);
+        t.setAttribute("aria-selected", String(t === tab));
+      });
+      render();
+    }));
+
+    more.addEventListener("click", () => {
+      limit += PAGE;
+      render();
+    });
+
+    render();
+  };
+
+  const initNewsGallery = () => {
+    const el = document.querySelector("[data-news-gallery]");
+    if (!el || !window.Swiper) return;
+    const box = el.parentElement;
+    new Swiper(el, {
+      rewind: true,
+      speed: 500,
+      grabCursor: true,
+      navigation: { prevEl: box.querySelector("[data-news-prev]"), nextEl: box.querySelector("[data-news-next]") },
+      pagination: {
+        el: box.querySelector("[data-news-dots]"),
+        clickable: true,
+        bulletClass: "stick-gallery__dot",
+        bulletActiveClass: "is-active",
+        bulletElement: "button",
+      },
+    });
+  };
+
   const initCatalog = () => {
     const root = document.querySelector("[data-catalog]");
     if (!root) return;
@@ -1221,7 +1277,7 @@
     });
   };
 
-  const KZ_PAGES = ["", "about", "catalog", "stick", "device", "faiim", "starter-kit", "referral", "404", "account", "favorites", "settings", "login", "privacy"];
+  const KZ_PAGES = ["", "about", "news", "catalog", "stick", "device", "faiim", "starter-kit", "referral", "404", "account", "favorites", "settings", "login", "privacy", "catalog/stiki", "catalog/ustroystva", "news/flagship-almaty", "news/flex-spekto"];
 
   const langUrl = (lang) => {
     const parts = location.pathname.split("/").filter(Boolean);
@@ -1232,7 +1288,7 @@
     }
     const isKz = parts[0] === "kz";
     const rest = isKz ? parts.slice(1) : parts;
-    let file = rest.length === 1 ? rest[0].replace(/\.html$/, "") : (rest.length ? null : "");
+    let file = rest.join("/").replace(/\.html$/, "");
     if (file === "index") file = "";
     if (lang === "kz") {
       if (isKz) return null;
@@ -1718,6 +1774,8 @@
   initHeaderMenus();
   initStick();
   initCatalog();
+  initNews();
+  initNewsGallery();
   initCopy();
   initHome();
   initShowcase();

@@ -38,9 +38,11 @@ def article_main(a):
         + (' fetchpriority="high"' if k == 0 else ' loading="lazy"') + " /></div>\n"
         for k, src in enumerate(a["slides"])
     )
-    nav = """        <button class="news-article__arrow news-article__arrow--prev" type="button" aria-label="Предыдущее фото" data-news-prev><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 15L7.5 10L12.5 5" /></svg></button>
+    nav = """        <div class="news-article__nav">
+        <button class="news-article__arrow news-article__arrow--prev" type="button" aria-label="Предыдущее фото" data-news-prev><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 15L7.5 10L12.5 5" /></svg></button>
         <button class="news-article__arrow news-article__arrow--next" type="button" aria-label="Следующее фото" data-news-next><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 15L12.5 10L7.5 5" /></svg></button>
         <div class="stick-gallery__dots news-article__dots" data-news-dots></div>
+        </div>
 """ if len(a["slides"]) > 1 else ""
     body = ('\n      <div class="news-article__body">\n' + a["body"] + "      </div>\n") if a["body"] else ""
     also = "".join(card(i, NEWS[i - 1], "li", "h3") for i in a["also"])

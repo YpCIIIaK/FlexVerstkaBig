@@ -362,3 +362,11 @@
 
   .search-block__goods .product-card__info { padding: calc(8 * var(--wm)) 0 0; }
 }
+
+.search-field__input { caret-color: var(--white); }
+
+.mini-search { animation: mini-search-in 0.25s ease; }
+
+@keyframes mini-search-in {
+  from { opacity: 0; }
+}

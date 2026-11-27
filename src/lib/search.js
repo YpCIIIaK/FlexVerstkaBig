@@ -132,9 +132,12 @@
   const open = () => {
     panel.hidden = false;
     backdrop.hidden = false;
-    input.focus();
-    input.select();
     if (input.value) run();
+    setTimeout(() => {
+      input.focus();
+      const end = input.value.length;
+      input.setSelectionRange(end, end);
+    }, 260);
   };
   const close = () => { panel.hidden = true; backdrop.hidden = true; };
 

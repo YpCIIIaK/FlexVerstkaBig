@@ -11,7 +11,7 @@
   <meta name="description" content="Каталог FLEX: устройства, стики FAIIM и стартовые наборы." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="/src/styles/main.css?v=294" />
+  <link rel="stylesheet" href="/src/styles/main.css?v=296" />
   <link rel="stylesheet" href="/assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -97,6 +97,7 @@
     </a>
 
     <div class="header__actions">
+      <a class="header__address" href="/kz/catalog?address" data-address-pill hidden><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 18s6-5.2 6-10A6 6 0 0 0 4 8c0 4.8 6 10 6 10Z" /><circle cx="10" cy="8" r="2.25" /></svg><span data-address-pill-text></span><svg class="header__address-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg></a>
       <div class="header__icons">
         <a class="header__icon" href="/kz/favorites" aria-label="Таңдаулылар"><img src="/assets/images/heart.svg" alt="" width="20" height="20" /></a>
         <a class="header__icon header__cart" href="#" aria-label="Себет"><img src="/assets/images/cart.svg" alt="" width="20" height="20" /><span class="header__badge" data-cart-count hidden>0</span></a>
@@ -470,6 +471,33 @@
     <div class="catalog__more">
       <button class="button button--ghost" type="button" data-catalog-more>Тағы көрсету</button>
     </div>
+
+    <div class="address-modal" role="dialog" aria-modal="true" aria-labelledby="address-title" data-address-modal hidden>
+      <div class="address-modal__backdrop" data-address-close></div>
+      <form class="address-modal__box" novalidate data-address-form>
+        <button class="address-modal__close" type="button" aria-label="Жабу" data-address-close><img src="/assets/images/close.svg" alt="" width="20" height="20" /></button>
+        <header class="address-modal__head" data-address-state="ask">
+          <h2 class="address-modal__title" id="address-title">Мекенжайыңызды көрсетіңіз</h2>
+          <p class="address-modal__lead">Біз ең жақын FLEX дүкенін анықтап, қолда бар тауарларды көрсетеміз</p>
+        </header>
+        <header class="address-modal__head" data-address-state="nostore" hidden>
+          <h2 class="address-modal__title">Дүкенді табу мүмкін болмады</h2>
+          <p class="address-modal__lead">Көрсетілген мекенжай үшін қолжетімді FLEX дүкені әлі табылмады. Басқа мекенжайды таңдап көріңіз</p>
+        </header>
+        <div class="address-modal__field">
+          <label class="address-modal__label" for="address-input">Сіздің мекенжайыңыз</label>
+          <div class="address-modal__control" data-address-field>
+            <svg class="address-modal__pin" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 18s6-5.2 6-10A6 6 0 0 0 4 8c0 4.8 6 10 6 10Z" /><circle cx="10" cy="8" r="2.25" /></svg>
+            <input class="address-modal__input" id="address-input" type="text" autocomplete="off" placeholder="Қала, көше, үй нөмірі" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="address-list" data-address-input />
+            <button class="address-modal__clear" type="button" aria-label="Тазалау" data-address-clear hidden><img src="/assets/images/close.svg" alt="" width="16" height="16" /></button>
+          </div>
+          <ul class="address-modal__list" id="address-list" role="listbox" data-address-list hidden></ul>
+          <p class="address-modal__error" data-address-error hidden>Мекенжай табылмады. Көше атауын немесе үй нөмірін тексеріңіз</p>
+        </div>
+        <button class="button address-modal__submit" type="submit" data-address-submit disabled>Тауарларды көрсету</button>
+        <span hidden data-address-change-text>Мекенжайды өзгерту</span>
+      </form>
+    </div>
   </main>
 
   <footer class="footer">
@@ -569,5 +597,6 @@
   <script src="/assets/vendor/lenis.min.js" defer></script>
   <script src="/assets/vendor/swiper/swiper-bundle.min.js" defer></script>
   <script src="/src/lib/main.js?v=112" defer></script>
+  <script src="/src/lib/address.js?v=1" defer></script>
 </body>
 </html>

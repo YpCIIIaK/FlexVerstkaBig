@@ -8,7 +8,7 @@
   const wait = () => new Promise((r) => setTimeout(r, 700));
   const fail = (status, code) => { throw { status, code, detail: "" }; };
 
-  const isNew = (channel, value) => (channel === "email" ? /^new/i.test(value) : /00$/.test(value));
+  const isNew = (channel, value) => !(channel === "email" ? /^user/i.test(value) : /01$/.test(value));
   const sendFails = (channel, value) => (channel === "email" ? /^fail/i.test(value) : /99$/.test(value));
   const taken = (channel, value) => (channel === "email" ? /^taken/i.test(value) : /11$/.test(value));
 

@@ -858,3 +858,5 @@
 
   .device-item__img { height: calc(160 * var(--wm)); }
 }
+
+.device-add:only-child { grid-column: 1 / -1; }

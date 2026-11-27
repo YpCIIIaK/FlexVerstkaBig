@@ -641,3 +641,7 @@
     line-height: calc(20 * var(--wm));
   }
 }
+
+.bento__card--main::after { display: none; }
+
+.bento__card--main .bento__bg { object-fit: contain; object-position: center bottom; }

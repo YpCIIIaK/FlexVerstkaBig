@@ -11,7 +11,7 @@
   <meta name="description" content="Каталог FLEX: устройства, стики FAIIM и стартовые наборы." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="/src/styles/main.css?v=293" />
+  <link rel="stylesheet" href="/src/styles/main.css?v=294" />
   <link rel="stylesheet" href="/assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -193,11 +193,103 @@
         <button class="tabs__btn is-active" type="button" role="tab" aria-selected="true" data-filter="all">Барлығы</button>
         <button class="tabs__btn" type="button" role="tab" aria-selected="false" data-filter="sticks">Стиктер</button>
         <button class="tabs__btn" type="button" role="tab" aria-selected="false" data-filter="devices">Құрылғылар</button>
+        <button class="tabs__btn" type="button" role="tab" aria-selected="false" data-filter="sets">Жиынтықтар</button>
+      </div>
+
+      <div class="catalog-bar__controls">
+        <div class="catalog-filter" data-filter-root>
+          <button class="catalog-control" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="catalog-filter" data-filter-trigger>
+            Сүзгі
+            <span class="catalog-control__badge" data-filter-badge hidden></span>
+          </button>
+
+          <div class="filter-backdrop" data-filter-backdrop hidden></div>
+          <form class="filter-panel" id="catalog-filter" aria-label="Сүзгілер" data-filter-panel hidden>
+            <div class="filter-panel__head">
+              <h2 class="filter-panel__title">Сүзгілер <span class="catalog-control__badge filter-panel__count" data-filter-count hidden></span></h2>
+              <button class="filter-panel__reset" type="reset">Тазалау</button>
+            </div>
+
+            <fieldset class="filter-group">
+              <legend class="filter-group__title">Ноталар</legend>
+            <label class="filter-opt">
+              <input class="filter-opt__input" type="checkbox" name="notes" value="fruit" />
+              <span class="filter-opt__label">Жемісті</span>
+              <span class="filter-opt__mark" aria-hidden="true"></span>
+            </label>
+            <label class="filter-opt">
+              <input class="filter-opt__input" type="checkbox" name="notes" value="citrus" />
+              <span class="filter-opt__label">Цитрусты</span>
+              <span class="filter-opt__mark" aria-hidden="true"></span>
+            </label>
+            <label class="filter-opt">
+              <input class="filter-opt__input" type="checkbox" name="notes" value="berry" />
+              <span class="filter-opt__label">Жидекті</span>
+              <span class="filter-opt__mark" aria-hidden="true"></span>
+            </label>
+            <label class="filter-opt">
+              <input class="filter-opt__input" type="checkbox" name="notes" value="spicy" />
+              <span class="filter-opt__label">Хош иісті</span>
+              <span class="filter-opt__mark" aria-hidden="true"></span>
+            </label>
+            </fieldset>
+
+            <fieldset class="filter-group">
+              <legend class="filter-group__title">Ментол</legend>
+            <label class="filter-opt">
+              <input class="filter-opt__input" type="radio" name="menthol" value="no" />
+              <span class="filter-opt__label">Ментолсыз</span>
+              <span class="filter-opt__mark" aria-hidden="true"></span>
+            </label>
+            <label class="filter-opt">
+              <input class="filter-opt__input" type="radio" name="menthol" value="yes" />
+              <span class="filter-opt__label">Ментолмен</span>
+              <span class="filter-opt__mark" aria-hidden="true"></span>
+            </label>
+            </fieldset>
+
+            <fieldset class="filter-group">
+              <legend class="filter-group__title">Капсула</legend>
+            <label class="filter-opt">
+              <input class="filter-opt__input" type="radio" name="capsule" value="yes" />
+              <span class="filter-opt__label">Бар</span>
+              <span class="filter-opt__mark" aria-hidden="true"></span>
+            </label>
+            <label class="filter-opt">
+              <input class="filter-opt__input" type="radio" name="capsule" value="no" />
+              <span class="filter-opt__label">Жоқ</span>
+              <span class="filter-opt__mark" aria-hidden="true"></span>
+            </label>
+            </fieldset>
+
+            <div class="filter-panel__foot">
+              <button class="button" type="submit" data-filter-apply>Тауарларды көрсету</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="select catalog-sort" data-select>
+          <button class="select__trigger catalog-control" type="button" aria-haspopup="listbox" aria-expanded="false" data-select-trigger>
+            <span data-select-value>Бағаның төмендеуі бойынша</span>
+            <svg class="catalog-sort__icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M5.25 3v12M5.25 3 2.5 5.75M5.25 3 8 5.75M12.75 15V3M12.75 15 10 12.25M12.75 15l2.75-2.75" /></svg>
+          </button>
+          <div class="select__menu sort-sheet" data-select-menu data-catalog-sort hidden>
+            <div class="sort-sheet__head">
+              <h2 class="sort-sheet__title">Сұрыптау</h2>
+              <button class="sort-sheet__close" type="button" aria-label="Жабу" data-select-close><img src="/assets/images/close.svg" alt="" width="20" height="20" /></button>
+            </div>
+            <ul class="sort-sheet__list" role="listbox" aria-label="Сұрыптау">
+            <li><button class="select__option" type="button" role="option" aria-selected="false" data-sort="alpha">Әліпби бойынша</button></li>
+            <li><button class="select__option is-selected" type="button" role="option" aria-selected="true" data-sort="price-desc">Бағаның төмендеуі бойынша</button></li>
+            <li><button class="select__option" type="button" role="option" aria-selected="false" data-sort="price-asc">Бағаның өсуі бойынша</button></li>
+          </ul>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="catalog-grid" data-catalog-grid>
-        <article class="product-card product-card--device" data-product data-category="devices" data-name="Фиолетовый Песок">
+        <article class="product-card product-card--device" data-product data-price="21990" data-category="devices" data-name="Фиолетовый Песок">
           <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
           </button>
@@ -215,9 +307,10 @@
           </div>
           <div class="product-card__info">
             <h3 class="product-card__title product-card__title--plain"><a href="/kz/device?color=violet">Күлгін Құм</a></h3>
+            <p class="product-card__price">21 990 ₸</p>
           </div>
         </article>
-        <article class="product-card product-card--device" data-product data-category="devices" data-name="Синий Металлик">
+        <article class="product-card product-card--device" data-product data-price="21990" data-category="devices" data-name="Синий Металлик">
           <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
           </button>
@@ -235,9 +328,10 @@
           </div>
           <div class="product-card__info">
             <h3 class="product-card__title product-card__title--plain"><a href="/kz/device?color=blue">Көк металлик</a></h3>
+            <p class="product-card__price">21 990 ₸</p>
           </div>
         </article>
-        <article class="product-card product-card--device" data-product data-category="devices" data-name="Серый Металлик">
+        <article class="product-card product-card--device" data-product data-price="21990" data-category="devices" data-name="Серый Металлик">
           <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
           </button>
@@ -255,12 +349,14 @@
           </div>
           <div class="product-card__info">
             <h3 class="product-card__title product-card__title--plain"><a href="/kz/device?color=gray">Сұр металлик</a></h3>
+            <p class="product-card__price">21 990 ₸</p>
           </div>
         </article>
-        <article class="product-card product-card--device" data-product data-category="devices" data-name="Бежевый Песок">
+        <article class="product-card product-card--device" data-stock="out" data-product data-price="21990" data-category="devices" data-name="Бежевый Песок">
           <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
           </button>
+          <span class="product-card__badge product-card__badge--stock">Қолда жоқ</span>
           <div class="product-card__gallery">
             <img class="product-card__img is-active" src="/assets/images/device-beige-002.webp" alt="Сарғыш құм" width="600" height="798" loading="lazy" />
             <img class="product-card__img" src="/assets/images/device-beige-003.webp" alt="Сарғыш құм" width="600" height="798" loading="lazy" />
@@ -275,12 +371,14 @@
           </div>
           <div class="product-card__info">
             <h3 class="product-card__title product-card__title--plain"><a href="/kz/device?color=beige">Сарғыш құм</a></h3>
+            <p class="product-card__price">21 990 ₸</p>
           </div>
         </article>
-        <article class="product-card" data-product data-category="sticks" data-name="Sunshine Mix" data-notes="fruit" data-menthol="no" data-capsule="yes">
+        <article class="product-card" data-product data-price="1290" data-category="sticks" data-name="Sunshine Mix" data-notes="fruit" data-menthol="no" data-capsule="yes">
           <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
           </button>
+          <span class="product-card__badge">Жаңалық</span>
           <div class="product-card__gallery">
             <img class="product-card__img is-active" src="/assets/images/sunshine-mix-1.webp?v=10" alt="Sunshine Mix" width="640" height="520" loading="lazy" />
             <img class="product-card__img" src="/assets/images/sunshine-mix-2.webp?v=10" alt="Sunshine Mix" width="640" height="520" loading="lazy" />
@@ -296,9 +394,10 @@
           <div class="product-card__info">
             <h3 class="product-card__title"><a href="/kz/stick?flavour=sunshine">Sunshine Mix</a></h3>
             <p class="product-card__text">Тропикалық жемістердің хош иісі бар темекі бленді және капсула</p>
+            <p class="product-card__price">1 290 ₸</p>
           </div>
         </article>
-        <article class="product-card" data-product data-category="sticks" data-name="Purple Mix" data-notes="berry" data-menthol="yes" data-capsule="yes">
+        <article class="product-card" data-product data-price="1290" data-category="sticks" data-name="Purple Mix" data-notes="berry" data-menthol="yes" data-capsule="yes">
           <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
           </button>
@@ -317,9 +416,10 @@
           <div class="product-card__info">
             <h3 class="product-card__title"><a href="/kz/stick?flavour=purple">Purple Mix</a></h3>
             <p class="product-card__text">Жидек ноталары бар темекі бленді және ментол капсуласы</p>
+            <p class="product-card__price">1 290 ₸</p>
           </div>
         </article>
-        <article class="product-card" data-product data-category="sticks" data-name="Yellow Mix" data-notes="fruit citrus" data-menthol="no" data-capsule="yes">
+        <article class="product-card" data-product data-price="1290" data-category="sticks" data-name="Yellow Mix" data-notes="fruit citrus" data-menthol="no" data-capsule="yes">
           <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
           </button>
@@ -338,9 +438,10 @@
           <div class="product-card__info">
             <h3 class="product-card__title"><a href="/kz/stick?flavour=yellow">Yellow Mix</a></h3>
             <p class="product-card__text">Жеміс ноталары бар темекі бленді және цитрус дәмі бар капсула</p>
+            <p class="product-card__price">1 290 ₸</p>
           </div>
         </article>
-        <article class="product-card" data-product data-category="sticks" data-name="Skygreen" data-notes="" data-menthol="yes" data-capsule="no">
+        <article class="product-card" data-product data-price="1290" data-category="sticks" data-name="Skygreen" data-notes="" data-menthol="yes" data-capsule="no">
           <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
           </button>
@@ -359,6 +460,20 @@
           <div class="product-card__info">
             <h3 class="product-card__title"><a href="/kz/stick?flavour=skygreen">Skygreen</a></h3>
             <p class="product-card__text">Жалбыз дәмі бар классикалық темекі бленді</p>
+            <p class="product-card__price">1 290 ₸</p>
+          </div>
+        </article>
+        <article class="product-card" data-product data-price="6900" data-category="sets" data-name="Стартовый набор FLEX">
+          <button class="product-card__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-fav>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
+          </button>
+          <div class="product-card__gallery">
+            <img class="product-card__img is-active" src="/assets/images/starter-kit.webp" alt="FLEX старттық жиынтық" width="320" height="260" loading="lazy" />
+          </div>
+          <div class="product-card__info">
+            <h3 class="product-card__title product-card__title--plain"><a href="/kz/starter-set">FLEX старттық жиынтық</a></h3>
+            <p class="product-card__text">FLEX құрылғысы және бес қорап FAIIM стигі</p>
+            <p class="product-card__price">6 900 ₸</p>
           </div>
         </article>
     </div>
@@ -466,6 +581,6 @@
 
   <script src="/assets/vendor/lenis.min.js" defer></script>
   <script src="/assets/vendor/swiper/swiper-bundle.min.js" defer></script>
-  <script src="/src/lib/main.js?v=111" defer></script>
+  <script src="/src/lib/main.js?v=112" defer></script>
 </body>
 </html>

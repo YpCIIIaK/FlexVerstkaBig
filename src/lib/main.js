@@ -1261,9 +1261,13 @@
     });
 
     root.querySelectorAll("[data-sort]").forEach((opt) => opt.addEventListener("click", () => {
-      const sorted = opt.dataset.sort === "alpha"
-        ? [...cards].sort((a, b) => a.dataset.name.localeCompare(b.dataset.name, "ru"))
-        : cards;
+      const price = (c) => Number(c.dataset.price) || 0;
+      const by = {
+        alpha: (a, b) => a.dataset.name.localeCompare(b.dataset.name, "ru"),
+        "price-desc": (a, b) => price(b) - price(a),
+        "price-asc": (a, b) => price(a) - price(b),
+      }[opt.dataset.sort];
+      const sorted = by ? [...cards].sort(by) : cards;
       sorted.forEach((c) => grid.appendChild(c));
       render();
     }));

@@ -279,3 +279,7 @@
     padding-bottom: calc(20 * var(--wm));
   }
 }
+
+@media (min-width: 768px) and (min-height: 821px) {
+  .device-price { margin-bottom: calc(16 * var(--wm)); }
+}

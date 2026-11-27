@@ -785,3 +785,75 @@
 
   .faq__help { padding: calc(10 * var(--wm)) calc(20 * var(--wm)); }
 }
+
+.stick-benefits--faiim .benefit { flex: 1 1 0; width: auto; }
+
+@media (max-width: 767px) {
+  .stick .stick-benefits--faiim {
+    gap: calc(24 * var(--wm));
+    padding: calc(64 * var(--wm)) calc(16 * var(--wm)) 0;
+  }
+
+  .stick .stick-benefits--faiim .section-title {
+    font-size: calc(28 * var(--wm));
+    line-height: calc(34 * var(--wm));
+  }
+
+  .stick-benefits--faiim .stick-benefits__row {
+    flex-direction: column;
+    gap: calc(12 * var(--wm));
+  }
+
+  .stick-benefits--faiim .benefit {
+    flex: none;
+    display: grid;
+    grid-template-columns: calc(48 * var(--wm)) 1fr;
+    gap: calc(12 * var(--wm)) calc(16 * var(--wm));
+    align-items: center;
+    min-height: 0;
+    padding: calc(24 * var(--wm)) calc(20 * var(--wm));
+  }
+
+  .stick-benefits--faiim .benefit__img {
+    width: calc(82 * var(--wm));
+    max-width: none;
+    height: calc(82 * var(--wm));
+    margin: calc(-28 * var(--wm)) calc(-17 * var(--wm));
+    border-radius: 0;
+    object-fit: contain;
+  }
+
+  .stick-benefits--faiim .benefit__title,
+  .stick-benefits--faiim .benefit__text { padding: 0; }
+
+  .stick-benefits--faiim .benefit__text {
+    grid-column: 2;
+    font-size: calc(16 * var(--wm));
+    line-height: calc(24 * var(--wm));
+    color: var(--w-80);
+  }
+}
+
+.stick-price { padding-bottom: 0; border-bottom: 0; }
+
+.stick:not(.device) .stick-info { justify-content: flex-start; gap: calc(32 * var(--wm)); }
+
+@media (max-width: 767px) {
+  .faq__head { align-items: center; }
+
+  .faq__head .faq__title { min-width: 0; }
+
+  .stick:not(.device) .stick-info { gap: calc(24 * var(--wm)); }
+
+  .stick-benefits--faiim + .stick-devices { padding-top: calc(64 * var(--wm)); }
+}
+
+@media (max-width: 767px) {
+  .faq__head .faq__help {
+    flex: none;
+    width: auto;
+    margin: 0;
+  }
+
+  .faq__head .faq__title { flex: 1 1 auto; }
+}

@@ -35,7 +35,7 @@
   const known = param === "filled" || (param !== "new" && json("flex_addresses", []).length > 0);
   const addresses = param === "filled" ? DEMO_ADDR : param === "new" ? [] : json("flex_addresses", []);
   const cards = param === "new" ? [] : param === "filled" ? DEMO_CARDS : json("flex_cards", []).length ? json("flex_cards", []) : DEMO_CARDS;
-  const user = known ? DEMO_USER : null;
+  const user = DEMO_USER;
 
   const $ = (s) => root.querySelector(s);
   const money = (n) => n.toLocaleString("ru-RU").replace(/ /g, " ") + " ₸";

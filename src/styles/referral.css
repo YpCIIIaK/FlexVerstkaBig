@@ -211,6 +211,14 @@
   }
 }
 
-.referral .steps-section { padding-top: 0; }
+.referral .steps-section { padding-top: calc(40 * var(--wm)); }
+
+@media (max-width: 767px) {
+  .referral .steps-section { padding-top: calc(64 * var(--wm)); }
+}
 
 .steps-section__button { align-self: flex-start; }
+
+@media (min-width: 768px) {
+  .referral .starter-hero__info .button { align-self: flex-start; }
+}

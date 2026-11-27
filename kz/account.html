@@ -277,7 +277,7 @@
       </header>
 
       <div class="modal__body">
-        <div class="field">
+        <div class="field" hidden>
           <label class="field__label" for="email-current">Ағымдағы email</label>
           <div class="field__box">
             <input class="field__input field__input--static field__input--locked" id="email-current" type="email" readonly data-email-current />
@@ -293,7 +293,7 @@
 
         <p class="account-card__note">
           <img src="/assets/images/info.svg" alt="" width="16" height="16" />
-          Жаңа мекенжайға алты таңбалы растау коды келеді.
+          Растау кодын жаңа email-ге жібереміз.
         </p>
       </div>
 
@@ -305,11 +305,12 @@
 
     <form class="modal__step" method="dialog" novalidate data-email-step="code" hidden>
       <header class="modal__head">
-        <h2 class="modal__title">Email растаңыз</h2>
+        <h2 class="modal__title">Email өзгерту</h2>
         <button class="modal__close" type="button" aria-label="Жабу" data-modal-close><img src="/assets/images/close.svg" alt="" width="24" height="24" /></button>
       </header>
 
       <div class="modal__body">
+        <p class="modal__lead">Код жіберілді: <span data-email-sent></span>.<br />Жаңа email-ді растау үшін оны енгізіңіз.</p>
         <fieldset class="otp">
           <legend class="field__label">Растау коды</legend>
           <div class="otp__digits" data-otp>
@@ -327,8 +328,9 @@
       </div>
 
       <div class="modal__actions">
-        <button class="button button--ghost" type="button" data-email-back>Артқа</button>
-        <button class="button" type="submit" data-email-confirm disabled>Растау</button>
+        <button class="button button--ghost" type="button" data-modal-close>Болдырмау</button>
+        <button class="button" type="submit" data-email-confirm disabled>Жалғастыру</button>
+        <button type="button" data-email-back hidden></button>
       </div>
     </form>
 
@@ -504,7 +506,7 @@
   <script src="/assets/vendor/lenis.min.js" defer></script>
   <script src="/assets/vendor/swiper/swiper-bundle.min.js" defer></script>
   <script src="/src/lib/address.js?v=1" defer></script>
-  <script src="/src/lib/main.js?v=114" defer></script>
+  <script src="/src/lib/main.js?v=115" defer></script>
   <script src="/src/lib/api.js?v=16" defer></script>
   <script src="/src/lib/profile.js?v=1" defer></script>
 </body>

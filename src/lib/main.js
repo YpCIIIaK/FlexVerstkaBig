@@ -575,6 +575,8 @@
       e.preventDefault();
       const v = newInput.value.trim();
       if (!isEmail(v) || v === current.value) { setError(true); newInput.focus(); return; }
+      const sent = modal.querySelector("[data-email-sent]");
+      if (sent) sent.textContent = v;
       newInput.value = v;
       modal.dispatchEvent(new CustomEvent("profile:email-request", { detail: { email: v } }));
       digits.forEach((d) => { d.value = ""; });

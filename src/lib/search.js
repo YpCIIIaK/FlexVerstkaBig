@@ -184,7 +184,21 @@
     more.hidden = items.length <= limit;
     more.querySelector("span").textContent = T.showAll(items.length);
     const grid = el.querySelector("[data-search-grid]");
-    const draw = (n) => { grid.innerHTML = items.slice(0, n).map(render).join(""); };
+    const cards = [...grid.querySelectorAll("[data-product]")];
+    const draw = (n) => {
+      if (cards.length) {
+        const names = items.map((p) => p.name);
+        cards.forEach((c) => { c.hidden = true; });
+        names.forEach((name, i) => {
+          const c = cards.find((x) => x.dataset.name === name);
+          if (!c) return;
+          c.hidden = i >= n;
+          grid.append(c);
+        });
+      } else {
+        grid.innerHTML = items.slice(0, n).map(render).join("");
+      }
+    };
     draw(limit);
     more.onclick = () => { draw(items.length); more.hidden = true; };
   };

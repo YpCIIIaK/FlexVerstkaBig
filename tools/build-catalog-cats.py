@@ -35,7 +35,21 @@ def build(base_dir, up_extra):
         open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(out)
 
 
+def sync_search(base_dir):
+    cat = open(os.path.join(ROOT, base_dir, "catalog.html"), encoding="utf-8").read()
+    path = os.path.join(ROOT, base_dir, "search.html")
+    if not os.path.exists(path):
+        return
+    cards = re.findall(r' {8}<article class="product-card.*?</article>\n', cat, flags=re.S)
+    cards = "".join(c.replace("<article ", "<article hidden ", 1) for c in cards)
+    s = open(path, encoding="utf-8").read()
+    s = re.sub(r'(<div class="catalog-grid search-block__goods" data-search-grid>\n).*?( {6}</div>)', lambda m: m.group(1) + cards + m.group(2), s, count=1, flags=re.S)
+    open(path, "w", encoding="utf-8").write(s)
+
+
 if __name__ == "__main__":
     build("", "")
+    sync_search("")
     if os.path.exists(os.path.join(ROOT, "kz", "catalog.html")):
         build("kz", "../")
+        sync_search("kz")

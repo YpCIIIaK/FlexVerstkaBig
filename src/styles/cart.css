@@ -583,3 +583,11 @@
 
   .co-grid--3 .field__input::placeholder { color: transparent; }
 }
+
+.co-summary {
+  display: flex;
+  flex-direction: column;
+  gap: calc(4 * var(--wm));
+}
+
+.co-summary[hidden] { display: none; }

@@ -48,7 +48,7 @@
     contactsForm.hidden = true;
     const sum = $("[data-co-contacts-summary]");
     sum.hidden = false;
-    sum.textContent = `${user.name} · ${user.phone} · ${user.email}`;
+    sum.innerHTML = [user.name, user.phone, user.email].filter(Boolean).map((v) => `<span>${esc(v)}</span>`).join("");
     const edit = $("[data-co-contacts-edit]");
     edit.hidden = false;
     edit.addEventListener("click", () => { contactsForm.hidden = false; sum.hidden = true; edit.hidden = true; });

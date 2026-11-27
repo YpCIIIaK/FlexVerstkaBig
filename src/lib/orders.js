@@ -1,9 +1,6 @@
 (function () {
   "use strict";
 
-  const root = document.querySelector("[data-orders]");
-  if (!root) return;
-
   const KZ = /^\/kz(\/|$)/.test(location.pathname);
   const T = KZ ? {
     order: "Тапсырыс №", online: "Онлайн", store: "Дүкенде сатып алу", total: "Тапсырыс сомасы", repeat: "Тапсырысты қайталау", receipt: "Чекті көрсету", more: "Толығырақ",
@@ -42,6 +39,11 @@
 
   const money = (n) => n.toLocaleString("ru-RU").replace(/ /g, " ") + " ₸";
   const date = (v) => new Date(v).toLocaleDateString(KZ ? "kk-KZ" : "ru-RU", { day: "numeric", month: "long", year: "numeric" }).replace(" г.", "");
+  const find = (id) => (read().length ? read() : DEMO).find((o) => o.id === id);
+  window.flexOrders = { T, P, money, date, find };
+
+  const root = document.querySelector("[data-orders]");
+  if (!root) return;
 
   const list = root.querySelector("[data-orders-list]");
   const empty = root.querySelector("[data-orders-empty]");
@@ -70,7 +72,7 @@
         <div class="order__actions">
           <button class="button button--ghost button--auto" type="button" data-order-repeat>${T.repeat}</button>
           <button class="button button--ghost button--auto" type="button" data-order-receipt>${T.receipt}</button>
-          <a class="button button--auto" href="#">${T.more}</a>
+          <a class="button button--auto" href="/order?id=${o.id}">${T.more}</a>
         </div>
       </footer>`;
     return el;

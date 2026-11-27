@@ -857,3 +857,35 @@
 
   .faq__head .faq__title { flex: 1 1 auto; }
 }
+
+.stick:not(.device) .stick-info__head { min-height: calc(260 * var(--wm)); }
+
+@media (min-width: 768px) and (min-aspect-ratio: 17/9) {
+  .stick .stick-info { gap: calc(20 * var(--wm)); }
+
+  .stick .stick-info__bottom { gap: calc(16 * var(--wm)); }
+
+  .stick .stick-info__head { gap: calc(10 * var(--wm)); }
+
+  .stick:not(.device) .stick-info__head { min-height: 0; }
+
+  .stick .stick-info__title {
+    font-size: calc(48 * var(--wm));
+    line-height: calc(52 * var(--wm));
+  }
+
+  .stick .device-price { margin-top: calc(8 * var(--wm)); padding-bottom: calc(16 * var(--wm)); }
+
+  .stick .device-price__value {
+    font-size: calc(32 * var(--wm));
+    line-height: calc(40 * var(--wm));
+  }
+}
+
+@media (min-width: 768px) and (min-aspect-ratio: 17/9) {
+  .stick:not(.device) .stick-info { gap: calc(20 * var(--wm)); }
+
+  .stick:not(.device) .stick-info__head { flex: none; }
+
+  .stick .stick-info__flavours { padding-bottom: calc(20 * var(--wm)); }
+}

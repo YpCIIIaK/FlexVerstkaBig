@@ -940,7 +940,7 @@
         });
       }
       if (capsuleRow) {
-        capsuleRow.hidden = !f.capsule;
+        capsuleRow.style.visibility = f.capsule ? "" : "hidden";
         if (f.capsule && capsuleImg) capsuleImg.src = f.capsule;
       }
       swatches.forEach((s) => {

@@ -43,118 +43,73 @@
     fetch("/api/v1/logout", { method: "POST" }).finally(() => location.replace("login"));
   };
 
-  const EMAIL_LOGIN = false;
-
-  const saveToken = (token) => { if (token) localStorage.setItem(KEY, token); };
-
-  const live = () => {
-    let phoneMode = "login";
-    let verifyToken = "";
-
-    const session = async () => saveToken((await api("/cabinet/session", { verify_token: verifyToken })).token);
-
-    return {
-      email: EMAIL_LOGIN,
-
-      async sendCode({ channel, value, purpose }) {
-        if (channel === "email") return api("/email/code", { email: value, purpose, verify_token: verifyToken || undefined });
-        if (purpose === "contact") return api("/phone", { phone: value, verify_token: verifyToken });
-        try {
-          await api("/cabinet/login/code", { phone: value });
-          phoneMode = "login";
-        } catch (err) {
-          if (err.code !== "SITE_LOGIN_CLIENT_NOT_FOUND") throw err;
-          await api("/phone", { phone: value });
-          phoneMode = "register";
-        }
-      },
-
-      async verifyCode({ channel, value, code, purpose }) {
-        if (purpose === "contact") {
-          const path = channel === "email" ? "/email/verify" : "/otp/verify";
-          const res = await api(path, { [channel]: value, code, verify_token: verifyToken });
-          if (res.verify_token) verifyToken = res.verify_token;
-          return { next: "iin" };
-        }
-        if (channel === "email") {
-          const res = await api("/email/verify", { email: value, code });
-          verifyToken = res.verify_token || "";
-          if (res.token) { saveToken(res.token); return { next: "done" }; }
-          return { next: "contact" };
-        }
-        if (phoneMode === "login") {
-          saveToken((await api("/cabinet/login/verify", { phone: value, code })).token);
-          return { next: "done" };
-        }
-        const res = await api("/otp/verify", { phone: value, code });
-        verifyToken = res.verify_token;
-        if (res.registered) { await session(); return { next: "done" }; }
-        return { next: EMAIL_LOGIN ? "contact" : "iin" };
-      },
-
-      async register({ iin }) {
-        await api("/register", { verify_token: verifyToken, iin });
-        await session();
-      },
-    };
+  const login = async (verifyToken) => {
+    const s = await api("/cabinet/session", { verify_token: verifyToken });
+    localStorage.setItem(KEY, s.token);
   };
 
-  const initLogin = (ui, backend) => {
-    const other = { email: "phone", phone: "email" };
-    const startForm = document.querySelector("[data-auth-form]");
-    const codeForm = document.querySelector("[data-code-form]");
-    const contactForm = document.querySelector("[data-contact-form]");
-    const iinForm = document.querySelector("[data-iin-form]");
-    const iinError = document.querySelector("[data-iin-error]").textContent;
-    const done = () => { ui.showLoginProgress(); location.href = "./"; };
-    const codeError = (err) => ui.setCodeState(err.code === "OTP_EXPIRED" ? "expired" : err.status && err.status < 500 ? "wrong" : "server");
-    let firstChannel = "phone";
+  const initLogin = (ui) => {
+    let verifyToken = "";
+    let mode = "login";
 
-    if (backend.email) ui.enableEmail();
-
-    startForm.addEventListener("auth:submit", async (e) => {
-      ui.setLoading(true);
+    const sendCode = async (phone) => {
       try {
-        await backend.sendCode({ ...e.detail, purpose: "login" });
-        firstChannel = e.detail.channel;
-        ui.showCode({ ...e.detail, purpose: "login" });
+        await api("/cabinet/login/code", { phone });
+        mode = "login";
       } catch (err) {
-        ui.setLoading(false);
-        ui.showError();
+        if (err.code !== "SITE_LOGIN_CLIENT_NOT_FOUND") throw err;
+        await api("/phone", { phone });
+        mode = "register";
       }
-    });
+    };
+    const alertText = document.querySelector("[data-auth-alert-text]").textContent;
+    const iinError = document.querySelector("[data-iin-error]").textContent;
+    const codeForm = document.querySelector("[data-code-form]");
 
-    contactForm.addEventListener("auth:contact", async (e) => {
+    document.querySelector("[data-auth-form]").addEventListener("auth:submit", async (e) => {
       ui.setLoading(true);
       try {
-        await backend.sendCode({ ...e.detail, purpose: "contact" });
-        ui.showCode({ ...e.detail, purpose: "contact" });
+        await sendCode(e.detail.phone);
+        ui.setLoading(false);
+        ui.showCode();
       } catch (err) {
         ui.setLoading(false);
-        ui.setContactError(err.code === "CONTACT_TAKEN" ? "taken" : "send");
+        ui.showError(err.detail || alertText);
       }
     });
 
     codeForm.addEventListener("auth:resend", (e) => {
-      backend.sendCode(e.detail).catch(() => ui.setCodeState("server"));
+      sendCode(e.detail.phone).catch(() => ui.setCodeState("server"));
     });
 
     codeForm.addEventListener("auth:verify", async (e) => {
       ui.setLoading(true);
       try {
-        const { next } = await backend.verifyCode(e.detail);
-        if (next === "done") return done();
-        if (next === "contact") return ui.showContact(other[firstChannel]);
-        ui.showRegistration();
+        if (mode === "login") {
+          const session = await api("/cabinet/login/verify", { phone: e.detail.phone, code: e.detail.code });
+          localStorage.setItem(KEY, session.token);
+          ui.setLoading(false);
+          ui.showLoginProgress();
+          location.href = "./";
+          return;
+        }
+        const res = await api("/otp/verify", { phone: e.detail.phone, code: e.detail.code });
+        verifyToken = res.verify_token;
+        if (!res.registered) return ui.showRegistration();
+        ui.setLoading(false);
+        ui.showLoginProgress();
+        await login(verifyToken);
+        location.href = "./";
       } catch (err) {
-        codeError(err);
+        ui.setCodeState(err.status < 500 ? "wrong" : "server");
       }
     });
 
-    iinForm.addEventListener("auth:register", async (e) => {
+    document.querySelector("[data-iin-form]").addEventListener("auth:register", async (e) => {
       ui.setLoading(true);
       try {
-        await backend.register(e.detail);
+        await api("/register", { verify_token: verifyToken, iin: e.detail.iin });
+        await login(verifyToken);
         ui.showComplete({ href: "./" });
       } catch (err) {
         ui.setLoading(false);
@@ -196,7 +151,7 @@
 
   const loggedIn = Boolean(localStorage.getItem(KEY));
 
-  if (document.querySelector("[data-auth-form]")) initLogin(window.flexAuth, window.flexAuthMock || live());
+  if (document.querySelector("[data-auth-form]")) initLogin(window.flexAuth);
 
   if (document.querySelector("[data-profile]")) {
     if (loggedIn) initAccount();

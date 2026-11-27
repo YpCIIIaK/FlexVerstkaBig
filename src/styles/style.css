@@ -131,36 +131,6 @@
 
 .auth__consent a:hover { opacity: 0.8; }
 
-.auth-tabs {
-  display: flex;
-  gap: calc(4 * var(--wm));
-  height: calc(48 * var(--wm));
-  padding: 1px;
-  border-radius: calc(100 * var(--wm));
-  outline: 1px solid var(--w-10);
-  outline-offset: -1px;
-  background-color: var(--w-05);
-}
-
-.auth-tabs__tab {
-  flex: 1 1 0;
-  border-radius: calc(100 * var(--wm));
-  font-size: calc(16 * var(--wm));
-  line-height: calc(24 * var(--wm));
-  color: var(--w-80);
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.auth-tabs__tab:hover { color: var(--white); }
-
-.auth-tabs__tab.is-active {
-  background-color: var(--purple-accent);
-  font-size: calc(14 * var(--wm));
-  font-weight: 700;
-  line-height: calc(20 * var(--wm));
-  color: var(--white);
-}
-
 .auth__contacts {
   display: flex;
   flex-direction: column;
@@ -482,14 +452,6 @@
   }
 
   .auth__fields { gap: calc(16 * var(--wm)); }
-
-  .auth-tabs { height: calc(44 * var(--wm)); }
-
-  .auth-tabs__tab,
-  .auth-tabs__tab.is-active {
-    font-size: calc(14 * var(--wm));
-    line-height: calc(20 * var(--wm));
-  }
 
   .code__digits { height: calc(52 * var(--wm)); }
 

@@ -7,15 +7,15 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32.png?v=1" />
   <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png?v=1" />
   <link rel="manifest" href="/assets/favicon/site.webmanifest" />
-  <meta name="description" content="Вход и регистрация в личном кабинете FLEX по электронной почте или номеру телефона." />
-  <title>Вход/Регистрация — Flex</title>
+  <meta name="description" content="Вход и регистрация в личном кабинете FLEX по номеру телефона." />
+  <title>Авторизация/Регистрация — Flex</title>
   <meta name="robots" content="noindex, nofollow" />
 
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/tt-norms-pro-450.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/tt-norms-pro-700.woff2" crossorigin />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="/src/styles/main.css?v=287" />
+  <link rel="stylesheet" href="/src/styles/main.css?v=283" />
 </head>
 <body>
 
@@ -51,37 +51,24 @@
     <section class="auth__panel">
       <form class="auth__form" data-auth-form novalidate>
         <header class="auth__head">
-          <h1 class="auth__title">Вход/Регистрация</h1>
-          <p class="auth__lead" data-for="email" hidden>Введите электронную почту. Мы отправим код для входа.</p>
-          <p class="auth__lead" data-for="phone">Введите номер телефона. Мы отправим код подтверждения.</p>
+          <h1 class="auth__title">Авторизация/Регистрация</h1>
+          <p class="auth__lead">Введите номер телефона. Мы отправим код подтверждения</p>
         </header>
 
-        <div class="auth-tabs" role="tablist" data-auth-tabs hidden>
-          <button class="auth-tabs__tab" type="button" role="tab" aria-selected="false" data-tab="email">Email</button>
-          <button class="auth-tabs__tab is-active" type="button" role="tab" aria-selected="true" data-tab="phone">Телефон</button>
-        </div>
-
         <div class="auth__fields">
-          <label class="field" data-field="email" data-for="email" hidden>
-            <span class="field__label">Электронная почта</span>
-            <input class="field__input field__input--muted" type="email" name="email" inputmode="email" autocomplete="email"
-                   placeholder="example@mail.com" aria-describedby="email-error" />
-            <span class="field__error" id="email-error" data-error="format" hidden>Неверный формат электронной почты</span>
-          </label>
-
-          <label class="field" data-field="phone" data-for="phone">
+          <label class="field" data-field>
             <span class="field__label">Номер телефона</span>
             <input class="field__input" type="tel" name="phone" inputmode="tel" autocomplete="tel"
-                   placeholder="+7 (___) ___-__-__" aria-describedby="phone-error" />
-            <span class="field__error" id="phone-error" data-error="format" hidden>Неверный формат номера телефона</span>
+                   placeholder="+7 (___) ___-__-__" aria-describedby="phone-error" data-phone />
+            <span class="field__error" id="phone-error" data-field-error hidden>Неверный формат номера телефона</span>
           </label>
 
-          <div class="alert" role="alert" data-alert hidden>
+          <div class="alert" role="alert" data-auth-alert hidden>
             <img class="alert__icon" src="/assets/images/alert-circle.svg" alt="" width="20" height="20" />
-            <p class="alert__text">Не удалось отправить код. Попробуйте через 5 минут.</p>
+            <p class="alert__text" data-auth-alert-text>Не удалось отправить СМС. Попробуйте через 5 минут.</p>
           </div>
 
-          <button class="button" type="submit" data-submit disabled>Получить код</button>
+          <button class="button" type="submit" data-auth-submit disabled>Получить код</button>
         </div>
 
         <p class="auth__consent">Нажимая кнопку, вы соглашаетесь с <a href="/privacy/" target="_blank" rel="noopener">Политикой конфиденциальности</a></p>
@@ -90,7 +77,7 @@
       <form class="auth__form" data-code-form novalidate hidden>
         <header class="auth__head">
           <h2 class="auth__title">Введите код</h2>
-          <p class="auth__lead">Мы отправили код подтверждения</p>
+          <p class="auth__lead">Код отправлен на номер <span data-code-phone>+7 ••• ••• •• 00</span></p>
         </header>
 
         <div class="auth__fields">
@@ -117,43 +104,8 @@
 
         <div class="auth__actions">
           <button class="auth__resend" type="button" data-resend disabled>Отправить код повторно<span data-resend-timer> (через 59 сек)</span></button>
-          <button class="auth__change" type="button" data-change><span data-for="phone">Изменить номер телефона</span><span data-for="email" hidden>Изменить Email</span></button>
+          <button class="auth__change" type="button" data-change-phone>Изменить номер телефона</button>
         </div>
-      </form>
-
-      <form class="auth__form" data-contact-form novalidate hidden>
-        <header class="auth__head">
-          <h2 class="auth__title">Регистрация</h2>
-          <p class="auth__lead" data-for="email">Создаём ваш аккаунт. Укажите электронную почту, мы отправим код подтверждения.</p>
-          <p class="auth__lead" data-for="phone" hidden>Создаём ваш аккаунт. Укажите номер телефона, мы отправим код подтверждения.</p>
-        </header>
-
-        <div class="auth__fields">
-          <label class="field" data-field="email" data-for="email">
-            <span class="field__label">Электронная почта</span>
-            <input class="field__input field__input--muted" type="email" name="email" inputmode="email" autocomplete="email"
-                   placeholder="example@mail.com" aria-describedby="contact-email-error" />
-            <span class="field__error" id="contact-email-error" data-error="format" hidden>Неверный формат электронной почты</span>
-            <span class="field__error" data-error="taken" hidden>Этот Email уже используется</span>
-          </label>
-
-          <label class="field" data-field="phone" data-for="phone" hidden>
-            <span class="field__label">Номер телефона</span>
-            <input class="field__input" type="tel" name="phone" inputmode="tel" autocomplete="tel"
-                   placeholder="+7 (___) ___-__-__" aria-describedby="contact-phone-error" />
-            <span class="field__error" id="contact-phone-error" data-error="format" hidden>Неверный формат номера телефона</span>
-            <span class="field__error" data-error="taken" hidden>Этот номер уже используется</span>
-          </label>
-
-          <div class="alert" role="alert" data-alert hidden>
-            <img class="alert__icon" src="/assets/images/alert-circle.svg" alt="" width="20" height="20" />
-            <p class="alert__text">Не удалось отправить код. Попробуйте через 5 минут.</p>
-          </div>
-
-          <button class="button" type="submit" data-submit disabled>Получить код</button>
-        </div>
-
-        <p class="auth__consent">Нажимая кнопку, вы соглашаетесь с <a href="/privacy/" target="_blank" rel="noopener">Политикой конфиденциальности</a></p>
       </form>
 
       <form class="auth__form" data-iin-form novalidate hidden>
@@ -176,11 +128,11 @@
 
       <div class="auth__form auth__complete" data-complete hidden>
         <header class="auth__head">
-          <h2 class="auth__title">Ваш аккаунт FLEX<br />создан</h2>
-          <p class="auth__lead">Добро пожаловать в FLEX! Ваш аккаунт готов к использованию.</p>
+          <h2 class="auth__title">Личный кабинет создан</h2>
+          <p class="auth__lead">Ваш аккаунт FLEX создан. Теперь вы можете перейти на сайт.</p>
         </header>
 
-        <a class="button" href="/" data-complete-link>Перейти на сайт</a>
+        <a class="button" href="/" data-complete-link>Перейти в FLEX</a>
         <img class="loader__spinner" src="/assets/images/loader.svg" alt="Переходим на сайт" width="100" height="100" role="status" data-complete-spinner hidden />
       </div>
 
@@ -192,9 +144,8 @@
       <footer class="auth__contacts">
         <p class="auth__contacts-text">Если у вас есть вопросы свяжитесь с нами:</p>
         <div class="auth__socials">
-          <a class="auth__social" href="https://t.me/Myflexkzbot" target="_blank" rel="noopener" aria-label="Telegram"><svg width="52" height="52" aria-hidden="true" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_445_6489)"><path d="M52 26C52 11.6406 40.3594 0 26 0C11.6406 0 0 11.6406 0 26C0 40.3594 11.6406 52 26 52C40.3594 52 52 40.3594 52 26Z" fill="white" fill-opacity="0.05"/><path d="M36.9933 15.8266C36.7029 15.5151 36.3206 15.3044 35.9021 15.2253C35.4836 15.1461 35.0508 15.2026 34.6667 15.3866L13.3333 23.5466C12.1267 24.0066 12 24.7133 12 25.0933C12 25.4733 12.1333 26.1666 13.3333 26.5533L17.74 27.8199L20.12 34.6133C20.2422 35.0561 20.5015 35.4489 20.8609 35.7352C21.2202 36.0215 21.661 36.1865 22.12 36.2066C22.7227 36.1961 23.299 35.9579 23.7333 35.5399L26.4 33.0799L30.2933 36.2199L30.3467 36.2599C30.7614 36.6007 31.2769 36.7952 31.8133 36.8133C32.3109 36.7976 32.7864 36.604 33.1534 36.2676C33.5204 35.9312 33.7545 35.4743 33.8133 34.9799L37.3333 17.6733C37.4179 17.3588 37.4301 17.0292 37.3689 16.7093C37.3077 16.3895 37.1747 16.0876 36.98 15.8266M25.0933 31.9999L22.7933 34.1133L23.6133 30.7799L25.0933 31.9999ZM27.3333 23.5266L22.48 28.6666C22.3777 28.773 22.3043 28.9038 22.2667 29.0466L21.3333 32.8399L19.4733 27.5066L27.3333 23.5266ZM32 21.0999C32.1387 20.9523 32.2213 20.7608 32.2334 20.5586C32.2456 20.3565 32.1866 20.1564 32.0667 19.9933C31.9446 19.8315 31.7693 19.718 31.5717 19.6729C31.3741 19.6277 31.1669 19.6538 30.9867 19.7466L18.3333 26.1933L14.2267 25.0199L35.26 17.0199C35.3672 16.9718 35.4826 16.9446 35.6 16.9399H35.6667C35.7059 17.0749 35.7059 17.2183 35.6667 17.3533L32.1667 34.6266C32.1667 34.7333 32.0533 35.0799 31.86 35.0799C31.7085 35.0607 31.5666 34.9956 31.4533 34.8933L26.9667 31.2799V31.2399L24.4133 29.1866L32 21.0999Z" fill="#A05DDA"/></g><defs><clipPath id="clip0_445_6489"><rect width="52" height="52" fill="white"/></clipPath></defs></svg></a>
-          <a class="auth__social" href="tel:7707" aria-label="Позвонить 7707"><img src="/assets/images/call-icon.svg?v=4" alt="" width="52" height="52" /></a>
-          <a class="auth__social" href="#" target="_blank" rel="noopener" aria-label="Instagram"><img src="/assets/images/instagram-icon.svg?v=2" alt="" width="52" height="52" /></a>
+          <a class="auth__social" href="https://t.me/Myflexkzbot" target="_blank" rel="noopener" aria-label="Telegram"><svg width="52" height="52" aria-hidden="true" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_445_6489)"><path d="M52 26C52 11.6406 40.3594 0 26 0C11.6406 0 0 11.6406 0 26C0 40.3594 11.6406 52 26 52C40.3594 52 52 40.3594 52 26Z" fill="white" fill-opacity="0.05"/><path d="M36.9933 15.8266C36.7029 15.5151 36.3206 15.3044 35.9021 15.2253C35.4836 15.1461 35.0508 15.2026 34.6667 15.3866L13.3333 23.5466C12.1267 24.0066 12 24.7133 12 25.0933C12 25.4733 12.1333 26.1666 13.3333 26.5533L17.74 27.8199L20.12 34.6133C20.2422 35.0561 20.5015 35.4489 20.8609 35.7352C21.2202 36.0215 21.661 36.1865 22.12 36.2066C22.7227 36.1961 23.299 35.9579 23.7333 35.5399L26.4 33.0799L30.2933 36.2199L30.3467 36.2599C30.7614 36.6007 31.2769 36.7952 31.8133 36.8133C32.3109 36.7976 32.7864 36.604 33.1534 36.2676C33.5204 35.9312 33.7545 35.4743 33.8133 34.9799L37.3333 17.6733C37.4179 17.3588 37.4301 17.0292 37.3689 16.7093C37.3077 16.3895 37.1747 16.0876 36.98 15.8266M25.0933 31.9999L22.7933 34.1133L23.6133 30.7799L25.0933 31.9999ZM27.3333 23.5266L22.48 28.6666C22.3777 28.773 22.3043 28.9038 22.2667 29.0466L21.3333 32.8399L19.4733 27.5066L27.3333 23.5266ZM32 21.0999C32.1387 20.9523 32.2213 20.7608 32.2334 20.5586C32.2456 20.3565 32.1866 20.1564 32.0667 19.9933C31.9446 19.8315 31.7693 19.718 31.5717 19.6729C31.3741 19.6277 31.1669 19.6538 30.9867 19.7466L18.3333 26.1933L14.2267 25.0199L35.26 17.0199C35.3672 16.9718 35.4826 16.9446 35.6 16.9399H35.6667C35.7059 17.0749 35.7059 17.2183 35.6667 17.3533L32.1667 34.6266C32.1667 34.7333 32.0533 35.0799 31.86 35.0799C31.7085 35.0607 31.5666 34.9956 31.4533 34.8933L26.9667 31.2799V31.2399L24.4133 29.1866L32 21.0999Z" fill="white" fill-opacity="0.5"/></g><defs><clipPath id="clip0_445_6489"><rect width="52" height="52" fill="white" fill-opacity="0.5"/></clipPath></defs></svg></a>
+          <a class="auth__social" href="tel:7707" aria-label="Позвонить 7707"><img src="/assets/images/call-icon.svg?v=3" alt="" width="52" height="52" /></a>
         </div>
       </footer>
 
@@ -205,8 +156,7 @@
 
   </main>
 
-  <script src="/src/lib/main.js?v=111"></script>
-  <script src="/src/lib/auth-mock.js?v=2"></script>
-  <script src="/src/lib/api.js?v=15"></script>
+  <script src="/src/lib/main.js?v=110"></script>
+  <script src="/src/lib/api.js?v=14"></script>
 </body>
 </html>

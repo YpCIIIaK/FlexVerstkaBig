@@ -72,6 +72,14 @@
 
 .starter:not(.referral) .starter-hero__info .button { align-self: flex-start; }
 
+.starter-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(12 * var(--wm));
+}
+
+.starter-hero__actions .button { align-self: auto; }
+
 .starter-terms {
   display: flex;
   flex-direction: column;
@@ -159,4 +167,10 @@
   .starter:not(.referral) .starter-hero {
     min-height: calc(100svh - var(--header-h) - 160 * var(--wm));
   }
+}
+
+@media (max-width: 767px) {
+  .starter-hero__actions { flex-direction: column; }
+
+  .starter-hero__actions .button { width: 100%; }
 }

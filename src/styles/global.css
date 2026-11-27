@@ -79,3 +79,7 @@ html:not(.is-painted) *::after {
   backdrop-filter: none !important;
 }
 
+
+html { scrollbar-width: none; }
+
+html::-webkit-scrollbar { display: none; }

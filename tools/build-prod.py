@@ -6,7 +6,7 @@ import tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKIP = {".env.example", ".gitignore", "README.md", "server.js", "starter-set.html", "kz/starter-set.html"}
-SKIP_DIRS = ("tools/", "deploy/")
+SKIP_DIRS = ("tools/", "deploy/", "docs/")
 SERVER = "deploy/plesk/"
 
 

@@ -20,36 +20,24 @@
     if (!form) return;
 
     const codeForm = document.querySelector("[data-code-form]");
+    const contactForm = document.querySelector("[data-contact-form]");
+    const iinForm = document.querySelector("[data-iin-form]");
+    const complete = document.querySelector("[data-complete]");
     const loader = document.querySelector("[data-loader]");
     const loginProgress = document.querySelector("[data-login-progress]");
+    const screens = [form, codeForm, contactForm, iinForm, complete, loginProgress];
 
-    const field = form.querySelector("[data-field]");
-    const input = form.querySelector("[data-phone]");
-    const fieldError = form.querySelector("[data-field-error]");
-    const alert = form.querySelector("[data-auth-alert]");
-    const alertText = form.querySelector("[data-auth-alert-text]");
-    const submit = form.querySelector("[data-auth-submit]");
-
-    const digits = [...codeForm.querySelectorAll(".code__digit")];
-    const codeSubmit = codeForm.querySelector("[data-code-submit]");
-    const codePhone = codeForm.querySelector("[data-code-phone]");
-    const resend = codeForm.querySelector("[data-resend]");
-    const resendTimer = codeForm.querySelector("[data-resend-timer]");
-    const changePhone = codeForm.querySelector("[data-change-phone]");
-    const codeBox = codeForm.querySelector(".code");
-    const codeError = codeForm.querySelector("[data-code-error]");
-    const codeAlert = codeForm.querySelector("[data-code-alert]");
-
-    const CODE_STATES = {
-      wrong: { error: KZ ? "Код қате. Қайталап көріңіз." : "Неверный код. Попробуйте ещё раз." },
-      expired: { error: KZ ? "Кодтың жарамдылық мерзімі өтті" : "Срок действия кода истёк", button: KZ ? "Жаңа кодты алу" : "Получить новый код", clear: true },
-      server: { alert: true, button: KZ ? "Қайталап көру" : "Попробовать ещё раз" },
+    const showScreen = (el) => {
+      clearInterval(timerId);
+      setLoading(false);
+      screens.forEach((s) => { s.hidden = s !== el; });
     };
-    let codeState = "";
 
-    const RESEND_SECONDS = 59;
-    let phone = "";
-    let timerId = 0;
+    const showFor = (root, kind) => {
+      root.querySelectorAll("[data-for]").forEach((el) => { el.hidden = el.dataset.for !== kind; });
+    };
+
+    const setLoading = (on) => { loader.hidden = !on; };
 
     const digitsOf = (value) => {
       let d = value.replace(/\D/g, "");
@@ -67,72 +55,147 @@
       return out;
     };
 
-    const isValid = (d) => d.length === 10 && d[0] === "7";
+    const isPhone = (d) => d.length === 10 && d[0] === "7";
+    const isEmail = (v) => /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[a-zа-я]{2,}$/i.test(v);
 
-    const setError = (on) => {
-      field.classList.toggle("is-error", on);
-      fieldError.hidden = !on;
-      input.setAttribute("aria-invalid", on ? "true" : "false");
-    };
+    const makeField = (label) => {
+      const kind = label.dataset.field;
+      const input = label.querySelector("input");
+      const errors = [...label.querySelectorAll("[data-error]")];
+      const f = {
+        kind,
+        input,
+        value: () => (kind === "phone" ? "+7" + digitsOf(input.value) : input.value.trim()),
+        valid: () => (kind === "phone" ? isPhone(digitsOf(input.value)) : isEmail(input.value.trim())),
+        empty: () => !input.value.trim(),
+        setError: (name) => {
+          label.classList.toggle("is-error", Boolean(name));
+          errors.forEach((el) => { el.hidden = el.dataset.error !== name; });
+          input.setAttribute("aria-invalid", name ? "true" : "false");
+        },
+        fill: (v) => {
+          input.value = kind === "phone" ? format(digitsOf(v)) : v;
+          input.dispatchEvent(new Event("input"));
+        },
+      };
 
-    const setAlert = (text) => {
-      if (text) alertText.textContent = text;
-      alert.hidden = !text;
-    };
+      if (kind === "phone") {
+        const caretAfter = (n) => {
+          if (n === 0) return Math.min(4, input.value.length);
+          let seen = 0;
+          for (let i = 4; i < input.value.length; i++) {
+            if (/\d/.test(input.value[i]) && ++seen === n) return i + 1;
+          }
+          return input.value.length;
+        };
 
-    const setLoading = (on) => { loader.hidden = !on; };
-
-    const update = () => {
-      const d = digitsOf(input.value);
-      input.value = format(d);
-      submit.disabled = !isValid(d);
-      if (isValid(d)) setError(false);
-      setAlert("");
-    };
-
-    input.addEventListener("input", update);
-
-    const caretAfter = (n) => {
-      if (n === 0) return Math.min(4, input.value.length);
-      let seen = 0;
-      for (let i = 4; i < input.value.length; i++) {
-        if (/\d/.test(input.value[i]) && ++seen === n) return i + 1;
+        input.addEventListener("keydown", (e) => {
+          if (e.key !== "Backspace" || input.selectionStart !== input.selectionEnd) return;
+          const pos = input.selectionStart;
+          if (pos <= 4 || /\d/.test(input.value[pos - 1])) return;
+          e.preventDefault();
+          const d = digitsOf(input.value);
+          const before = (input.value.slice(4, pos).match(/\d/g) || []).length;
+          if (before === 0) return;
+          input.value = format(d.slice(0, before - 1) + d.slice(before));
+          const caret = caretAfter(before - 1);
+          input.setSelectionRange(caret, caret);
+          input.dispatchEvent(new Event("input"));
+        });
       }
-      return input.value.length;
+
+      input.addEventListener("input", () => {
+        if (kind === "phone") input.value = format(digitsOf(input.value));
+        f.setError("");
+      });
+
+      input.addEventListener("blur", () => {
+        if (!f.empty() && !f.valid()) f.setError("format");
+      });
+
+      return f;
     };
 
-    input.addEventListener("keydown", (e) => {
-      if (e.key !== "Backspace" || input.selectionStart !== input.selectionEnd) return;
-      const pos = input.selectionStart;
-      if (pos <= 4 || /\d/.test(input.value[pos - 1])) return;
-      e.preventDefault();
-      const d = digitsOf(input.value);
-      const before = (input.value.slice(4, pos).match(/\d/g) || []).length;
-      if (before === 0) return;
-      const next = d.slice(0, before - 1) + d.slice(before);
-      input.value = format(next);
-      const caret = caretAfter(before - 1);
-      input.setSelectionRange(caret, caret);
-      submit.disabled = !isValid(next);
-      setAlert("");
-    });
+    const makeForm = (el, eventName) => {
+      const fields = {};
+      el.querySelectorAll("[data-field]").forEach((label) => { fields[label.dataset.field] = makeField(label); });
+      const submit = el.querySelector("[data-submit]");
+      const alert = el.querySelector("[data-alert]");
+      const tabs = [...el.querySelectorAll("[data-tab]")];
+      const ctl = { channel: "phone", fields };
 
-    input.addEventListener("blur", () => {
-      const d = digitsOf(input.value);
-      setError(d.length > 0 && !isValid(d));
-    });
+      ctl.current = () => fields[ctl.channel];
+      ctl.refresh = () => { submit.disabled = !ctl.current().valid(); };
+      ctl.setAlert = (on) => { if (alert) alert.hidden = !on; };
+      ctl.setError = (name) => { ctl.current().setError(name); if (name) submit.disabled = true; };
+      ctl.setChannel = (kind) => {
+        ctl.channel = kind;
+        showFor(el, kind);
+        tabs.forEach((t) => {
+          const on = t.dataset.tab === kind;
+          t.classList.toggle("is-active", on);
+          t.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        ctl.setAlert(false);
+        ctl.refresh();
+      };
+
+      Object.values(fields).forEach((f) => f.input.addEventListener("input", () => { ctl.setAlert(false); ctl.refresh(); }));
+
+      tabs.forEach((t) => t.addEventListener("click", () => {
+        ctl.setChannel(t.dataset.tab);
+        ctl.current().input.focus();
+      }));
+
+      el.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const f = ctl.current();
+        if (!f.valid()) { ctl.setError("format"); return; }
+        el.dispatchEvent(new CustomEvent(eventName, { detail: { channel: ctl.channel, value: f.value() } }));
+      });
+
+      return ctl;
+    };
+
+    const start = makeForm(form, "auth:submit");
+    const contact = makeForm(contactForm, "auth:contact");
+    const tabsBox = form.querySelector("[data-auth-tabs]");
+    start.setChannel("phone");
+
+    const enableEmail = () => {
+      tabsBox.hidden = false;
+      start.setChannel("email");
+    };
+
+    const digits = [...codeForm.querySelectorAll(".code__digit")];
+    const codeSubmit = codeForm.querySelector("[data-code-submit]");
+    const resend = codeForm.querySelector("[data-resend]");
+    const resendTimer = codeForm.querySelector("[data-resend-timer]");
+    const changeContact = codeForm.querySelector("[data-change]");
+    const codeBox = codeForm.querySelector(".code");
+    const codeError = codeForm.querySelector("[data-code-error]");
+    const codeAlert = codeForm.querySelector("[data-code-alert]");
+
+    const CODE_STATES = {
+      wrong: { error: KZ ? "Код қате. Қайталап көріңіз." : "Неверный код. Попробуйте ещё раз." },
+      expired: { error: KZ ? "Кодтың жарамдылық мерзімі өтті" : "Срок действия кода истёк", button: KZ ? "Жаңа кодты алу" : "Получить новый код", clear: true },
+      server: { alert: true, button: KZ ? "Қайталап көру" : "Попробовать ещё раз" },
+    };
+    let codeState = "";
+    let ctx = { channel: "phone", value: "", purpose: "login" };
+
+    const RESEND_SECONDS = 59;
+    let timerId = 0;
 
     const startTimer = () => {
       clearInterval(timerId);
       let left = RESEND_SECONDS;
+      const tick = () => { resendTimer.textContent = KZ ? " (" + left + " сек кейін)" : " (через " + left + " сек)"; };
       resend.disabled = true;
-      resendTimer.textContent = KZ ? " (" + left + " сек кейін)" : " (через " + left + " сек)";
+      tick();
       timerId = setInterval(() => {
         left -= 1;
-        if (left > 0) {
-          resendTimer.textContent = KZ ? " (" + left + " сек кейін)" : " (через " + left + " сек)";
-          return;
-        }
+        if (left > 0) { tick(); return; }
         clearInterval(timerId);
         resendTimer.textContent = "";
         resend.disabled = false;
@@ -156,36 +219,33 @@
       if (s.button) clearInterval(timerId);
     };
 
-    const showCode = () => {
-      codePhone.textContent = "+7 ••• ••• •• " + phone.slice(-2);
+    const showCode = (next) => {
+      ctx = { ...ctx, ...next };
+      showScreen(codeForm);
+      showFor(codeForm, ctx.channel);
       digits.forEach((el) => { el.value = ""; });
       setCodeState("");
-      form.hidden = true;
-      codeForm.hidden = false;
       startTimer();
       digits[0].focus();
     };
 
-    const showPhone = () => {
-      clearInterval(timerId);
-      codeForm.hidden = true;
-      form.hidden = false;
-      input.focus();
+    const showStart = () => {
+      showScreen(form);
+      start.current().input.focus();
     };
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const d = digitsOf(input.value);
-      if (!isValid(d)) { setError(true); return; }
-      phone = "+7" + d;
-      form.dispatchEvent(new CustomEvent("auth:submit", { detail: { phone } }));
-    });
+    const showContact = (channel) => {
+      ctx = { ...ctx, purpose: "contact" };
+      showScreen(contactForm);
+      contact.setChannel(channel);
+      contact.current().input.focus();
+    };
 
     const codeValue = () => digits.map((el) => el.value).join("");
 
-    const fillFrom = (start, text) => {
+    const fillFrom = (startAt, text) => {
       const chars = text.replace(/\D/g, "").split("");
-      let i = start;
+      let i = startAt;
       chars.forEach((ch) => { if (i < digits.length) digits[i++].value = ch; });
       digits[Math.min(i, digits.length - 1)].focus();
       if (codeState === "wrong" || codeState === "expired") setCodeState("");
@@ -219,38 +279,31 @@
       el.addEventListener("focus", () => el.select());
     });
 
+    const requestNewCode = () => {
+      setCodeState("");
+      startTimer();
+      digits[0].focus();
+      codeForm.dispatchEvent(new CustomEvent("auth:resend", { detail: { ...ctx } }));
+    };
+
     codeForm.addEventListener("submit", (e) => {
       e.preventDefault();
       if (codeState === "expired") { requestNewCode(); return; }
       const code = codeValue();
       if (code.length !== digits.length) return;
       setCodeState("");
-      codeForm.dispatchEvent(new CustomEvent("auth:verify", { detail: { phone, code } }));
+      codeForm.dispatchEvent(new CustomEvent("auth:verify", { detail: { ...ctx, code } }));
     });
-
-    const requestNewCode = () => {
-      setCodeState("");
-      startTimer();
-      digits[0].focus();
-      codeForm.dispatchEvent(new CustomEvent("auth:resend", { detail: { phone } }));
-    };
 
     resend.addEventListener("click", requestNewCode);
 
-    changePhone.addEventListener("click", showPhone);
+    changeContact.addEventListener("click", () => {
+      if (ctx.purpose === "contact") showContact(ctx.channel);
+      else showStart();
+    });
 
-    window.flexAuth = { showError: setAlert, showCode, showPhone, setLoading, setCodeState };
+    const showLoginProgress = () => showScreen(loginProgress);
 
-    const showLoginProgress = () => {
-      clearInterval(timerId);
-      form.hidden = true;
-      codeForm.hidden = true;
-      loginProgress.hidden = false;
-    };
-
-    window.flexAuth.showLoginProgress = showLoginProgress;
-
-    const iinForm = document.querySelector("[data-iin-form]");
     const iinField = iinForm.querySelector("[data-iin-field]");
     const iinInput = iinForm.querySelector("[data-iin]");
     const iinError = iinForm.querySelector("[data-iin-error]");
@@ -265,7 +318,7 @@
       if (c === 10) c = iinChecksum(d, [3, 4, 5, 6, 7, 8, 9, 10, 11, 1, 2]);
       return c !== 10 && c === Number(d[11]);
     };
- 
+
     const setIinError = (text) => {
       iinField.classList.toggle("is-error", Boolean(text));
       iinError.hidden = !text;
@@ -275,12 +328,7 @@
     };
 
     const showRegistration = () => {
-      clearInterval(timerId);
-      form.hidden = true;
-      codeForm.hidden = true;
-      loginProgress.hidden = true;
-      iinForm.hidden = false;
-      setLoading(false);
+      showScreen(iinForm);
       iinInput.focus();
     };
 
@@ -298,18 +346,14 @@
     iinForm.addEventListener("submit", (e) => {
       e.preventDefault();
       if (!isValidIin(iinInput.value)) { setIinError(IIN_ERROR); return; }
-      iinForm.dispatchEvent(new CustomEvent("auth:register", { detail: { phone, iin: iinInput.value } }));
+      iinForm.dispatchEvent(new CustomEvent("auth:register", { detail: { iin: iinInput.value } }));
     });
 
-    const complete = document.querySelector("[data-complete]");
     const completeLink = complete.querySelector("[data-complete-link]");
     const completeSpinner = complete.querySelector("[data-complete-spinner]");
 
     const showComplete = (opts = {}) => {
-      clearInterval(timerId);
-      setLoading(false);
-      [form, codeForm, iinForm, loginProgress].forEach((el) => { el.hidden = true; });
-      complete.hidden = false;
+      showScreen(complete);
       if (opts.href) completeLink.href = opts.href;
       completeLink.hidden = Boolean(opts.redirecting);
       completeSpinner.hidden = !opts.redirecting;
@@ -323,32 +367,60 @@
       if (href && href !== "#") setTimeout(() => { location.href = href; }, 600);
     });
 
-    Object.assign(window.flexAuth, { showRegistration, setIinError, showComplete });
+    window.flexAuth = {
+      enableEmail,
+      setLoading,
+      showStart,
+      showError: () => start.setAlert(true),
+      showCode,
+      setCodeState,
+      showContact,
+      setContactError: (name) => (name === "send" ? contact.setAlert(true) : contact.setError(name)),
+      showRegistration,
+      setIinError,
+      showLoginProgress,
+      showComplete,
+    };
 
     const state = new URLSearchParams(location.search).get("state");
-    if (state === "error") { input.value = "+7 (407) 123-45-0"; update(); setError(true); }
-    if (state === "sms-error") { input.value = "+7 (707) 123-45-67"; update(); setAlert(alertText.textContent); }
-    if (state === "correct") { input.value = "+7 (775) 715-45-90"; update(); }
-    if (state && state.startsWith("code") || state === "loading") {
-      phone = "+77757154500";
-      showCode();
-      if (state === "code-typing") fillFrom(0, "5");
-      else if (state === "code-wrong") { fillFrom(0, "528419"); setCodeState("wrong"); }
-      else if (state === "code-expired") setCodeState("expired");
-      else if (state === "code-server") { fillFrom(0, "853194"); setCodeState("server"); }
-      else fillFrom(0, "530156");
-      if (state === "loading") setLoading(true);
+    if (!state) return;
+    const [screen, channel = "phone", variant = ""] = state.split("-");
+    const SAMPLE = {
+      phone: { ok: "+7 (775) 715-45-90", bad: "+7 (407) 123-45-0" },
+      email: { ok: "example@mail.com", bad: "example@mail.co" },
+    };
+    if (channel === "email" || screen === "contact") enableEmail();
+    if (screen === "start") {
+      start.setChannel(channel);
+      const f = start.current();
+      if (variant === "filled") f.fill(SAMPLE[channel].ok);
+      if (variant === "format") { f.fill(SAMPLE[channel].bad); start.setError("format"); }
+      if (variant === "send") { f.fill(SAMPLE[channel].ok); start.setAlert(true); }
     }
-    if (state === "login") showLoginProgress();
-    if (state === "complete") showComplete();
-    if (state === "complete-redirect") showComplete({ redirecting: true });
-    if (state && state.startsWith("iin")) {
+    if (screen === "contact") {
+      showContact(channel);
+      const f = contact.current();
+      if (variant === "filled") f.fill(SAMPLE[channel].ok);
+      if (variant === "taken") { f.fill(SAMPLE[channel].bad); contact.setError("taken"); }
+    }
+    if (screen === "code") {
+      showCode({ channel, value: SAMPLE[channel].ok, purpose: "login" });
+      if (variant === "typing") fillFrom(0, "5");
+      else if (variant === "filled") fillFrom(0, "530156");
+      else if (variant === "loading") { fillFrom(0, "530156"); setLoading(true); }
+      else if (variant === "wrong") { fillFrom(0, "528419"); setCodeState("wrong"); }
+      else if (variant === "expired") setCodeState("expired");
+      else if (variant === "server") { fillFrom(0, "853194"); setCodeState("server"); }
+    }
+    if (screen === "login") showLoginProgress();
+    if (screen === "iin") {
       showRegistration();
       const fill = (v) => { iinInput.value = v; iinInput.dispatchEvent(new Event("input")); };
-      if (state === "iin-typing") fill("040823");
-      if (state === "iin-error") { fill("040823650651"); setIinError(IIN_ERROR); iinInput.blur(); }
-      if (state === "iin-correct") { fill("040823650651"); iinInput.blur(); }
+      if (channel === "typing") fill("040823");
+      if (channel === "error") { fill("040823650651"); setIinError(IIN_ERROR); iinInput.blur(); }
+      if (channel === "filled") { fill("040823650651"); iinInput.blur(); }
     }
+    if (screen === "complete") showComplete({ redirecting: channel === "redirect" });
   };
 
   const initFaq = () => {

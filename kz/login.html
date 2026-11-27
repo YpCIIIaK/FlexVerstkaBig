@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32.png?v=1" />
   <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png?v=1" />
   <link rel="manifest" href="/assets/favicon/site.webmanifest" />
-  <meta name="description" content="Вход и регистрация в личном кабинете FLEX по номеру телефона." />
+  <meta name="description" content="FLEX жеке кабинетіне электрондық пошта немесе телефон нөмірі арқылы кіру және тіркелу." />
   <title>Кіру/Тіркелу — Flex</title>
   <meta name="robots" content="noindex, nofollow" />
 
@@ -15,7 +15,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/tt-norms-pro-700.woff2" crossorigin />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="/src/styles/main.css?v=283" />
+  <link rel="stylesheet" href="/src/styles/main.css?v=284" />
 </head>
 <body>
 
@@ -52,23 +52,36 @@
       <form class="auth__form" data-auth-form novalidate>
         <header class="auth__head">
           <h1 class="auth__title">Кіру/Тіркелу</h1>
-          <p class="auth__lead">Телефон нөмірін енгізіңіз. Біз растау кодын жібереміз</p>
+          <p class="auth__lead" data-for="email" hidden>Электрондық поштаны енгізіңіз. Біз кіру кодын жібереміз.</p>
+          <p class="auth__lead" data-for="phone">Телефон нөмірін енгізіңіз. Біз растау кодын жібереміз.</p>
         </header>
 
+        <div class="auth-tabs" role="tablist" data-auth-tabs hidden>
+          <button class="auth-tabs__tab" type="button" role="tab" aria-selected="false" data-tab="email">Email</button>
+          <button class="auth-tabs__tab is-active" type="button" role="tab" aria-selected="true" data-tab="phone">Телефон нөмірі</button>
+        </div>
+
         <div class="auth__fields">
-          <label class="field" data-field>
-            <span class="field__label">Телефон нөмірі</span>
-            <input class="field__input" type="tel" name="phone" inputmode="tel" autocomplete="tel"
-                   placeholder="+7 (___) ___-__-__" aria-describedby="phone-error" data-phone />
-            <span class="field__error" id="phone-error" data-field-error hidden>Телефон нөмірінің пішімі қате</span>
+          <label class="field" data-field="email" data-for="email" hidden>
+            <span class="field__label">Электрондық пошта</span>
+            <input class="field__input field__input--muted" type="email" name="email" inputmode="email" autocomplete="email"
+                   placeholder="example@mail.com" aria-describedby="email-error" />
+            <span class="field__error" id="email-error" data-error="format" hidden>Электрондық пошта пішімі қате</span>
           </label>
 
-          <div class="alert" role="alert" data-auth-alert hidden>
+          <label class="field" data-field="phone" data-for="phone">
+            <span class="field__label">Телефон нөмірі</span>
+            <input class="field__input" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                   placeholder="+7 (___) ___-__-__" aria-describedby="phone-error" />
+            <span class="field__error" id="phone-error" data-error="format" hidden>Телефон нөмірінің пішімі қате</span>
+          </label>
+
+          <div class="alert" role="alert" data-alert hidden>
             <img class="alert__icon" src="/assets/images/alert-circle.svg" alt="" width="20" height="20" />
-            <p class="alert__text" data-auth-alert-text>Кодты жіберу мүмкін болмады. 5 минуттан кейін қайталап көріңіз.</p>
+            <p class="alert__text">Кодты жіберу мүмкін болмады. 5 минуттан кейін қайталап көріңіз.</p>
           </div>
 
-          <button class="button" type="submit" data-auth-submit disabled>Кодты алу</button>
+          <button class="button" type="submit" data-submit disabled>Кодты алу</button>
         </div>
 
         <p class="auth__consent">Түймені басу арқылы сіз <a href="/kz/privacy/" target="_blank" rel="noopener">Құпиялылық саясатымен</a> келісесіз</p>
@@ -77,7 +90,7 @@
       <form class="auth__form" data-code-form novalidate hidden>
         <header class="auth__head">
           <h2 class="auth__title">Кодты енгізіңіз</h2>
-          <p class="auth__lead">Код мына нөмірге жіберілді: <span data-code-phone>+7 ••• ••• •• 00</span></p>
+          <p class="auth__lead">Біз растау кодын жібердік</p>
         </header>
 
         <div class="auth__fields">
@@ -104,8 +117,43 @@
 
         <div class="auth__actions">
           <button class="auth__resend" type="button" data-resend disabled>Кодты қайта жіберу<span data-resend-timer> (59 сек кейін)</span></button>
-          <button class="auth__change" type="button" data-change-phone>Телефон нөмірін өзгерту</button>
+          <button class="auth__change" type="button" data-change><span data-for="phone">Телефон нөмірін өзгерту</span><span data-for="email" hidden>Email өзгерту</span></button>
         </div>
+      </form>
+
+      <form class="auth__form" data-contact-form novalidate hidden>
+        <header class="auth__head">
+          <h2 class="auth__title">Тіркелу</h2>
+          <p class="auth__lead" data-for="email">Аккаунтыңызды жасап жатырмыз. Электрондық поштаны көрсетіңіз, біз растау кодын жібереміз.</p>
+          <p class="auth__lead" data-for="phone" hidden>Аккаунтыңызды жасап жатырмыз. Телефон нөмірін көрсетіңіз, біз растау кодын жібереміз.</p>
+        </header>
+
+        <div class="auth__fields">
+          <label class="field" data-field="email" data-for="email">
+            <span class="field__label">Электрондық пошта</span>
+            <input class="field__input field__input--muted" type="email" name="email" inputmode="email" autocomplete="email"
+                   placeholder="example@mail.com" aria-describedby="contact-email-error" />
+            <span class="field__error" id="contact-email-error" data-error="format" hidden>Электрондық пошта пішімі қате</span>
+            <span class="field__error" data-error="taken" hidden>Бұл Email қолданыста</span>
+          </label>
+
+          <label class="field" data-field="phone" data-for="phone" hidden>
+            <span class="field__label">Телефон нөмірі</span>
+            <input class="field__input" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                   placeholder="+7 (___) ___-__-__" aria-describedby="contact-phone-error" />
+            <span class="field__error" id="contact-phone-error" data-error="format" hidden>Телефон нөмірінің пішімі қате</span>
+            <span class="field__error" data-error="taken" hidden>Бұл нөмір қолданыста</span>
+          </label>
+
+          <div class="alert" role="alert" data-alert hidden>
+            <img class="alert__icon" src="/assets/images/alert-circle.svg" alt="" width="20" height="20" />
+            <p class="alert__text">Кодты жіберу мүмкін болмады. 5 минуттан кейін қайталап көріңіз.</p>
+          </div>
+
+          <button class="button" type="submit" data-submit disabled>Кодты алу</button>
+        </div>
+
+        <p class="auth__consent">Түймені басу арқылы сіз <a href="/kz/privacy/" target="_blank" rel="noopener">Құпиялылық саясатымен</a> келісесіз</p>
       </form>
 
       <form class="auth__form" data-iin-form novalidate hidden>
@@ -128,11 +176,11 @@
 
       <div class="auth__form auth__complete" data-complete hidden>
         <header class="auth__head">
-          <h2 class="auth__title">Жеке кабинет ашылды</h2>
-          <p class="auth__lead">FLEX аккаунтыңыз ашылды. Енді сайтқа өте аласыз.</p>
+          <h2 class="auth__title">FLEX аккаунтыңыз<br />ашылды</h2>
+          <p class="auth__lead">FLEX-ке қош келдіңіз! Аккаунтыңыз пайдалануға дайын.</p>
         </header>
 
-        <a class="button" href="/kz/" data-complete-link>FLEX сайтына өту</a>
+        <a class="button" href="/kz/" data-complete-link>Сайтқа өту</a>
         <img class="loader__spinner" src="/assets/images/loader.svg" alt="Сайтқа өтіп жатырмыз" width="100" height="100" role="status" data-complete-spinner hidden />
       </div>
 
@@ -156,7 +204,8 @@
 
   </main>
 
-  <script src="/src/lib/main.js?v=110"></script>
-  <script src="/src/lib/api.js?v=14"></script>
+  <script src="/src/lib/main.js?v=111"></script>
+  <script src="/src/lib/auth-mock.js?v=1"></script>
+  <script src="/src/lib/api.js?v=15"></script>
 </body>
 </html>

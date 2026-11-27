@@ -8,7 +8,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = [
     "index.html", "about.html", "catalog.html", "stick.html", "device.html", "faiim.html",
     "starter-kit.html", "referral.html", "404.html", "account.html", "favorites.html",
-    "settings.html", "devices.html", "purchases.html", "order.html", "notifications.html", "cabinet-referral.html", "login.html", "news.html", "news/flagship-almaty.html", "news/flex-spekto.html", "starter-set.html",
+    "settings.html", "devices.html", "purchases.html", "order.html", "notifications.html", "cabinet-referral.html", "search.html", "login.html", "news.html", "news/flagship-almaty.html", "news/flex-spekto.html", "starter-set.html",
 ]
 DOC_DIRS = ("terms/", "privacy/", "cookie/", "consent/", "referral-rules/", "starter-kit-rules/")
 
@@ -243,6 +243,13 @@ T = {
     'Авторизация/Регистрация': 'Кіру/Тіркелу',
     'Вход/Регистрация': 'Кіру/Тіркелу',
     'Новости FLEX': 'FLEX жаңалықтары',
+    'Поиск': 'Іздеу',
+    'Результаты поиска': 'Іздеу нәтижелері',
+    'Поиск по сайту': 'Сайт бойынша іздеу',
+    'Товары': 'Тауарлар',
+    'Результаты поиска — Flex': 'Іздеу нәтижелері — Flex',
+    'Поиск по сайту FLEX: устройства, стики и новости.': 'FLEX сайты бойынша іздеу: құрылғылар, стиктер және жаңалықтар.',
+    'По вашему запросу ничего не найдено. Попробуйте другой запрос.': 'Сұрау бойынша ештеңе табылмады. Басқа сөзді байқап көріңіз.',
     'Уведомление': 'Хабарландыру',
     'Email-рассылки': 'Email-таратылымдар',
     'Программы и сервисы': 'Бағдарламалар мен қызметтер',

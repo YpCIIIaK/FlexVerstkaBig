@@ -283,3 +283,12 @@
 @media (min-width: 768px) and (min-height: 821px) {
   .device-price { margin-bottom: calc(16 * var(--wm)); }
 }
+
+.set-gallery__slide img {
+  border-radius: calc(28 * var(--wm));
+  object-fit: cover;
+}
+
+.set-desc[hidden] { display: none; }
+
+.set-gallery__slide img { object-fit: contain; }

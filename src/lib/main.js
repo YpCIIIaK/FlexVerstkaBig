@@ -957,7 +957,7 @@
       if (!f || !Array.isArray(f.images)) return [];
       return f.images.map((src, index) => {
         const slide = document.createElement("div");
-        slide.className = "swiper-slide stick-gallery__slide stick-gallery__slide--pack";
+        slide.className = "swiper-slide stick-gallery__slide stick-gallery__slide--pack" + (document.querySelector(".set-page") ? " set-gallery__slide" : "");
         if (f.glow) {
           slide.style.setProperty("--glow-from", f.glow[0]);
           slide.style.setProperty("--glow-to", f.glow[1]);

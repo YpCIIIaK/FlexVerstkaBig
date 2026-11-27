@@ -232,3 +232,17 @@
 .modal { scrollbar-width: none; }
 
 .modal::-webkit-scrollbar { display: none; }
+
+@media (min-width: 768px) {
+  .modal .modal__title {
+    font-size: calc(32 * var(--wm));
+    line-height: calc(40 * var(--wm));
+  }
+
+  .modal__step--done .modal__title {
+    font-size: calc(32 * var(--wm));
+    line-height: calc(40 * var(--wm));
+  }
+}
+
+.field__input--editable:focus { outline-color: var(--w-30); }

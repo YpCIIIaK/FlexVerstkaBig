@@ -7,15 +7,15 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32.png?v=1" />
   <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png?v=1" />
   <link rel="manifest" href="/assets/favicon/site.webmanifest" />
-  <meta name="description" content="Вход и регистрация в личном кабинете FLEX по номеру телефона." />
-  <title>Авторизация/Регистрация — Flex</title>
+  <meta name="description" content="Вход и регистрация в личном кабинете FLEX по электронной почте или номеру телефона." />
+  <title>Вход/Регистрация — Flex</title>
   <meta name="robots" content="noindex, nofollow" />
 
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/tt-norms-pro-450.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/tt-norms-pro-700.woff2" crossorigin />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="/src/styles/main.css?v=283" />
+  <link rel="stylesheet" href="/src/styles/main.css?v=284" />
 </head>
 <body>
 
@@ -51,24 +51,37 @@
     <section class="auth__panel">
       <form class="auth__form" data-auth-form novalidate>
         <header class="auth__head">
-          <h1 class="auth__title">Авторизация/Регистрация</h1>
-          <p class="auth__lead">Введите номер телефона. Мы отправим код подтверждения</p>
+          <h1 class="auth__title">Вход/Регистрация</h1>
+          <p class="auth__lead" data-for="email" hidden>Введите электронную почту. Мы отправим код для входа.</p>
+          <p class="auth__lead" data-for="phone">Введите номер телефона. Мы отправим код подтверждения.</p>
         </header>
 
+        <div class="auth-tabs" role="tablist" data-auth-tabs hidden>
+          <button class="auth-tabs__tab" type="button" role="tab" aria-selected="false" data-tab="email">Email</button>
+          <button class="auth-tabs__tab is-active" type="button" role="tab" aria-selected="true" data-tab="phone">Телефон</button>
+        </div>
+
         <div class="auth__fields">
-          <label class="field" data-field>
-            <span class="field__label">Номер телефона</span>
-            <input class="field__input" type="tel" name="phone" inputmode="tel" autocomplete="tel"
-                   placeholder="+7 (___) ___-__-__" aria-describedby="phone-error" data-phone />
-            <span class="field__error" id="phone-error" data-field-error hidden>Неверный формат номера телефона</span>
+          <label class="field" data-field="email" data-for="email" hidden>
+            <span class="field__label">Электронная почта</span>
+            <input class="field__input field__input--muted" type="email" name="email" inputmode="email" autocomplete="email"
+                   placeholder="example@mail.com" aria-describedby="email-error" />
+            <span class="field__error" id="email-error" data-error="format" hidden>Неверный формат электронной почты</span>
           </label>
 
-          <div class="alert" role="alert" data-auth-alert hidden>
+          <label class="field" data-field="phone" data-for="phone">
+            <span class="field__label">Номер телефона</span>
+            <input class="field__input" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                   placeholder="+7 (___) ___-__-__" aria-describedby="phone-error" />
+            <span class="field__error" id="phone-error" data-error="format" hidden>Неверный формат номера телефона</span>
+          </label>
+
+          <div class="alert" role="alert" data-alert hidden>
             <img class="alert__icon" src="/assets/images/alert-circle.svg" alt="" width="20" height="20" />
-            <p class="alert__text" data-auth-alert-text>Не удалось отправить СМС. Попробуйте через 5 минут.</p>
+            <p class="alert__text">Не удалось отправить код. Попробуйте через 5 минут.</p>
           </div>
 
-          <button class="button" type="submit" data-auth-submit disabled>Получить код</button>
+          <button class="button" type="submit" data-submit disabled>Получить код</button>
         </div>
 
         <p class="auth__consent">Нажимая кнопку, вы соглашаетесь с <a href="/privacy/" target="_blank" rel="noopener">Политикой конфиденциальности</a></p>
@@ -77,7 +90,7 @@
       <form class="auth__form" data-code-form novalidate hidden>
         <header class="auth__head">
           <h2 class="auth__title">Введите код</h2>
-          <p class="auth__lead">Код отправлен на номер <span data-code-phone>+7 ••• ••• •• 00</span></p>
+          <p class="auth__lead">Мы отправили код подтверждения</p>
         </header>
 
         <div class="auth__fields">
@@ -104,8 +117,43 @@
 
         <div class="auth__actions">
           <button class="auth__resend" type="button" data-resend disabled>Отправить код повторно<span data-resend-timer> (через 59 сек)</span></button>
-          <button class="auth__change" type="button" data-change-phone>Изменить номер телефона</button>
+          <button class="auth__change" type="button" data-change><span data-for="phone">Изменить номер телефона</span><span data-for="email" hidden>Изменить Email</span></button>
         </div>
+      </form>
+
+      <form class="auth__form" data-contact-form novalidate hidden>
+        <header class="auth__head">
+          <h2 class="auth__title">Регистрация</h2>
+          <p class="auth__lead" data-for="email">Создаём ваш аккаунт. Укажите электронную почту, мы отправим код подтверждения.</p>
+          <p class="auth__lead" data-for="phone" hidden>Создаём ваш аккаунт. Укажите номер телефона, мы отправим код подтверждения.</p>
+        </header>
+
+        <div class="auth__fields">
+          <label class="field" data-field="email" data-for="email">
+            <span class="field__label">Электронная почта</span>
+            <input class="field__input field__input--muted" type="email" name="email" inputmode="email" autocomplete="email"
+                   placeholder="example@mail.com" aria-describedby="contact-email-error" />
+            <span class="field__error" id="contact-email-error" data-error="format" hidden>Неверный формат электронной почты</span>
+            <span class="field__error" data-error="taken" hidden>Этот Email уже используется</span>
+          </label>
+
+          <label class="field" data-field="phone" data-for="phone" hidden>
+            <span class="field__label">Номер телефона</span>
+            <input class="field__input" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                   placeholder="+7 (___) ___-__-__" aria-describedby="contact-phone-error" />
+            <span class="field__error" id="contact-phone-error" data-error="format" hidden>Неверный формат номера телефона</span>
+            <span class="field__error" data-error="taken" hidden>Этот номер уже используется</span>
+          </label>
+
+          <div class="alert" role="alert" data-alert hidden>
+            <img class="alert__icon" src="/assets/images/alert-circle.svg" alt="" width="20" height="20" />
+            <p class="alert__text">Не удалось отправить код. Попробуйте через 5 минут.</p>
+          </div>
+
+          <button class="button" type="submit" data-submit disabled>Получить код</button>
+        </div>
+
+        <p class="auth__consent">Нажимая кнопку, вы соглашаетесь с <a href="/privacy/" target="_blank" rel="noopener">Политикой конфиденциальности</a></p>
       </form>
 
       <form class="auth__form" data-iin-form novalidate hidden>
@@ -128,11 +176,11 @@
 
       <div class="auth__form auth__complete" data-complete hidden>
         <header class="auth__head">
-          <h2 class="auth__title">Личный кабинет создан</h2>
-          <p class="auth__lead">Ваш аккаунт FLEX создан. Теперь вы можете перейти на сайт.</p>
+          <h2 class="auth__title">Ваш аккаунт FLEX<br />создан</h2>
+          <p class="auth__lead">Добро пожаловать в FLEX! Ваш аккаунт готов к использованию.</p>
         </header>
 
-        <a class="button" href="/" data-complete-link>Перейти в FLEX</a>
+        <a class="button" href="/" data-complete-link>Перейти на сайт</a>
         <img class="loader__spinner" src="/assets/images/loader.svg" alt="Переходим на сайт" width="100" height="100" role="status" data-complete-spinner hidden />
       </div>
 
@@ -156,7 +204,8 @@
 
   </main>
 
-  <script src="/src/lib/main.js?v=110"></script>
-  <script src="/src/lib/api.js?v=14"></script>
+  <script src="/src/lib/main.js?v=111"></script>
+  <script src="/src/lib/auth-mock.js?v=1"></script>
+  <script src="/src/lib/api.js?v=15"></script>
 </body>
 </html>

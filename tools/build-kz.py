@@ -8,7 +8,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = [
     "index.html", "about.html", "catalog.html", "stick.html", "device.html", "faiim.html",
     "starter-kit.html", "referral.html", "404.html", "account.html", "favorites.html",
-    "settings.html", "devices.html", "purchases.html", "order.html", "notifications.html", "cabinet-referral.html", "search.html", "cart.html", "login.html", "news.html", "news/flagship-almaty.html", "news/flex-spekto.html", "starter-set.html",
+    "settings.html", "devices.html", "purchases.html", "order.html", "notifications.html", "cabinet-referral.html", "search.html", "cart.html", "checkout.html", "login.html", "news.html", "news/flagship-almaty.html", "news/flex-spekto.html", "starter-set.html",
 ]
 DOC_DIRS = ("terms/", "privacy/", "cookie/", "consent/", "referral-rules/", "starter-kit-rules/")
 
@@ -243,6 +243,22 @@ T = {
     'Авторизация/Регистрация': 'Кіру/Тіркелу',
     'Вход/Регистрация': 'Кіру/Тіркелу',
     'Новости FLEX': 'FLEX жаңалықтары',
+    'Оформление заказа': 'Тапсырысты рәсімдеу',
+    'Оформление заказа — Flex': 'Тапсырысты рәсімдеу — Flex',
+    'Контактные данные': 'Байланыс деректері',
+    'Имя и фамилия': 'Аты-жөні',
+    'Введите имя и фамилию': 'Аты-жөніңізді енгізіңіз',
+    'Доставка по Казахстану, срок 1-3 дня': 'Қазақстан бойынша жеткізу, мерзімі 1-3 күн',
+    'Улица и дом': 'Көше және үй',
+    'Улица, номер дома': 'Көше, үй нөмірі',
+    'Комментарий курьеру (необязательно)': 'Курьерге түсініктеме (міндетті емес)',
+    'Например, позвоните за 10 минут до приезда': 'Мысалы, келерден 10 минут бұрын қоңырау шалыңыз',
+    'Реквизиты карты вводятся на защищённой странице платёжного провайдера.': 'Карта деректемелері төлем провайдерінің қорғалған бетінде енгізіледі.',
+    'Изменить состав': 'Құрамын өзгерту',
+    'Итого за товары': 'Тауарлар үшін барлығы',
+    'Перейти к оплате': 'Төлемге өту',
+    'Нажимая «Перейти к оплате», я соглашаюсь с условиями заказа.': '«Төлемге өту» батырмасын басу арқылы мен тапсырыс шарттарымен келісемін.',
+    '+ Добавить новый адрес': '+ Жаңа мекенжай қосу',
     'Корзина — Flex': 'Себет — Flex',
     'Корзина FLEX.': 'FLEX себеті.',
     'В корзине пока пусто': 'Себет әзірге бос',

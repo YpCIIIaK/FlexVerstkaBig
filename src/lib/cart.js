@@ -87,6 +87,26 @@
   badge();
   window.addEventListener("storage", (e) => { if (e.key === KEY) badge(); });
 
+  const priced = (cart) => {
+    const hasSet = cart.some((i) => i.kind === "set");
+    return cart.map((i) => {
+      const unit = i.kind === "device" && hasSet ? PRICE.deviceSecond : PRICE[i.kind];
+      return { ...i, unit, total: unit * i.qty };
+    });
+  };
+  const totals = (cart) => {
+    const ls = priced(cart);
+    const goods = ls.reduce((s, i) => s + i.total, 0);
+    const hasSet = cart.some((i) => i.kind === "set");
+    let delivery = 0;
+    let tier = "";
+    if (!hasSet && goods < 4000) { delivery = DELIVERY.high; tier = T.tierHigh; }
+    else if (!hasSet && goods < 12000) { delivery = DELIVERY.std; tier = T.tierStd; }
+    else if (!hasSet) tier = T.tierFree;
+    return { lines: ls, qty: count(cart), goods, delivery, tier, hasSet, total: goods + delivery };
+  };
+  window.flexCart = { read, write, totals, DEVICES, STICKS, T };
+
   const page = document.querySelector("[data-cart-page]");
   if (!page) return;
 
@@ -194,6 +214,7 @@
   const offer = $("[data-cart-offer]");
   const submit = $("[data-cart-submit]");
   offer.addEventListener("change", () => { submit.disabled = !offer.checked; });
+  submit.addEventListener("click", () => { location.href = `${base}/checkout`; });
 
   render();
 })();

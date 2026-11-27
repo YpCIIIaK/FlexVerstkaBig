@@ -8,7 +8,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = [
     "index.html", "about.html", "catalog.html", "stick.html", "device.html", "faiim.html",
     "starter-kit.html", "referral.html", "404.html", "account.html", "favorites.html",
-    "settings.html", "devices.html", "purchases.html", "order.html", "notifications.html", "cabinet-referral.html", "search.html", "login.html", "news.html", "news/flagship-almaty.html", "news/flex-spekto.html", "starter-set.html",
+    "settings.html", "devices.html", "purchases.html", "order.html", "notifications.html", "cabinet-referral.html", "search.html", "cart.html", "login.html", "news.html", "news/flagship-almaty.html", "news/flex-spekto.html", "starter-set.html",
 ]
 DOC_DIRS = ("terms/", "privacy/", "cookie/", "consent/", "referral-rules/", "starter-kit-rules/")
 
@@ -243,6 +243,14 @@ T = {
     'Авторизация/Регистрация': 'Кіру/Тіркелу',
     'Вход/Регистрация': 'Кіру/Тіркелу',
     'Новости FLEX': 'FLEX жаңалықтары',
+    'Корзина — Flex': 'Себет — Flex',
+    'Корзина FLEX.': 'FLEX себеті.',
+    'В корзине пока пусто': 'Себет әзірге бос',
+    'Откройте каталог и выберите то, что вам понравится': 'Каталогты ашып, ұнағанын таңдаңыз',
+    'Продолжить покупки': 'Сатып алуды жалғастыру',
+    'Ваш заказ': 'Сіздің тапсырысыңыз',
+    'Я принимаю условия публичной оферты': 'Мен жария оферта шарттарын қабылдаймын',
+    'Оформить заказ': 'Тапсырысты рәсімдеу',
     'Поиск': 'Іздеу',
     'Результаты поиска': 'Іздеу нәтижелері',
     'Поиск по сайту': 'Сайт бойынша іздеу',

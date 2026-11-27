@@ -83,7 +83,7 @@ def article_main(a):
 
 def home_card(n, main=False):
     label, cat, date, title, text = n[:5]
-    href = f"/news/{n[5]}"
+    href = f"/news/{n[5]}" if n[5] else "#"
     tag, h = ("article", "h3") if main else ("li", "h3")
     mod = " home-news__card--main" if main else ""
     return f"""        <{tag} class="home-news__card{mod}">

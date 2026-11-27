@@ -11,7 +11,7 @@
   <meta name="description" content="FLEX — устройство для нагревания табака и стики FAIIM. Линейка устройств, вкусы, программы и магазины рядом." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="/src/styles/main.css?v=284" />
+  <link rel="stylesheet" href="/src/styles/main.css?v=287" />
   <link rel="stylesheet" href="/assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -99,6 +99,7 @@
     <div class="header__actions">
       <div class="header__icons">
         <a class="header__icon" href="/kz/favorites" aria-label="Таңдаулылар"><img src="/assets/images/heart.svg" alt="" width="20" height="20" /></a>
+        <a class="header__icon header__cart" href="#" aria-label="Себет"><img src="/assets/images/cart.svg" alt="" width="20" height="20" /><span class="header__badge" data-cart-count hidden>0</span></a>
         <a class="header__icon" href="/kz/account" aria-label="Жеке кабинет"><img src="/assets/images/user.svg" alt="" width="20" height="20" /></a>
       </div>
       <button class="header__lang" type="button" aria-label="Тіл: қазақша">
@@ -443,17 +444,17 @@
               <span class="store__name">FLEX дүкені, Forum СОО</span>
               <span class="store__address">Сейфуллин даңғылы, 617, 1-қабат</span>
               <span class="store__meta"><span class="store__hours">10:00-22:00</span></span>
-            </button></li>
+            </button><a class="store__2gis" href="https://2gis.kz/almaty/geo/76.93530%2C43.23370" target="_blank" rel="noopener" aria-label="Магазин FLEX, ТРЦ Forum в 2ГИС"><img src="/assets/images/2gis.svg" alt="" width="24" height="24" /></a></li>
             <li><button class="store" type="button" data-store="1" data-city="Алматы" data-coords="76.96010,43.23162" aria-pressed="false">
               <span class="store__name">Сату нүктесі, TRIUMPH БО</span>
               <span class="store__address">Достық даңғылы, 192, цокольдық қабат</span>
               <span class="store__meta"><span class="store__hours">08:00-17:00</span></span>
-            </button></li>
+            </button><a class="store__2gis" href="https://2gis.kz/almaty/geo/76.96010%2C43.23162" target="_blank" rel="noopener" aria-label="Точка продажи, БЦ TRIUMPH в 2ГИС"><img src="/assets/images/2gis.svg" alt="" width="24" height="24" /></a></li>
             <li><button class="store" type="button" data-store="2" data-city="Алматы" data-coords="76.90918,43.22533" aria-pressed="false">
               <span class="store__name">FLEX дүкені, Atakent mall СОО</span>
               <span class="store__address">Тимирязев көшесі, 42 к3, 1-қабат</span>
               <span class="store__meta"><span class="store__hours">10:00-22:00</span></span>
-            </button></li>
+            </button><a class="store__2gis" href="https://2gis.kz/almaty/geo/76.90918%2C43.22533" target="_blank" rel="noopener" aria-label="Магазин FLEX, ТРЦ Atakent mall в 2ГИС"><img src="/assets/images/2gis.svg" alt="" width="24" height="24" /></a></li>
           </ul>
           <p class="stores__empty" data-store-empty hidden>Ештеңе табылмады</p>
         </div>
@@ -486,6 +487,33 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="home-news" aria-labelledby="home-news-title">
+      <div class="home-news__head">
+        <h2 class="section-title" id="home-news-title">FLEX жаңалықтары</h2>
+        <a class="button button--ghost home-news__all" href="/kz/news">Барлық жаңалықтар</a>
+      </div>
+      <div class="home-news__grid">
+        <article class="home-news__card home-news__card--main">
+          <a class="home-news__media" href="/kz/news/flagship-almaty" tabindex="-1" aria-hidden="true"><img class="home-news__img" src="/assets/images/newsImg/actual-1.webp" alt="" width="920" height="463" loading="lazy" /></a>
+          <div class="home-news__body">
+            <span class="home-news__tag">Компания жаңалықтары</span>
+            <h3 class="home-news__title"><a class="home-news__link" href="/kz/news/flagship-almaty">Әлемдегі алғашқы флагмандық дүкен</a></h3>
+            <p class="home-news__text">Қазақстан FLEX бренді өзінің ресми кеңістігін ұсынған алғашқы ел болды.</p>
+          </div>
+        </article>
+        <ul class="home-news__list">
+        <li class="home-news__card">
+          <a class="home-news__media" href="/kz/news/flex-spekto" tabindex="-1" aria-hidden="true"><img class="home-news__img" src="/assets/images/newsImg/news-5.webp" alt="" width="920" height="463" loading="lazy" /></a>
+          <div class="home-news__body">
+            <span class="home-news__tag">Компания жаңалықтары</span>
+            <h3 class="home-news__title"><a class="home-news__link" href="/kz/news/flex-spekto">FLEX SPEKTO-да</a></h3>
+            <p class="home-news__text">Қараша айында FLEX маусымның ең күтілген музыкалық оқиғаларының бірі — SPEKTO фестивалінің бір бөлігі болды.</p>
+          </div>
+        </li>
+        </ul>
       </div>
     </section>
   </main>

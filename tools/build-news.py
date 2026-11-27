@@ -81,6 +81,37 @@ def article_main(a):
 """
 
 
+def home_card(n, main=False):
+    label, cat, date, title, text = n[:5]
+    href = f"/news/{n[5]}"
+    tag, h = ("article", "h3") if main else ("li", "h3")
+    mod = " home-news__card--main" if main else ""
+    return f"""        <{tag} class="home-news__card{mod}">
+          <a class="home-news__media" href="{href}" tabindex="-1" aria-hidden="true"><img class="home-news__img" src="{n[6]}" alt="" width="920" height="463" loading="lazy" /></a>
+          <div class="home-news__body">
+            <span class="home-news__tag">{label}</span>
+            <{h} class="home-news__title"><a class="home-news__link" href="{href}">{title}</a></{h}>
+            <p class="home-news__text">{text}</p>
+          </div>
+        </{tag}>
+"""
+
+
+def home_block():
+    items = [n for n in NEWS if len(n) > 6][:4]
+    side = "".join(home_card(n) for n in items[1:])
+    side = f'        <ul class="home-news__list">\n{side}        </ul>\n' if side else ""
+    return f"""    <section class="home-news" aria-labelledby="home-news-title">
+      <div class="home-news__head">
+        <h2 class="section-title" id="home-news-title">Новости FLEX</h2>
+        <a class="button button--ghost home-news__all" href="/news">Все новости</a>
+      </div>
+      <div class="home-news__grid">
+{home_card(items[0], True)}{side}      </div>
+    </section>
+"""
+
+
 def main():
     page = open("news.html", encoding="utf-8").read()
     cards = "".join(card(i, n) for i, n in enumerate(NEWS, 1))
@@ -88,6 +119,14 @@ def main():
                   lambda m: m.group(1) + cards + m.group(2), page, flags=re.S)
     assert n_sub == 1
     open("news.html", "w", encoding="utf-8").write(page)
+
+    home = open("index.html", encoding="utf-8").read()
+    if '<section class="home-news"' in home:
+        home = re.sub(r'    <section class="home-news".*?    </section>\n', lambda m: home_block(), home, count=1, flags=re.S)
+    else:
+        home = home.replace("    </section>\n  </main>\n\n  <footer", "    </section>\n\n" + home_block() + "  </main>\n\n  <footer", 1)
+    assert '<section class="home-news"' in home
+    open("index.html", "w", encoding="utf-8").write(home)
 
     for a in ARTICLES:
         n = NEWS[a["index"] - 1]

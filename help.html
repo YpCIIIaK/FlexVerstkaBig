@@ -11,7 +11,7 @@
   <meta name="description" content="Помощь FLEX: горячая линия, Telegram, частые вопросы и магазины рядом." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="/src/styles/main.css?v=284" />
+  <link rel="stylesheet" href="/src/styles/main.css?v=287" />
   <link rel="stylesheet" href="/assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -99,6 +99,7 @@
     <div class="header__actions">
       <div class="header__icons">
         <a class="header__icon" href="/favorites" aria-label="Избранное"><img src="/assets/images/heart.svg" alt="" width="20" height="20" /></a>
+        <a class="header__icon header__cart" href="#" aria-label="Корзина"><img src="/assets/images/cart.svg" alt="" width="20" height="20" /><span class="header__badge" data-cart-count hidden>0</span></a>
         <a class="header__icon" href="/account" aria-label="Личный кабинет"><img src="/assets/images/user.svg" alt="" width="20" height="20" /></a>
       </div>
       <button class="header__lang" type="button" aria-label="Язык: русский">
@@ -322,17 +323,17 @@
               <span class="store__name">Магазин FLEX, ТРЦ Forum</span>
               <span class="store__address">Проспект Сейфуллина, 617, 1 этаж</span>
               <span class="store__meta"><span class="store__hours">10:00-22:00</span></span>
-            </button></li>
+            </button><a class="store__2gis" href="https://2gis.kz/almaty/geo/76.93530%2C43.23370" target="_blank" rel="noopener" aria-label="Магазин FLEX, ТРЦ Forum в 2ГИС"><img src="/assets/images/2gis.svg" alt="" width="24" height="24" /></a></li>
             <li><button class="store" type="button" data-store="1" data-city="Алматы" data-coords="76.96010,43.23162" aria-pressed="false">
               <span class="store__name">Точка продажи, БЦ TRIUMPH</span>
               <span class="store__address">Проспект Достык, 192, цокольный этаж</span>
               <span class="store__meta"><span class="store__hours">08:00-17:00</span></span>
-            </button></li>
+            </button><a class="store__2gis" href="https://2gis.kz/almaty/geo/76.96010%2C43.23162" target="_blank" rel="noopener" aria-label="Точка продажи, БЦ TRIUMPH в 2ГИС"><img src="/assets/images/2gis.svg" alt="" width="24" height="24" /></a></li>
             <li><button class="store" type="button" data-store="2" data-city="Алматы" data-coords="76.90918,43.22533" aria-pressed="false">
               <span class="store__name">Магазин FLEX, ТРЦ Atakent mall</span>
               <span class="store__address">Улица Тимирязева, 42 к3, 1 этаж</span>
               <span class="store__meta"><span class="store__hours">10:00-22:00</span></span>
-            </button></li>
+            </button><a class="store__2gis" href="https://2gis.kz/almaty/geo/76.90918%2C43.22533" target="_blank" rel="noopener" aria-label="Магазин FLEX, ТРЦ Atakent mall в 2ГИС"><img src="/assets/images/2gis.svg" alt="" width="24" height="24" /></a></li>
           </ul>
           <p class="stores__empty" data-store-empty hidden>Ничего не найдено</p>
         </div>

@@ -312,22 +312,56 @@
   pointer-events: none;
 }
 
+.stores__list > li {
+  position: relative;
+  flex: none;
+}
+
+.stores__list > li:not(:first-child) {
+  padding-top: var(--store-gap);
+  border-top: 1px solid var(--w-10);
+}
+
 .store {
   display: flex;
   flex-direction: column;
   gap: calc(10 * var(--wm));
-  padding: calc(16 * var(--wm)) calc(12 * var(--wm));
-  margin: 0 calc(-12 * var(--wm));
-  width: calc(100% + 24 * var(--wm));
-  border-bottom: 1px solid var(--w-10);
+  width: 100%;
+  padding: calc(12 * var(--wm));
+  padding-right: calc(46 * var(--wm));
+  border-radius: calc(12 * var(--wm));
   text-align: left;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 .store:hover { background-color: var(--w-04); }
-.store.is-active { background-color: rgba(160, 93, 218, 0.12); }
-li:not(:first-child) > .store:hover { box-shadow: 0 calc(-1 * var(--store-gap)) 0 var(--w-04); }
-li:not(:first-child) > .store.is-active { box-shadow: 0 calc(-1 * var(--store-gap)) 0 rgba(160, 93, 218, 0.12); }
+
+.store.is-active {
+  outline: 1px solid var(--w-10);
+  outline-offset: -1px;
+  background-color: rgba(160, 93, 218, 0.2);
+}
+
+.store__2gis {
+  position: absolute;
+  bottom: auto;
+  right: calc(12 * var(--wm));
+  display: flex;
+  width: calc(24 * var(--wm));
+  height: calc(24 * var(--wm));
+  margin-top: calc(12 * var(--wm));
+  transition: opacity 0.2s ease;
+}
+
+.stores__list > li:first-child .store__2gis { top: 0; }
+.stores__list > li:not(:first-child) .store__2gis { top: var(--store-gap); }
+
+.store__2gis:hover { opacity: 0.8; }
+
+.store__2gis img {
+  width: 100%;
+  height: 100%;
+}
 
 .store__name {
   font-size: calc(16 * var(--wm));

@@ -79,6 +79,7 @@ html:not(.is-painted) *::after {
   backdrop-filter: none !important;
 }
 
-li:has(> a[href="/news"], > a[href="/kz/news"]) {
+li:has(> a[href="/news"], > a[href="/kz/news"]),
+.home-news {
   display: none;
 }

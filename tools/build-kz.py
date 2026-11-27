@@ -8,7 +8,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = [
     "index.html", "about.html", "catalog.html", "stick.html", "device.html", "faiim.html",
     "starter-kit.html", "referral.html", "404.html", "account.html", "favorites.html",
-    "settings.html", "devices.html", "purchases.html", "login.html", "news.html", "news/flagship-almaty.html", "news/flex-spekto.html", "starter-set.html",
+    "settings.html", "devices.html", "login.html", "news.html", "news/flagship-almaty.html", "news/flex-spekto.html", "starter-set.html",
 ]
 DOC_DIRS = ("terms/", "privacy/", "cookie/", "consent/", "referral-rules/", "starter-kit-rules/")
 
@@ -243,13 +243,6 @@ T = {
     'Авторизация/Регистрация': 'Кіру/Тіркелу',
     'Вход/Регистрация': 'Кіру/Тіркелу',
     'Новости FLEX': 'FLEX жаңалықтары',
-    'Покупки': 'Сатып алулар',
-    'Мои покупки': 'Менің сатып алуларым',
-    'Онлайн': 'Онлайн',
-    'В магазинах': 'Дүкендерде',
-    'Здесь пока нет покупок': 'Мұнда әзірге сатып алулар жоқ',
-    'Тип покупки': 'Сатып алу түрі',
-    'Мои покупки — Личный кабинет — Flex': 'Менің сатып алуларым — Жеке кабинет — Flex',
     'Мои устройства': 'Менің құрылғыларым',
     'Зарегистрировать устройство': 'Құрылғыны тіркеу',
     'Регистрация устройства': 'Құрылғыны тіркеу',

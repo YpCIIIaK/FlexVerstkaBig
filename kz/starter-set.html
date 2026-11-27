@@ -12,7 +12,7 @@
   <meta name="robots" content="noindex, nofollow" />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="/src/styles/main.css?v=299" />
+  <link rel="stylesheet" href="/src/styles/main.css?v=301" />
   <link rel="stylesheet" href="/assets/vendor/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="/assets/vendor/fancybox/fancybox.css" />
 </head>
@@ -196,6 +196,15 @@
                 <button class="swatch swatch--solid" type="button" role="radio" aria-checked="false" aria-label="Сарғыш құм" data-flavour="beige" style="--swatch: #ad9c95; --ring: #ad9c95"><span></span></button>
             </div>
             <p class="set-info__note">Жиынтықтағы қолжетімді FAIIM:<br />4 тұрақты – PURPLE MIX, SUNSHINE MIX, YELLOW MIX, SKYGREEN, 5-сі таңдау бойынша</p>
+          </div>
+          <div class="set-pack">
+            <p class="stick-info__label">Бесінші қорап:</p>
+            <div class="set-pack__chips" role="radiogroup" aria-label="Бесінші қорап" data-pack>
+              <button class="set-pack__chip" type="button" role="radio" aria-checked="false" data-pack-value="sunshine">Sunshine Mix</button>
+              <button class="set-pack__chip is-active" type="button" role="radio" aria-checked="true" data-pack-value="purple">Purple Mix</button>
+              <button class="set-pack__chip" type="button" role="radio" aria-checked="false" data-pack-value="yellow">Yellow Mix</button>
+              <button class="set-pack__chip" type="button" role="radio" aria-checked="false" data-pack-value="skygreen">Skygreen</button>
+            </div>
           </div>
           <div class="set-cta">
             <button class="set-cta__fav" type="button" aria-pressed="false" aria-label="Таңдаулыларға қосу" data-set-fav><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg></button>
@@ -400,6 +409,7 @@
     <section class="faq stick-faq" aria-labelledby="stick-faq-title">
       <div class="faq__head">
         <h2 class="faq__title" id="stick-faq-title">Жиі қойылатын сұрақтар</h2>
+        <a class="button button--ghost button--auto faq__help" href="/help">Көмек</a>
       </div>
       <div class="faq__list d-only" data-faq>
         <div class="faq__item">
@@ -593,5 +603,6 @@
   <script src="/assets/vendor/fancybox/fancybox.umd.js" defer></script>
   <script src="/src/lib/address.js?v=1" defer></script>
   <script src="/src/lib/main.js?v=112" defer></script>
+  <script src="/src/lib/device.js?v=2" defer></script>
 </body>
 </html>

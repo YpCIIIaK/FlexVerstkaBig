@@ -232,3 +232,50 @@
 
   .set-desc__list li::before { top: calc(7 * var(--wm)); }
 }
+
+.set-pack {
+  display: flex;
+  flex-direction: column;
+  gap: calc(12 * var(--wm));
+}
+
+.set-pack__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(8 * var(--wm));
+}
+
+.set-pack__chip {
+  padding: calc(8 * var(--wm)) calc(14 * var(--wm));
+  border-radius: calc(100 * var(--wm));
+  outline: 1px solid var(--w-10);
+  outline-offset: -1px;
+  background-color: var(--w-05);
+  font-size: calc(14 * var(--wm));
+  line-height: calc(20 * var(--wm));
+  color: var(--w-80);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.set-pack__chip:hover { background-color: var(--w-10); }
+
+.set-pack__chip.is-active {
+  outline-color: transparent;
+  background-color: var(--purple-accent);
+  color: var(--white);
+}
+
+@media (min-width: 768px) and (max-height: 820px) {
+  .set-page .stick-info,
+  .device .stick-info { gap: calc(20 * var(--wm)); }
+
+  .set-page .stick-info__bottom,
+  .device .stick-info__bottom { gap: calc(20 * var(--wm)); }
+
+  .set-page .stick-info__flavours { gap: calc(12 * var(--wm)); }
+
+  .device-price {
+    margin-top: calc(12 * var(--wm));
+    padding-bottom: calc(20 * var(--wm));
+  }
+}

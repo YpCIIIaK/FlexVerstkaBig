@@ -228,3 +228,7 @@
     background-color: #151515;
   }
 }
+
+.modal { scrollbar-width: none; }
+
+.modal::-webkit-scrollbar { display: none; }

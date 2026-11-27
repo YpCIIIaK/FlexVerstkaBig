@@ -889,3 +889,7 @@
 
   .stick .stick-info__flavours { padding-bottom: calc(20 * var(--wm)); }
 }
+
+@media (min-width: 768px) {
+  .stick-benefits--faiim .benefit__title { margin-top: auto; }
+}

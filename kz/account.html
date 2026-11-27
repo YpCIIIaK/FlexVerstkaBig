@@ -12,7 +12,7 @@
   <meta name="robots" content="noindex" />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="/src/styles/main.css?v=312" />
+  <link rel="stylesheet" href="/src/styles/main.css?v=314" />
   <link rel="stylesheet" href="/assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -225,7 +225,7 @@
             </label>
           </div>
 
-          <div class="field" hidden>
+          <div class="field">
             <label class="field__label" for="profile-email">Email</label>
             <div class="field__box" data-email-box>
               <input class="field__input field__input--static" id="profile-email" type="email" value="" readonly data-email />
@@ -238,6 +238,32 @@
             <span>Аты-Жөні, ЖСН және туған күні өзгертілмейді.<br />Телефон нөмірін өзгерту үшін 7707 нөмірі бойынша қолдау қызметіне хабарласыңыз.</span>
           </p>
         </form>
+
+        <section class="account-card" aria-labelledby="addr-title" data-addresses>
+          <div class="account-card__head">
+            <h2 class="account-card__title" id="addr-title">Менің мекенжайларым</h2>
+            <button class="button button--ghost button--auto" type="button" data-addr-add>Мекенжай қосу</button>
+          </div>
+          <p class="account-card__empty" data-addr-empty>Сізде әзірге сақталған мекенжайлар жоқ</p>
+          <ul class="saved-list" data-addr-list></ul>
+          <p class="account-card__note" data-addr-note hidden>
+            <img src="/assets/images/info.svg" alt="" width="16" height="16" />
+            <span>Негізгі мекенжай әдепкі бойынша жеткізу үшін қолданылады.</span>
+          </p>
+        </section>
+
+        <section class="account-card" aria-labelledby="cards-title" data-cards>
+          <div class="account-card__head">
+            <h2 class="account-card__title" id="cards-title">Менің карталарым</h2>
+            <button class="button button--ghost button--auto" type="button" data-card-add>Карта қосу</button>
+          </div>
+          <p class="account-card__empty" data-card-empty>Сізде әзірге сақталған карталар жоқ</p>
+          <ul class="saved-list" data-card-list></ul>
+          <p class="account-card__note" data-card-note hidden>
+            <img src="/assets/images/info.svg" alt="" width="16" height="16" />
+            <span>Негізгі карта төлем кезінде әдепкі бойынша қолданылады.</span>
+          </p>
+        </section>
         <a class="account-logout m-only" href="/kz/login" data-logout><img src="/assets/images/log-out.svg" alt="" width="20" height="20" />Аккаунттан шығу</a>
       </section>
     </div>
@@ -318,6 +344,67 @@
       </div>
       <button class="button" type="button" data-modal-close>Дайын</button>
     </div>
+  </dialog>
+
+  <dialog class="modal modal--wide" aria-labelledby="addr-modal-title" data-addr-modal>
+    <form class="modal__step" method="dialog" novalidate data-addr-form>
+      <header class="modal__head">
+        <h2 class="modal__title" id="addr-modal-title"><span data-addr-mode="add">Мекенжай қосу</span><span data-addr-mode="edit" hidden>Мекенжайды өзгерту</span></h2>
+        <button class="modal__close" type="button" aria-label="Жабу" data-modal-close><img src="/assets/images/close.svg" alt="" width="24" height="24" /></button>
+      </header>
+      <div class="modal__body addr-form">
+        <label class="field addr-form__half"><span class="field__label">Мекенжай атауы</span><input class="field__input field__input--static field__input--editable" name="title" type="text" placeholder="Мысалы, Үй" required /></label>
+        <label class="field addr-form__half"><span class="field__label">Қала</span><input class="field__input field__input--static field__input--editable" name="city" type="text" placeholder="Қаланы көрсетіңіз" required /></label>
+        <label class="field addr-form__street"><span class="field__label">Көше</span><input class="field__input field__input--static field__input--editable" name="street" type="text" placeholder="Көше атауы" required /></label>
+        <label class="field addr-form__house"><span class="field__label">Үй</span><input class="field__input field__input--static field__input--editable" name="house" type="text" placeholder="Үй №" required /></label>
+        <label class="field addr-form__third"><span class="field__label">Пәтер / кеңсе</span><input class="field__input field__input--static field__input--editable" name="flat" type="text" placeholder="Пәтер №" /></label>
+        <label class="field addr-form__third"><span class="field__label">Кіреберіс</span><input class="field__input field__input--static field__input--editable" name="entrance" type="text" placeholder="Міндетті емес" /></label>
+        <label class="field addr-form__third"><span class="field__label">Қабат</span><input class="field__input field__input--static field__input--editable" name="floor" type="text" placeholder="Міндетті емес" /></label>
+        <label class="field addr-form__full"><span class="field__label">Жеткізуге арналған түсініктеме</span><textarea class="field__input field__input--static field__input--editable addr-form__comment" name="comment" rows="2" placeholder="Мысалы, кіреберісті қалай табуға болады..."></textarea></label>
+        <label class="checkbox addr-form__full"><input class="checkbox__input" name="main" type="checkbox" /><span class="checkbox__mark" aria-hidden="true"></span>Негізгі ету</label>
+      </div>
+      <div class="modal__actions">
+        <button class="button button--ghost" type="button" data-modal-close>Болдырмау</button>
+        <button class="button" type="submit" data-addr-save disabled>Сақтау</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" aria-labelledby="confirm-modal-title" data-confirm-modal>
+    <form class="modal__step" method="dialog" novalidate data-confirm-form>
+      <header class="modal__head">
+        <h2 class="modal__title" id="confirm-modal-title"><span data-confirm-kind="addr">Мекенжайды жою керек пе?</span><span data-confirm-kind="card" hidden>Картаны жою керек пе?</span></h2>
+        <button class="modal__close" type="button" aria-label="Жабу" data-modal-close><img src="/assets/images/close.svg" alt="" width="24" height="24" /></button>
+      </header>
+      <div class="modal__body">
+        <div class="field">
+          <span class="field__label" data-confirm-label></span>
+          <p class="confirm-box" data-confirm-text></p>
+        </div>
+        <p class="account-card__note">
+          <img src="/assets/images/info.svg" alt="" width="16" height="16" />
+          <span data-confirm-kind="addr">Мекенжай сақталғандар тізімінен жойылады</span><span data-confirm-kind="card" hidden>Сақталған карта аккаунттан жойылады</span>
+        </p>
+      </div>
+      <div class="modal__actions">
+        <button class="button button--ghost" type="button" data-modal-close>Болдырмау</button>
+        <button class="button button--danger" type="submit"><img src="/assets/images/trash.svg" alt="" width="16" height="16" />Жою</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" aria-labelledby="card-modal-title" data-card-modal>
+    <form class="modal__step" method="dialog" novalidate data-card-form>
+      <header class="modal__head">
+        <h2 class="modal__title" id="card-modal-title">Карта қосу</h2>
+        <button class="modal__close" type="button" aria-label="Жабу" data-modal-close><img src="/assets/images/close.svg" alt="" width="24" height="24" /></button>
+      </header>
+      <p class="modal__lead">Басқаннан кейін төлем провайдерінің қорғалған формасы ашылады</p>
+      <div class="modal__actions">
+        <button class="button button--ghost" type="button" data-modal-close>Болдырмау</button>
+        <button class="button" type="submit">Өту</button>
+      </div>
+    </form>
   </dialog>
 
   <footer class="footer">
@@ -418,6 +505,7 @@
   <script src="/assets/vendor/swiper/swiper-bundle.min.js" defer></script>
   <script src="/src/lib/address.js?v=1" defer></script>
   <script src="/src/lib/main.js?v=114" defer></script>
-  <script src="/src/lib/api.js?v=15" defer></script>
+  <script src="/src/lib/api.js?v=16" defer></script>
+  <script src="/src/lib/profile.js?v=1" defer></script>
 </body>
 </html>

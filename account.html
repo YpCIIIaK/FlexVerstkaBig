@@ -12,7 +12,7 @@
   <meta name="robots" content="noindex" />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="/src/styles/main.css?v=312" />
+  <link rel="stylesheet" href="/src/styles/main.css?v=314" />
   <link rel="stylesheet" href="/assets/vendor/swiper/swiper-bundle.min.css" />
 </head>
 <body>
@@ -225,7 +225,7 @@
             </label>
           </div>
 
-          <div class="field" hidden>
+          <div class="field">
             <label class="field__label" for="profile-email">Email</label>
             <div class="field__box" data-email-box>
               <input class="field__input field__input--static" id="profile-email" type="email" value="" readonly data-email />
@@ -238,6 +238,32 @@
             <span>ФИО, ИИН, пол и дата рождения не подлежат редактированию.<br />Для изменения номера телефона обратитесь в поддержку по номеру 7707.</span>
           </p>
         </form>
+
+        <section class="account-card" aria-labelledby="addr-title" data-addresses>
+          <div class="account-card__head">
+            <h2 class="account-card__title" id="addr-title">Мои адреса</h2>
+            <button class="button button--ghost button--auto" type="button" data-addr-add>Добавить адрес</button>
+          </div>
+          <p class="account-card__empty" data-addr-empty>У вас пока нет сохранённых адресов</p>
+          <ul class="saved-list" data-addr-list></ul>
+          <p class="account-card__note" data-addr-note hidden>
+            <img src="/assets/images/info.svg" alt="" width="16" height="16" />
+            <span>Основной адрес используется для доставки по умолчанию.</span>
+          </p>
+        </section>
+
+        <section class="account-card" aria-labelledby="cards-title" data-cards>
+          <div class="account-card__head">
+            <h2 class="account-card__title" id="cards-title">Мои карты</h2>
+            <button class="button button--ghost button--auto" type="button" data-card-add>Добавить карту</button>
+          </div>
+          <p class="account-card__empty" data-card-empty>У вас пока нет сохранённых карт</p>
+          <ul class="saved-list" data-card-list></ul>
+          <p class="account-card__note" data-card-note hidden>
+            <img src="/assets/images/info.svg" alt="" width="16" height="16" />
+            <span>Основная карта используется по умолчанию при оплате.</span>
+          </p>
+        </section>
         <a class="account-logout m-only" href="/login" data-logout><img src="/assets/images/log-out.svg" alt="" width="20" height="20" />Выйти из аккаунта</a>
       </section>
     </div>
@@ -318,6 +344,67 @@
       </div>
       <button class="button" type="button" data-modal-close>Готово</button>
     </div>
+  </dialog>
+
+  <dialog class="modal modal--wide" aria-labelledby="addr-modal-title" data-addr-modal>
+    <form class="modal__step" method="dialog" novalidate data-addr-form>
+      <header class="modal__head">
+        <h2 class="modal__title" id="addr-modal-title"><span data-addr-mode="add">Добавить адрес</span><span data-addr-mode="edit" hidden>Изменить адрес</span></h2>
+        <button class="modal__close" type="button" aria-label="Закрыть" data-modal-close><img src="/assets/images/close.svg" alt="" width="24" height="24" /></button>
+      </header>
+      <div class="modal__body addr-form">
+        <label class="field addr-form__half"><span class="field__label">Название адреса</span><input class="field__input field__input--static field__input--editable" name="title" type="text" placeholder="Например, Дом" required /></label>
+        <label class="field addr-form__half"><span class="field__label">Город</span><input class="field__input field__input--static field__input--editable" name="city" type="text" placeholder="Укажите город" required /></label>
+        <label class="field addr-form__street"><span class="field__label">Улица</span><input class="field__input field__input--static field__input--editable" name="street" type="text" placeholder="Название улицы" required /></label>
+        <label class="field addr-form__house"><span class="field__label">Дом</span><input class="field__input field__input--static field__input--editable" name="house" type="text" placeholder="№ дома" required /></label>
+        <label class="field addr-form__third"><span class="field__label">Квартира / офис</span><input class="field__input field__input--static field__input--editable" name="flat" type="text" placeholder="№ квартиры" /></label>
+        <label class="field addr-form__third"><span class="field__label">Подъезд</span><input class="field__input field__input--static field__input--editable" name="entrance" type="text" placeholder="Необязательно" /></label>
+        <label class="field addr-form__third"><span class="field__label">Этаж</span><input class="field__input field__input--static field__input--editable" name="floor" type="text" placeholder="Необязательно" /></label>
+        <label class="field addr-form__full"><span class="field__label">Комментарий для доставки</span><textarea class="field__input field__input--static field__input--editable addr-form__comment" name="comment" rows="2" placeholder="Например, как найти вход..."></textarea></label>
+        <label class="checkbox addr-form__full"><input class="checkbox__input" name="main" type="checkbox" /><span class="checkbox__mark" aria-hidden="true"></span>Сделать основным</label>
+      </div>
+      <div class="modal__actions">
+        <button class="button button--ghost" type="button" data-modal-close>Отмена</button>
+        <button class="button" type="submit" data-addr-save disabled>Сохранить</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" aria-labelledby="confirm-modal-title" data-confirm-modal>
+    <form class="modal__step" method="dialog" novalidate data-confirm-form>
+      <header class="modal__head">
+        <h2 class="modal__title" id="confirm-modal-title"><span data-confirm-kind="addr">Удалить адрес?</span><span data-confirm-kind="card" hidden>Удалить карту?</span></h2>
+        <button class="modal__close" type="button" aria-label="Закрыть" data-modal-close><img src="/assets/images/close.svg" alt="" width="24" height="24" /></button>
+      </header>
+      <div class="modal__body">
+        <div class="field">
+          <span class="field__label" data-confirm-label></span>
+          <p class="confirm-box" data-confirm-text></p>
+        </div>
+        <p class="account-card__note">
+          <img src="/assets/images/info.svg" alt="" width="16" height="16" />
+          <span data-confirm-kind="addr">Адрес будет удалён из списка сохранённых</span><span data-confirm-kind="card" hidden>Сохранённая карта будет удалена из аккаунта</span>
+        </p>
+      </div>
+      <div class="modal__actions">
+        <button class="button button--ghost" type="button" data-modal-close>Отмена</button>
+        <button class="button button--danger" type="submit"><img src="/assets/images/trash.svg" alt="" width="16" height="16" />Удалить</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" aria-labelledby="card-modal-title" data-card-modal>
+    <form class="modal__step" method="dialog" novalidate data-card-form>
+      <header class="modal__head">
+        <h2 class="modal__title" id="card-modal-title">Добавить карту</h2>
+        <button class="modal__close" type="button" aria-label="Закрыть" data-modal-close><img src="/assets/images/close.svg" alt="" width="24" height="24" /></button>
+      </header>
+      <p class="modal__lead">После нажатия откроется защищённая форма платёжного провайдера</p>
+      <div class="modal__actions">
+        <button class="button button--ghost" type="button" data-modal-close>Отмена</button>
+        <button class="button" type="submit">Перейти</button>
+      </div>
+    </form>
   </dialog>
 
   <footer class="footer">
@@ -418,6 +505,7 @@
   <script src="/assets/vendor/swiper/swiper-bundle.min.js" defer></script>
   <script src="/src/lib/address.js?v=1" defer></script>
   <script src="/src/lib/main.js?v=114" defer></script>
-  <script src="/src/lib/api.js?v=15" defer></script>
+  <script src="/src/lib/api.js?v=16" defer></script>
+  <script src="/src/lib/profile.js?v=1" defer></script>
 </body>
 </html>

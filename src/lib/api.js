@@ -175,6 +175,15 @@
       if (!r.ok) throw { status: r.status };
       return (await r.json()).profile || {};
     };
+    const set = (sel, v) => { const el = document.querySelector(sel); if (el) el.value = v || ""; };
+    const fill = (p) => {
+      set("[data-profile-name]", p.name);
+      set("[data-profile-phone]", p.phone);
+      set("[data-profile-birthdate]", date(p.birthdate));
+      set("[data-profile-registered]", date(p.registered_at));
+      set("[data-email]", p.email);
+    };
+    if (MOCK) return fill({ name: "Миненко Илья Александрович", phone: "+7 707 125-25-26", birthdate: "1992-09-12", registered_at: "2024-05-18", email: "alexey.morozov@gmail.com" });
     try {
       let p;
       try {
@@ -183,18 +192,15 @@
         if (err.status !== 401 && err.status !== 404) throw err;
         p = await local();
       }
-      const set = (sel, v) => { document.querySelector(sel).value = v || ""; };
-      set("[data-profile-name]", p.name);
-      set("[data-profile-phone]", p.phone);
-      set("[data-profile-birthdate]", date(p.birthdate));
-      set("[data-profile-registered]", date(p.registered_at));
-      set("[data-email]", p.email);
+      fill(p);
     } catch (err) {
       if (err.status === 401 || err.status === 404) logout();
     }
   };
 
-  const loggedIn = Boolean(localStorage.getItem(KEY));
+  const MOCK = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) && !new URLSearchParams(location.search).has("live");
+
+  const loggedIn = MOCK || Boolean(localStorage.getItem(KEY));
 
   if (document.querySelector("[data-auth-form]")) initLogin(window.flexAuth, window.flexAuthMock || live());
 

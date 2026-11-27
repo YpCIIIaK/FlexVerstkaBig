@@ -1068,3 +1068,48 @@
 
   .order__actions .button { width: 100%; }
 }
+
+@media (min-width: 768px) {
+  [data-orders].account-card { gap: calc(20 * var(--wm)); }
+
+  .orders-tabs__btn { padding: calc(8 * var(--wm)) calc(22 * var(--wm)); }
+
+  .order { padding: calc(20 * var(--wm)) calc(24 * var(--wm)); }
+
+  .order__head { padding-bottom: calc(16 * var(--wm)); }
+
+  .order__items { padding: calc(16 * var(--wm)) 0; }
+
+  .order-item img {
+    height: calc(100 * var(--wm));
+    margin-bottom: calc(8 * var(--wm));
+  }
+
+  .order__foot { padding-top: calc(16 * var(--wm)); }
+
+  .order__sum strong {
+    font-size: calc(28 * var(--wm));
+    line-height: calc(34 * var(--wm));
+  }
+}
+
+@media (min-width: 768px) {
+  .account:has([data-orders]) { gap: calc(24 * var(--wm)); }
+
+  [data-orders].account-card {
+    gap: calc(16 * var(--wm));
+    padding: calc(24 * var(--wm));
+  }
+
+  [data-orders] .account-card__title { line-height: calc(24 * var(--wm)); }
+
+  .order { padding: calc(16 * var(--wm)) calc(20 * var(--wm)); }
+
+  .order__head { padding-bottom: calc(12 * var(--wm)); }
+
+  .order__items { padding: calc(12 * var(--wm)) 0; }
+
+  .order-item img { height: calc(84 * var(--wm)); }
+
+  .order__foot { padding-top: calc(12 * var(--wm)); }
+}

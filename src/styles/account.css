@@ -751,3 +751,110 @@
 
   .addr-form__third { grid-column: span 2; }
 }
+
+.devices-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(24 * var(--wm));
+}
+
+.device-add,
+.device-item {
+  min-height: calc(354 * var(--wm));
+  border-radius: calc(20 * var(--wm));
+  outline: 1px solid var(--w-10);
+  outline-offset: -1px;
+}
+
+.device-add {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: calc(32 * var(--wm));
+  font-size: calc(24 * var(--wm));
+  font-weight: 700;
+  line-height: calc(32 * var(--wm));
+  transition: background-color 0.2s ease;
+}
+
+.device-add:hover { background-color: var(--w-03); }
+
+.device-add img {
+  width: calc(56 * var(--wm));
+  height: calc(56 * var(--wm));
+}
+
+.device-item {
+  display: grid;
+  grid-template-columns: calc(170 * var(--wm)) 1fr;
+  grid-template-rows: 1fr auto;
+  gap: calc(16 * var(--wm)) calc(24 * var(--wm));
+  padding: calc(32 * var(--wm));
+}
+
+.device-item__img {
+  width: 100%;
+  height: calc(220 * var(--wm));
+  object-fit: contain;
+}
+
+.device-item__info {
+  display: flex;
+  flex-direction: column;
+  gap: calc(16 * var(--wm));
+}
+
+.device-item__title {
+  font-size: calc(20 * var(--wm));
+  font-weight: 700;
+  line-height: calc(26 * var(--wm));
+}
+
+.device-item__list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(16 * var(--wm));
+}
+
+.device-item__row dt {
+  font-size: calc(14 * var(--wm));
+  line-height: calc(20 * var(--wm));
+  color: var(--w-50);
+}
+
+.device-item__row dd {
+  margin-top: calc(4 * var(--wm));
+  font-size: calc(16 * var(--wm));
+  line-height: calc(24 * var(--wm));
+}
+
+.device-item__actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 767px) {
+  .devices-grid { grid-template-columns: 1fr; gap: calc(16 * var(--wm)); }
+
+  .device-add,
+  .device-item { min-height: 0; }
+
+  .device-add {
+    gap: calc(16 * var(--wm));
+    padding: calc(40 * var(--wm)) calc(16 * var(--wm));
+    font-size: calc(18 * var(--wm));
+    line-height: calc(24 * var(--wm));
+  }
+
+  .device-add img { width: calc(40 * var(--wm)); height: calc(40 * var(--wm)); }
+
+  .device-item {
+    grid-template-columns: calc(110 * var(--wm)) 1fr;
+    padding: calc(20 * var(--wm));
+  }
+
+  .device-item__img { height: calc(160 * var(--wm)); }
+}

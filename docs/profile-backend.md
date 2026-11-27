@@ -23,3 +23,21 @@ Card    = { id, brand: "visa" | "mastercard", last4, name, main: bool }
 ## Проверка
 - `/account?profile=empty` — нет адресов и карт
 - `/account?profile=filled` — два адреса и две карты, как в макете
+
+# Мои устройства (`/devices`)
+
+Логика: `src/lib/devices.js`. Заглушка в `localStorage`. Для API определите `window.flexDevicesApi`:
+
+| Метод | Что делает |
+|---|---|
+| `list() → Promise<Device[]>` | Устройства пользователя |
+| `register(serial) → Promise` | Регистрация по серийному номеру; ошибка → «Устройство с таким серийным номером не найдено» |
+| `remove(id) → Promise` | Отвязать устройство |
+
+```
+Device = { id, serial, color: "violet" | "blue" | "gray" | "beige", warranty: "YYYY-MM-DD" }
+```
+
+Заглушка: номер вида `FLX12345678` регистрируется, номер на `0000` или другого формата — ошибка.
+Проверка: `/devices?devices=empty`, `/devices?devices=filled`.
+Ссылка «Диагностика» пока ведёт на `/help`.

@@ -591,3 +591,8 @@
 }
 
 .co-summary[hidden] { display: none; }
+
+.co-link {
+  text-underline-offset: 6px;
+  text-decoration-skip-ink: auto;
+}

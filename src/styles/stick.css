@@ -680,3 +680,108 @@
     color: var(--w-80);
   }
 }
+
+.device-price {
+  display: flex;
+  flex-direction: column;
+  gap: calc(8 * var(--wm));
+  margin-top: calc(24 * var(--wm));
+  padding-bottom: calc(32 * var(--wm));
+  border-bottom: 1px solid var(--w-10);
+}
+
+.device-price[hidden] { display: none; }
+
+.device-price__value {
+  display: flex;
+  align-items: baseline;
+  gap: calc(12 * var(--wm));
+  font-size: calc(40 * var(--wm));
+  font-weight: 700;
+  line-height: calc(48 * var(--wm));
+}
+
+.device-price__old {
+  font-size: calc(20 * var(--wm));
+  line-height: calc(26 * var(--wm));
+  color: var(--w-50);
+}
+
+.device-price__note {
+  font-size: calc(14 * var(--wm));
+  line-height: calc(20 * var(--wm));
+  color: var(--w-50);
+}
+
+.device-actions {
+  display: flex;
+  gap: calc(12 * var(--wm));
+}
+
+.device-actions .button { flex: 1 1 0; gap: calc(8 * var(--wm)); }
+
+.device-actions__cart img {
+  width: calc(20 * var(--wm));
+  height: calc(20 * var(--wm));
+}
+
+.device-actions__fav {
+  display: flex;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  width: calc(48 * var(--wm));
+  height: calc(48 * var(--wm));
+  border-radius: 50%;
+  outline: 1px solid var(--white);
+  outline-offset: -1px;
+  color: var(--white);
+  transition: background-color 0.2s ease;
+}
+
+.device-actions__fav:hover { background-color: var(--w-10); }
+
+.device-actions__fav svg {
+  width: calc(22 * var(--wm));
+  height: calc(22 * var(--wm));
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.device-actions__fav.is-active svg { fill: currentColor; }
+
+@media (max-width: 767px) {
+  .device-price {
+    margin-top: calc(12 * var(--wm));
+    padding-bottom: calc(24 * var(--wm));
+  }
+
+  .device-price__value {
+    font-size: calc(32 * var(--wm));
+    line-height: calc(38 * var(--wm));
+  }
+
+  .device-actions { flex-wrap: wrap; }
+
+  .device-actions__cart { flex: 1 1 auto; }
+
+  .device-actions__kit { flex: 1 1 100% !important; }
+}
+
+.device .stick-info {
+  justify-content: flex-start;
+  gap: calc(32 * var(--wm));
+}
+
+.faq__help {
+  flex: none;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .device .stick-info { gap: calc(24 * var(--wm)); }
+
+  .faq__help { padding: calc(10 * var(--wm)) calc(20 * var(--wm)); }
+}

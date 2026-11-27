@@ -11,7 +11,7 @@
   <meta name="description" content="Устройство FLEX для нагревания табака: цвета, функции и стартовый набор." />
 
   <style>html{visibility:hidden;animation:page-reveal 0s 3s forwards}@keyframes page-reveal{to{visibility:visible}}</style>
-  <link rel="stylesheet" href="/src/styles/main.css?v=297" />
+  <link rel="stylesheet" href="/src/styles/main.css?v=299" />
   <link rel="stylesheet" href="/assets/vendor/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="/assets/vendor/fancybox/fancybox.css" />
 </head>
@@ -193,6 +193,15 @@
             <p class="stick-info__text read-more__text">Система нагревания табака</p>
             <button class="read-more__btn" type="button" aria-expanded="false" data-read-more-btn>Показать полностью <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" /></svg></button>
           </div>
+
+          <div class="device-price" data-buy="1">
+            <p class="device-price__value">16 900 ₸</p>
+            <p class="device-price__note">Специальное предложение на ваш первый FLEX — в стартовом наборе.</p>
+          </div>
+          <div class="device-price" data-buy="2" hidden>
+            <p class="device-price__value">11 900 ₸ <s class="device-price__old">16 900 ₸</s></p>
+            <p class="device-price__note">Специальная цена на второе устройство FLEX.</p>
+          </div>
         </div>
 
         <div class="stick-info__bottom">
@@ -205,7 +214,13 @@
                 <button class="swatch swatch--solid" type="button" role="radio" aria-checked="false" aria-label="Бежевый Песок" data-flavour="beige" style="--swatch: #ad9c95; --ring: #ad9c95"><span></span></button>
             </div>
           </div>
-          <a class="button button--ghost stick-info__cta" href="/starter-kit">Стартовый набор</a>
+          <div class="device-actions">
+            <button class="device-actions__fav" type="button" aria-pressed="false" aria-label="Добавить в избранное" data-device-fav>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3C4.239 3 2 5.216 2 7.95C2 10.157 2.875 15.395 11.488 20.69C11.6425 20.7833 11.8195 20.8327 12 20.8327C12.1805 20.8327 12.3575 20.7833 12.512 20.69C21.126 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3C14.239 3 12 6 12 6C12 6 9.761 3 7 3Z" /></svg>
+            </button>
+            <button class="button button--ghost device-actions__cart" type="button" data-add-to-cart><img src="/assets/images/cart.svg" alt="" width="20" height="20" />В корзину</button>
+            <a class="button device-actions__kit" href="/starter-kit">Стартовый набор</a>
+          </div>
         </div>
       </div>
     </section>
@@ -329,6 +344,7 @@
     <section class="faq stick-faq" aria-labelledby="stick-faq-title">
       <div class="faq__head">
         <h2 class="faq__title" id="stick-faq-title">Часто задаваемые вопросы</h2>
+        <a class="button button--ghost button--auto faq__help" href="/help">Помощь</a>
       </div>
       <div class="faq__list d-only" data-faq>
         <div class="faq__item">
@@ -522,5 +538,6 @@
   <script src="/assets/vendor/fancybox/fancybox.umd.js" defer></script>
   <script src="/src/lib/address.js?v=1" defer></script>
   <script src="/src/lib/main.js?v=112" defer></script>
+  <script src="/src/lib/device.js?v=1" defer></script>
 </body>
 </html>

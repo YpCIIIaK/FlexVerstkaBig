@@ -64,3 +64,11 @@ Order = { id, date: "YYYY-MM-DD", channel: "online" | "store", status: "courier"
 - в магазине — `/order?id=10457` (вместо «Доставка» блок «Место покупки»)
 - отменён — `/order?id=10456` (шаг «Заказ отменён», оплата «Возвращено»)
 - доставлен — статус `received` у онлайн-заказа
+
+# Уведомления (`/notifications`)
+Галочка «Получать рассылки и предложения FLEX». Сейчас сохраняется в `localStorage.flex_notify`; при смене летит событие `flex:notify` `{ subscribed }` — повесить на него запрос подписки.
+
+# Реферальная программа в кабинете (`/cabinet-referral`)
+Заглушки в разметке: код `[data-ref-code]` (Q3E5ZV), картинка QR `[data-ref-qr]` (`/assets/images/referral-qr.png`, вырезана из макета — нужен настоящий QR по коду), число приглашений `[data-ref-invites]`, список ваучеров `[data-vouchers]` (код ваучера в `data-copy-text`).
+«Поделиться» — системное меню (на ПК копирует текст). «Активировать» ведёт на plus.yandex.ru.
+Пустые ваучеры: `/cabinet-referral?vouchers=empty`.

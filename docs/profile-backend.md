@@ -41,3 +41,14 @@ Device = { id, serial, color: "violet" | "blue" | "gray" | "beige", warranty: "Y
 Заглушка: номер вида `FLX12345678` регистрируется, номер на `0000` или другого формата — ошибка.
 Проверка: `/devices?devices=empty`, `/devices?devices=filled`.
 Ссылка «Диагностика» пока ведёт на `/help`.
+
+# Мои покупки (`/purchases`)
+
+Логика: `src/lib/orders.js`. Для API определите `window.flexOrdersApi.list() → Promise<Order[]>`:
+
+```
+Order = { id, date: "YYYY-MM-DD", channel: "online" | "store", status: "courier" | "received" | "canceled" | "processing", items: ["gray", "yellow", ...] }
+```
+Сейчас `items` — ключи товаров из справочника в `orders.js`; на бэкенде лучше отдавать `{ name, img, price }` по каждой позиции.
+Кнопки «Повторить заказ», «Показать чек», «Подробнее» пока без действий (карточка заказа — следующий шаг).
+Проверка: `/purchases?orders=empty`, `/purchases?orders=filled`.
